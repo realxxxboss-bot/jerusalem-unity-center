@@ -333,3 +333,89 @@ a {
   height: 19px;
   margin-right: 12px;
 }
+
+/* ============================================================
+   SECTION 2 — 7-PILLAR NAVY STRIP
+   Values measured on assets/full-mockup.png (strip y347–515 in
+   the 864px render, scaled ×5/3 to the 1440px reference).
+   Background: gradient in the mockup spans the full range of
+   section2-bg.png compressed into the strip → 100% 100% size.
+   ============================================================ */
+
+:root {
+  --s2-hairline: #7E5C3D;     /* bronze line atop strip */
+  --s2-title: #DEDCE3;        /* pillar titles */
+  --s2-desc: #C8C4CC;         /* muted descriptions */
+}
+
+/* Navy overlay desaturates the raw bg toward the mockup's tone
+   (render rgb(42,21,78) vs mockup rgb(26,21,52) at the bright zone) */
+.pillars {
+  border-top: 2px solid var(--s2-hairline);
+  background:
+    linear-gradient(rgba(12, 17, 36, 0.32), rgba(12, 17, 36, 0.32)),
+    #150F31 url("assets/section2-bg.png") no-repeat;
+  background-size: 100% 100%;
+  padding: 32px 20px 50px;
+}
+
+.pillars-row {
+  display: flex;
+  gap: 20px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.pillar {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* The gold ring is baked into each icon PNG at a different scale
+   within its 1254px frame (ring spans 892–1080px depending on the
+   file). Per-icon widths normalize every ring to exactly 80px. */
+.pillar-icon {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.pillar-icon img {
+  height: auto;
+}
+
+.icon-learn      { width: 100px; }
+.icon-library    { width: 106px; }
+.icon-community  { width: 112px; }
+.icon-event      { width: 93px; }
+.icon-institutes { width: 93px; }
+.icon-research   { width: 95px; }
+.icon-global     { width: 96px; }
+
+.pillar-title {
+  margin-top: 24px;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--s2-title);
+}
+
+.pillar-desc {
+  max-width: 180px;
+  margin-top: 12px;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 22px;
+  color: var(--s2-desc);
+}
