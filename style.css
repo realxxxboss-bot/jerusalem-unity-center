@@ -684,3 +684,114 @@ a {
   font-weight: 600;
   letter-spacing: 0.12em;
 }
+
+/* ============================================================
+   SECTION 5 — FIVE PATHWAYS OF EXPLORATION
+   Measured on assets/full-mockup.png (section y1122–1289 in the
+   864px render, scaled ×5/3 to the 1440px reference).
+   Cream matches the Institutes section; section5-bg.png texture.
+   Heading identical to Institutes (29px / 0.12em / #262242) with
+   the same diamond-tipped ornaments at 42px line length.
+   Icons are plain gold outlines with NO circular frame; content
+   bottoms align across the row (~57–65px art heights). Dividers:
+   1px soft gold, 168px tall, between columns only.
+   ============================================================ */
+
+:root {
+  --s5-title: #3A3552;        /* pathway titles */
+  --s5-desc: #5C5566;         /* muted descriptions */
+  --s5-divider: #D6BDA6;      /* thin vertical gold lines */
+}
+
+.pathways {
+  background: var(--s3-cream) url("assets/section5-bg.png") center / cover no-repeat;
+  padding: 28px 0 25px;
+}
+
+/* Same cap height as the Institutes heading but tighter tracking:
+   mockup text width 478px = natural glyphs (463px) + ~0.02em */
+.pathways-heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 29px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--s3-heading);
+}
+
+/* Same ornament as Institutes, shortened to the mockup's 42px */
+.orn-short {
+  width: 42px;
+}
+
+/* --- Column row ---------------------------------------------- */
+
+.pathways-row {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 24px;
+}
+
+.pathway {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.pathway-divider {
+  flex-shrink: 0;
+  width: 1px;
+  height: 168px;
+  margin-top: 10px;
+  background: var(--s5-divider);
+}
+
+/* Icon art bottoms align across the row in the mockup; each PNG
+   carries different transparent padding within its 2048px frame,
+   so per-icon heights normalize the visible art to 57–65px. */
+.pathway-icon {
+  height: 66px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.pathway-icon img {
+  width: auto;
+  object-fit: contain;
+}
+
+.pw-consciousness { height: 91px; margin-bottom: -13px; }
+.pw-spiritual     { height: 102px; margin-bottom: -22px; }
+.pw-human         { height: 92px; margin-bottom: -13px; }
+.pw-dialogue      { height: 81px; margin-bottom: -10px; }
+.pw-culture       { height: 85px; margin-bottom: -12px; }
+
+.pathway-title {
+  max-width: 165px;
+  margin-top: 16px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--s5-title);
+}
+
+.pathway-desc {
+  max-width: 195px;
+  margin-top: 10px;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.01em;
+  color: var(--s5-desc);
+}
