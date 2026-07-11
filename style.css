@@ -1,0 +1,331 @@
+/* ============================================================
+   Jerusalem Unity Center — Header + Hero
+   Values extracted from assets/full-mockup.png (1728px design)
+   ============================================================ */
+
+:root {
+  /* Colors sampled from mockup */
+  --navy: #0A0F23;            /* deep navy under header/nav */
+  --navy-soft: #13162B;       /* hero far-left base */
+  --gold: #C4923F;            /* dominant gold accent */
+  --gold-hi: #CD9C4C;         /* gold gradient top */
+  --gold-lo: #BC8C3E;         /* gold gradient bottom */
+  --btn-gold-top: #B78638;    /* button gradient, measured profile */
+  --btn-gold-bottom: #7D5923;
+  --btn-text-dark: #2B1F0C;   /* dark umber text on gold */
+  --white: #FFFFFF;
+  --text-body: #E9E9EE;       /* hero paragraph */
+  --text-nav: #E6E2E6;        /* nav links */
+  --ghost-border: rgba(201, 155, 92, 0.55);
+
+  --font-serif: "Cormorant Garamond", "Times New Roman", serif;
+  --font-sans: "Poppins", "Helvetica Neue", Arial, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--navy);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.shell {
+  max-width: 1728px;
+  margin: 0 auto;
+  padding: 0 56px;
+}
+
+/* ============================================================
+   HERO BACKGROUND
+   herobg.png is taller than the mockup crop; 50% 23% vertical
+   position reproduces the mockup framing (dome + skyline +
+   building on the right), verified by image matching.
+   ============================================================ */
+
+.hero {
+  position: relative;
+  height: 696px;
+  background-image: url("assets/herobg.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 23%;
+  background-color: var(--navy-soft);
+  overflow: hidden;
+}
+
+/* Left-side dark overlay — alphas computed from mockup-vs-raw
+   zone differences (~0.28 at left third fading to ~0.09 right) */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(9, 11, 26, 0.55) 0%,
+    rgba(9, 11, 26, 0.30) 35%,
+    rgba(9, 11, 26, 0.08) 100%
+  );
+  pointer-events: none;
+}
+
+/* ============================================================
+   HEADER — transparent bar over the hero
+   ============================================================ */
+
+.site-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  padding-top: 16px;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+}
+
+/* --- Brand ------------------------------------------------- */
+
+.brand {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* assets/ has NO logo image (missing emblem file) —
+   clean text placeholder holding the emblem's spot */
+.logo-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 104px;
+  height: 104px;
+  border: 2px solid var(--gold);
+  border-radius: 50%;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 34px;
+  letter-spacing: 0.06em;
+  color: var(--gold-hi);
+  flex-shrink: 0;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  margin-left: 22px;
+}
+
+.brand-name {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 34px;
+  line-height: 1;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.brand-sub {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 23px;
+  line-height: 1;
+  letter-spacing: 0.27em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-top: 7px;
+}
+
+.brand-tagline {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  line-height: 20px;
+  text-transform: uppercase;
+  color: var(--text-nav);
+  margin-top: 12px;
+}
+
+/* --- Nav ---------------------------------------------------- */
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+.site-nav a {
+  font-size: 13.5px;
+  font-weight: 500;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--text-nav);
+  transition: color 0.2s ease;
+}
+
+.site-nav a:hover {
+  color: var(--gold-hi);
+}
+
+/* --- Header actions ----------------------------------------- */
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  margin-left: 38px;
+  flex-shrink: 0;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans);
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.btn-support {
+  height: 42px;
+  padding: 0 24px;
+  border-radius: 4px;
+  background: linear-gradient(180deg, var(--btn-gold-top), var(--btn-gold-bottom));
+  color: var(--btn-text-dark);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  transition: filter 0.2s ease;
+}
+
+.btn-support:hover {
+  filter: brightness(1.12);
+}
+
+.search-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  margin-left: 12px;
+  padding: 0;
+  background: none;
+  border: none;
+  color: var(--text-nav);
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.search-btn:hover {
+  color: var(--gold-hi);
+}
+
+.search-btn svg {
+  width: 21px;
+  height: 21px;
+}
+
+/* ============================================================
+   HERO CONTENT
+   ============================================================ */
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  padding-top: 192px;
+}
+
+.hero-heading {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: 78px;
+  line-height: 80px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.hero-heading .gold {
+  background: linear-gradient(180deg, var(--gold-hi), var(--gold-lo));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-sub {
+  max-width: 480px;
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 34px;
+  color: var(--text-body);
+}
+
+/* --- CTAs ---------------------------------------------------- */
+
+.hero-ctas {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.hero-ctas .btn {
+  height: 54px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+}
+
+.btn-primary {
+  padding: 0 28px;
+  background: linear-gradient(180deg, var(--btn-gold-top), var(--btn-gold-bottom));
+  color: var(--btn-text-dark);
+  transition: filter 0.2s ease;
+}
+
+.btn-primary:hover {
+  filter: brightness(1.12);
+}
+
+.icon-arrow {
+  width: 26px;
+  height: 12px;
+  margin-left: 16px;
+}
+
+.btn-ghost {
+  padding: 0 30px;
+  border: 1px solid var(--ghost-border);
+  background: rgba(7, 9, 24, 0.35);
+  color: #F2EFE9;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.btn-ghost:hover {
+  border-color: var(--gold-hi);
+  background: rgba(7, 9, 24, 0.55);
+}
+
+.icon-play {
+  width: 23px;
+  height: 23px;
+  margin-right: 14px;
+}
