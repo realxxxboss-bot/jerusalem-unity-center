@@ -601,3 +601,86 @@ a {
   height: 12px;
   margin-left: 14px;
 }
+
+/* ============================================================
+   SECTION 4 — A FUTURE GATHERING PLACE FOR HUMANITY
+   section4-bg.png (1672x941) already carries the flat navy
+   field on its left half; cover-cropping at 50% 38% reproduces
+   the mockup framing (campus terraces on the right), verified
+   by template match against the mockup (offset 89/234). The
+   mockup runs slightly darker on the left, so only a light
+   navy wash fades out toward the image side.
+   ============================================================ */
+
+.future-banner {
+  position: relative;
+  height: 420px;
+  background-image: url("assets/section4-bg.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 38%;
+  background-color: #150C31;
+  overflow: hidden;
+}
+
+.future-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(13, 7, 35, 0.38) 0%,
+    rgba(13, 7, 35, 0.20) 30%,
+    rgba(13, 7, 35, 0) 48%
+  );
+  pointer-events: none;
+}
+
+.future-inner {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding-left: 102px; /* text starts x61 in the 864px mockup */
+}
+
+.future-heading {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: 42px;
+  line-height: 52px;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+/* HUMANITY gold — brighter than the hero gold; interior glyph
+   pixels measure rgb(251,229,149) top -> rgb(228,188,122) bottom */
+.future-heading .gold-bright {
+  background: linear-gradient(180deg, #F3DF93, #DDB874);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.future-sub {
+  max-width: 388px;
+  margin-top: 22px;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 27.5px;
+  color: #E5E2EA;
+}
+
+.future-cta {
+  margin-top: 25px;
+  height: 47px;
+  padding: 0 26px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+}
