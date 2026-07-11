@@ -419,3 +419,185 @@ a {
   line-height: 22px;
   color: var(--s2-desc);
 }
+
+/* ============================================================
+   SECTION 3 — DISCOVER OUR INSTITUTES
+   Measured on assets/full-mockup.png (section y516–869 in the
+   864px render, scaled ×5/3 to the 1440px reference).
+   Cream: #EBDFD4 (section3-bg.png paper texture, avg #EEE0D3).
+   Cards: #0A0E25, ~212×442px, radius 15px, gap 14px.
+   Image block 193px fading into card navy; 100px icon ring
+   centered 212px from card top (31px overlap into the image).
+   ============================================================ */
+
+:root {
+  --s3-cream: #EBDFD4;
+  --s3-heading: #262242;      /* section heading + view-all link */
+  --s3-card-navy: #0A0E25;
+  --s3-orn-gold: #BFA075;     /* heading side ornaments */
+  --s3-title: #EEEDED;        /* card titles */
+  --s3-desc: #CBC8D2;         /* card descriptions */
+}
+
+.institutes {
+  background: var(--s3-cream) url("assets/section3-bg.png") center / cover no-repeat;
+  padding: 30px 0 28px;
+}
+
+/* --- Heading with gold side ornaments ----------------------- */
+
+.institutes-heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 29px;
+  line-height: 1;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--s3-heading);
+}
+
+/* Thin gold line with a small diamond at the text-side end */
+.heading-orn {
+  position: relative;
+  width: 96px;
+  height: 1px;
+  background: var(--s3-orn-gold);
+  flex-shrink: 0;
+}
+
+.heading-orn::after {
+  content: "";
+  position: absolute;
+  top: -3px;
+  width: 7px;
+  height: 7px;
+  background: var(--s3-orn-gold);
+  transform: rotate(45deg);
+}
+
+.orn-left::after  { right: 0; }
+.orn-right::after { left: 0; }
+
+/* --- Card row ------------------------------------------------ */
+
+.institutes-row {
+  display: flex;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.institute-card {
+  flex: 1 1 0;
+  min-width: 0;
+  height: 442px;
+  background: var(--s3-card-navy);
+  border-radius: 15px;
+  overflow: hidden;
+  text-align: center;
+}
+
+/* Photo fades into the card navy over its lower third */
+.card-media {
+  position: relative;
+  height: 193px;
+}
+
+.card-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 14, 37, 0) 50%,
+    rgba(10, 14, 37, 0.55) 80%,
+    var(--s3-card-navy) 100%
+  );
+}
+
+/* Gold ring is baked into each icon PNG; the emblem circle adds
+   the mockup's translucent navy disc behind it. Per-icon widths
+   normalize every ring to exactly 100px (ring bbox / 1254 frame). */
+.card-emblem {
+  position: relative;
+  z-index: 1;
+  width: 100px;
+  height: 100px;
+  margin: -31px auto 0;
+  border-radius: 50%;
+  background: rgba(10, 14, 37, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-emblem img {
+  height: auto;
+}
+
+.emblem-consciousness { width: 120px; }
+.emblem-spiritual     { width: 127px; }
+.emblem-human         { width: 114px; }
+.emblem-moral         { width: 118px; }
+.emblem-global        { width: 126px; }
+.emblem-science       { width: 115px; }
+
+.card-title {
+  margin-top: 13px;
+  padding: 0 12px;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 1.25;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--s3-title);
+}
+
+.card-desc {
+  margin-top: 12px;
+  padding: 0 18px;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 23px;
+  color: var(--s3-desc);
+}
+
+/* --- View all link -------------------------------------------
+   Mockup renders this link dark navy (avg #2E294A), not gold. */
+
+.institutes-viewall {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: max-content;
+  margin: 22px auto 0;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--s3-heading);
+  transition: color 0.2s ease;
+}
+
+.institutes-viewall:hover {
+  color: var(--gold);
+}
+
+.institutes-viewall .icon-arrow {
+  width: 26px;
+  height: 12px;
+  margin-left: 14px;
+}
