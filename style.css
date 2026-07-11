@@ -1,6 +1,7 @@
 /* ============================================================
    Jerusalem Unity Center — Header + Hero
-   Values extracted from assets/full-mockup.png (1728px design)
+   Values extracted from assets/full-mockup.png (864px render,
+   scaled ×5/3 to a 1440px desktop reference)
    ============================================================ */
 
 :root {
@@ -10,9 +11,10 @@
   --gold: #C4923F;            /* dominant gold accent */
   --gold-hi: #CD9C4C;         /* gold gradient top */
   --gold-lo: #BC8C3E;         /* gold gradient bottom */
-  --btn-gold-top: #B78638;    /* button gradient, measured profile */
-  --btn-gold-bottom: #7D5923;
-  --btn-text-dark: #2B1F0C;   /* dark umber text on gold */
+  --btn-gold-top: #A87836;    /* button gradient, measured profile */
+  --btn-gold-bottom: #724E1D;
+  --btn-text-cream: #F3EDDC;  /* cream text on gold, dark shadow under */
+  --btn-bevel: rgba(226, 185, 115, 0.6);
   --white: #FFFFFF;
   --text-body: #E9E9EE;       /* hero paragraph */
   --text-nav: #E6E2E6;        /* nav links */
@@ -41,9 +43,9 @@ a {
 }
 
 .shell {
-  max-width: 1728px;
+  max-width: 1440px;
   margin: 0 auto;
-  padding: 0 56px;
+  padding: 0 48px;
 }
 
 /* ============================================================
@@ -55,7 +57,7 @@ a {
 
 .hero {
   position: relative;
-  height: 696px;
+  height: 578px;
   background-image: url("assets/herobg.png");
   background-size: cover;
   background-repeat: no-repeat;
@@ -89,52 +91,47 @@ a {
   left: 0;
   right: 0;
   z-index: 10;
-  padding-top: 16px;
+  padding-top: 28px;
 }
 
 .header-inner {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
 }
 
 /* --- Brand ------------------------------------------------- */
 
 .brand {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   flex-shrink: 0;
 }
 
-/* assets/ has NO logo image (missing emblem file) —
-   clean text placeholder holding the emblem's spot */
-.logo-placeholder {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 104px;
-  height: 104px;
-  border: 2px solid var(--gold);
-  border-radius: 50%;
-  font-family: var(--font-serif);
-  font-weight: 600;
-  font-size: 34px;
-  letter-spacing: 0.06em;
-  color: var(--gold-hi);
+/* PNG already carries its own gold circular emblem — no frame.
+   The image content fills only ~60% of its frame, so scale it up
+   visually (layout box stays 88px) to match the mockup emblem. */
+.logo {
+  width: 88px;
+  height: 88px;
+  object-fit: contain;
+  transform: scale(1.66);
+  transform-origin: center;
   flex-shrink: 0;
 }
 
 .brand-text {
   display: flex;
   flex-direction: column;
-  margin-left: 22px;
+  margin-left: 20px;
+  margin-top: 3px;
 }
 
 .brand-name {
   font-family: var(--font-serif);
   font-weight: 600;
-  font-size: 34px;
+  font-size: 27px;
   line-height: 1;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.10em;
   text-transform: uppercase;
   color: var(--white);
 }
@@ -142,22 +139,22 @@ a {
 .brand-sub {
   font-family: var(--font-serif);
   font-weight: 600;
-  font-size: 23px;
+  font-size: 17px;
   line-height: 1;
   letter-spacing: 0.27em;
   text-transform: uppercase;
   color: var(--gold);
-  margin-top: 7px;
+  margin-top: 6px;
 }
 
 .brand-tagline {
   font-size: 11px;
   font-weight: 400;
   letter-spacing: 0.15em;
-  line-height: 20px;
+  line-height: 17px;
   text-transform: uppercase;
   color: var(--text-nav);
-  margin-top: 12px;
+  margin-top: 9px;
 }
 
 /* --- Nav ---------------------------------------------------- */
@@ -165,15 +162,17 @@ a {
 .site-nav {
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: 29px;
   margin-left: auto;
+  margin-top: 10px;
   white-space: nowrap;
 }
 
 .site-nav a {
-  font-size: 13.5px;
+  font-size: 12px;
   font-weight: 500;
-  letter-spacing: 0.09em;
+  letter-spacing: 0.02em;
+  line-height: 35px;
   text-transform: uppercase;
   color: var(--text-nav);
   transition: color 0.2s ease;
@@ -188,7 +187,8 @@ a {
 .header-actions {
   display: flex;
   align-items: center;
-  margin-left: 38px;
+  margin-left: 26px;
+  margin-top: 10px;
   flex-shrink: 0;
 }
 
@@ -202,14 +202,16 @@ a {
 }
 
 .btn-support {
-  height: 42px;
-  padding: 0 24px;
+  height: 35px;
+  padding: 0 19px;
+  border: 1px solid var(--btn-bevel);
   border-radius: 4px;
   background: linear-gradient(180deg, var(--btn-gold-top), var(--btn-gold-bottom));
-  color: var(--btn-text-dark);
-  font-size: 11.5px;
+  color: var(--btn-text-cream);
+  text-shadow: 0 1px 2px rgba(61, 32, 6, 0.55);
+  font-size: 10.5px;
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.10em;
   transition: filter 0.2s ease;
 }
 
@@ -221,9 +223,9 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 42px;
-  height: 42px;
-  margin-left: 12px;
+  width: 35px;
+  height: 35px;
+  margin-left: 16px;
   padding: 0;
   background: none;
   border: none;
@@ -237,8 +239,8 @@ a {
 }
 
 .search-btn svg {
-  width: 21px;
-  height: 21px;
+  width: 15px;
+  height: 15px;
 }
 
 /* ============================================================
@@ -248,14 +250,14 @@ a {
 .hero-content {
   position: relative;
   z-index: 1;
-  padding-top: 192px;
+  padding-top: 159px;
 }
 
 .hero-heading {
   font-family: var(--font-serif);
   font-weight: 500;
-  font-size: 78px;
-  line-height: 80px;
+  font-size: 65px;
+  line-height: 67px;
   letter-spacing: 0.02em;
   text-transform: uppercase;
   color: var(--white);
@@ -269,11 +271,11 @@ a {
 }
 
 .hero-sub {
-  max-width: 480px;
-  margin-top: 20px;
-  font-size: 20px;
+  max-width: 420px;
+  margin-top: 18px;
+  font-size: 17px;
   font-weight: 300;
-  line-height: 34px;
+  line-height: 29px;
   color: var(--text-body);
 }
 
@@ -282,22 +284,24 @@ a {
 .hero-ctas {
   display: flex;
   align-items: center;
-  gap: 24px;
-  margin-top: 40px;
+  gap: 25px;
+  margin-top: 30px;
 }
 
 .hero-ctas .btn {
-  height: 54px;
+  height: 47px;
   border-radius: 4px;
-  font-size: 12px;
+  font-size: 12.5px;
   font-weight: 600;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.10em;
 }
 
 .btn-primary {
-  padding: 0 28px;
+  padding: 0 22px;
+  border: 1px solid var(--btn-bevel);
   background: linear-gradient(180deg, var(--btn-gold-top), var(--btn-gold-bottom));
-  color: var(--btn-text-dark);
+  color: var(--btn-text-cream);
+  text-shadow: 0 1px 2px rgba(61, 32, 6, 0.55);
   transition: filter 0.2s ease;
 }
 
@@ -306,16 +310,16 @@ a {
 }
 
 .icon-arrow {
-  width: 26px;
-  height: 12px;
-  margin-left: 16px;
+  width: 22px;
+  height: 11px;
+  margin-left: 12px;
 }
 
 .btn-ghost {
-  padding: 0 30px;
+  padding: 0 18px;
   border: 1px solid var(--ghost-border);
   background: rgba(7, 9, 24, 0.35);
-  color: #F2EFE9;
+  color: #E3E3E6;
   transition: border-color 0.2s ease, background 0.2s ease;
 }
 
@@ -325,7 +329,7 @@ a {
 }
 
 .icon-play {
-  width: 23px;
-  height: 23px;
-  margin-right: 14px;
+  width: 19px;
+  height: 19px;
+  margin-right: 12px;
 }
