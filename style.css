@@ -1185,3 +1185,609 @@ a {
   background: rgba(172, 169, 184, 0.5);
 }
 
+/* ============================================================
+   MOBILE-ONLY ELEMENTS — base state
+   These two rules exist solely to hide the NEW hamburger button
+   and the NEW cloned Support link on desktop. They style no
+   pre-existing element and change nothing in the approved
+   desktop design.
+   ============================================================ */
+
+.nav-toggle {
+  display: none;
+}
+
+.site-nav .nav-support {
+  display: none;
+}
+
+/* ============================================================
+   MOBILE — TABLET / PHONE (max-width: 768px)
+   All responsive overrides live inside this block and the
+   480px block below. Desktop rules above are untouched.
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+  /* ---- Global safety ---------------------------------------- */
+
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+  .shell {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  /* ---- Header / nav ------------------------------------------ */
+
+  .site-header {
+    padding-top: 14px;
+  }
+
+  .header-inner {
+    align-items: center;
+  }
+
+  .logo {
+    width: 56px;
+    height: 56px;
+  }
+
+  .brand-text {
+    margin-left: 14px;
+    margin-top: 0;
+  }
+
+  .brand-name {
+    font-size: 20px;
+  }
+
+  .brand-sub {
+    font-size: 13px;
+    margin-top: 5px;
+  }
+
+  .brand-tagline {
+    font-size: 9px;
+    line-height: 14px;
+    margin-top: 6px;
+  }
+
+  /* Desktop pill button + search hidden; Support lives in the
+     dropdown (cloned .nav-support) */
+  .header-actions {
+    display: none;
+  }
+
+  .nav-toggle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    margin-left: auto;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .nav-toggle-bar {
+    display: block;
+    width: 24px;
+    height: 2px;
+    border-radius: 1px;
+    background: var(--text-nav);
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .site-header.nav-open .nav-toggle-bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .site-header.nav-open .nav-toggle-bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .site-header.nav-open .nav-toggle-bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* Nav becomes a full-width dropdown under the header bar */
+  .site-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 30;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    margin: 12px 0 0;
+    padding: 6px 0 18px;
+    white-space: normal;
+    background: rgba(9, 12, 30, 0.97);
+    border-top: 1px solid rgba(196, 146, 63, 0.4);
+    border-bottom: 1px solid rgba(196, 146, 63, 0.4);
+    max-height: calc(100vh - 96px);
+    overflow-y: auto;
+  }
+
+  .site-header.nav-open .site-nav {
+    display: flex;
+  }
+
+  .site-nav a {
+    padding: 0 24px;
+    font-size: 13px;
+    line-height: 48px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .site-header .site-nav .nav-support {
+    display: inline-flex;
+    align-self: flex-start;
+    height: 44px;
+    margin: 16px 24px 0;
+    padding: 0 22px;
+    font-size: 11.5px;
+    line-height: 1;
+    border-bottom: 1px solid var(--btn-bevel);
+  }
+
+  /* ---- Hero --------------------------------------------------- */
+
+  .hero {
+    height: auto;
+    min-height: 560px;
+    background-position: 60% 25%;
+  }
+
+  /* Stronger, more even overlay so white text reads over the
+     portrait crop */
+  .hero::before {
+    background: linear-gradient(
+      180deg,
+      rgba(9, 11, 26, 0.55) 0%,
+      rgba(9, 11, 26, 0.38) 55%,
+      rgba(9, 11, 26, 0.55) 100%
+    );
+  }
+
+  .hero-content {
+    padding-top: 120px;
+    padding-bottom: 56px;
+  }
+
+  .hero-heading {
+    font-size: 42px;
+    line-height: 48px;
+  }
+
+  .hero-sub {
+    max-width: 100%;
+    font-size: 15px;
+    line-height: 26px;
+  }
+
+  .hero-ctas {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+    margin-top: 26px;
+  }
+
+  .hero-ctas .btn {
+    width: 100%;
+  }
+
+  /* ---- Section 2: seven-icon strip ---------------------------- */
+
+  .pillars {
+    padding: 28px 20px 40px;
+    background-size: cover;
+  }
+
+  .pillars-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px 16px;
+  }
+
+  /* 7th item (Global Chapters) centers across both columns */
+  .pillar:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .pillar-title {
+    white-space: normal;
+    font-size: 18px;
+  }
+
+  .pillar-desc {
+    font-size: 13px;
+    line-height: 20px;
+  }
+
+  /* ---- Section 3: institutes cards ----------------------------- */
+
+  .institutes {
+    padding: 34px 0 32px;
+  }
+
+  .institutes-heading {
+    font-size: 22px;
+    gap: 12px;
+  }
+
+  .heading-orn {
+    width: 36px;
+  }
+
+  .institutes-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px 14px;
+    margin-top: 22px;
+  }
+
+  .institute-card {
+    height: auto;
+    padding-bottom: 22px;
+  }
+
+  .card-media {
+    height: 160px;
+  }
+
+  .card-title {
+    font-size: 19px;
+  }
+
+  .card-desc {
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  .institutes-viewall {
+    margin-top: 26px;
+    font-size: 16px;
+  }
+
+  /* ---- Section 4: future-gathering banner ---------------------- */
+
+  .future-banner {
+    height: auto;
+    background-position: 66% 50%;
+  }
+
+  /* Full-bleed navy wash: portrait crop puts text over the campus
+     image, so the overlay must cover the whole banner */
+  .future-banner::before {
+    background: linear-gradient(
+      180deg,
+      rgba(13, 7, 35, 0.66) 0%,
+      rgba(13, 7, 35, 0.55) 100%
+    );
+  }
+
+  .future-inner {
+    padding: 52px 20px 56px;
+  }
+
+  .future-heading {
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+  .future-sub {
+    max-width: 100%;
+    font-size: 15px;
+    line-height: 25px;
+    margin-top: 18px;
+  }
+
+  /* ---- Section 5: five pathways --------------------------------- */
+
+  .pathways {
+    padding: 32px 0 36px;
+  }
+
+  .pathways-heading {
+    font-size: 22px;
+    gap: 12px;
+  }
+
+  .pathways-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 34px 16px;
+    margin-top: 26px;
+  }
+
+  /* Vertical gold dividers make no sense in a stacked grid */
+  .pathway-divider {
+    display: none;
+  }
+
+  /* 5th item centers across both columns */
+  .pathway:last-child {
+    grid-column: 1 / -1;
+  }
+
+  /* ---- Section 6: join-a-movement dove banner ------------------- */
+
+  .join-banner {
+    height: auto;
+    /* Even overlay keeps the gold-network texture subtly visible
+       across the whole stacked banner */
+    background:
+      linear-gradient(rgba(7, 3, 26, 0.78), rgba(7, 3, 26, 0.78)),
+      var(--s6-navy) url("assets/section6-bg.png") center / cover no-repeat;
+  }
+
+  .join-inner {
+    flex-direction: column;
+    height: auto;
+    padding-top: 34px;
+    padding-bottom: 42px;
+    text-align: center;
+  }
+
+  .join-dove {
+    width: 160px;
+    height: 160px;
+    margin: 0 auto;
+  }
+
+  .join-copy {
+    margin-left: 0;
+    margin-top: 4px;
+    flex-shrink: 1;
+  }
+
+  .join-heading {
+    white-space: normal;
+    font-size: 27px;
+    line-height: 1.2;
+  }
+
+  .join-desc {
+    max-width: 440px;
+    margin: 14px auto 0;
+    font-size: 15px;
+    line-height: 24px;
+  }
+
+  .btn-member {
+    width: 100%;
+    max-width: 293px;
+    height: 54px;
+    margin: 26px auto 0;
+  }
+
+  /* ---- Footer ---------------------------------------------------- */
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px 16px;
+    height: auto;
+    padding-top: 32px;
+    padding-bottom: 12px;
+  }
+
+  .footer-vline {
+    display: none;
+  }
+
+  .fcol-brand,
+  .fcol-center,
+  .fcol-resources,
+  .fcol-involved {
+    width: auto;
+  }
+
+  .fcol-brand {
+    grid-column: 1 / -1;
+  }
+
+  .fcol-quote {
+    grid-column: 1 / -1;
+    padding-left: 0;
+    padding-top: 0;
+  }
+
+  .footer-brand {
+    padding-left: 16px;
+  }
+
+  .footer-logo {
+    width: 64px;
+    height: 64px;
+  }
+
+  .footer-brand-text {
+    margin-left: 14px;
+    margin-top: 2px;
+  }
+
+  .footer-brand-name {
+    font-size: 24px;
+  }
+
+  .footer-brand-sub {
+    font-size: 15px;
+  }
+
+  .footer-brand-tagline {
+    font-size: 10px;
+    line-height: 15px;
+  }
+
+  .footer-social {
+    padding-left: 0;
+    margin-top: 22px;
+    flex-wrap: wrap;
+  }
+
+  .fcol-links {
+    padding-top: 0;
+  }
+
+  .fcol-center,
+  .fcol-resources,
+  .fcol-involved {
+    padding-left: 0;
+  }
+
+  /* Comfortable tap pitch on the link lists */
+  .fcol-list li + li {
+    margin-top: 12px;
+  }
+
+  .fcol-list a {
+    white-space: normal;
+  }
+
+  .footer-quote {
+    max-width: 100%;
+    font-size: 24px;
+    line-height: 36px;
+  }
+
+  .qmark {
+    font-size: 38px;
+  }
+
+  .footer-quote-attr {
+    margin-top: 14px;
+  }
+
+  /* Bottom bar: copyright above, legal links below */
+  .footer-bottom {
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    height: auto;
+    padding: 20px 20px 26px;
+    text-align: center;
+  }
+
+}
+
+/* ============================================================
+   MOBILE — SMALL PHONES (max-width: 480px)
+   Refinements on top of the 768px block.
+   ============================================================ */
+
+@media (max-width: 480px) {
+
+  /* ---- Header ------------------------------------------------- */
+
+  .logo {
+    width: 48px;
+    height: 48px;
+  }
+
+  .brand-name {
+    font-size: 17px;
+  }
+
+  .brand-sub {
+    font-size: 11px;
+  }
+
+  .brand-tagline {
+    display: none;
+  }
+
+  /* ---- Hero ---------------------------------------------------- */
+
+  .hero {
+    min-height: 520px;
+  }
+
+  .hero-content {
+    padding-top: 108px;
+    padding-bottom: 48px;
+  }
+
+  .hero-heading {
+    font-size: 34px;
+    line-height: 40px;
+  }
+
+  /* ---- Section headings: drop ornaments, keep them clean ------- */
+
+  .institutes-heading,
+  .pathways-heading {
+    font-size: 20px;
+    line-height: 1.3;
+    text-align: center;
+  }
+
+  .heading-orn {
+    display: none;
+  }
+
+  /* ---- Section 2 ------------------------------------------------ */
+
+  .pillars-row {
+    gap: 28px 12px;
+  }
+
+  /* ---- Section 3: single column --------------------------------- */
+
+  .institutes-row {
+    grid-template-columns: 1fr;
+  }
+
+  .card-media {
+    height: 190px;
+  }
+
+  /* ---- Section 4 ------------------------------------------------- */
+
+  .future-heading {
+    font-size: 28px;
+    line-height: 36px;
+  }
+
+  /* ---- Section 5: single column ---------------------------------- */
+
+  .pathways-row {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  /* ---- Section 6 -------------------------------------------------- */
+
+  .join-dove {
+    width: 140px;
+    height: 140px;
+  }
+
+  .join-heading {
+    font-size: 24px;
+  }
+
+  /* ---- Footer ------------------------------------------------------ */
+
+  .footer-brand {
+    padding-left: 10px;
+  }
+
+  .footer-quote {
+    font-size: 21px;
+    line-height: 32px;
+  }
+
+}
+

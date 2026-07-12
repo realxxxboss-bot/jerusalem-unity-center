@@ -25,7 +25,7 @@
           </span>
         </a>
 
-        <nav class="site-nav" aria-label="Primary">
+        <nav class="site-nav" id="primary-nav" aria-label="Primary">
           <a href="#">About Us</a>
           <a href="#">Our Vision</a>
           <a href="#">Institutes</a>
@@ -45,6 +45,12 @@
             </svg>
           </button>
         </div>
+
+        <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav">
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </button>
 
       </div>
     </header>
@@ -403,6 +409,31 @@
     </div>
 
   </footer>
+
+  <script>
+    (function () {
+      var header = document.querySelector('.site-header');
+      var toggle = document.querySelector('.nav-toggle');
+      var nav = document.getElementById('primary-nav');
+      var support = document.querySelector('.header-actions .btn-support');
+
+      /* Mobile menu also needs the Support CTA; clone it into the nav
+         (hidden on desktop via .nav-support). */
+      if (nav && support) {
+        var clone = support.cloneNode(true);
+        clone.classList.add('nav-support');
+        nav.appendChild(clone);
+      }
+
+      if (header && toggle) {
+        toggle.addEventListener('click', function () {
+          var open = header.classList.toggle('nav-open');
+          toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+          toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        });
+      }
+    })();
+  </script>
 
 </body>
 </html>
