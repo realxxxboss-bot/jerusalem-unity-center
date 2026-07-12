@@ -795,3 +795,110 @@ a {
   letter-spacing: 0.01em;
   color: var(--s5-desc);
 }
+
+/* ============================================================
+   SECTION 6 — JOIN A GLOBAL MOVEMENT
+   Measured on assets/full-mockup.png (band y1290–1418 in the
+   864px render, ×5/3 to the 1440px reference → 213px tall).
+   section6-bg.png IS the banner background — base navy #150E30
+   with the faint gold network clusters already baked in at the
+   far left and right edges.
+   Button fill/text measured identical to the header button
+   (#AF7F35→#7F5721 fill, cream text over a dark shadow), so it
+   reuses the shared --btn-gold-* / --btn-text-cream vars.
+   The button is NOT flush right: its right edge sits 179px
+   inside the shell, leaving textured space beyond it.
+   ============================================================ */
+
+:root {
+  --s6-navy: #150E30;         /* banner base under the bg image */
+  --s6-para: #DFE1E3;         /* paragraph grey-white */
+}
+
+/* section6-bg.png carries a bright radial glow at its center that
+   the mockup suppresses to a flat dark navy; the horizontal overlay
+   below reproduces the mockup's measured darkening (strongest at
+   the band center, none at the outer edges where the gold network
+   clusters sit). */
+.join-banner {
+  height: 213px;
+  background:
+    linear-gradient(90deg,
+      rgba(7, 3, 26, 0)    2%,
+      rgba(7, 3, 26, 0.75) 25%,
+      rgba(7, 3, 26, 0.86) 50%,
+      rgba(7, 3, 26, 0.55) 68%,
+      rgba(7, 3, 26, 0.10) 95%),
+    var(--s6-navy) url("assets/section6-bg.png") center / cover no-repeat;
+}
+
+.join-inner {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+/* bird-icon.png is a 1254px square canvas whose art occupies a
+   1052×898 box inside it (transparent padding: 123L/79R/154T/202B).
+   A 248px square at scale 0.198 puts the visible art at the
+   mockup's 208×178, art left edge at x100, art center ~12px below
+   the band center. The canvas overflows the 213px band top/bottom
+   but only with transparent padding. */
+.join-dove {
+  width: 248px;
+  height: 248px;
+  margin-left: 28px;
+  margin-top: 32px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.join-copy {
+  margin-left: 46px;
+  flex-shrink: 0;
+}
+
+.join-heading {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 35px;
+  line-height: 1;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: #FFFFFF;
+}
+
+.join-desc {
+  max-width: 480px;
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26px;
+  letter-spacing: 0.01em;
+  color: var(--s6-para);
+}
+
+.btn-member {
+  width: 293px;
+  height: 60px;
+  margin-left: auto;
+  margin-right: 179px;
+  margin-bottom: 13px;
+  flex-shrink: 0;
+  border: 1px solid var(--btn-bevel);
+  border-radius: 4px;
+  /* measured #AA7932→#855B23 across the mockup button — a touch
+     lighter than the shared header-button gradient */
+  background: linear-gradient(180deg, #B28136, #7B5420);
+  color: var(--btn-text-cream);
+  text-shadow: 0 1px 2px rgba(61, 32, 6, 0.55);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  transition: filter 0.2s ease;
+}
+
+.btn-member:hover {
+  filter: brightness(1.12);
+}
