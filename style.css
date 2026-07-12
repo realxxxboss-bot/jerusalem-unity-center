@@ -1238,6 +1238,154 @@ a {
 }
 
 /* ============================================================
+   IN-PAGE NAVIGATION — smooth scrolling to section anchors.
+   New behavior only; no visual change to approved elements.
+   ============================================================ */
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Breathing room above a scrolled-to section (header is not
+   fixed, so a small comfort margin is enough). */
+#hero,
+#explore,
+#institutes,
+#vision,
+#pathways,
+#join,
+#footer {
+  scroll-margin-top: 24px;
+}
+
+/* ============================================================
+   BECOME A MEMBER — email signup modal (new element; matches
+   the site's navy/gold/serif language and 4px button radius)
+   ============================================================ */
+
+body.modal-open {
+  overflow: hidden;
+}
+
+.member-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(7, 9, 24, 0.72);
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.member-overlay.is-open {
+  display: flex;
+}
+
+.member-modal {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  padding: 44px 40px 40px;
+  border: 1px solid var(--btn-bevel);
+  border-radius: 4px;
+  background: linear-gradient(180deg, #13162B, #0A0F23);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+  text-align: center;
+}
+
+.member-close {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  border: none;
+  background: none;
+  color: var(--gold);
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.member-close:hover {
+  color: var(--gold-hi);
+}
+
+.member-title {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 30px;
+  color: var(--white);
+}
+
+.member-sub {
+  margin-top: 10px;
+  font-size: 13px;
+  line-height: 21px;
+  color: var(--text-body);
+}
+
+.member-form {
+  margin-top: 24px;
+}
+
+.member-email {
+  display: block;
+  width: 100%;
+  height: 47px;
+  padding: 0 16px;
+  border: 1px solid var(--ghost-border);
+  border-radius: 4px;
+  background: rgba(7, 9, 24, 0.55);
+  color: var(--text-body);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.member-email::placeholder {
+  color: rgba(233, 233, 238, 0.55);
+}
+
+.member-email:focus {
+  border-color: var(--gold-hi);
+}
+
+.member-error {
+  margin-top: 10px;
+  font-size: 12px;
+  color: #E0A9A0;
+  text-align: left;
+}
+
+.member-submit {
+  width: 100%;
+  height: 47px;
+  margin-top: 16px;
+  border: 1px solid var(--btn-bevel);
+  border-radius: 4px;
+  background: linear-gradient(180deg, var(--btn-gold-top), var(--btn-gold-bottom));
+  color: var(--btn-text-cream);
+  text-shadow: 0 1px 2px rgba(61, 32, 6, 0.55);
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.10em;
+  transition: filter 0.2s ease;
+}
+
+.member-submit:hover {
+  filter: brightness(1.12);
+}
+
+.member-confirm {
+  margin-top: 22px;
+  font-size: 14px;
+  line-height: 23px;
+  color: var(--gold-hi);
+}
+
+/* ============================================================
    MOBILE — TABLET / PHONE (max-width: 768px)
    All responsive overrides live inside this block and the
    480px block below. Desktop rules above are untouched.
@@ -1728,6 +1876,20 @@ a {
     text-align: center;
   }
 
+  /* ---- Member signup modal ------------------------------------ */
+
+  .member-overlay {
+    padding: 16px;
+  }
+
+  .member-modal {
+    padding: 38px 24px 30px;
+  }
+
+  .member-title {
+    font-size: 26px;
+  }
+
 }
 
 /* ============================================================
@@ -1846,6 +2008,12 @@ a {
   .footer-quote {
     font-size: 21px;
     line-height: 32px;
+  }
+
+  /* ---- Member signup modal ------------------------------------ */
+
+  .member-title {
+    font-size: 24px;
   }
 
 }
