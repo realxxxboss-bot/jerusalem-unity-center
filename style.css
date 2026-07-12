@@ -902,3 +902,286 @@ a {
 .btn-member:hover {
   filter: brightness(1.12);
 }
+
+/* ============================================================
+   FOOTER
+   Measured on assets/full-mockup.png (864px wide = 5/3 of the
+   1440px reference; footer band y1551–1732 → 302px tall:
+   220px top row + 1px divider + 81px bottom bar).
+   footer-bg.png (1672×941) anchored 50% 100% — its bottom slice
+   (#151139→#0C0E2D) matches the mockup navy (#161230→#100F2A).
+   Faint 1px vertical dividers verified at mockup x271/379/473/
+   619 → 452/632/788/1032 at 1440.
+   ============================================================ */
+
+:root {
+  --footer-heading: #C0965C;    /* gold column headings */
+  --footer-link: #C0BCC8;       /* muted lavender-white links */
+  --footer-quote: #E7B559;      /* bright quote gold */
+  --footer-qmark: #D9A445;      /* decorative quotation marks */
+  --footer-attr: #C39C60;       /* attribution gold-tan */
+  --footer-muted: #ACA9B8;      /* bottom-bar grey-lavender */
+  --footer-line: rgba(255, 255, 255, 0.12);
+}
+
+.site-footer {
+  background: #100F2A url("assets/footer-bg.png") 50% 100% / cover no-repeat;
+}
+
+.footer-top {
+  display: flex;
+  align-items: flex-start;
+  height: 220px;
+  padding-top: 24px;
+}
+
+/* Zone widths = divider-to-divider spans at 1440 */
+.fcol-brand    { width: 404px; flex-shrink: 0; }
+.fcol-center   { width: 180px; flex-shrink: 0; }
+.fcol-resources{ width: 156px; flex-shrink: 0; }
+.fcol-involved { width: 244px; flex-shrink: 0; }
+.fcol-quote    { flex: 1; min-width: 0; }
+
+.footer-vline {
+  width: 1px;
+  height: 170px;
+  background: var(--footer-line);
+  flex-shrink: 0;
+}
+
+/* --- Column 1: brand + social ------------------------------- */
+
+.footer-brand {
+  display: flex;
+  align-items: flex-start;
+  padding-left: 34px;
+}
+
+/* Same treatment as the header .logo: the PNG's art fills only
+   ~61% of its 1024px frame (alpha bbox 193–813), so the 88px
+   layout box is scaled up visually to render the mockup's
+   header-sized emblem. */
+.footer-logo {
+  width: 88px;
+  height: 88px;
+  object-fit: contain;
+  transform: scale(1.66);
+  transform-origin: center;
+  flex-shrink: 0;
+}
+
+.footer-brand-text {
+  display: flex;
+  flex-direction: column;
+  margin-left: 17px;
+  margin-top: 4px;
+}
+
+.footer-brand-name {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 31px;
+  line-height: 1;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.footer-brand-sub {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1;
+  letter-spacing: 0.27em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-top: 6px;
+}
+
+.footer-brand-tagline {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  line-height: 17px;
+  text-transform: uppercase;
+  color: #D3D3DC;
+  margin-top: 9px;
+}
+
+.footer-social {
+  display: flex;
+  gap: 16px;
+  margin-top: 27px;
+  padding-left: 30px;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1.5px solid var(--footer-heading);
+  border-radius: 50%;
+  color: #DFB05C;
+  transition: filter 0.2s ease;
+}
+
+.social-link:hover {
+  filter: brightness(1.25);
+}
+
+.social-link svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* --- Columns 2–4: link lists -------------------------------- */
+
+.fcol-links {
+  padding-top: 8px;
+}
+
+.fcol-center    { padding-left: 41px; }
+.fcol-resources { padding-left: 43px; }
+.fcol-involved  { padding-left: 45px; }
+
+.fcol-heading {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--footer-heading);
+}
+
+.fcol-list {
+  list-style: none;
+  margin-top: 14px;
+}
+
+/* 27px row pitch (18px line + 9px gap), measured 16px rows in
+   the 864px mockup */
+.fcol-list li {
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.fcol-list li + li {
+  margin-top: 9px;
+}
+
+.fcol-list a {
+  font-weight: 300;
+  letter-spacing: 0.01em;
+  color: var(--footer-link);
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.fcol-list a:hover {
+  color: var(--gold-hi);
+}
+
+/* --- Column 5: quote ----------------------------------------- */
+
+.fcol-quote {
+  padding-left: 48px;
+  padding-top: 6px;
+}
+
+.footer-quote {
+  position: relative;
+  max-width: 300px; /* wraps as in mockup: within / path / for all. */
+  padding-left: 38px;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 29px;
+  line-height: 42px;
+  color: var(--footer-quote);
+}
+
+.qmark {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 46px;
+  line-height: 1;
+  color: var(--footer-qmark);
+}
+
+.qmark-open {
+  position: absolute;
+  left: 0;
+  top: -2px;
+}
+
+/* line-height 0 so the 46px mark doesn't inflate the last
+   line's box; nudged down to sit just over "all." as in the
+   mockup */
+.qmark-close {
+  line-height: 0;
+  position: relative;
+  top: 8px;
+  margin-left: 8px;
+}
+
+.footer-quote-attr {
+  margin-top: 18px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--footer-attr);
+}
+
+/* --- Bottom bar ---------------------------------------------- */
+
+.footer-divider {
+  max-width: 1344px;
+  margin: 0 auto;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Copyright starts at x63; legal links end ~107px inside the
+   right edge (measured at 1440) */
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 81px;
+  padding: 0 107px 17px 63px;
+}
+
+.footer-copy {
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  color: var(--footer-muted);
+}
+
+.footer-legal {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+
+.footer-legal a {
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  color: var(--footer-muted);
+  transition: color 0.2s ease;
+}
+
+.footer-legal a:hover {
+  color: var(--footer-link);
+}
+
+.legal-sep {
+  width: 1px;
+  height: 14px;
+  background: rgba(172, 169, 184, 0.5);
+}
+
