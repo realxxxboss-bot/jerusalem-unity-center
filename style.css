@@ -1564,12 +1564,31 @@ body.modal-open {
 
   .hero-quote {
     max-width: 100%;
-    margin-top: 16px;
+    margin-top: 22px;
+    margin-bottom: 30px;
+    text-align: left;
   }
 
   .hero-quote-text {
     font-size: 18px;
     line-height: 27px;
+  }
+
+  /* The footer's decorative .qmark sizing (46px/38px, line-height 1)
+     leaks onto the hero quote marks and makes them wrap onto their
+     own lines on narrow screens; flow them inline with the text */
+  .hero-quote-text .qmark {
+    font-size: 1em;
+    line-height: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+    vertical-align: baseline;
+  }
+
+  .hero-quote-cite {
+    display: block;
+    margin-top: 8px;
+    text-align: left;
   }
 
   .hero-ctas {
