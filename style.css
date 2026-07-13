@@ -1816,7 +1816,9 @@ body.modal-open {
   .fcol-quote {
     grid-column: 1 / -1;
     padding-left: 0;
-    padding-top: 0;
+    padding-top: 10px;
+    padding-bottom: 6px;
+    text-align: center;
   }
 
   .footer-brand {
@@ -1872,13 +1874,31 @@ body.modal-open {
   }
 
   .footer-quote {
-    max-width: 100%;
+    max-width: 20ch;
+    margin: 0 auto;
+    padding-left: 0;
     font-size: 24px;
     line-height: 36px;
+    text-wrap: balance;
   }
 
   .qmark {
     font-size: 38px;
+  }
+
+  /* Quote marks flow inline with the centered text; same
+     line-height-0 + downward nudge the desktop close mark uses,
+     so neither mark inflates or floats off its line */
+  .qmark-open {
+    position: relative;
+    top: 7px;
+    line-height: 0;
+    margin-right: 6px;
+  }
+
+  .qmark-close {
+    top: 7px;
+    margin-left: 6px;
   }
 
   .footer-quote-attr {
@@ -2027,6 +2047,15 @@ body.modal-open {
   .footer-quote {
     font-size: 21px;
     line-height: 32px;
+  }
+
+  .qmark {
+    font-size: 32px;
+  }
+
+  .qmark-open,
+  .qmark-close {
+    top: 6px;
   }
 
   /* ---- Member signup modal ------------------------------------ */
