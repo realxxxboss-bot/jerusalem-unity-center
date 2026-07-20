@@ -993,6 +993,32 @@ a {
   color: var(--s5-title);
 }
 
+/* Donate CTA — the section's cream background calls for the
+   inverse of the gold-fill buttons used on dark bands (header,
+   hero, join banner): a navy fill with a gold bevel + gold text,
+   still built on the same --btn-* / --gold-* palette so it reads
+   as part of the same family rather than a new button system. */
+.btn-donate {
+  display: flex;
+  width: max-content;
+  margin: 28px auto 0;
+  padding: 0 26px;
+  height: 47px;
+  border: 1px solid var(--gold);
+  border-radius: 4px;
+  background: linear-gradient(180deg, var(--navy-soft), var(--navy));
+  color: var(--gold-hi);
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.10em;
+  transition: filter 0.2s ease, color 0.2s ease;
+}
+
+.btn-donate:hover {
+  filter: brightness(1.5);
+  color: var(--btn-text-cream);
+}
+
 /* ============================================================
    FOOTER
    Measured on assets/full-mockup.png (864px wide = 5/3 of the
@@ -1170,6 +1196,17 @@ a {
 }
 
 .fcol-list a:hover {
+  color: var(--gold-hi);
+}
+
+/* Slight emphasis so "Donate Now" reads as the standout action
+   at the top of Get Involved, without a new visual language. */
+.fcol-list a.fcol-donate {
+  color: var(--footer-heading);
+  font-weight: 600;
+}
+
+.fcol-list a.fcol-donate:hover {
   color: var(--gold-hi);
 }
 
