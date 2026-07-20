@@ -940,6 +940,60 @@ a {
 }
 
 /* ============================================================
+   SECTION 7 — SUPPORT OUR MISSION
+   Nonprofit / tax-deductibility statement. Reuses the cream
+   band language of Sections 3 and 5 (same texture, same
+   ornamented serif heading) so it reads as part of the same
+   family between the navy Join banner and the navy footer.
+   ============================================================ */
+
+.support-mission {
+  background: var(--s3-cream) url("assets/section5-bg.png") center / cover no-repeat;
+  padding: 34px 0 42px;
+}
+
+/* Same treatment as .pathways-heading */
+.support-heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 29px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--s3-heading);
+}
+
+.support-text {
+  max-width: 780px;
+  margin: 22px auto 0;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 26px;
+  letter-spacing: 0.01em;
+  color: var(--s5-desc);
+}
+
+.support-text + .support-text {
+  margin-top: 14px;
+}
+
+/* Organization names in the section's darker serif-navy */
+.support-text strong {
+  font-weight: 600;
+  color: var(--s5-title);
+}
+
+.support-text-appeal {
+  font-style: italic;
+  color: var(--s5-title);
+}
+
+/* ============================================================
    FOOTER
    Measured on assets/full-mockup.png (864px wide = 5/3 of the
    1440px reference; footer band y1551–1732 → 302px tall:
@@ -1254,6 +1308,7 @@ html {
 #vision,
 #pathways,
 #join,
+#support,
 #footer {
   scroll-margin-top: 24px;
 }
@@ -1791,6 +1846,24 @@ body.modal-open {
     margin: 26px auto 0;
   }
 
+  /* ---- Section 7: support our mission --------------------------- */
+
+  .support-mission {
+    padding: 32px 0 38px;
+  }
+
+  .support-heading {
+    font-size: 22px;
+    gap: 12px;
+  }
+
+  .support-text {
+    max-width: 100%;
+    padding: 0 4px;
+    font-size: 14px;
+    line-height: 24px;
+  }
+
   /* ---- Footer ---------------------------------------------------- */
 
   .footer-top {
@@ -2031,6 +2104,14 @@ body.modal-open {
   .pathways-row {
     grid-template-columns: 1fr;
     gap: 30px;
+  }
+
+  /* ---- Section 7: support our mission ----------------------------- */
+
+  .support-heading {
+    font-size: 20px;
+    line-height: 1.3;
+    text-align: center;
   }
 
   /* ---- Section 6 -------------------------------------------------- */
