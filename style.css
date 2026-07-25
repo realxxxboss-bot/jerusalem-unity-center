@@ -456,6 +456,21 @@ a {
   color: var(--s2-desc);
 }
 
+/* Events is the one pillar with a destination of its own, so it is
+   the one rendered as a link; the lift on hover is the only thing
+   marking it apart from its neighbours. */
+.pillar-link {
+  transition: transform 0.2s ease;
+}
+
+.pillar-link:hover {
+  transform: translateY(-3px);
+}
+
+.pillar-link:hover .pillar-title {
+  color: var(--gold-hi);
+}
+
 /* ============================================================
    SECTION 3 — DISCOVER OUR INSTITUTES
    Measured on assets/full-mockup.png (section y516–869 in the
@@ -1271,6 +1286,173 @@ a {
   background: rgba(255, 255, 255, 0.08);
 }
 
+/* --- Newsletter band ------------------------------------------
+   Sits in its own rule between the column row and the bottom bar:
+   copy on the left, a single-line form on the right. Field styling
+   deliberately echoes the membership modal so the two forms read
+   as one system.
+   -------------------------------------------------------------- */
+
+.footer-news {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  /* Left edge lines up with the copyright below (x63); the button's
+     right edge lines up with the divider (the shell's own 48px). */
+  padding-left: 63px;
+  padding-top: 26px;
+  padding-bottom: 26px;
+}
+
+.fnews-heading {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.2;
+  color: var(--footer-heading);
+}
+
+.fnews-text {
+  margin-top: 6px;
+  max-width: 46ch;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 22px;
+  color: var(--footer-link);
+}
+
+.fnews-form {
+  position: relative;
+  flex-shrink: 0;
+  width: 480px;
+  max-width: 100%;
+}
+
+/* Honeypot: off-screen rather than display:none, so bots that
+   skip hidden inputs still fill it in. */
+.fnews-hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.fnews-row {
+  display: flex;
+  gap: 10px;
+}
+
+/* The label is for screen readers; the placeholder carries the
+   visual cue, as everywhere else in this footer. */
+.fnews-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.fnews-input {
+  flex: 1;
+  min-width: 0;
+  height: 47px;
+  padding: 0 15px;
+  border: 1px solid var(--ghost-border);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-body);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.fnews-input::placeholder {
+  color: rgba(233, 233, 238, 0.45);
+}
+
+.fnews-input:focus {
+  border-color: var(--gold-hi);
+  box-shadow: 0 0 0 3px rgba(196, 146, 63, 0.18);
+}
+
+.fnews-input:disabled {
+  opacity: 0.6;
+}
+
+.fnews-form.is-invalid .fnews-input {
+  border-color: var(--mf-error);
+}
+
+.fnews-form.is-invalid .fnews-input:focus {
+  box-shadow: 0 0 0 3px rgba(224, 169, 160, 0.18);
+}
+
+/* Same gradient/bevel as the membership submit button, sized to
+   sit flush beside the field. */
+.fnews-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  flex-shrink: 0;
+  height: 47px;
+  padding: 0 26px;
+  border: 1px solid var(--btn-bevel);
+  border-radius: 4px;
+  background: linear-gradient(180deg, var(--btn-gold-top), var(--btn-gold-bottom));
+  color: var(--btn-text-cream);
+  text-shadow: 0 1px 2px rgba(61, 32, 6, 0.55);
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: filter 0.2s ease, opacity 0.2s ease;
+}
+
+.fnews-btn:hover:not(:disabled) {
+  filter: brightness(1.12);
+}
+
+.fnews-btn:disabled {
+  cursor: default;
+  opacity: 0.72;
+}
+
+.fnews-spinner {
+  display: none;
+  width: 15px;
+  height: 15px;
+  border: 2px solid rgba(243, 237, 220, 0.35);
+  border-top-color: var(--btn-text-cream);
+  border-radius: 50%;
+  animation: mf-spin 0.7s linear infinite;
+}
+
+.fnews-btn.is-sending .fnews-spinner {
+  display: block;
+}
+
+.fnews-msg {
+  margin-top: 9px;
+  font-size: 12.5px;
+  line-height: 19px;
+}
+
+.fnews-msg.is-ok {
+  color: var(--gold-hi);
+}
+
+.fnews-msg.is-error {
+  color: var(--mf-error);
+}
+
 /* Copyright starts at x63; legal links end ~107px inside the
    right edge (measured at 1440) */
 .footer-bottom {
@@ -1351,9 +1533,21 @@ html {
 }
 
 /* ============================================================
-   BECOME A MEMBER — email signup modal (new element; matches
-   the site's navy/gold/serif language and 4px button radius)
+   BECOME A MEMBER — membership enquiry modal
+
+   Matches the site's navy/gold/serif language and 4px radius.
+   The panel scrolls internally so the full form is reachable on
+   short viewports without the page behind it moving.
+
+   Error red (#E0A9A0) is a desaturated clay rather than a pure
+   red — it reads as a warning against navy without breaking the
+   warm palette.
    ============================================================ */
+
+:root {
+  --mf-field-bg: rgba(7, 9, 24, 0.55);
+  --mf-error: #E0A9A0;
+}
 
 body.modal-open {
   overflow: hidden;
@@ -1364,7 +1558,9 @@ body.modal-open {
   position: fixed;
   inset: 0;
   z-index: 100;
-  background: rgba(7, 9, 24, 0.72);
+  background: rgba(7, 9, 24, 0.78);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
   align-items: center;
   justify-content: center;
   padding: 24px;
@@ -1372,18 +1568,43 @@ body.modal-open {
 
 .member-overlay.is-open {
   display: flex;
+  animation: mf-fade 0.22s ease both;
+}
+
+@keyframes mf-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 .member-modal {
   position: relative;
   width: 100%;
-  max-width: 440px;
-  padding: 44px 40px 40px;
+  max-width: 620px;
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+  overflow-x: hidden;   /* the off-screen honeypot must not add a bar */
+  padding: 44px 44px 38px;
   border: 1px solid var(--btn-bevel);
   border-radius: 4px;
   background: linear-gradient(180deg, #13162B, #0A0F23);
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
-  text-align: center;
+  animation: mf-rise 0.28s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold) transparent;
+}
+
+@keyframes mf-rise {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.member-modal::-webkit-scrollbar {
+  width: 8px;
+}
+
+.member-modal::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: rgba(196, 146, 63, 0.5);
 }
 
 .member-close {
@@ -1403,58 +1624,203 @@ body.modal-open {
   color: var(--gold-hi);
 }
 
+.member-head {
+  text-align: center;
+}
+
 .member-title {
   font-family: var(--font-serif);
   font-weight: 600;
-  font-size: 30px;
+  font-size: 34px;
+  line-height: 1.15;
   color: var(--white);
 }
 
 .member-sub {
-  margin-top: 10px;
+  max-width: 44ch;
+  margin: 10px auto 0;
   font-size: 13px;
   line-height: 21px;
   color: var(--text-body);
 }
 
+/* ---- Form ---------------------------------------------------- */
+
 .member-form {
-  margin-top: 24px;
+  margin-top: 26px;
 }
 
-.member-email {
+/* Honeypot: off-screen rather than display:none, so bots that
+   skip hidden inputs still fill it in. */
+.mf-hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.mf-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 18px;
+}
+
+.mf-field-wide {
+  grid-column: 1 / -1;
+}
+
+.mf-label {
+  display: block;
+  margin-bottom: 7px;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--gold-hi);
+}
+
+.mf-req {
+  color: var(--gold);
+}
+
+.mf-opt {
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  color: rgba(233, 233, 238, 0.55);
+}
+
+.mf-input {
   display: block;
   width: 100%;
   height: 47px;
-  padding: 0 16px;
+  padding: 0 15px;
   border: 1px solid var(--ghost-border);
   border-radius: 4px;
-  background: rgba(7, 9, 24, 0.55);
+  background: var(--mf-field-bg);
   color: var(--text-body);
   font-family: var(--font-sans);
   font-size: 14px;
   outline: none;
-  transition: border-color 0.2s ease;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.member-email::placeholder {
-  color: rgba(233, 233, 238, 0.55);
+.mf-input::placeholder {
+  color: rgba(233, 233, 238, 0.45);
 }
 
-.member-email:focus {
+.mf-input:focus {
   border-color: var(--gold-hi);
+  box-shadow: 0 0 0 3px rgba(196, 146, 63, 0.18);
 }
 
-.member-error {
-  margin-top: 10px;
-  font-size: 12px;
-  color: #E0A9A0;
-  text-align: left;
+.mf-textarea {
+  height: auto;
+  min-height: 104px;
+  padding: 13px 15px;
+  line-height: 22px;
+  resize: vertical;
 }
+
+/* Native select arrows are grey on every platform; hide the
+   control's own chevron and draw a gold one on the wrapper. */
+.mf-select-wrap {
+  position: relative;
+}
+
+.mf-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-right: 40px;
+  cursor: pointer;
+}
+
+.mf-select-wrap::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  width: 8px;
+  height: 8px;
+  margin-top: -6px;
+  border-right: 2px solid var(--gold);
+  border-bottom: 2px solid var(--gold);
+  transform: rotate(45deg);
+  pointer-events: none;
+}
+
+.mf-select option {
+  background: #13162B;
+  color: var(--text-body);
+}
+
+/* ---- Errors and helpers -------------------------------------- */
+
+.mf-field.is-invalid .mf-input {
+  border-color: var(--mf-error);
+}
+
+.mf-field.is-invalid .mf-input:focus {
+  box-shadow: 0 0 0 3px rgba(224, 169, 160, 0.18);
+}
+
+.mf-err {
+  margin-top: 6px;
+  font-size: 11.5px;
+  line-height: 17px;
+  color: var(--mf-error);
+}
+
+.mf-under {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.mf-under .mf-err {
+  flex: 1;
+}
+
+.mf-count {
+  margin-top: 6px;
+  margin-left: auto;
+  font-size: 11px;
+  color: rgba(233, 233, 238, 0.45);
+  font-variant-numeric: tabular-nums;
+}
+
+.mf-formerr {
+  margin-top: 18px;
+  padding: 11px 14px;
+  border: 1px solid rgba(224, 169, 160, 0.45);
+  border-radius: 4px;
+  background: rgba(224, 169, 160, 0.08);
+  font-size: 12.5px;
+  line-height: 19px;
+  color: var(--mf-error);
+}
+
+.mf-note {
+  margin-top: 12px;
+  font-size: 11px;
+  line-height: 17px;
+  text-align: center;
+  color: rgba(233, 233, 238, 0.5);
+}
+
+/* ---- Submit --------------------------------------------------- */
 
 .member-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
   width: 100%;
-  height: 47px;
-  margin-top: 16px;
+  height: 49px;
+  margin-top: 22px;
   border: 1px solid var(--btn-bevel);
   border-radius: 4px;
   background: linear-gradient(180deg, var(--btn-gold-top), var(--btn-gold-bottom));
@@ -1463,24 +1829,2250 @@ body.modal-open {
   font-size: 12.5px;
   font-weight: 600;
   letter-spacing: 0.10em;
-  transition: filter 0.2s ease;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: filter 0.2s ease, opacity 0.2s ease;
 }
 
-.member-submit:hover {
+.member-submit:hover:not(:disabled) {
   filter: brightness(1.12);
 }
 
-.member-confirm {
-  margin-top: 22px;
+.member-submit:disabled {
+  cursor: default;
+  opacity: 0.72;
+}
+
+.mf-spinner {
+  display: none;
+  width: 15px;
+  height: 15px;
+  border: 2px solid rgba(243, 237, 220, 0.35);
+  border-top-color: var(--btn-text-cream);
+  border-radius: 50%;
+  animation: mf-spin 0.7s linear infinite;
+}
+
+.member-submit.is-sending .mf-spinner {
+  display: block;
+}
+
+@keyframes mf-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ---- Success panel -------------------------------------------- */
+
+.member-done {
+  text-align: center;
+  padding: 12px 0 4px;
+  animation: mf-rise 0.3s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+.member-done-mark {
+  width: 58px;
+  height: 58px;
+  margin: 0 auto 20px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--ghost-border);
+  border-radius: 50%;
+  background: rgba(196, 146, 63, 0.12);
+  color: var(--gold-hi);
+}
+
+.member-done-mark svg {
+  width: 26px;
+  height: 26px;
+}
+
+.member-done-title {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 30px;
+  color: var(--white);
+}
+
+.member-done-text {
+  max-width: 42ch;
+  margin: 12px auto 0;
   font-size: 14px;
   line-height: 23px;
+  color: var(--text-body);
+}
+
+/* .btn-ghost carries only colour; the hero supplies its metrics,
+   so the modal has to state its own. */
+.member-done-close {
+  height: 47px;
+  min-width: 170px;
+  margin-top: 26px;
+  border-radius: 4px;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.10em;
+}
+
+/* ============================================================
+   WATCH OUR STORY — animated presentation lightbox
+
+   No film exists yet, so the story is a timed sequence of motion
+   slides. Everything here is deliberately video-shaped (chapter
+   progress, transport controls, letterbox-dark ground) so a real
+   <video class="story-video"> can take the stage later without
+   touching the chrome.
+
+   Sits at z-index 90, UNDER the membership modal (100), so
+   "Become a Member" on the closing slide still opens above it.
+   ============================================================ */
+
+:root {
+  --story-ink: #05070F;       /* letterbox ground, darker than --navy */
+  --story-cream: #F0E6D2;     /* slide body copy on the dark ground */
+  --story-gold-lt: #F0DCA8;   /* highlight end of the gold gradient */
+}
+
+.story-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  background: var(--story-ink);
+}
+
+.story-overlay.is-open {
+  display: block;
+  animation: storyOpen 0.5s ease both;
+}
+
+.story-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Cinema vignette over every slide, under the chrome */
+.story-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  background: radial-gradient(115% 85% at 50% 45%, transparent 45%, rgba(3, 5, 12, 0.55) 100%);
+}
+
+/* --- Chapter progress ---------------------------------------- */
+
+.story-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 6;
+  display: flex;
+  gap: 6px;
+  padding: 16px 26px 0;
+}
+
+.story-seg {
+  position: relative;
+  flex: 1;
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(240, 230, 210, 0.16);
+}
+
+.story-seg i {
+  display: block;
+  height: 100%;
+  width: 0;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--gold), var(--story-gold-lt));
+  box-shadow: 0 0 8px rgba(205, 156, 76, 0.5);
+}
+
+/* Chapter names sit under the bar like a scrubber's markers */
+.story-seg em {
+  position: absolute;
+  top: 9px;
+  left: 0;
+  font-family: var(--font-sans);
+  font-style: normal;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(240, 230, 210, 0.42);
+  white-space: nowrap;
+  transition: color 0.4s ease;
+}
+
+.story-seg.is-current em {
   color: var(--gold-hi);
+}
+
+/* --- Top bar -------------------------------------------------- */
+
+.story-topbar {
+  position: absolute;
+  top: 44px;          /* clears the progress bar and its chapter names */
+  left: 0;
+  right: 0;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 26px;
+  pointer-events: none;
+}
+
+.story-kicker {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(240, 230, 210, 0.5);
+}
+
+.story-close {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px 6px 12px;
+  border: 1px solid rgba(201, 155, 92, 0.4);
+  border-radius: 4px;
+  background: rgba(10, 15, 35, 0.5);
+  color: var(--story-cream);
+  cursor: pointer;
+  pointer-events: auto;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.story-close:hover {
+  border-color: var(--gold-hi);
+  color: var(--gold-hi);
+}
+
+.story-esc {
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+
+.story-close svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* --- Stage & slides -------------------------------------------- */
+
+.story-stage {
+  position: absolute;
+  inset: 0;
+}
+
+.story-slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Keeps slide content clear of the progress bar and the transport */
+  padding: 84px 0 104px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.85s ease, visibility 0.85s;
+}
+
+.story-slide.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.story-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.story-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.story-bg-navy {
+  background:
+    radial-gradient(80% 60% at 50% 0%, rgba(38, 30, 78, 0.75), transparent 70%),
+    linear-gradient(180deg, #10132A, #05070F);
+}
+
+/* Slow-breathing gold halo used by the opening and closing slides */
+.story-bg-glow {
+  background:
+    radial-gradient(46% 46% at 50% 50%, rgba(196, 146, 63, 0.20), transparent 72%),
+    linear-gradient(180deg, #13162B, #05070F);
+}
+
+.story-slide.is-active .story-bg-glow {
+  animation: storyBreathe 9s ease-in-out infinite;
+}
+
+/* Starfield: three layered dot patterns drifting upward */
+.story-bg-stars {
+  background:
+    radial-gradient(1.6px 1.6px at 18% 32%, rgba(240, 220, 168, 0.55), transparent 60%),
+    radial-gradient(1.4px 1.4px at 72% 18%, rgba(240, 220, 168, 0.45), transparent 60%),
+    radial-gradient(1.8px 1.8px at 44% 74%, rgba(240, 220, 168, 0.40), transparent 60%),
+    radial-gradient(1.3px 1.3px at 86% 62%, rgba(240, 220, 168, 0.35), transparent 60%),
+    radial-gradient(1.5px 1.5px at 28% 86%, rgba(240, 220, 168, 0.30), transparent 60%),
+    radial-gradient(60% 60% at 50% 40%, rgba(30, 24, 66, 0.9), transparent 75%),
+    linear-gradient(180deg, #0C1026, #05070F);
+  background-size: 40% 40%, 40% 40%, 40% 40%, 40% 40%, 40% 40%, 100% 100%, 100% 100%;
+}
+
+.story-slide.is-active .story-bg-stars {
+  animation: storyDrift 26s linear infinite;
+}
+
+/* Ken Burns on the two photographic chapters */
+.story-slide.is-active .kb {
+  animation: storyKenBurns 13s ease-out both;
+}
+
+.story-slide.is-active .kb-slow {
+  animation: storyKenBurnsSlow 13s ease-out both;
+}
+
+.story-veil {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(5, 7, 15, 0.92) 0%, rgba(5, 7, 15, 0.72) 42%, rgba(5, 7, 15, 0.15) 100%),
+    linear-gradient(180deg, rgba(5, 7, 15, 0.55), transparent 35%);
+}
+
+/* --- Slide layout ---------------------------------------------- */
+
+.story-center {
+  position: relative;
+  z-index: 2;
+  width: min(1040px, 88vw);
+  padding: 0 10px;
+  text-align: center;
+}
+
+.story-copy {
+  position: relative;
+  z-index: 2;
+  width: min(1120px, 88vw);
+  padding: 0 10px;
+  text-align: left;
+}
+
+.story-copy .story-p {
+  max-width: 560px;
+}
+
+/* --- Slide typography ------------------------------------------- */
+
+.story-eyebrow {
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.30em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.story-h {
+  margin-top: 16px;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: clamp(30px, 4.6vw, 62px);
+  line-height: 1.15;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.story-h em {
+  font-style: normal;
+  background: linear-gradient(180deg, #F3DF93, #DDB874);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.story-h-sm {
+  margin-top: 0;
+  font-size: clamp(22px, 2.9vw, 38px);
+}
+
+.story-p {
+  margin-top: 20px;
+  font-weight: 300;
+  font-size: clamp(13px, 1.15vw, 16px);
+  line-height: 1.75;
+  color: var(--story-cream);
+}
+
+.story-p-mid {
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+/* --- 1: opening emblem ------------------------------------------ */
+
+.open-emblem {
+  position: relative;
+  width: clamp(120px, 15vw, 176px);
+  height: clamp(120px, 15vw, 176px);
+  margin: 0 auto;
+}
+
+.open-emblem img {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.story-slide.is-active .open-emblem img {
+  animation: storyEmblem 1.5s cubic-bezier(0.16, 0.9, 0.3, 1) both;
+}
+
+.open-emblem .ring {
+  position: absolute;
+  inset: -14%;
+  border: 1px solid rgba(196, 146, 63, 0.45);
+  border-radius: 50%;
+  opacity: 0;
+}
+
+.open-emblem .ring-2 {
+  inset: -30%;
+  border-color: rgba(196, 146, 63, 0.22);
+}
+
+.story-slide.is-active .ring-1 {
+  animation: storyRing 3.4s ease-out 0.5s infinite;
+}
+
+.story-slide.is-active .ring-2 {
+  animation: storyRing 3.4s ease-out 1.1s infinite;
+}
+
+.story-brand {
+  margin-top: 30px;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: clamp(28px, 3.8vw, 52px);
+  line-height: 1.1;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.story-brand span {
+  display: block;
+  margin-top: 6px;
+  background: linear-gradient(180deg, var(--gold-hi), var(--gold-lo));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.story-tagline {
+  margin-top: 18px;
+  font-size: clamp(11px, 1.1vw, 13px);
+  font-weight: 300;
+  letter-spacing: 0.30em;
+  text-transform: uppercase;
+  color: rgba(240, 230, 210, 0.8);
+}
+
+/* --- 2: scripture ------------------------------------------------ */
+
+.story-quote {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: clamp(24px, 3.6vw, 50px);
+  line-height: 1.42;
+  color: var(--white);
+}
+
+.story-quote .qmark {
+  color: var(--gold);
+  opacity: 0.75;
+}
+
+.story-rule {
+  display: block;
+  width: 0;
+  height: 1px;
+  margin: 28px auto 0;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.story-slide.is-active .s-grow {
+  animation: storyGrow 1.4s ease-out var(--d, 0s) both;
+}
+
+.story-cite {
+  display: block;
+  margin-top: 18px;
+  font-family: var(--font-sans);
+  font-style: normal;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.scripture-dove {
+  position: absolute;
+  top: 16%;
+  left: 0;
+  z-index: 1;
+  width: clamp(90px, 11vw, 150px);
+  opacity: 0;
+}
+
+.story-slide.is-active .scripture-dove {
+  animation: storyDove 16s linear both;
+}
+
+/* --- 4 & 6: icon rows -------------------------------------------- */
+
+.story-icons {
+  display: grid;
+  gap: 26px 18px;
+  margin-top: 40px;
+}
+
+.story-icons-7 {
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.story-icons-5 {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.story-icon img {
+  width: clamp(40px, 4vw, 58px);
+  height: clamp(40px, 4vw, 58px);
+  object-fit: contain;
+}
+
+.story-icon span {
+  display: block;
+  margin-top: 12px;
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(240, 230, 210, 0.88);
+}
+
+.story-slide.is-active .s-pop {
+  animation: storyPop 0.85s cubic-bezier(0.16, 0.9, 0.3, 1) var(--d, 0s) both;
+}
+
+/* --- 5: institute tiles ------------------------------------------- */
+
+.story-tiles {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 14px;
+  margin-top: 38px;
+}
+
+.story-tile {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(196, 146, 63, 0.28);
+  border-radius: 4px;
+}
+
+.story-tile img {
+  display: block;
+  width: 100%;
+  height: clamp(150px, 21vh, 250px);
+  object-fit: cover;
+}
+
+.story-tile figcaption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 26px 8px 10px;
+  background: linear-gradient(180deg, transparent, rgba(5, 7, 15, 0.92));
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--story-cream);
+}
+
+.story-slide.is-active .s-tile {
+  animation: storyTile 1s cubic-bezier(0.16, 0.9, 0.3, 1) var(--d, 0s) both;
+}
+
+/* --- 8: closing --------------------------------------------------- */
+
+.end-dove {
+  width: clamp(96px, 11vw, 150px);
+  height: auto;
+}
+
+.story-slide.is-active .s-dove {
+  animation: storyDoveLand 1.6s cubic-bezier(0.16, 0.9, 0.3, 1) both;
+}
+
+.slide-end .story-h {
+  margin-top: 22px;
+}
+
+.story-end-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 34px;
+}
+
+/* Same button metrics as the hero CTAs (.hero-ctas .btn) */
+.story-end-ctas .btn {
+  height: 47px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.10em;
+}
+
+.story-end-ctas .btn-ghost {
+  border-color: var(--ghost-border);
+}
+
+.story-end-ctas .btn-primary {
+  border-color: var(--btn-bevel);
+}
+
+.story-replay-icon {
+  width: 15px;
+  height: 15px;
+  margin-right: 8px;
+}
+
+/* --- Transport controls -------------------------------------------- */
+
+.story-controls {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 0 26px 30px;
+}
+
+.story-ctrl {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(201, 155, 92, 0.45);
+  border-radius: 50%;
+  background: rgba(10, 15, 35, 0.55);
+  color: var(--story-cream);
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease, filter 0.2s ease;
+}
+
+.story-ctrl svg {
+  width: 20px;
+  height: 20px;
+}
+
+.story-ctrl:hover {
+  border-color: var(--gold-hi);
+  color: var(--gold-hi);
+}
+
+.story-play {
+  width: 56px;
+  height: 56px;
+  border-color: var(--btn-bevel);
+  background: linear-gradient(180deg, var(--btn-gold-top), var(--btn-gold-bottom));
+  color: var(--btn-text-cream);
+}
+
+.story-play:hover {
+  color: var(--btn-text-cream);
+  border-color: var(--btn-bevel);
+  filter: brightness(1.12);
+}
+
+.story-play .ico-play {
+  display: none;
+}
+
+.story-frame.is-paused .story-play .ico-play {
+  display: block;
+}
+
+.story-frame.is-paused .story-play .ico-pause {
+  display: none;
+}
+
+.story-count {
+  position: absolute;
+  right: 26px;
+  bottom: 42px;
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  color: rgba(240, 230, 210, 0.5);
+}
+
+.story-count b {
+  font-weight: 600;
+  color: var(--gold-hi);
+}
+
+.story-count i {
+  font-style: normal;
+}
+
+/* Pause freezes the whole picture, like a paused film */
+.story-frame.is-paused .story-stage *,
+.story-frame.is-paused .story-bg-glow,
+.story-frame.is-paused .story-bg-stars {
+  animation-play-state: paused !important;
+}
+
+/* The closing chapter has its own CTAs — hide "next" there */
+.story-frame.is-last .js-story-next {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+/* --- Real footage, when it arrives ----------------------------------- */
+
+.story-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: var(--story-ink);
+}
+
+/* One continuous scrubber instead of chapter segments — and none of
+   the chapter furniture, which belongs to the slide deck only */
+.story-frame.has-video .story-seg + .story-seg {
+  display: none;
+}
+
+.story-frame.has-video .story-seg em,
+.story-frame.has-video .story-count {
+  display: none;
+}
+
+/* --- Keyframes -------------------------------------------------------- */
+
+@keyframes storyOpen {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes storyRise {
+  from { opacity: 0; transform: translateY(26px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes storyPop {
+  from { opacity: 0; transform: translateY(20px) scale(0.9); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes storyTile {
+  from { opacity: 0; transform: translateY(34px) scale(0.94); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes storyGrow {
+  from { width: 0; opacity: 0; }
+  to   { width: 220px; opacity: 1; }
+}
+
+@keyframes storyEmblem {
+  from { opacity: 0; transform: scale(0.72) rotate(-8deg); filter: blur(6px); }
+  to   { opacity: 1; transform: none; filter: none; }
+}
+
+@keyframes storyRing {
+  0%   { opacity: 0; transform: scale(0.82); }
+  35%  { opacity: 0.9; }
+  100% { opacity: 0; transform: scale(1.28); }
+}
+
+@keyframes storyBreathe {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.82; transform: scale(1.06); }
+}
+
+@keyframes storyDrift {
+  from { background-position: 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0; }
+  to   { background-position: 0 -400px, 0 -520px, 0 -330px, 0 -600px, 0 -450px, 0 0, 0 0; }
+}
+
+@keyframes storyKenBurns {
+  from { transform: scale(1.04) translate3d(0, 0, 0); }
+  to   { transform: scale(1.20) translate3d(-2.5%, -1.5%, 0); }
+}
+
+@keyframes storyKenBurnsSlow {
+  from { transform: scale(1.14) translate3d(2%, 0, 0); }
+  to   { transform: scale(1.02) translate3d(0, 0, 0); }
+}
+
+@keyframes storyDove {
+  0%   { opacity: 0; transform: translate(-18vw, 0) scale(0.9); }
+  12%  { opacity: 0.5; }
+  85%  { opacity: 0.5; }
+  100% { opacity: 0; transform: translate(112vw, -9vh) scale(1.05); }
+}
+
+@keyframes storyDoveLand {
+  from { opacity: 0; transform: translateY(-40px) scale(0.86); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Shared entrance hook — declared last so it wins over nothing but
+   itself; elements start hidden and only animate once their slide
+   is the active one. */
+.story-slide .s-rise,
+.story-slide .s-pop,
+.story-slide .s-tile,
+.story-slide .s-dove {
+  opacity: 0;
+}
+
+.story-slide.is-active .s-rise {
+  animation: storyRise 1s cubic-bezier(0.16, 0.9, 0.3, 1) var(--d, 0s) both;
+}
+
+/* Reduced motion: no travel, no drift — chapters simply appear and
+   the player still advances on its own. */
+@media (prefers-reduced-motion: reduce) {
+
+  /* The membership modal drops its entrance motion — but the submit
+     spinner stays, since it is a status indicator, not decoration. */
+  .member-overlay.is-open,
+  .member-modal,
+  .member-done {
+    animation: none !important;
+  }
+
+  .story-slide *,
+  .story-slide.is-active * {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .story-slide .s-rise,
+  .story-slide .s-pop,
+  .story-slide .s-tile,
+  .story-slide .s-dove,
+  .story-slide .s-grow {
+    opacity: 1;
+    transform: none;
+  }
+
+  .story-rule {
+    width: 220px;
+  }
+
+  /* The dove no longer flies across — perch it instead of losing it */
+  .scripture-dove {
+    top: 14%;
+    left: 6%;
+    opacity: 0.45;
+  }
+
+  .story-slide.is-active .kb {
+    transform: scale(1.06);
+  }
+
+}
+
+/* ============================================================
+   THE MASTER PLAN — vertical presentation reel
+
+   The same player idea as "Watch Our Story", but portrait: a 9:16
+   card floating on the dimmed page rather than a full-bleed
+   cinema. It replaces the standalone master-plan.html document.
+
+   Sits at z-index 95 — above the story lightbox (90), below the
+   membership modal (100), so "Become a Member" on the closing
+   chapter still opens over it.
+
+   Sizing rule: the card is the smallest of 92vw, 420px, and the
+   width a 9:16 box may have in the current viewport height. That
+   one min() keeps it a phone-shaped reel on a desktop monitor and
+   a near-full-bleed reel on an actual phone.
+   ============================================================ */
+
+.plan-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 95;
+  place-items: center;
+}
+
+.plan-overlay.is-open {
+  display: grid;
+  animation: storyOpen 0.4s ease both;
+}
+
+.plan-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(4, 6, 14, 0.88);
+  -webkit-backdrop-filter: blur(7px);
+  backdrop-filter: blur(7px);
+}
+
+.plan-frame {
+  position: relative;
+  width: min(92vw, 420px, calc((100vh - 36px) * 9 / 16));
+  aspect-ratio: 9 / 16;
+  max-height: calc(100vh - 36px);
+  overflow: hidden;
+  border: 1px solid rgba(201, 155, 92, 0.32);
+  border-radius: 20px;
+  background: var(--story-ink);
+  box-shadow: 0 34px 90px rgba(0, 0, 0, 0.65);
+  animation: planLift 0.55s cubic-bezier(0.16, 0.9, 0.3, 1) both;
+}
+
+/* Vignette over every chapter, under the chrome */
+.plan-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  border-radius: inherit;
+  background: radial-gradient(120% 70% at 50% 42%, transparent 48%, rgba(3, 5, 12, 0.6) 100%);
+}
+
+/* --- Chapter progress (reel-style pips) ------------------------ */
+
+.plan-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 6;
+  display: flex;
+  gap: 4px;
+  padding: 14px 16px 0;
+}
+
+.plan-seg {
+  flex: 1;
+  height: 2.5px;
+  border-radius: 2px;
+  background: rgba(240, 230, 210, 0.2);
+  overflow: hidden;
+}
+
+/* Chapter names would not fit at this width — the topbar names the
+   current chapter instead (see .plan-chapter). */
+.plan-seg em {
+  display: none;
+}
+
+.plan-seg i {
+  display: block;
+  height: 100%;
+  width: 0;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--gold), var(--story-gold-lt));
+  box-shadow: 0 0 6px rgba(205, 156, 76, 0.5);
+}
+
+/* --- Top bar --------------------------------------------------- */
+
+.plan-topbar {
+  position: absolute;
+  top: 26px;
+  left: 0;
+  right: 0;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 0 16px;
+  pointer-events: none;
+}
+
+.plan-kicker {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: rgba(240, 230, 210, 0.86);
+}
+
+.plan-kicker span {
+  color: var(--gold-hi);
+}
+
+/* Live chapter name, appended by the player */
+.plan-chapter {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 8.5px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(240, 230, 210, 0.45);
+}
+
+.plan-close {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  flex: none;
+  border: 1px solid rgba(201, 155, 92, 0.4);
+  border-radius: 50%;
+  background: rgba(10, 15, 35, 0.55);
+  color: var(--story-cream);
+  cursor: pointer;
+  pointer-events: auto;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.plan-close:hover {
+  border-color: var(--gold-hi);
+  color: var(--gold-hi);
+}
+
+.plan-close svg {
+  width: 15px;
+  height: 15px;
+}
+
+/* --- Stage & chapters ------------------------------------------ */
+
+.plan-stage {
+  position: absolute;
+  inset: 0;
+}
+
+.plan-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.7s ease, visibility 0s linear 0.7s;
+}
+
+.plan-slide.is-active {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.7s ease;
+}
+
+.plan-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.plan-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.plan-bg-navy {
+  background:
+    radial-gradient(110% 60% at 50% 0%, rgba(38, 48, 96, 0.6), transparent 70%),
+    linear-gradient(180deg, #0B1130, #070A1B 70%);
+}
+
+.plan-bg-glow {
+  background:
+    radial-gradient(58% 40% at 50% 44%, rgba(196, 146, 63, 0.24), transparent 70%),
+    linear-gradient(180deg, #0A0F23, #05070F);
+}
+
+.plan-slide.is-active .plan-bg-glow {
+  animation: storyBreathe 9s ease-in-out infinite;
+}
+
+.plan-bg-stars {
+  background:
+    radial-gradient(1.6px 1.6px at 18% 22%, rgba(240, 230, 210, 0.7), transparent 60%),
+    radial-gradient(1.4px 1.4px at 72% 16%, rgba(240, 230, 210, 0.55), transparent 60%),
+    radial-gradient(1.6px 1.6px at 40% 62%, rgba(240, 230, 210, 0.5), transparent 60%),
+    radial-gradient(1.3px 1.3px at 84% 74%, rgba(240, 230, 210, 0.5), transparent 60%),
+    radial-gradient(1.5px 1.5px at 28% 88%, rgba(240, 230, 210, 0.45), transparent 60%),
+    radial-gradient(70% 45% at 50% 30%, rgba(29, 39, 84, 0.75), transparent 75%),
+    linear-gradient(180deg, #080C1E, #05070F);
+}
+
+.plan-slide.is-active .pkb {
+  animation: storyKenBurns 12s ease-out both;
+}
+
+.plan-veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(5, 7, 15, 0.55) 0%, rgba(5, 7, 15, 0.35) 45%, rgba(5, 7, 15, 0.85) 100%);
+}
+
+/* --- Chapter body ---------------------------------------------- */
+
+.plan-body {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  padding: 76px 24px 92px;
+}
+
+.plan-body-center {
+  align-items: center;
+  text-align: center;
+}
+
+.plan-num {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  color: var(--gold-hi);
+}
+
+.plan-eyebrow {
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold-hi);
+}
+
+.plan-title {
+  margin-top: 10px;
+  font-family: var(--font-serif);
+  font-size: 44px;
+  font-weight: 600;
+  line-height: 1.08;
+  color: #FFFFFF;
+}
+
+.plan-title span {
+  display: block;
+  color: var(--gold-hi);
+}
+
+.plan-mark {
+  width: 72px;
+  height: auto;
+  margin-bottom: 4px;
+}
+
+.plan-rule {
+  display: block;
+  width: 120px;
+  height: 1px;
+  margin: 16px auto;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.plan-tagline {
+  font-family: var(--font-serif);
+  font-size: 17px;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--story-cream);
+}
+
+.plan-h {
+  margin-top: 2px;
+  font-family: var(--font-serif);
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 1.15;
+  color: #FFFFFF;
+}
+
+.plan-h-sm {
+  font-size: 25px;
+}
+
+.plan-lead {
+  margin-top: 14px;
+  font-family: var(--font-serif);
+  font-size: 17px;
+  font-style: italic;
+  line-height: 1.55;
+  color: var(--story-cream);
+}
+
+.plan-p {
+  margin-top: 12px;
+  font-size: 12.5px;
+  line-height: 1.8;
+  font-weight: 300;
+  color: rgba(240, 230, 210, 0.78);
+}
+
+.plan-p-mid {
+  max-width: 300px;
+}
+
+.plan-cap {
+  margin-top: 12px;
+  font-size: 10.5px;
+  line-height: 1.7;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  color: rgba(240, 230, 210, 0.55);
+}
+
+.plan-quote {
+  margin-top: 20px;
+  padding-left: 14px;
+  border-left: 1px solid rgba(201, 155, 92, 0.5);
+  font-family: var(--font-serif);
+  font-size: 16px;
+  line-height: 1.5;
+  color: rgba(240, 230, 210, 0.9);
+}
+
+.plan-quote .qmark {
+  color: var(--gold-hi);
+}
+
+.plan-quote cite {
+  display: block;
+  margin-top: 8px;
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(240, 230, 210, 0.45);
+}
+
+/* --- At a glance ------------------------------------------------ */
+
+.plan-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  margin-top: 26px;
+}
+
+.plan-stat {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 14px;
+}
+
+.plan-stat b {
+  min-width: 62px;
+  font-family: var(--font-serif);
+  font-size: 42px;
+  font-weight: 600;
+  line-height: 1;
+  text-align: right;
+  color: var(--gold-hi);
+}
+
+.plan-stat span {
+  flex: 1;
+  max-width: 150px;
+  text-align: left;
+  font-size: 10.5px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  line-height: 1.5;
+  color: rgba(240, 230, 210, 0.75);
+}
+
+/* --- Campus figure ---------------------------------------------- */
+
+.plan-figure {
+  margin-top: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(201, 155, 92, 0.35);
+  border-radius: 10px;
+}
+
+.plan-figure img {
+  display: block;
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+/* --- Seven functions -------------------------------------------- */
+
+.plan-grid {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.plan-grid-2 {
+  grid-template-columns: 1fr 1fr;
+}
+
+.plan-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  padding: 12px 6px;
+  border: 1px solid rgba(201, 155, 92, 0.2);
+  border-radius: 10px;
+  background: rgba(10, 16, 40, 0.5);
+}
+
+.plan-cell-wide {
+  grid-column: 1 / -1;
+  flex-direction: row;
+  justify-content: center;
+  gap: 12px;
+}
+
+.plan-cell img {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+}
+
+.plan-cell b {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--story-cream);
+}
+
+/* --- Institute tiles --------------------------------------------- */
+
+.plan-tiles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.plan-tile {
+  overflow: hidden;
+  border: 1px solid rgba(201, 155, 92, 0.28);
+  border-radius: 10px;
+  background: rgba(8, 12, 30, 0.7);
+}
+
+.plan-tile img {
+  display: block;
+  width: 100%;
+  height: 68px;
+  object-fit: cover;
+}
+
+.plan-tile figcaption {
+  padding: 7px 6px 8px;
+  font-size: 8.5px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--story-cream);
+}
+
+/* --- Pathway list ------------------------------------------------ */
+
+.plan-list {
+  list-style: none;
+  margin-top: 18px;
+}
+
+.plan-list li {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  column-gap: 12px;
+  padding: 11px 0;
+  border-bottom: 1px solid rgba(201, 155, 92, 0.16);
+}
+
+.plan-list li:last-child {
+  border-bottom: none;
+}
+
+.plan-list img {
+  grid-row: 1 / 3;
+  align-self: center;
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+}
+
+.plan-list b {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  font-weight: 600;
+  color: #FFFFFF;
+}
+
+.plan-list span {
+  font-size: 10px;
+  font-weight: 300;
+  line-height: 1.6;
+  color: rgba(240, 230, 210, 0.6);
+}
+
+/* --- Phases ------------------------------------------------------- */
+
+.plan-phases {
+  position: relative;
+  list-style: none;
+  margin-top: 18px;
+  padding-left: 20px;
+}
+
+/* The spine draws itself down as the chapter plays */
+.plan-phases::before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  bottom: 6px;
+  left: 3px;
+  width: 1px;
+  transform-origin: top;
+  background: linear-gradient(180deg, var(--gold), rgba(201, 155, 92, 0.15));
+}
+
+.plan-slide.is-active .plan-phases::before {
+  animation: planLine 2.2s ease-out 0.35s both;
+}
+
+.plan-phases li {
+  position: relative;
+  padding-bottom: 16px;
+}
+
+.plan-phases li:last-child {
+  padding-bottom: 0;
+}
+
+.plan-phases li::before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: -20px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--gold-hi);
+  box-shadow: 0 0 0 3px rgba(196, 146, 63, 0.18);
+}
+
+.plan-phases em {
+  display: block;
+  font-size: 8.5px;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold-hi);
+}
+
+.plan-phases b {
+  display: block;
+  margin-top: 3px;
+  font-family: var(--font-serif);
+  font-size: 16px;
+  font-weight: 600;
+  color: #FFFFFF;
+}
+
+.plan-phases span {
+  display: block;
+  margin-top: 4px;
+  font-size: 10px;
+  font-weight: 300;
+  line-height: 1.6;
+  color: rgba(240, 230, 210, 0.6);
+}
+
+/* --- Closing chapter ---------------------------------------------- */
+
+.plan-dove {
+  width: 66px;
+  height: auto;
+  margin-bottom: 14px;
+}
+
+.plan-ctas {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 250px;
+  margin-top: 22px;
+}
+
+.plan-ctas .btn {
+  height: 42px;
+  border-radius: 4px;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+}
+
+.plan-replay-icon {
+  width: 14px;
+  height: 14px;
+  margin-right: 8px;
+}
+
+/* --- Tap zones ------------------------------------------------------ */
+
+.plan-tap {
+  position: absolute;
+  top: 0;
+  bottom: 84px;
+  z-index: 5;
+  width: 34%;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.plan-tap-prev {
+  left: 0;
+}
+
+.plan-tap-next {
+  right: 0;
+  width: 44%;
+}
+
+/* The closing chapter owns its whole surface — its CTAs must stay
+   clickable, and there is nowhere left to advance to. */
+.plan-frame.is-last .plan-tap-next {
+  display: none;
+}
+
+.plan-frame.is-last .plan-tap-prev {
+  bottom: 55%;
+  width: 22%;
+}
+
+/* --- Transport controls ----------------------------------------------- */
+
+.plan-controls {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 0 16px 22px;
+  background: linear-gradient(180deg, transparent, rgba(4, 6, 14, 0.55) 55%);
+}
+
+.plan-ctrl {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(201, 155, 92, 0.45);
+  border-radius: 50%;
+  background: rgba(10, 15, 35, 0.55);
+  color: var(--story-cream);
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease, filter 0.2s ease;
+}
+
+.plan-ctrl svg {
+  width: 17px;
+  height: 17px;
+}
+
+.plan-ctrl:hover {
+  border-color: var(--gold-hi);
+  color: var(--gold-hi);
+}
+
+.plan-play {
+  width: 46px;
+  height: 46px;
+  border-color: var(--btn-bevel);
+  background: linear-gradient(180deg, var(--btn-gold-top), var(--btn-gold-bottom));
+  color: var(--btn-text-cream);
+}
+
+.plan-play:hover {
+  color: var(--btn-text-cream);
+  border-color: var(--btn-bevel);
+  filter: brightness(1.12);
+}
+
+.plan-play .ico-play {
+  display: none;
+}
+
+.plan-frame.is-paused .plan-play .ico-play {
+  display: block;
+}
+
+.plan-frame.is-paused .plan-play .ico-pause {
+  display: none;
+}
+
+.plan-count {
+  position: absolute;
+  right: 16px;
+  bottom: 33px;
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  color: rgba(240, 230, 210, 0.45);
+}
+
+.plan-count b {
+  font-weight: 600;
+  color: var(--gold-hi);
+}
+
+.plan-count i {
+  font-style: normal;
+}
+
+/* Pause freezes the picture, like a paused film */
+.plan-frame.is-paused .plan-stage *,
+.plan-frame.is-paused .plan-bg-glow {
+  animation-play-state: paused !important;
+}
+
+.plan-frame.is-last .plan-controls .js-plan-next {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+/* --- Real footage, when it arrives -------------------------------------- */
+
+.plan-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: var(--story-ink);
+}
+
+.plan-frame.has-video .plan-seg + .plan-seg,
+.plan-frame.has-video .plan-count,
+.plan-frame.has-video .plan-chapter {
+  display: none;
+}
+
+/* --- Entrance motion ------------------------------------------------------ */
+
+.plan-slide .p-rise,
+.plan-slide .p-pop,
+.plan-slide .p-tile,
+.plan-slide .p-slide,
+.plan-slide .p-dove,
+.plan-slide .p-grow {
+  opacity: 0;
+}
+
+.plan-slide.is-active .p-rise {
+  animation: storyRise 0.9s cubic-bezier(0.16, 0.9, 0.3, 1) var(--d, 0s) both;
+}
+
+.plan-slide.is-active .p-pop {
+  animation: storyPop 0.8s cubic-bezier(0.16, 0.9, 0.3, 1) var(--d, 0s) both;
+}
+
+.plan-slide.is-active .p-tile {
+  animation: storyTile 0.9s cubic-bezier(0.16, 0.9, 0.3, 1) var(--d, 0s) both;
+}
+
+.plan-slide.is-active .p-slide {
+  animation: planSlide 0.85s cubic-bezier(0.16, 0.9, 0.3, 1) var(--d, 0s) both;
+}
+
+.plan-slide.is-active .p-dove {
+  animation: storyDoveLand 1.5s cubic-bezier(0.16, 0.9, 0.3, 1) both;
+}
+
+.plan-slide.is-active .p-grow {
+  animation: planGrow 1.2s ease-out var(--d, 0s) both;
+}
+
+@keyframes planLift {
+  from { opacity: 0; transform: translateY(26px) scale(0.96); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes planSlide {
+  from { opacity: 0; transform: translateX(-22px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes planGrow {
+  from { width: 0; opacity: 0; }
+  to   { width: 120px; opacity: 1; }
+}
+
+@keyframes planLine {
+  from { transform: scaleY(0); }
+  to   { transform: scaleY(1); }
+}
+
+/* Reduced motion: chapters simply appear, and the player still
+   advances on its own. */
+@media (prefers-reduced-motion: reduce) {
+
+  .plan-frame,
+  .plan-slide *,
+  .plan-slide.is-active * {
+    animation: none !important;
+  }
+
+  .plan-slide .p-rise,
+  .plan-slide .p-pop,
+  .plan-slide .p-tile,
+  .plan-slide .p-slide,
+  .plan-slide .p-dove,
+  .plan-slide .p-grow {
+    opacity: 1;
+    transform: none;
+  }
+
+  .plan-rule {
+    width: 120px;
+  }
+}
+
+/* Phones: a reel belongs edge to edge. The card drops its frame and
+   fills the screen, which also gives the swipe gestures the whole
+   surface to work with. */
+@media (max-width: 600px) {
+
+  .plan-frame {
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    max-height: none;
+    aspect-ratio: auto;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .plan-frame::after {
+    border-radius: 0;
+  }
+
+  .plan-progress {
+    padding-top: 16px;
+  }
+
+  .plan-topbar {
+    top: 30px;
+  }
+
+  .plan-body {
+    padding: 88px 26px 104px;
+  }
+
+  .plan-controls {
+    padding-bottom: 28px;
+  }
+
+  .plan-count {
+    bottom: 39px;
+  }
+}
+
+/* Short-but-wide viewports (a laptop in a small window, a phone in
+   landscape): the card shrinks by height, so ease the padding and
+   type back with it. */
+@media (max-height: 640px) {
+
+  .plan-body {
+    padding: 62px 18px 76px;
+  }
+
+  .plan-title {
+    font-size: 34px;
+  }
+
+  .plan-h {
+    font-size: 24px;
+  }
+
+  .plan-h-sm {
+    font-size: 21px;
+  }
+
+  .plan-lead {
+    font-size: 15px;
+  }
+
+  .plan-mark {
+    width: 54px;
+  }
+
+  .plan-dove {
+    width: 52px;
+  }
+
+  .plan-stats {
+    gap: 13px;
+    margin-top: 16px;
+  }
+
+  .plan-stat b {
+    font-size: 32px;
+    min-width: 50px;
+  }
+
+  .plan-figure img {
+    height: 130px;
+  }
+
+  .plan-tile img {
+    height: 54px;
+  }
+
+  .plan-cell {
+    padding: 8px 6px;
+  }
+
+  .plan-cell img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .plan-list li {
+    padding: 7px 0;
+  }
+}
+
+/* ============================================================
+   SECTION 7 — UPCOMING EVENTS
+   A dark band on assets/events-section-bg.png, sitting directly
+   under the Join banner (which uses the same artwork). The two
+   are kept apart by a gold hairline, a different overlay ramp,
+   and the fact that this one is a full content section rather
+   than a 213px strip.
+   All of the section's content is rendered by the events script
+   in index.html from the JUC_EVENTS array.
+   ============================================================ */
+
+:root {
+  --s7-navy: #100F2A;                       /* flat ground below the artwork —
+                                               same navy as the site footer */
+  --s7-panel: rgba(16, 15, 42, 0.62);       /* card / panel fill */
+  --s7-panel-soft: rgba(196, 146, 63, 0.06);/* presenter + chip tint */
+  --s7-line: rgba(196, 146, 63, 0.26);      /* gold hairline borders */
+  --s7-title: #F2ECE0;                      /* headings on navy */
+  --s7-body: #C7C4D2;                       /* paragraph text */
+  --s7-label: #C0965C;                      /* small gold labels */
+}
+
+.events {
+  position: relative;
+  isolation: isolate;
+  border-top: 1px solid var(--s7-line);
+  background-color: var(--s7-navy);
+  padding: 56px 0 66px;
+}
+
+/* events-section-bg.png is 1672×941 (16:9) and the section is far
+   taller than that, so `cover` would blow the artwork up several
+   times over. Instead it is pinned full-width at the top at its
+   own aspect ratio and dissolved into the flat navy underneath. */
+.events::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  aspect-ratio: 1672 / 941;
+  background:
+    linear-gradient(180deg,
+      rgba(16, 15, 42, 0.56) 0%,
+      rgba(16, 15, 42, 0.72) 55%,
+      var(--s7-navy) 100%),
+    url("assets/events-section-bg.png") center / cover no-repeat;
+}
+
+/* Same treatment as .pathways-heading, re-inked for a dark ground */
+.events-heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 29px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--s7-title);
+}
+
+.events-intro {
+  max-width: 820px;
+  margin: 22px auto 0;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 27px;
+  letter-spacing: 0.01em;
+  color: var(--s7-body);
+}
+
+.events-intro + .events-intro {
+  margin-top: 13px;
+}
+
+.events-body {
+  margin-top: 38px;
+}
+
+/* No-JS / no-events fallback */
+.ev-empty {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 30px 26px;
+  border: 1px solid var(--s7-line);
+  border-radius: 14px;
+  background: var(--s7-panel);
+  text-align: center;
+  font-size: 15px;
+  line-height: 26px;
+  color: var(--s7-body);
+}
+
+.ev-empty a {
+  color: var(--gold-hi);
+  border-bottom: 1px solid var(--s7-line);
+}
+
+/* --- Three-column grid of event cards ------------------------- */
+
+/* minmax(0, …) rather than 1fr so a long unbroken word shrinks the
+   text instead of widening the column past the grid. */
+.ev-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 26px;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+/* Column flex so the CTA can be pinned to the bottom of every
+   card, keeping the three buttons on one line across the row. */
+.ev-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--s7-line);
+  border-radius: 16px;
+  background: var(--s7-panel);
+  overflow: hidden;
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+
+.ev-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-3px);
+}
+
+.ev-media-wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.ev-media {
+  aspect-ratio: 16 / 9;
+  background: var(--s7-navy);
+}
+
+.ev-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Stands in until the client supplies a photo for the event */
+.ev-media-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid var(--s7-line);
+  background:
+    repeating-linear-gradient(135deg,
+      rgba(196, 146, 63, 0.05) 0 12px,
+      rgba(196, 146, 63, 0) 12px 24px),
+    #0A0E25;
+}
+
+.ev-media-empty span {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--s7-label);
+}
+
+/* Date chip overhangs the photo's lower-left corner. The fill is
+   OPAQUE navy, not the 6% gold tint used elsewhere — over a photo
+   a translucent chip leaves the numerals unreadable. */
+.ev-datechip {
+  position: absolute;
+  left: 18px;
+  bottom: -18px;
+  width: 70px;
+  padding: 10px 0 9px;
+  border: 1px solid var(--gold);
+  border-radius: 10px;
+  background: linear-gradient(180deg, #131836 0%, #0A0E26 100%);
+  box-shadow: 0 8px 20px rgba(3, 5, 20, 0.7);
+  text-align: center;
+}
+
+.ev-datechip b {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 25px;
+  line-height: 1;
+  color: var(--gold-hi);
+}
+
+.ev-datechip span {
+  display: block;
+  margin-top: 4px;
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--s7-title);
+}
+
+.ev-datechip i {
+  display: block;
+  margin-top: 2px;
+  font-style: normal;
+  font-size: 10px;
+  color: var(--s7-body);
+}
+
+.ev-card-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 32px 26px 28px;
+}
+
+/* Titles, blurbs and host names are held to a fixed number of
+   lines so the divider, the blurb and the CTA start at the same
+   height in all three cards. Anything longer is clipped rather
+   than allowed to push one card's rows out of step — see the
+   length note above JUC_EVENTS in index.html. */
+.ev-clamp {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.ev-title {
+  -webkit-line-clamp: 2;
+  min-height: 2.4em;          /* 2 lines at line-height 1.2 */
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 23px;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  color: var(--s7-title);
+}
+
+.ev-subtitle {
+  -webkit-line-clamp: 1;
+  min-height: 1.3em;
+  margin-top: 6px;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 15px;
+  line-height: 1.3;
+  color: var(--gold-hi);
+}
+
+/* --- Date + location ----------------------------------------- */
+
+/* Two lines of when + up to two of where = a 4-line well, so the
+   rules above and below it sit level across the row. */
+.ev-factlist {
+  min-width: 0;
+  min-height: 90px;
+  margin-top: 16px;
+  padding: 14px 0;
+  border-top: 1px solid var(--s7-line);
+  border-bottom: 1px solid var(--s7-line);
+}
+
+.ev-fact {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13.5px;
+  line-height: 21px;
+  color: var(--s7-body);
+}
+
+.ev-fact + .ev-fact {
+  margin-top: 8px;
+}
+
+/* Shared by every gold outline glyph in the section */
+.ev-icon {
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+  color: var(--gold);
+}
+
+.ev-fact .ev-icon {
+  margin-top: 2px;
+}
+
+/* --- Blurb + host -------------------------------------------- */
+
+.ev-desc {
+  -webkit-line-clamp: 4;
+  min-height: 96px;           /* 4 lines at line-height 24px */
+  margin-top: 16px;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0.01em;
+  color: var(--s7-body);
+}
+
+.ev-host {
+  margin-top: 16px;
+  font-family: var(--font-serif);
+  font-size: 14.5px;
+  line-height: 1.35;
+  color: var(--s7-title);
+}
+
+.ev-host-name {
+  -webkit-line-clamp: 2;
+  min-height: 2.7em;          /* 2 lines at line-height 1.35 */
+}
+
+.ev-host-label {
+  display: block;
+  margin-bottom: 5px;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--s7-label);
+}
+
+/* Absorbs the leftover height so the CTA sits at the foot of every
+   card — three buttons on one line whatever the blurbs run to. */
+.ev-gap {
+  flex: 1;
+  min-height: 26px;
+}
+
+.ev-cta {
+  height: 45px;
+  flex-shrink: 0;
+  padding: 0 22px;
+  border-radius: 4px;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.10em;
+}
+
+/* ============================================================
+   SMALL LAPTOP / TABLET LANDSCAPE (max-width: 1024px)
+   Only the events grid needs a stop here: below roughly 1050px
+   three columns leave the cards too narrow for a two-line title.
+   ============================================================ */
+
+@media (max-width: 1024px) {
+
+  .ev-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* An odd card left alone on the last row is centred rather than
+     left hanging in the first column. */
+  .ev-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    width: calc(50% - 13px);
+    margin: 0 auto;
+  }
+
 }
 
 /* ============================================================
    MOBILE — TABLET / PHONE (max-width: 768px)
-   All responsive overrides live inside this block and the
-   480px block below. Desktop rules above are untouched.
+   Bar the events grid stop above, all responsive overrides live
+   inside this block and the 480px block below. Desktop rules
+   are untouched.
    ============================================================ */
 
 @media (max-width: 768px) {
@@ -1883,7 +4475,64 @@ body.modal-open {
     margin: 26px auto 0;
   }
 
-  /* ---- Section 7: support our mission --------------------------- */
+  /* ---- Section 7: upcoming events -------------------------------- */
+
+  .events {
+    padding: 40px 0 46px;
+  }
+
+  .events-heading {
+    font-size: 22px;
+    gap: 12px;
+  }
+
+  .events-intro {
+    max-width: 100%;
+    padding: 0 4px;
+    font-size: 14px;
+    line-height: 24px;
+  }
+
+  .events-body {
+    margin-top: 28px;
+  }
+
+  .ev-card-body {
+    padding: 30px 22px 26px;
+  }
+
+  .ev-title {
+    font-size: 21px;
+  }
+
+  .ev-subtitle {
+    font-size: 14.5px;
+  }
+
+  /* Columns are narrow enough here that a reserved line count would
+     start clipping titles, so every card sizes to its own text from
+     this width down. The cards stay level all the same: the grid
+     equalises their height and .ev-gap keeps the CTAs on one line. */
+  .ev-clamp {
+    display: block;
+    overflow: visible;
+  }
+
+  .ev-title,
+  .ev-subtitle,
+  .ev-desc,
+  .ev-host-name,
+  .ev-factlist {
+    min-height: 0;
+  }
+
+  /* Full-width CTA, matching the mobile treatment of .btn-member */
+  .ev-cta {
+    display: flex;
+    width: 100%;
+  }
+
+  /* ---- Section 8: support our mission --------------------------- */
 
   .support-mission {
     padding: 32px 0 38px;
@@ -2021,6 +4670,34 @@ body.modal-open {
     margin-top: 14px;
   }
 
+  /* Newsletter: copy above, form below, both centered */
+  .footer-news {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px;
+    padding-left: 20px;   /* back to the shell's own gutter */
+    padding-top: 24px;
+    padding-bottom: 24px;
+    text-align: center;
+  }
+
+  .fnews-heading {
+    font-size: 21px;
+  }
+
+  .fnews-text {
+    max-width: 40ch;
+    margin: 6px auto 0;
+    font-size: 13.5px;
+    line-height: 21px;
+  }
+
+  .fnews-form {
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
   /* Bottom bar: copyright above, legal links below */
   .footer-bottom {
     flex-direction: column;
@@ -2031,18 +4708,139 @@ body.modal-open {
     text-align: center;
   }
 
-  /* ---- Member signup modal ------------------------------------ */
+  /* ---- Membership enquiry modal -------------------------------- */
 
   .member-overlay {
     padding: 16px;
+    align-items: flex-start;
   }
 
   .member-modal {
     padding: 38px 24px 30px;
+    max-height: calc(100vh - 32px);
   }
 
   .member-title {
+    font-size: 28px;
+  }
+
+  /* Single column: side-by-side 47px fields get too cramped to
+     read their labels below this width. */
+  .mf-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .member-done-title {
     font-size: 26px;
+  }
+
+  /* ---- Watch Our Story lightbox -------------------------------- */
+
+  .story-progress {
+    gap: 4px;
+    padding: 12px 16px 0;
+  }
+
+  /* Chapter names don't fit next to a 3px segment on a phone */
+  .story-seg em {
+    display: none;
+  }
+
+  .story-topbar {
+    top: 26px;
+    padding: 0 16px;
+    justify-content: flex-end;
+  }
+
+  .story-kicker {
+    display: none;
+  }
+
+  .story-slide {
+    padding: 68px 0 92px;
+  }
+
+  .story-center,
+  .story-copy {
+    width: 100%;
+    padding: 0 20px;
+  }
+
+  /* Photo chapters read better centered once the copy column
+     is as wide as the frame */
+  .story-copy {
+    text-align: center;
+  }
+
+  .story-copy .story-p {
+    max-width: 100%;
+  }
+
+  .story-veil {
+    background:
+      linear-gradient(180deg, rgba(5, 7, 15, 0.75) 0%, rgba(5, 7, 15, 0.55) 45%, rgba(5, 7, 15, 0.9) 100%);
+  }
+
+  .story-brand {
+    letter-spacing: 0.10em;
+  }
+
+  .story-icons {
+    gap: 20px 10px;
+    margin-top: 28px;
+  }
+
+  .story-icons-7 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .story-icons-5 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .story-icon span {
+    margin-top: 8px;
+    font-size: 9px;
+    letter-spacing: 0.06em;
+  }
+
+  .story-tiles {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: 26px;
+  }
+
+  .story-tile img {
+    height: 120px;
+  }
+
+  .story-tile figcaption {
+    padding: 18px 4px 7px;
+    font-size: 8px;
+    letter-spacing: 0.04em;
+  }
+
+  .story-end-ctas {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 26px;
+  }
+
+  .story-end-ctas .btn {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .story-controls {
+    gap: 12px;
+    padding: 0 16px 22px;
+  }
+
+  .story-count {
+    right: 16px;
+    bottom: 34px;
+    font-size: 9.5px;
   }
 
 }
@@ -2143,7 +4941,38 @@ body.modal-open {
     gap: 30px;
   }
 
-  /* ---- Section 7: support our mission ----------------------------- */
+  /* ---- Section 7: upcoming events ---------------------------------- */
+
+  .events-heading {
+    font-size: 20px;
+    line-height: 1.3;
+    text-align: center;
+  }
+
+  /* One card per row on the phone */
+  .ev-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+
+  .ev-card:last-child:nth-child(odd) {
+    grid-column: auto;
+    width: auto;
+  }
+
+  .ev-card-body {
+    padding: 28px 18px 22px;
+  }
+
+  .ev-title {
+    font-size: 22px;
+  }
+
+  .ev-subtitle {
+    font-size: 15px;
+  }
+
+  /* ---- Section 8: support our mission ----------------------------- */
 
   .support-heading {
     font-size: 20px;
@@ -2173,6 +5002,16 @@ body.modal-open {
     line-height: 1.5;
   }
 
+  /* Field and button stack — a 26px-padded button plus a usable
+     field no longer fit side by side at this width */
+  .fnews-row {
+    flex-direction: column;
+  }
+
+  .fnews-btn {
+    width: 100%;
+  }
+
   .qmark {
     font-size: 28px;
   }
@@ -2182,10 +5021,59 @@ body.modal-open {
     top: 6px;
   }
 
-  /* ---- Member signup modal ------------------------------------ */
+  /* ---- Membership enquiry modal -------------------------------- */
+
+  .member-modal {
+    padding: 34px 18px 26px;
+  }
 
   .member-title {
     font-size: 24px;
+  }
+
+  .member-sub {
+    font-size: 12.5px;
+  }
+
+  /* iOS zooms any input whose text is under 16px on focus, which
+     leaves the modal off-centre; hold the fields at 16px. */
+  .mf-input {
+    font-size: 16px;
+  }
+
+  .member-done-title {
+    font-size: 23px;
+  }
+
+  .member-done-close {
+    width: 100%;
+  }
+
+  /* ---- Watch Our Story lightbox -------------------------------- */
+
+  .story-icons-7 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .story-icons-5 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .story-tiles {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .story-tile img {
+    height: 104px;
+  }
+
+  .story-quote {
+    line-height: 1.5;
+  }
+
+  .story-p {
+    margin-top: 14px;
+    line-height: 1.65;
   }
 
 }

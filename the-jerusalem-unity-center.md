@@ -84,9 +84,16 @@ All CTAs share the same system: 4px border radius, uppercase Poppins 600 with 0.
 4. **A Future Gathering Place for Humanity** (`#vision`) — 420px photo banner (campus render on the right), left-aligned heading with bright-gold "Humanity", paragraph, "View the Master Plan" CTA.
 5. **Five Pathways of Exploration** (`#pathways`) — cream section, 5 columns with plain gold outline icons separated by thin 1px gold vertical dividers: Consciousness, Spiritual Development, Human Flourishing, Dialogue & Understanding, Culture & Wisdom.
 6. **Join a Global Movement** (`#join`) — 213px navy banner with a gold dove icon, heading + paragraph, and a "Become a Member" button (opens the signup modal).
-7. **Section 7 ("More Than a Building" photo strip)** — intentionally skipped for now; an HTML comment marks where it should be inserted.
-8. **Footer** (`#footer`) — brand block + social links (Facebook, LinkedIn, email), three link columns (The Center / Resources / Get Involved) separated by faint vertical lines, a gold quote column (*"The light within illuminates the path for all."*), then a full-width bottom bar with copyright and Privacy/Terms links.
-9. **Membership modal** — "Join the Movement" dialog styled in the site's navy/gold language.
+7. **Upcoming Events** (`#events`) — navy section on `events-section-bg.png`: ornamented heading, two intro paragraphs, then a **three-column grid of event cards** (16:9 photo with a gold date chip overhanging its lower-left corner, title, italic subtitle, when/where lines, a short blurb, the hosting institute, and a gold CTA pinned to the foot of the card so the three buttons line up). Three across on desktop, two below 1024px, one below 480px. Everything inside `#events-body` is rendered by the events script from the `JUC_EVENTS` array at the top of the page script — see *Editing the events* below. The "Events" links in the nav, the pillars strip, and the footer Resources column all point here.
+8. **Support Our Mission** (`#support`) — cream band matching Sections 3 and 5: nonprofit / 501(c) tax-deductibility statement and a navy-on-cream "Donate Now" CTA.
+9. **Section 9 ("More Than a Building" photo strip)** — intentionally skipped for now; an HTML comment marks where it should be inserted.
+10. **Footer** (`#footer`) — brand block + social links (Facebook, LinkedIn, email), three link columns (The Center / Resources / Get Involved) separated by faint vertical lines, a gold quote column (*"The light within illuminates the path for all."*), then a full-width bottom bar with copyright and Privacy/Terms links.
+11. **Membership modal** — "Join the Movement" dialog styled in the site's navy/gold language.
+12. **"Watch Our Story" lightbox** — full-screen animated presentation (see below).
+
+### Editing the events
+
+There is no CMS, so the Events section is driven by a single data array, `JUC_EVENTS`, at the very top of the first `<script>` block in `index.html`. Each entry becomes one card, in the order written; a fourth wraps onto a second row, and the section falls back to an "announced shortly" message when the array is empty. Each event carries its own `image`, so a different photo can be uploaded to `assets/` per event; leave `image: ''` and a "photograph to follow" panel renders instead. Every other field is optional too — anything empty is skipped rather than rendered blank. **Keep the lengths even.** In the multi-column views the card holds each field to a set number of lines so all three line up row for row — title 2 lines, subtitle 1, `blurb` 4 (about 155 characters), host name 2 — and clips anything longer. Below 768px the clipping is lifted and each card sizes to its own text. The photos currently in the array are **placeholders** borrowed from the existing site art.
 
 Most nav and footer links are **in-page anchors** to section IDs (smooth scroll via `scroll-behavior: smooth`); remaining placeholder targets are noted in HTML comments. "View the Master Plan" (S4) and "The Campus" (footer) link to `master-plan.html`.
 
@@ -108,9 +115,45 @@ A standalone document page that doubles as the downloadable PDF — the client a
 
 ---
 
+## The "Watch Our Story" presentation
+
+There is no film, so the hero's **Watch Our Story** button opens a full-screen
+lightbox that plays an eight-chapter sequence of CSS/JS motion slides. Markup is
+at the end of `index.html` (`#story-modal`), styles in the `WATCH OUR STORY`
+block of `style.css`, player in the last inline script.
+
+**Chapters:** Opening (emblem with expanding halo rings) → Scripture (*Zechariah
+14:9*, drifting starfield, dove crossing the frame) → The Vision (`herobg.png`
+with a Ken Burns push-in, hero heading and subline) → The Center (the 7 pillars
+cascading in) → Institutes (the 6 photo cards) → Pathways (the 5 pathway icons) →
+The Campus (`section4-bg.png` Ken Burns, the S4 banner copy) → Join Us (dove,
+"Join a Global Movement", CTAs to the member modal, master plan, and Replay).
+All copy is the site's own; nothing new was written for it.
+
+**Player:** segmented chapter progress bar (labelled on desktop) driven by
+`requestAnimationFrame`, gold transport controls (prev / play-pause / next),
+slide counter, Esc to close, ←/→ to step, Space to pause. Pausing freezes the
+CSS animations too (`animation-play-state`), so it reads like a paused film. The
+last chapter has `data-dur="0"`, which holds it open instead of advancing. Body
+scroll locks while open; focus returns to the hero button on close. The overlay
+sits at `z-index: 90`, **under** the membership modal (100), so "Become a
+Member" on the closing chapter still opens above it — and its Escape handler
+runs in the **capture** phase specifically so one Escape doesn't close both.
+
+**Reduced motion:** all entrance/ambient animation is disabled and the chapters
+simply appear, with the dwell shortened to 4.5s each.
+
+**Swapping in real footage:** drop a `<video class="story-video">` into
+`.story-frame`, above `.story-stage` (an HTML comment there shows the exact
+snippet). The script detects it, hides the slide deck, and drives the same
+chrome against the real timeline — the progress bar becomes one continuous
+scrubber, prev/next become ±10s seeks, and the chapter labels and counter hide
+themselves. No other change is needed.
+
 ## JavaScript Behavior (inline in `index.html`)
 
 - **Mobile nav:** hamburger toggles `.nav-open` on the header with proper `aria-expanded`/`aria-label` updates; the "Support the Center" button is cloned into the mobile menu; the menu closes when a link is tapped so the smooth scroll is visible.
+- **Story player:** opened by any `.js-story-open` element (the hero's "Watch Our Story"); see the section above.
 - **Membership modal:** opened by any `.js-member-open` element ("Become a Member" button, "Join the Community" footer link). Validates the email with a regex, shows an inline error, and on success opens a `mailto:theseventynations@gmail.com` link pre-filled with the signup, then shows a confirmation message. Closes via ✕ button, overlay click, or Escape. Body scroll locks while open.
 
 There is no backend — the signup is delivered via the visitor's own email client.

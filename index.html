@@ -41,7 +41,7 @@
           <a href="#institutes">Institutes</a>
           <a href="#explore">Learn</a>
           <a href="#join">Community</a>
-          <a href="#explore">Events</a>
+          <a href="#events">Events</a>
           <a href="#institutes">Research</a>
           <a href="#join">Global Chapters</a>
         </nav>
@@ -83,8 +83,9 @@
             <polyline points="19 1 24 6 19 11"></polyline>
           </svg>
         </a>
-        <!-- Placeholder target: no video asset yet; scrolls to the vision banner -->
-        <a href="#vision" class="btn btn-ghost">
+        <!-- Opens the animated story presentation. The href is the no-JS
+             fallback: it still scrolls to the vision banner. -->
+        <a href="#vision" class="btn btn-ghost js-story-open">
           <svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true">
             <circle cx="12" cy="12" r="11" fill="#C4923F"></circle>
             <path d="M9.8 7.6 L16.4 12 L9.8 16.4 Z" fill="#0A0F23"></path>
@@ -117,11 +118,13 @@
         <p class="pillar-desc">Dialogue circles, study groups, lifelong connections.</p>
       </div>
 
-      <div class="pillar">
+      <!-- The only pillar with a destination of its own so far, so
+           it is the only one rendered as a link. -->
+      <a class="pillar pillar-link" href="#events">
         <div class="pillar-icon"><img class="icon-event" src="assets/section2-event-icon.png" alt=""></div>
         <h3 class="pillar-title">Events</h3>
         <p class="pillar-desc">Conferences, workshops, retreats, and global gatherings.</p>
-      </div>
+      </a>
 
       <div class="pillar">
         <div class="pillar-icon"><img class="icon-institutes" src="assets/section2-insitutes-icon.png" alt=""></div>
@@ -221,7 +224,8 @@
         Place for <span class="gold-bright">Humanity</span>
       </h2>
       <p class="future-sub">The Jerusalem Unity Center campus will be a living expression of learning, reflection, creativity, and service&mdash;designed to inspire generations to&nbsp;come together for a shared future.</p>
-      <a href="master-plan.html" class="btn btn-primary future-cta">
+      <!-- Opens the vertical Master Plan reel; the href is the no-JS fallback. -->
+      <a href="master-plan.html" class="btn btn-primary future-cta js-plan-open">
         View the Master Plan
         <svg class="icon-arrow" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
           <line x1="1" y1="6" x2="24" y2="6"></line>
@@ -301,13 +305,41 @@
         <p class="join-desc">Be part of a worldwide community dedicated to learning, service, and the flourishing of humanity.</p>
       </div>
 
-      <a class="btn btn-member js-member-open" href="#">Become a Member</a>
+      <a class="btn btn-member js-member-open" href="#" data-interest="member">Become a Member</a>
 
     </div>
   </section>
 
   <!-- ==========================================================
-       SECTION 7 — SUPPORT OUR MISSION
+       SECTION 7 — UPCOMING EVENTS
+       The heading and the two intro paragraphs below are static.
+       The three-column card grid inside #events-body is rendered
+       from the JUC_EVENTS array at the TOP of the page script —
+       edit that one array to change the events.
+       ========================================================== -->
+  <section class="events" id="events">
+    <div class="shell events-inner">
+
+      <h2 class="events-heading">
+        <span class="heading-orn orn-short orn-left" aria-hidden="true"></span>
+        Upcoming Events
+        <span class="heading-orn orn-short orn-right" aria-hidden="true"></span>
+      </h2>
+
+      <p class="events-intro">The Jerusalem Unity Center gathers people from every nation for evenings of learning, dialogue, music, and reflection. Our events are open to all &mdash; no affiliation, background, or prior study required. Each one is an invitation to sit together, to listen well, and to leave with something worth carrying home.</p>
+      <p class="events-intro">Below you will find our next gathering: where it takes place, who is leading it, and what the evening will hold. Places are limited and offered on a first-come basis, so we encourage you to reserve early.</p>
+
+      <!-- Rendered by the events script. The message below is the
+           no-JS / no-events fallback and is replaced on render. -->
+      <div class="events-body" id="events-body">
+        <p class="ev-empty">Our next gathering will be announced here shortly. To hear about it first, <a href="#" class="js-member-open" data-interest="member">join the movement</a>.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================
+       SECTION 8 — SUPPORT OUR MISSION
        Nonprofit / tax-deductibility statement. Same cream band
        language as the Institutes and Pathways sections.
        ========================================================== -->
@@ -331,9 +363,9 @@
   </section>
 
   <!-- ==========================================================
-       SECTION 8 — MORE THAN A BUILDING (photo strip)
+       SECTION 9 — MORE THAN A BUILDING (photo strip)
        Intentionally skipped for now — insert the section HERE,
-       between Section 7 above and the footer below.
+       between Section 8 above and the footer below.
        ========================================================== -->
 
   <!-- ==========================================================
@@ -381,7 +413,7 @@
         <ul class="fcol-list">
           <li><a href="#vision">About Us</a></li>
           <li><a href="#vision">Our Vision</a></li>
-          <li><a href="master-plan.html">The Campus</a></li>
+          <li><a href="master-plan.html" class="js-plan-open">The Campus</a></li>
           <li><a href="#pathways">Programs</a></li>
           <li><a href="#institutes">Faculty</a></li>
         </ul>
@@ -393,7 +425,7 @@
         <h3 class="fcol-heading">Resources</h3>
         <ul class="fcol-list">
           <li><a href="#explore">Library</a></li>
-          <li><a href="#explore">Events</a></li>
+          <li><a href="#events">Events</a></li>
           <li><a href="#institutes">Research</a></li>
           <li><a href="#explore">News</a></li>
           <li><a href="#explore">Media</a></li>
@@ -407,9 +439,9 @@
         <ul class="fcol-list">
           <li><a href="https://thejerusalemunitycenter.org/donation/" class="fcol-donate" target="_blank" rel="noopener">Donate Now</a></li>
           <li><a href="#" class="js-member-open">Join the Community</a></li>
-          <li><a href="#join">Volunteer</a></li>
-          <li><a href="#join">Ambassadors</a></li>
-          <li><a href="#join">Start a Chapter</a></li>
+          <li><a href="#" class="js-member-open" data-interest="volunteer">Volunteer</a></li>
+          <li><a href="#" class="js-member-open" data-interest="ambassador">Ambassadors</a></li>
+          <li><a href="#" class="js-member-open" data-interest="chapter">Start a Chapter</a></li>
           <li><a href="#support">Support the Vision</a></li>
         </ul>
       </nav>
@@ -427,6 +459,37 @@
 
     <div class="footer-divider" aria-hidden="true"></div>
 
+    <!-- Newsletter — posts to Web3Forms through forms.js, which
+         wires every .js-news-form on the page. -->
+    <div class="shell footer-news">
+      <div class="fnews-copy">
+        <h3 class="fnews-heading">Stay Connected</h3>
+        <p class="fnews-text">Occasional letters on the Center&rsquo;s progress, its teachings and its gatherings.</p>
+      </div>
+
+      <form class="fnews-form js-news-form" novalidate>
+
+        <!-- Honeypot: hidden from people, irresistible to bots. -->
+        <div class="fnews-hp" aria-hidden="true">
+          <label for="fnews-website">Website</label>
+          <input id="fnews-website" name="website" type="text" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="fnews-row">
+          <label class="fnews-label" for="fnews-email">Email address</label>
+          <input class="fnews-input" id="fnews-email" name="email" type="email" placeholder="you@example.com" autocomplete="email" aria-describedby="fnews-msg">
+          <button class="fnews-btn" type="submit">
+            <span class="fnews-spinner" aria-hidden="true"></span>
+            <span class="fnews-btn-label">Subscribe</span>
+          </button>
+        </div>
+
+        <p class="fnews-msg" id="fnews-msg" role="status" hidden></p>
+      </form>
+    </div>
+
+    <div class="footer-divider" aria-hidden="true"></div>
+
     <div class="shell footer-bottom">
       <p class="footer-copy">&copy; 2025 Jerusalem Unity Center. All Rights Reserved.</p>
       <div class="footer-legal">
@@ -439,23 +502,745 @@
   </footer>
 
   <!-- ==========================================================
-       BECOME A MEMBER — email signup modal
+       BECOME A MEMBER — membership enquiry modal
+
+       Opened by any .js-member-open trigger (Join banner, footer,
+       the closing slide of Watch Our Story) and by landing on
+       index.html#join-modal from another page.
+
+       Submissions go out through submitMembership() in the script
+       below, which posts to Web3Forms via forms.js and lands in
+       Info@marianneparadise.org.
        ========================================================== -->
-  <div class="member-overlay" id="member-modal" role="dialog" aria-modal="true" aria-labelledby="member-modal-title">
+  <div class="member-overlay" id="member-modal" role="dialog" aria-modal="true" aria-labelledby="member-modal-title" aria-describedby="member-modal-sub">
     <div class="member-modal">
       <button class="member-close" type="button" aria-label="Close">&times;</button>
-      <h3 class="member-title" id="member-modal-title">Join the Movement</h3>
-      <p class="member-sub">Enter your email and we&rsquo;ll welcome you to the community.</p>
+
+      <div class="member-head">
+        <h3 class="member-title" id="member-modal-title">Join the Movement</h3>
+        <p class="member-sub" id="member-modal-sub">Tell us a little about yourself and how you would like to take part. A member of our team will be in touch.</p>
+      </div>
+
       <form class="member-form" novalidate>
-        <input class="member-email" type="email" name="email" placeholder="Your email address" autocomplete="email" aria-label="Your email address">
-        <p class="member-error" hidden>Please enter a valid email address.</p>
-        <button class="btn member-submit" type="submit">Sign Up</button>
+
+        <!-- Honeypot: hidden from people, irresistible to bots.
+             A filled value silently fails the submission. -->
+        <div class="mf-hp" aria-hidden="true">
+          <label for="mf-website">Website</label>
+          <input id="mf-website" name="website" type="text" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="mf-grid">
+
+          <div class="mf-field">
+            <label class="mf-label" for="mf-name">Full name <span class="mf-req" aria-hidden="true">*</span></label>
+            <input class="mf-input" id="mf-name" name="name" type="text" placeholder="Your full name" autocomplete="name" aria-describedby="mf-name-err">
+            <p class="mf-err" id="mf-name-err" hidden></p>
+          </div>
+
+          <div class="mf-field">
+            <label class="mf-label" for="mf-email">Email <span class="mf-req" aria-hidden="true">*</span></label>
+            <input class="mf-input" id="mf-email" name="email" type="email" placeholder="you@example.com" autocomplete="email" aria-describedby="mf-email-err">
+            <p class="mf-err" id="mf-email-err" hidden></p>
+          </div>
+
+          <div class="mf-field">
+            <label class="mf-label" for="mf-phone">Phone <span class="mf-opt">(optional)</span></label>
+            <input class="mf-input" id="mf-phone" name="phone" type="tel" placeholder="+1 555 000 0000" autocomplete="tel" aria-describedby="mf-phone-err">
+            <p class="mf-err" id="mf-phone-err" hidden></p>
+          </div>
+
+          <div class="mf-field">
+            <label class="mf-label" for="mf-country">Country <span class="mf-req" aria-hidden="true">*</span></label>
+            <div class="mf-select-wrap">
+              <select class="mf-input mf-select" id="mf-country" name="country" autocomplete="country-name" aria-describedby="mf-country-err">
+                <option value="">Select your country</option>
+              </select>
+            </div>
+            <p class="mf-err" id="mf-country-err" hidden></p>
+          </div>
+
+          <div class="mf-field mf-field-wide">
+            <label class="mf-label" for="mf-interest">I am interested in <span class="mf-req" aria-hidden="true">*</span></label>
+            <div class="mf-select-wrap">
+              <select class="mf-input mf-select" id="mf-interest" name="interest" aria-describedby="mf-interest-err">
+                <option value="">Choose one</option>
+                <option value="member">Becoming a Member</option>
+                <option value="volunteer">Volunteering</option>
+                <option value="ambassador">Becoming an Ambassador</option>
+                <option value="chapter">Starting a Chapter</option>
+                <option value="general">General enquiry</option>
+              </select>
+            </div>
+            <p class="mf-err" id="mf-interest-err" hidden></p>
+          </div>
+
+          <div class="mf-field mf-field-wide">
+            <label class="mf-label" for="mf-message">Message <span class="mf-opt">(optional)</span></label>
+            <textarea class="mf-input mf-textarea" id="mf-message" name="message" rows="4" maxlength="1000" placeholder="Anything you would like us to know?" aria-describedby="mf-message-err mf-count"></textarea>
+            <div class="mf-under">
+              <p class="mf-err" id="mf-message-err" hidden></p>
+              <p class="mf-count" id="mf-count"><span class="mf-count-n">0</span>/1000</p>
+            </div>
+          </div>
+
+        </div>
+
+        <p class="mf-formerr" id="mf-formerr" role="alert" hidden></p>
+
+        <button class="btn member-submit" type="submit">
+          <span class="mf-spinner" aria-hidden="true"></span>
+          <span class="mf-btn-label">Submit</span>
+        </button>
+
+        <p class="mf-note"><span aria-hidden="true">*</span> Required. We will never share your details.</p>
       </form>
-      <p class="member-confirm" hidden>Thank you &mdash; check your email client to complete signup.</p>
+
+      <!-- Success panel — replaces the form once a submission lands -->
+      <div class="member-done" hidden>
+        <div class="member-done-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        </div>
+        <h4 class="member-done-title" id="member-done-title">Thank you &mdash; welcome.</h4>
+        <p class="member-done-text"></p>
+        <button class="btn btn-ghost member-done-close" type="button">Close</button>
+      </div>
+
     </div>
   </div>
 
+  <!-- ==========================================================
+       WATCH OUR STORY — animated presentation lightbox
+
+       There is no film yet, so the story plays as a timed
+       sequence of CSS/JS motion slides. It is deliberately
+       video-shaped: chapter progress bar, play/pause, prev/next,
+       Esc to close.
+
+       WHEN REAL FOOTAGE ARRIVES: drop a <video> into .story-frame,
+       directly above <div class="story-stage">, e.g.
+
+         <video class="story-video" playsinline preload="metadata"
+                poster="assets/herobg.png">
+           <source src="assets/our-story.mp4" type="video/mp4">
+         </video>
+
+       The script below detects it, hides the slide deck, and drives
+       the same controls against the real timeline. Nothing else
+       needs to change.
+       ========================================================== -->
+  <div class="story-overlay" id="story-modal" role="dialog" aria-modal="true" aria-label="Our Story">
+    <div class="story-frame">
+
+      <div class="story-progress" id="story-progress" aria-hidden="true"></div>
+
+      <div class="story-topbar">
+        <span class="story-kicker">Jerusalem Unity Center &mdash; Our Story</span>
+        <button class="story-close" type="button" aria-label="Close (Esc)">
+          <span class="story-esc">Esc</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="story-stage" id="story-stage">
+
+        <!-- 1 — Emblem -->
+        <section class="story-slide slide-open" data-dur="5200" data-label="Opening">
+          <div class="story-bg story-bg-glow" aria-hidden="true"></div>
+          <div class="story-center">
+            <div class="open-emblem" aria-hidden="true">
+              <span class="ring ring-1"></span>
+              <span class="ring ring-2"></span>
+              <img src="assets/the-jerusalme-unity-center.png" alt="">
+            </div>
+            <h2 class="story-brand s-rise" style="--d:.85s">Jerusalem <span>Unity Center</span></h2>
+            <p class="story-tagline s-rise" style="--d:1.25s">A Center of Consciousness for Humanity</p>
+          </div>
+        </section>
+
+        <!-- 2 — Scripture -->
+        <section class="story-slide slide-scripture" data-dur="6200" data-label="Scripture">
+          <div class="story-bg story-bg-stars" aria-hidden="true"></div>
+          <img class="scripture-dove" src="assets/bird-icon.png" alt="" aria-hidden="true">
+          <div class="story-center">
+            <blockquote class="story-quote s-rise">
+              <span class="qmark" aria-hidden="true">&ldquo;</span>In that Day, his name will be One<br>and he will be One<span class="qmark" aria-hidden="true">&rdquo;</span>
+            </blockquote>
+            <span class="story-rule s-grow" style="--d:1.0s" aria-hidden="true"></span>
+            <cite class="story-cite s-rise" style="--d:1.2s">Zechariah 14:9</cite>
+          </div>
+        </section>
+
+        <!-- 3 — The vision -->
+        <section class="story-slide slide-photo" data-dur="7000" data-label="The Vision">
+          <div class="story-bg"><img class="kb" src="assets/herobg.png" alt="" aria-hidden="true"></div>
+          <div class="story-veil" aria-hidden="true"></div>
+          <div class="story-copy">
+            <p class="story-eyebrow s-rise">The Vision</p>
+            <h2 class="story-h s-rise" style="--d:.3s">A Center for Welcoming<br>The Nations <em>in Jerusalem</em></h2>
+            <p class="story-p s-rise" style="--d:.75s">A global gathering place for learning, dialogue, spiritual development, cultural exchange, and human flourishing.</p>
+          </div>
+        </section>
+
+        <!-- 4 — What the Center holds -->
+        <section class="story-slide slide-grid" data-dur="7400" data-label="The Center">
+          <div class="story-bg story-bg-navy" aria-hidden="true"></div>
+          <div class="story-center">
+            <h2 class="story-h story-h-sm s-rise">One Place, Seven Ways In</h2>
+            <div class="story-icons story-icons-7">
+              <div class="story-icon s-pop" style="--d:.35s"><img src="assets/section2-learn-icon.png" alt=""><span>Learn</span></div>
+              <div class="story-icon s-pop" style="--d:.47s"><img src="assets/section2-library-icon.png" alt=""><span>Library</span></div>
+              <div class="story-icon s-pop" style="--d:.59s"><img src="assets/section2-community-icon.png" alt=""><span>Community</span></div>
+              <div class="story-icon s-pop" style="--d:.71s"><img src="assets/section2-event-icon.png" alt=""><span>Events</span></div>
+              <div class="story-icon s-pop" style="--d:.83s"><img src="assets/section2-insitutes-icon.png" alt=""><span>Institutes</span></div>
+              <div class="story-icon s-pop" style="--d:.95s"><img src="assets/section2-research-icon.png" alt=""><span>Research</span></div>
+              <div class="story-icon s-pop" style="--d:1.07s"><img src="assets/section2-global-chapters-icon.png" alt=""><span>Global Chapters</span></div>
+            </div>
+            <p class="story-p story-p-mid s-rise" style="--d:1.3s">Courses, timeless wisdom, dialogue circles, gatherings, centers of excellence, research, and local communities united in purpose.</p>
+          </div>
+        </section>
+
+        <!-- 5 — The institutes -->
+        <section class="story-slide slide-tiles" data-dur="7600" data-label="Institutes">
+          <div class="story-bg story-bg-navy" aria-hidden="true"></div>
+          <div class="story-center">
+            <h2 class="story-h story-h-sm s-rise">Six Institutes</h2>
+            <div class="story-tiles">
+              <figure class="story-tile s-tile" style="--d:.30s"><img src="assets/institute-consciousness.jpg" alt=""><figcaption>Consciousness</figcaption></figure>
+              <figure class="story-tile s-tile" style="--d:.44s"><img src="assets/institute-spiritual-intelligence.jpg" alt=""><figcaption>Spiritual Intelligence</figcaption></figure>
+              <figure class="story-tile s-tile" style="--d:.58s"><img src="assets/institute-human-flourishing.jpg" alt=""><figcaption>Human Flourishing</figcaption></figure>
+              <figure class="story-tile s-tile" style="--d:.72s"><img src="assets/institute-moral-leadership.jpg" alt=""><figcaption>Moral Leadership</figcaption></figure>
+              <figure class="story-tile s-tile" style="--d:.86s"><img src="assets/institute-global-dialogue.jpg" alt=""><figcaption>Global Dialogue</figcaption></figure>
+              <figure class="story-tile s-tile" style="--d:1.00s"><img src="assets/institute-science-consciousness.jpg" alt=""><figcaption>Science &amp; Consciousness</figcaption></figure>
+            </div>
+            <p class="story-p story-p-mid s-rise" style="--d:1.25s">Centers of excellence advancing knowledge, wisdom, and understanding.</p>
+          </div>
+        </section>
+
+        <!-- 6 — Five pathways -->
+        <section class="story-slide slide-grid" data-dur="7000" data-label="Pathways">
+          <div class="story-bg story-bg-navy" aria-hidden="true"></div>
+          <div class="story-center">
+            <h2 class="story-h story-h-sm s-rise">Five Pathways of Exploration</h2>
+            <div class="story-icons story-icons-5">
+              <div class="story-icon s-pop" style="--d:.35s"><img src="assets/consciousness-icon.png" alt=""><span>Consciousness</span></div>
+              <div class="story-icon s-pop" style="--d:.50s"><img src="assets/spiritual-development-icon.png" alt=""><span>Spiritual Development</span></div>
+              <div class="story-icon s-pop" style="--d:.65s"><img src="assets/human-flourishings-icon.png" alt=""><span>Human Flourishing</span></div>
+              <div class="story-icon s-pop" style="--d:.80s"><img src="assets/dialogue-understanding-icon.png" alt=""><span>Dialogue &amp; Understanding</span></div>
+              <div class="story-icon s-pop" style="--d:.95s"><img src="assets/culture-wisdom-icon.png" alt=""><span>Culture &amp; Wisdom</span></div>
+            </div>
+            <p class="story-p story-p-mid s-rise" style="--d:1.2s">Awareness and human potential, inner growth, well-being, bridges across cultures and faiths, and the traditions that enrich humanity.</p>
+          </div>
+        </section>
+
+        <!-- 7 — The campus -->
+        <section class="story-slide slide-photo" data-dur="7000" data-label="The Campus">
+          <div class="story-bg"><img class="kb kb-slow" src="assets/section4-bg.png" alt="" aria-hidden="true"></div>
+          <div class="story-veil" aria-hidden="true"></div>
+          <div class="story-copy">
+            <p class="story-eyebrow s-rise">The Campus</p>
+            <h2 class="story-h s-rise" style="--d:.3s">A Future Gathering<br>Place for <em>Humanity</em></h2>
+            <p class="story-p s-rise" style="--d:.75s">The Jerusalem Unity Center campus will be a living expression of learning, reflection, creativity, and service&mdash;designed to inspire generations to come together for a shared future.</p>
+          </div>
+        </section>
+
+        <!-- 8 — Invitation. data-dur="0" holds this slide indefinitely -->
+        <section class="story-slide slide-end" data-dur="0" data-label="Join Us">
+          <div class="story-bg story-bg-glow" aria-hidden="true"></div>
+          <div class="story-center">
+            <img class="end-dove s-dove" src="assets/bird-icon.png" alt="Gold dove carrying an olive branch">
+            <h2 class="story-h s-rise" style="--d:.5s">Join a Global Movement</h2>
+            <p class="story-p story-p-mid s-rise" style="--d:.8s">Be part of a worldwide community dedicated to learning, service, and the flourishing of humanity.</p>
+            <div class="story-end-ctas s-rise" style="--d:1.05s">
+              <a class="btn btn-primary js-member-open" href="#" data-interest="member">Become a Member</a>
+              <a class="btn btn-ghost js-plan-open" href="master-plan.html">View the Master Plan</a>
+              <button class="btn btn-ghost js-story-replay" type="button">
+                <svg class="story-replay-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M20 12a8 8 0 1 1-2.6-5.9"></path>
+                  <polyline points="20 4 20 9 15 9"></polyline>
+                </svg>
+                Replay
+              </button>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <div class="story-controls">
+        <button class="story-ctrl js-story-prev" type="button" aria-label="Previous chapter">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="14 5 7 12 14 19"></polyline>
+          </svg>
+        </button>
+
+        <button class="story-ctrl story-play js-story-toggle" type="button" aria-label="Pause">
+          <svg class="ico-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <rect x="8" y="6" width="3" height="12" rx="1"></rect>
+            <rect x="13" y="6" width="3" height="12" rx="1"></rect>
+          </svg>
+          <svg class="ico-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M9 6.5 L18 12 L9 17.5 Z"></path>
+          </svg>
+        </button>
+
+        <button class="story-ctrl js-story-next" type="button" aria-label="Next chapter">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="10 5 17 12 10 19"></polyline>
+          </svg>
+        </button>
+
+        <span class="story-count" aria-hidden="true"><b>1</b> / <i>8</i></span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==========================================================
+       THE MASTER PLAN — vertical presentation reel
+
+       Same player idea as "Watch Our Story", but shaped like a
+       phone reel: a portrait 9:16 card floating on a dimmed page,
+       chapters that advance themselves, tap-left / tap-right, and
+       swipe on touch. It replaces the standalone master-plan.html
+       everywhere it used to be linked (.js-plan-open).
+
+       WHEN REAL FOOTAGE ARRIVES: drop a vertical <video class="plan-video">
+       into .plan-frame directly above .plan-stage, e.g.
+
+         <video class="plan-video" playsinline preload="metadata"
+                poster="assets/section4-bg.png">
+           <source src="assets/master-plan.mp4" type="video/mp4">
+         </video>
+
+       The script detects it, hides the chapter deck, and drives the
+       same chrome against the real timeline.
+       ========================================================== -->
+  <div class="plan-overlay" id="plan-modal" role="dialog" aria-modal="true" aria-label="The Master Plan">
+    <div class="plan-backdrop" aria-hidden="true"></div>
+
+    <div class="plan-frame">
+
+      <div class="plan-progress" id="plan-progress" aria-hidden="true"></div>
+
+      <div class="plan-topbar">
+        <span class="plan-titles">
+          <span class="plan-kicker">The Master <span>Plan</span></span>
+          <span class="plan-chapter" id="plan-chapter"></span>
+        </span>
+        <button class="plan-close" type="button" aria-label="Close (Esc)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true">
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="plan-stage" id="plan-stage">
+
+        <!-- 1 — Cover -->
+        <section class="plan-slide plan-cover" data-dur="4800" data-label="Overview">
+          <div class="plan-bg"><img class="pkb" src="assets/section4-bg.png" alt="" aria-hidden="true"></div>
+          <div class="plan-veil" aria-hidden="true"></div>
+          <div class="plan-body plan-body-center">
+            <img class="plan-mark p-rise" src="assets/the-jerusalme-unity-center.png" alt="" aria-hidden="true">
+            <p class="plan-eyebrow p-rise" style="--d:.35s">The Jerusalem Unity Center</p>
+            <h2 class="plan-title p-rise" style="--d:.55s">The Master <span>Plan</span></h2>
+            <span class="plan-rule p-grow" style="--d:.9s" aria-hidden="true"></span>
+            <p class="plan-tagline p-rise" style="--d:1.05s">A Future Gathering Place<br>for Humanity</p>
+          </div>
+        </section>
+
+        <!-- 2 — At a glance -->
+        <section class="plan-slide plan-dark" data-dur="5400" data-label="At a Glance">
+          <div class="plan-bg plan-bg-glow" aria-hidden="true"></div>
+          <div class="plan-body plan-body-center">
+            <p class="plan-eyebrow p-rise">At a Glance</p>
+            <div class="plan-stats">
+              <div class="plan-stat p-pop" style="--d:.30s"><b>7</b><span>Functions of the Campus</span></div>
+              <div class="plan-stat p-pop" style="--d:.48s"><b>6</b><span>Institutes</span></div>
+              <div class="plan-stat p-pop" style="--d:.66s"><b>5</b><span>Pathways of Exploration</span></div>
+              <div class="plan-stat p-pop" style="--d:.84s"><b>70</b><span>Nations Welcomed</span></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 3 — The vision -->
+        <section class="plan-slide plan-dark" data-dur="7000" data-label="The Vision">
+          <div class="plan-bg plan-bg-stars" aria-hidden="true"></div>
+          <div class="plan-body">
+            <span class="plan-num p-rise">01</span>
+            <h3 class="plan-h p-rise" style="--d:.15s">The Vision</h3>
+            <p class="plan-lead p-rise" style="--d:.4s">A center for welcoming the nations in Jerusalem &mdash; a global gathering place for learning, dialogue, spiritual development, cultural exchange, and human flourishing.</p>
+            <p class="plan-p p-rise" style="--d:.65s">The Center holds a question that belongs to all people: what allows a human being, and a whole society, to flourish?</p>
+            <blockquote class="plan-quote p-rise" style="--d:.9s">
+              <span class="qmark" aria-hidden="true">&ldquo;</span>The light within illuminates the path for all.<span class="qmark" aria-hidden="true">&rdquo;</span>
+              <cite>Jerusalem Unity Center</cite>
+            </blockquote>
+          </div>
+        </section>
+
+        <!-- 4 — The campus -->
+        <section class="plan-slide plan-dark" data-dur="6600" data-label="The Campus">
+          <div class="plan-bg plan-bg-navy" aria-hidden="true"></div>
+          <div class="plan-body">
+            <span class="plan-num p-rise">02</span>
+            <h3 class="plan-h p-rise" style="--d:.15s">The Campus</h3>
+            <figure class="plan-figure p-tile" style="--d:.4s">
+              <img src="assets/section4-bg.png" alt="Aerial view of the planned campus at dusk">
+            </figure>
+            <p class="plan-p p-rise" style="--d:.7s">A single continuous landscape rather than separate buildings &mdash; terraced pavilions stepping down the hillside above the city, gathered around gardens, courtyards, and walking paths.</p>
+          </div>
+        </section>
+
+        <!-- 5 — Seven functions -->
+        <section class="plan-slide plan-dark" data-dur="7400" data-label="Seven Functions">
+          <div class="plan-bg plan-bg-navy" aria-hidden="true"></div>
+          <div class="plan-body">
+            <h3 class="plan-h plan-h-sm p-rise">Seven Functions</h3>
+            <p class="plan-cap p-rise" style="--d:.2s">Each one a place as well as a programme.</p>
+            <div class="plan-grid plan-grid-2">
+              <div class="plan-cell p-pop" style="--d:.34s"><img src="assets/section2-learn-icon.png" alt=""><b>Learn</b></div>
+              <div class="plan-cell p-pop" style="--d:.44s"><img src="assets/section2-library-icon.png" alt=""><b>Library</b></div>
+              <div class="plan-cell p-pop" style="--d:.54s"><img src="assets/section2-community-icon.png" alt=""><b>Community</b></div>
+              <div class="plan-cell p-pop" style="--d:.64s"><img src="assets/section2-event-icon.png" alt=""><b>Events</b></div>
+              <div class="plan-cell p-pop" style="--d:.74s"><img src="assets/section2-insitutes-icon.png" alt=""><b>Institutes</b></div>
+              <div class="plan-cell p-pop" style="--d:.84s"><img src="assets/section2-research-icon.png" alt=""><b>Research</b></div>
+              <div class="plan-cell plan-cell-wide p-pop" style="--d:.94s"><img src="assets/section2-global-chapters-icon.png" alt=""><b>Global Chapters</b></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 6 — The institutes -->
+        <section class="plan-slide plan-dark" data-dur="7400" data-label="Institutes">
+          <div class="plan-bg plan-bg-navy" aria-hidden="true"></div>
+          <div class="plan-body">
+            <span class="plan-num p-rise">03</span>
+            <h3 class="plan-h plan-h-sm p-rise" style="--d:.15s">Six Institutes</h3>
+            <div class="plan-tiles">
+              <figure class="plan-tile p-tile" style="--d:.34s"><img src="assets/institute-consciousness.jpg" alt=""><figcaption>Consciousness</figcaption></figure>
+              <figure class="plan-tile p-tile" style="--d:.46s"><img src="assets/institute-spiritual-intelligence.jpg" alt=""><figcaption>Spiritual Intelligence</figcaption></figure>
+              <figure class="plan-tile p-tile" style="--d:.58s"><img src="assets/institute-human-flourishing.jpg" alt=""><figcaption>Human Flourishing</figcaption></figure>
+              <figure class="plan-tile p-tile" style="--d:.70s"><img src="assets/institute-moral-leadership.jpg" alt=""><figcaption>Moral Leadership</figcaption></figure>
+              <figure class="plan-tile p-tile" style="--d:.82s"><img src="assets/institute-global-dialogue.jpg" alt=""><figcaption>Global Dialogue</figcaption></figure>
+              <figure class="plan-tile p-tile" style="--d:.94s"><img src="assets/institute-science-consciousness.jpg" alt=""><figcaption>Science &amp; Consciousness</figcaption></figure>
+            </div>
+            <p class="plan-cap p-rise" style="--d:1.15s">Centers of excellence, each opening onto the others.</p>
+          </div>
+        </section>
+
+        <!-- 7 — Five pathways -->
+        <section class="plan-slide plan-dark" data-dur="7200" data-label="Pathways">
+          <div class="plan-bg plan-bg-stars" aria-hidden="true"></div>
+          <div class="plan-body">
+            <span class="plan-num p-rise">04</span>
+            <h3 class="plan-h plan-h-sm p-rise" style="--d:.15s">Five Pathways</h3>
+            <ul class="plan-list">
+              <li class="p-slide" style="--d:.34s"><img src="assets/consciousness-icon.png" alt=""><b>Consciousness</b><span>Awareness, perception, meaning, human potential.</span></li>
+              <li class="p-slide" style="--d:.48s"><img src="assets/spiritual-development-icon.png" alt=""><b>Spiritual Development</b><span>Inner growth, wisdom, purpose, connection.</span></li>
+              <li class="p-slide" style="--d:.62s"><img src="assets/human-flourishings-icon.png" alt=""><b>Human Flourishing</b><span>Well-being, resilience, creativity, fulfillment.</span></li>
+              <li class="p-slide" style="--d:.76s"><img src="assets/dialogue-understanding-icon.png" alt=""><b>Dialogue &amp; Understanding</b><span>Bridges across cultures, faiths, disciplines.</span></li>
+              <li class="p-slide" style="--d:.90s"><img src="assets/culture-wisdom-icon.png" alt=""><b>Culture &amp; Wisdom</b><span>Traditions, arts, and stories that enrich humanity.</span></li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- 8 — Realization -->
+        <section class="plan-slide plan-dark" data-dur="8200" data-label="Realization">
+          <div class="plan-bg plan-bg-navy" aria-hidden="true"></div>
+          <div class="plan-body">
+            <span class="plan-num p-rise">05</span>
+            <h3 class="plan-h plan-h-sm p-rise" style="--d:.15s">Realization</h3>
+            <ol class="plan-phases">
+              <li class="p-slide" style="--d:.38s"><em>Phase One</em><b>Foundation &amp; Community</b><span>The founding membership, the first dialogue circles, learning in Jerusalem and online.</span></li>
+              <li class="p-slide" style="--d:.60s"><em>Phase Two</em><b>The Institutes</b><span>Faculty, fellowships, published research, the first international forums.</span></li>
+              <li class="p-slide" style="--d:.82s"><em>Phase Three</em><b>The Campus</b><span>Pavilions, library, assembly hall, gardens and courtyards.</span></li>
+              <li class="p-slide" style="--d:1.04s"><em>Phase Four</em><b>A Global Movement</b><span>Chapters, exchanges, and an annual gathering of the nations.</span></li>
+            </ol>
+            <p class="plan-cap p-rise" style="--d:1.3s">Indicative sequencing &mdash; phases overlap as resources allow.</p>
+          </div>
+        </section>
+
+        <!-- 9 — Invitation. data-dur="0" holds this chapter indefinitely -->
+        <section class="plan-slide plan-end" data-dur="0" data-label="Build It">
+          <div class="plan-bg plan-bg-glow" aria-hidden="true"></div>
+          <div class="plan-body plan-body-center">
+            <img class="plan-dove p-dove" src="assets/bird-icon.png" alt="Gold dove carrying an olive branch">
+            <h3 class="plan-h p-rise" style="--d:.45s">Build It With Us</h3>
+            <p class="plan-p plan-p-mid p-rise" style="--d:.7s">Your support turns this plan into a place. The Seventy Nations (R.A.) Jerusalem partners with The Jerusalem Unity Center USA, a 501(c) nonprofit foundation.</p>
+            <div class="plan-ctas p-rise" style="--d:.95s">
+              <a class="btn btn-primary" href="https://thejerusalemunitycenter.org/donation/" target="_blank" rel="noopener">Donate Now</a>
+              <a class="btn btn-ghost js-member-open" href="#" data-interest="member">Become a Member</a>
+              <button class="btn btn-ghost js-plan-replay" type="button">
+                <svg class="plan-replay-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M20 12a8 8 0 1 1-2.6-5.9"></path>
+                  <polyline points="20 4 20 9 15 9"></polyline>
+                </svg>
+                Replay
+              </button>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Reel-style tap zones: they sit under the chrome, and step
+           aside entirely on the closing chapter so its CTAs stay live. -->
+      <button class="plan-tap plan-tap-prev js-plan-prev" type="button" tabindex="-1" aria-hidden="true"></button>
+      <button class="plan-tap plan-tap-next js-plan-next" type="button" tabindex="-1" aria-hidden="true"></button>
+
+      <div class="plan-controls">
+        <button class="plan-ctrl js-plan-prev" type="button" aria-label="Previous chapter">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="14 5 7 12 14 19"></polyline>
+          </svg>
+        </button>
+
+        <button class="plan-ctrl plan-play js-plan-toggle" type="button" aria-label="Pause">
+          <svg class="ico-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <rect x="8" y="6" width="3" height="12" rx="1"></rect>
+            <rect x="13" y="6" width="3" height="12" rx="1"></rect>
+          </svg>
+          <svg class="ico-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M9 6.5 L18 12 L9 17.5 Z"></path>
+          </svg>
+        </button>
+
+        <button class="plan-ctrl js-plan-next" type="button" aria-label="Next chapter">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="10 5 17 12 10 19"></polyline>
+          </svg>
+        </button>
+
+        <span class="plan-count" aria-hidden="true"><b>1</b> / <i>9</i></span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Web3Forms transport (holds the access key) + footer newsletter.
+       Loaded before the page scripts so window.JUC_FORMS exists for
+       the membership modal's submit handler. -->
+  <script src="forms.js"></script>
+
   <script>
+    /* ==========================================================
+       UPCOMING EVENTS (Section 7) — EDIT THIS ARRAY
+       ----------------------------------------------------------
+       Each entry becomes one card in the three-column grid, in the
+       order written here. Add a fourth and it wraps onto a second
+       row; empty the array and the section falls back to its
+       "announced shortly" message.
+
+       Every field is optional: anything left out or set to '' is
+       skipped rather than rendered blank.
+
+         image      LANDSCAPE 16:9 photo in assets/ — upload a new
+                    file there and point this at it. Leave it ''
+                    and a "photograph to follow" panel shows in
+                    its place.
+         imageAlt   what the photo shows, for screen readers
+         title      event name
+         subtitle   optional second line under the title
+         date       { day, month, year, weekday, time } — day,
+                    month and year fill the gold chip on the photo
+         location   { name, address }
+         host       { label, name }
+         blurb      one short paragraph
+         cta        { label, href } — the button on the card
+
+       KEEP THE LENGTHS EVEN. So the three cards line up row for
+       row, the card clips anything longer than: title 2 lines,
+       subtitle 1 line, blurb 4 lines (~155 characters), host name
+       2 lines. Write to those limits and nothing is cut. On a
+       phone the clipping is lifted — one card per row has nothing
+       to line up with.
+
+       NOTE: the photos below are placeholders taken from the
+       existing site art. Replace them with the real event photos
+       when they arrive.
+       ========================================================== */
+    var JUC_EVENTS = [
+
+      {
+        image: 'assets/section4-bg.png',
+        imageAlt: 'The Jerusalem Unity Center campus at dusk',
+        title: 'An Evening of Unity',
+        subtitle: 'Wisdom for a Shared Future',
+        date: {
+          day: '12',
+          month: 'November',
+          year: '2026',
+          weekday: 'Thursday',
+          time: '7:00 – 9:30 PM'
+        },
+        location: {
+          name: 'The Jerusalem Unity Center',
+          address: 'Jerusalem'
+        },
+        host: { label: 'Hosted by', name: 'The Institute for Global Dialogue' },
+        blurb: 'An evening set aside for listening — a main teaching, open dialogue across traditions, and music from the city. Nothing to sign, only a seat at the table.',
+        cta: {
+          label: 'Reserve Your Place',
+          href: 'mailto:theseventynations@gmail.com?subject=Reservation%20%E2%80%94%20An%20Evening%20of%20Unity%2C%2012%20November%202026'
+        }
+      },
+
+      {
+        image: 'assets/institute-global-dialogue.jpg',
+        imageAlt: 'Participants in conversation around a table',
+        title: 'Voices of the Seventy Nations',
+        subtitle: 'Song, Poetry, and Story',
+        date: {
+          day: '5',
+          month: 'December',
+          year: '2026',
+          weekday: 'Saturday',
+          time: '8:00 – 10:00 PM'
+        },
+        location: {
+          name: 'The Jerusalem Unity Center',
+          address: 'Jerusalem'
+        },
+        host: { label: 'Hosted by', name: 'The Institute for Culture & Wisdom' },
+        blurb: 'Song, poetry, and storytelling drawn from the many cultures that call this city home, performed by the musicians and writers of Jerusalem itself.',
+        cta: {
+          label: 'Reserve Your Place',
+          href: 'mailto:theseventynations@gmail.com?subject=Reservation%20%E2%80%94%20Voices%20of%20the%20Seventy%20Nations%2C%205%20December%202026'
+        }
+      },
+
+      {
+        image: 'assets/institute-moral-leadership.jpg',
+        imageAlt: 'Classical stone columns against a bright sky',
+        title: 'Foundations of Dialogue',
+        subtitle: 'A Three-Part Workshop',
+        date: {
+          day: '21',
+          month: 'January',
+          year: '2027',
+          weekday: 'Thursday',
+          time: '6:30 – 9:00 PM'
+        },
+        location: {
+          name: 'The Jerusalem Unity Center',
+          address: 'Jerusalem'
+        },
+        host: { label: 'Led by', name: 'The Institute for Moral Leadership' },
+        blurb: 'A working session in the practice of listening well across difference: how to ask, how to disagree, how to stay in the room. Places are limited to twenty.',
+        cta: {
+          label: 'Reserve Your Place',
+          href: 'mailto:theseventynations@gmail.com?subject=Reservation%20%E2%80%94%20Foundations%20of%20Dialogue%2C%2021%20January%202027'
+        }
+      }
+
+    ];
+
+    /* ==========================================================
+       Events renderer — builds Section 7 from JUC_EVENTS above.
+       Nothing below needs editing to change an event.
+       ========================================================== */
+    (function () {
+      var mount = document.getElementById('events-body');
+      if (!mount || typeof JUC_EVENTS === 'undefined' || !JUC_EVENTS.length) return;
+
+      /* Gold outline icons on the same 24px grid as the site's
+         other inline SVG (the arrow and play glyphs). */
+      var ICONS = {
+        clock: '<circle cx="12" cy="12" r="9"/><polyline points="12 6.6 12 12 15.6 14"/>',
+        pin:   '<path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/>'
+      };
+
+      var ARROW = '<svg class="icon-arrow" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="1" y1="6" x2="24" y2="6"></line><polyline points="19 1 24 6 19 11"></polyline></svg>';
+
+      function esc(value) {
+        return String(value == null ? '' : value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      }
+
+      function icon(name) {
+        return '<svg class="ev-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" ' +
+               'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + (ICONS[name] || '') + '</svg>';
+      }
+
+      /* Joins the parts that are actually filled in, escaped. */
+      function line(parts, sep) {
+        var kept = [], i;
+        for (i = 0; i < parts.length; i++) {
+          if (parts[i]) kept.push(esc(parts[i]));
+        }
+        return kept.join(sep);
+      }
+
+      /* Photo with the gold date chip sitting over its lower-left
+         corner. Falls back to a bordered panel with no photo set. */
+      function media(ev) {
+        var date = ev.date || {};
+        var html = '<div class="ev-media-wrap">';
+
+        if (ev.image) {
+          html += '<figure class="ev-media"><img src="' + esc(ev.image) + '" alt="' + esc(ev.imageAlt || '') + '" loading="lazy"></figure>';
+        } else {
+          html += '<div class="ev-media ev-media-empty"><span>Photograph to follow</span></div>';
+        }
+
+        if (date.day) {
+          html += '<div class="ev-datechip">' +
+                    '<b>' + esc(date.day) + '</b>' +
+                    '<span>' + esc(date.month) + '</span>' +
+                    '<i>' + esc(date.year) + '</i>' +
+                  '</div>';
+        }
+
+        return html + '</div>';
+      }
+
+      function eventCard(ev) {
+        var date = ev.date || {};
+        var loc = ev.location || {};
+        var host = ev.host || {};
+        var when = line([date.weekday, date.time], ' &middot; ');
+        var where = line([loc.name, loc.address], ', ');
+        var html = '<article class="ev-card">';
+
+        html += media(ev);
+        html += '<div class="ev-card-body">';
+        html += '<h3 class="ev-title ev-clamp">' + esc(ev.title) + '</h3>';
+        if (ev.subtitle) html += '<p class="ev-subtitle ev-clamp">' + esc(ev.subtitle) + '</p>';
+
+        if (when || where) {
+          html += '<div class="ev-factlist">';
+          if (when) html += '<p class="ev-fact">' + icon('clock') + '<span>' + when + '</span></p>';
+          if (where) html += '<p class="ev-fact">' + icon('pin') + '<span>' + where + '</span></p>';
+          html += '</div>';
+        }
+
+        if (ev.blurb) html += '<p class="ev-desc ev-clamp">' + esc(ev.blurb) + '</p>';
+
+        if (host.name) {
+          html += '<div class="ev-host">' +
+                    '<span class="ev-host-label">' + esc(host.label || 'Hosted by') + '</span>' +
+                    '<span class="ev-host-name ev-clamp">' + esc(host.name) + '</span>' +
+                  '</div>';
+        }
+
+        if (ev.cta && ev.cta.label) {
+          html += '<span class="ev-gap" aria-hidden="true"></span>' +
+                  '<a class="btn btn-primary ev-cta" href="' + esc(ev.cta.href || '#') + '">' + esc(ev.cta.label) + ARROW + '</a>';
+        }
+
+        return html + '</div></article>';
+      }
+
+      mount.innerHTML = '<div class="ev-grid">' + JUC_EVENTS.map(eventCard).join('') + '</div>';
+    })();
+
     (function () {
       var header = document.querySelector('.site-header');
       var toggle = document.querySelector('.nav-toggle');
@@ -490,7 +1275,11 @@
     })();
 
     /* ==========================================================
-       BECOME A MEMBER — email signup modal
+       BECOME A MEMBER — membership enquiry modal
+
+       Validation, submitting / success / error states, honeypot,
+       focus trap. The network call is submitMembership() at the
+       bottom of this block, which hands off to forms.js.
        ========================================================== */
     (function () {
       var overlay = document.getElementById('member-modal');
@@ -499,62 +1288,822 @@
       var modal = overlay.querySelector('.member-modal');
       var closeBtn = overlay.querySelector('.member-close');
       var form = overlay.querySelector('.member-form');
-      var emailInput = overlay.querySelector('.member-email');
-      var errorMsg = overlay.querySelector('.member-error');
-      var confirmMsg = overlay.querySelector('.member-confirm');
-      var subline = overlay.querySelector('.member-sub');
+      var head = overlay.querySelector('.member-head');
+      var donePanel = overlay.querySelector('.member-done');
+      var doneText = overlay.querySelector('.member-done-text');
+      var doneClose = overlay.querySelector('.member-done-close');
+      var submitBtn = overlay.querySelector('.member-submit');
+      var btnLabel = overlay.querySelector('.mf-btn-label');
+      var formErr = overlay.querySelector('.mf-formerr');
+      var honeypot = overlay.querySelector('#mf-website');
+      var messageEl = overlay.querySelector('#mf-message');
+      var countEl = overlay.querySelector('.mf-count-n');
+      var countryEl = overlay.querySelector('#mf-country');
 
-      function openModal() {
-        /* Reset to the form state each time it opens */
-        form.hidden = false;
-        subline.hidden = false;
-        confirmMsg.hidden = true;
-        errorMsg.hidden = true;
-        emailInput.value = '';
+      var lastFocus = null;
+      var sending = false;
+      var validateLive = false;   /* only nag inline after the first submit */
+
+      /* ---- Country list -------------------------------------------
+         Kept as data rather than 200 lines of <option> markup. */
+      var COUNTRIES = ('Afghanistan,Albania,Algeria,Andorra,Angola,Antigua and Barbuda,Argentina,Armenia,Australia,Austria,'
+        + 'Azerbaijan,Bahamas,Bahrain,Bangladesh,Barbados,Belarus,Belgium,Belize,Benin,Bhutan,Bolivia,'
+        + 'Bosnia and Herzegovina,Botswana,Brazil,Brunei,Bulgaria,Burkina Faso,Burundi,Cabo Verde,Cambodia,Cameroon,'
+        + 'Canada,Central African Republic,Chad,Chile,China,Colombia,Comoros,Congo,Costa Rica,Côte d’Ivoire,Croatia,'
+        + 'Cuba,Cyprus,Czechia,Democratic Republic of the Congo,Denmark,Djibouti,Dominica,Dominican Republic,Ecuador,'
+        + 'Egypt,El Salvador,Equatorial Guinea,Eritrea,Estonia,Eswatini,Ethiopia,Fiji,Finland,France,Gabon,Gambia,'
+        + 'Georgia,Germany,Ghana,Greece,Grenada,Guatemala,Guinea,Guinea-Bissau,Guyana,Haiti,Honduras,Hungary,Iceland,'
+        + 'India,Indonesia,Iran,Iraq,Ireland,Israel,Italy,Jamaica,Japan,Jordan,Kazakhstan,Kenya,Kiribati,Kosovo,Kuwait,'
+        + 'Kyrgyzstan,Laos,Latvia,Lebanon,Lesotho,Liberia,Libya,Liechtenstein,Lithuania,Luxembourg,Madagascar,Malawi,'
+        + 'Malaysia,Maldives,Mali,Malta,Marshall Islands,Mauritania,Mauritius,Mexico,Micronesia,Moldova,Monaco,Mongolia,'
+        + 'Montenegro,Morocco,Mozambique,Myanmar,Namibia,Nauru,Nepal,Netherlands,New Zealand,Nicaragua,Niger,Nigeria,'
+        + 'North Korea,North Macedonia,Norway,Oman,Pakistan,Palau,Palestine,Panama,Papua New Guinea,Paraguay,Peru,'
+        + 'Philippines,Poland,Portugal,Qatar,Romania,Russia,Rwanda,Saint Kitts and Nevis,Saint Lucia,'
+        + 'Saint Vincent and the Grenadines,Samoa,San Marino,Sao Tome and Principe,Saudi Arabia,Senegal,Serbia,'
+        + 'Seychelles,Sierra Leone,Singapore,Slovakia,Slovenia,Solomon Islands,Somalia,South Africa,South Korea,'
+        + 'South Sudan,Spain,Sri Lanka,Sudan,Suriname,Sweden,Switzerland,Syria,Taiwan,Tajikistan,Tanzania,Thailand,'
+        + 'Timor-Leste,Togo,Tonga,Trinidad and Tobago,Tunisia,Turkey,Turkmenistan,Tuvalu,Uganda,Ukraine,'
+        + 'United Arab Emirates,United Kingdom,United States,Uruguay,Uzbekistan,Vanuatu,Vatican City,Venezuela,'
+        + 'Vietnam,Yemen,Zambia,Zimbabwe,Other').split(',');
+
+      COUNTRIES.forEach(function (name) {
+        var opt = document.createElement('option');
+        opt.value = name;
+        opt.textContent = name;
+        countryEl.appendChild(opt);
+      });
+
+      /* ---- Validation rules ---------------------------------------
+         One entry per field: the element, and a test that returns an
+         error string (or '' when the value is acceptable). */
+      var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+      var PHONE_RE = /^[+()\d][\d\s().-]{5,}$/;
+
+      var FIELDS = [
+        {
+          el: overlay.querySelector('#mf-name'),
+          test: function (v) {
+            if (!v) return 'Please tell us your name.';
+            if (v.length < 2) return 'That name looks a little short.';
+            return '';
+          }
+        },
+        {
+          el: overlay.querySelector('#mf-email'),
+          test: function (v) {
+            if (!v) return 'Please enter your email address.';
+            if (!EMAIL_RE.test(v)) return 'Please enter a valid email address.';
+            return '';
+          }
+        },
+        {
+          el: overlay.querySelector('#mf-phone'),
+          test: function (v) {
+            if (!v) return '';                       /* optional */
+            if (!PHONE_RE.test(v)) return 'Please enter a valid phone number, or leave this blank.';
+            return '';
+          }
+        },
+        {
+          el: countryEl,
+          test: function (v) { return v ? '' : 'Please select your country.'; }
+        },
+        {
+          el: overlay.querySelector('#mf-interest'),
+          test: function (v) { return v ? '' : 'Please choose what you are interested in.'; }
+        },
+        {
+          el: messageEl,
+          test: function (v) { return v.length > 1000 ? 'Please keep your message under 1000 characters.' : ''; }
+        }
+      ];
+
+      function errorNode(field) {
+        return overlay.querySelector('#' + field.el.id + '-err');
+      }
+
+      function showFieldError(field, msg) {
+        var node = errorNode(field);
+        var wrap = field.el.closest('.mf-field');
+        if (msg) {
+          node.textContent = msg;
+          node.hidden = false;
+          wrap.classList.add('is-invalid');
+          field.el.setAttribute('aria-invalid', 'true');
+        } else {
+          node.textContent = '';
+          node.hidden = true;
+          wrap.classList.remove('is-invalid');
+          field.el.removeAttribute('aria-invalid');
+        }
+      }
+
+      function checkField(field) {
+        var msg = field.test(field.el.value.trim());
+        showFieldError(field, msg);
+        return !msg;
+      }
+
+      function validateAll() {
+        var firstBad = null;
+        FIELDS.forEach(function (field) {
+          if (!checkField(field) && !firstBad) firstBad = field;
+        });
+        return firstBad;
+      }
+
+      /* Re-check as the visitor types, but only once they have tried
+         to submit — otherwise the form scolds people mid-word. */
+      FIELDS.forEach(function (field) {
+        var evt = field.el.tagName === 'SELECT' ? 'change' : 'input';
+        field.el.addEventListener(evt, function () {
+          if (validateLive) checkField(field);
+        });
+        field.el.addEventListener('blur', function () {
+          if (validateLive || field.el.value.trim()) checkField(field);
+        });
+      });
+
+      messageEl.addEventListener('input', function () {
+        countEl.textContent = messageEl.value.length;
+      });
+
+      /* ---- Open / close -------------------------------------------- */
+      function resetForm() {
+        form.reset();
+        validateLive = false;
+        sending = false;
+        countEl.textContent = '0';
+        formErr.hidden = true;
+        formErr.textContent = '';
+        FIELDS.forEach(function (field) { showFieldError(field, ''); });
+        setSending(false);
+        showPanel('form');
+      }
+
+      /* The dialog's accessible name has to follow whichever panel is
+         showing — the form's <h3> disappears with it on success. */
+      function showPanel(which) {
+        var done = which === 'done';
+        form.hidden = done;
+        head.hidden = done;
+        donePanel.hidden = !done;
+        overlay.setAttribute('aria-labelledby', done ? 'member-done-title' : 'member-modal-title');
+      }
+
+      var interestEl = overlay.querySelector('#mf-interest');
+
+      /* interest: optional value to preselect, so a trigger that already
+         says what it is ("Volunteer") does not ask again. */
+      function openModal(interest) {
+        lastFocus = document.activeElement;
+        resetForm();
+        if (interest && interestEl.querySelector('option[value="' + interest + '"]')) {
+          interestEl.value = interest;
+        }
         overlay.classList.add('is-open');
         document.body.classList.add('modal-open');
-        emailInput.focus();
+        modal.scrollTop = 0;
+        FIELDS[0].el.focus();
       }
 
       function closeModal() {
         overlay.classList.remove('is-open');
-        document.body.classList.remove('modal-open');
+        /* The story lightbox may still be open underneath — only give
+           the page its scrollbar back when nothing is left on top. */
+        if (!document.querySelector('.story-overlay.is-open')) {
+          document.body.classList.remove('modal-open');
+        }
+        if (lastFocus && lastFocus.focus) lastFocus.focus();
       }
 
       document.querySelectorAll('.js-member-open').forEach(function (btn) {
         btn.addEventListener('click', function (e) {
           e.preventDefault();
-          openModal();
+          openModal(btn.getAttribute('data-interest'));
         });
       });
 
       closeBtn.addEventListener('click', closeModal);
+      doneClose.addEventListener('click', closeModal);
 
-      overlay.addEventListener('click', function (e) {
+      overlay.addEventListener('mousedown', function (e) {
+        /* mousedown, not click: a drag that ends outside the panel
+           should not be read as "dismiss". */
         if (!modal.contains(e.target)) closeModal();
       });
 
       document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && overlay.classList.contains('is-open')) closeModal();
+        if (!overlay.classList.contains('is-open')) return;
+        if (e.key === 'Escape') { closeModal(); return; }
+        if (e.key !== 'Tab') return;
+
+        /* Focus trap. The form and the success panel both live in the
+           modal and take turns being [hidden], so filter to what is
+           actually on screen — offsetParent is null for either. */
+        var focusables = [].filter.call(
+          modal.querySelectorAll('a[href], button:not([disabled]), input:not([tabindex="-1"]), select, textarea'),
+          function (el) { return el.offsetParent !== null; }
+        );
+        if (!focusables.length) return;
+        var first = focusables[0];
+        var last = focusables[focusables.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
       });
+
+      /* Another page can deep-link straight into the form:
+         index.html#join-modal, or #join-modal/volunteer to land with
+         that interest already chosen. Scroll the Join banner into
+         place first, so closing the form leaves you somewhere sensible. */
+      function openFromHash() {
+        var hash = window.location.hash;
+        if (hash.indexOf('#join-modal') !== 0) return;
+        var joinSection = document.getElementById('join');
+        if (joinSection) joinSection.scrollIntoView();
+        openModal(hash.split('/')[1] || '');
+      }
+
+      openFromHash();
+      window.addEventListener('hashchange', openFromHash);
+
+      /* ---- Submit --------------------------------------------------- */
+      function setSending(on) {
+        sending = on;
+        submitBtn.disabled = on;
+        submitBtn.classList.toggle('is-sending', on);
+        btnLabel.textContent = on ? 'Sending…' : 'Submit';
+      }
+
+      var INTEREST_LABEL = {
+        member: 'membership',
+        volunteer: 'volunteering',
+        ambassador: 'the ambassador programme',
+        chapter: 'starting a chapter',
+        general: 'your enquiry'
+      };
 
       form.addEventListener('submit', function (e) {
         e.preventDefault();
-        var email = emailInput.value.trim();
-        var valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-        if (!valid) {
-          errorMsg.hidden = false;
-          emailInput.focus();
+        if (sending) return;
+
+        validateLive = true;
+        formErr.hidden = true;
+
+        var firstBad = validateAll();
+        if (firstBad) {
+          formErr.textContent = 'Please correct the highlighted fields.';
+          formErr.hidden = false;
+          firstBad.el.focus();
           return;
         }
-        errorMsg.hidden = true;
-        window.location.href = 'mailto:theseventynations@gmail.com'
-          + '?subject=' + encodeURIComponent('New Member Signup')
-          + '&body=' + encodeURIComponent('New member signup request from: ' + email);
-        form.hidden = true;
-        subline.hidden = true;
-        confirmMsg.hidden = false;
+
+        var payload = {
+          name: overlay.querySelector('#mf-name').value.trim(),
+          email: overlay.querySelector('#mf-email').value.trim(),
+          phone: overlay.querySelector('#mf-phone').value.trim(),
+          country: countryEl.value,
+          interest: overlay.querySelector('#mf-interest').value,
+          message: messageEl.value.trim(),
+          website: honeypot.value.trim(),          /* honeypot */
+          submittedAt: new Date().toISOString()
+        };
+
+        setSending(true);
+
+        submitMembership(payload).then(function () {
+          var who = payload.name.split(' ')[0];
+          var what = INTEREST_LABEL[payload.interest] || 'your enquiry';
+          doneText.textContent = who
+            + ', your details are with us. We will be in touch about '
+            + what + ' at ' + payload.email + '.';
+          showPanel('done');
+          modal.scrollTop = 0;
+          doneClose.focus();
+        }).catch(function (err) {
+          setSending(false);
+          formErr.textContent = (err && err.message)
+            ? err.message
+            : 'Something went wrong sending your details. Please try again.';
+          formErr.hidden = false;
+        });
       });
+
+      /* ---- Submit --------------------------------------------------
+         Goes out through JUC_FORMS.send() in forms.js, which posts to
+         Web3Forms and delivers to Info@marianneparadise.org. The access
+         key lives in that file — this handler only shapes the email. */
+      function submitMembership(payload) {
+        /* Honeypot filled in => a bot. Look successful, send nothing. */
+        if (payload.website) return Promise.resolve({ skipped: true });
+
+        /* The visible option text ("Becoming an Ambassador") reads
+           better in an inbox than INTEREST_LABEL's sentence fragments,
+           which are written for the on-screen thank-you line. */
+        var interestEl = overlay.querySelector('#mf-interest');
+        var interest = interestEl.options[interestEl.selectedIndex].text;
+
+        return window.JUC_FORMS.send({
+          subject: 'Membership enquiry (' + interest + ') — Jerusalem Unity Center',
+          from_name: 'Jerusalem Unity Center website',
+          form_name: 'Membership enquiry',
+          name: payload.name,
+          email: payload.email,
+          replyto: payload.email,      /* replies go straight to the enquirer */
+          phone: payload.phone,
+          country: payload.country,
+          interest: interest,
+          message: payload.message,
+          submittedAt: payload.submittedAt
+        });
+      }
+    })();
+
+    /* ==========================================================
+       WATCH OUR STORY — animated presentation player
+
+       Drives the CSS motion slides like a video: chapter progress,
+       play/pause, prev/next, Esc. If a <video class="story-video">
+       is ever added to .story-frame it takes over and the same
+       controls drive the real timeline instead.
+       ========================================================== */
+    (function () {
+      var overlay = document.getElementById('story-modal');
+      if (!overlay) return;
+
+      var frame = overlay.querySelector('.story-frame');
+      var stage = document.getElementById('story-stage');
+      var bar = document.getElementById('story-progress');
+      var closeBtn = overlay.querySelector('.story-close');
+      var prevBtn = overlay.querySelector('.js-story-prev');
+      var nextBtn = overlay.querySelector('.js-story-next');
+      var toggleBtn = overlay.querySelector('.js-story-toggle');
+      var counter = overlay.querySelector('.story-count b');
+      var counterTotal = overlay.querySelector('.story-count i');
+      var memberOverlay = document.getElementById('member-modal');
+
+      var slides = Array.prototype.slice.call(stage.querySelectorAll('.story-slide'));
+      /* Real footage, if it has ever been dropped in. */
+      var video = frame.querySelector('.story-video');
+      var hasVideo = !!(video && (video.currentSrc || video.querySelector('source')));
+
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var index = -1;
+      var duration = 0;      /* ms for the current chapter, 0 = hold */
+      var elapsed = 0;
+      var frameStart = 0;
+      var rafId = null;
+      var paused = false;
+      var lastFocus = null;
+
+      /* ---- Chapter progress segments ---------------------------- */
+      var fills = slides.map(function (slide) {
+        var seg = document.createElement('span');
+        seg.className = 'story-seg';
+        seg.innerHTML = '<i></i><em>' + (slide.dataset.label || '') + '</em>';
+        bar.appendChild(seg);
+        return seg.querySelector('i');
+      });
+
+      if (counterTotal) counterTotal.textContent = slides.length;
+
+      function setFills(upTo, ratio) {
+        fills.forEach(function (fill, n) {
+          fill.style.width = n < upTo ? '100%' : (n === upTo ? (ratio * 100) + '%' : '0%');
+          fill.parentNode.classList.toggle('is-current', n === index);
+        });
+      }
+
+      /* ---- Playback ---------------------------------------------- */
+      function stopTimer() {
+        if (rafId) cancelAnimationFrame(rafId);
+        rafId = null;
+        frameStart = 0;
+      }
+
+      function tick(now) {
+        if (!frameStart) frameStart = now - elapsed;
+        elapsed = now - frameStart;
+        var ratio = duration ? Math.min(elapsed / duration, 1) : 0;
+        setFills(index, ratio);
+        if (ratio >= 1) {
+          stopTimer();
+          go(index + 1);
+          return;
+        }
+        rafId = requestAnimationFrame(tick);
+      }
+
+      function startTimer() {
+        stopTimer();
+        if (!duration) return;          /* holding slide */
+        rafId = requestAnimationFrame(tick);
+      }
+
+      function go(i) {
+        if (i < 0) i = 0;
+        if (i > slides.length - 1) i = slides.length - 1;
+
+        stopTimer();
+        if (index > -1) slides[index].classList.remove('is-active');
+        index = i;
+
+        var slide = slides[index];
+        /* Reflow so the slide's entrance animations restart on replay */
+        void slide.offsetWidth;
+        slide.classList.add('is-active');
+
+        duration = parseInt(slide.dataset.dur, 10) || 0;
+        elapsed = 0;
+        /* A holding slide (dur 0) reads as complete: fill its segment too */
+        setFills(duration ? index : index + 1, 0);
+        if (counter) counter.textContent = index + 1;
+
+        frame.classList.toggle('is-last', index === slides.length - 1);
+        if (!paused) startTimer();
+      }
+
+      function setPaused(state) {
+        paused = state;
+        frame.classList.toggle('is-paused', paused);
+        toggleBtn.setAttribute('aria-label', paused ? 'Play' : 'Pause');
+        if (hasVideo) {
+          if (paused) video.pause(); else video.play();
+          return;
+        }
+        if (paused) stopTimer(); else startTimer();
+      }
+
+      /* ---- Real-video path ---------------------------------------- */
+      function bindVideo() {
+        frame.classList.add('has-video');
+        stage.hidden = true;
+        video.addEventListener('timeupdate', function () {
+          if (!video.duration) return;
+          fills.forEach(function (fill, n) { fill.style.width = n ? '0%' : '100%'; });
+          fills[0].style.width = (video.currentTime / video.duration * 100) + '%';
+        });
+        video.addEventListener('ended', function () { setPaused(true); });
+        prevBtn.addEventListener('click', function () { video.currentTime = Math.max(0, video.currentTime - 10); });
+        nextBtn.addEventListener('click', function () { video.currentTime = Math.min(video.duration || 0, video.currentTime + 10); });
+      }
+
+      /* ---- Open / close -------------------------------------------- */
+      function openStory() {
+        lastFocus = document.activeElement;
+        overlay.classList.add('is-open');
+        document.body.classList.add('modal-open');
+        setPaused(false);
+        if (hasVideo) {
+          video.currentTime = 0;
+          var p = video.play();
+          if (p && p.catch) p.catch(function () { setPaused(true); });
+        } else {
+          index = -1;
+          go(0);
+        }
+        closeBtn.focus();
+      }
+
+      function closeStory() {
+        stopTimer();
+        overlay.classList.remove('is-open');
+        document.body.classList.remove('modal-open');
+        if (hasVideo) video.pause();
+        if (index > -1) {
+          slides[index].classList.remove('is-active');
+          index = -1;
+        }
+        setFills(-1, 0);
+        if (lastFocus && lastFocus.focus) lastFocus.focus();
+      }
+
+      function isOpen() { return overlay.classList.contains('is-open'); }
+
+      document.querySelectorAll('.js-story-open').forEach(function (btn) {
+        btn.addEventListener('click', function (e) {
+          e.preventDefault();
+          openStory();
+        });
+      });
+
+      closeBtn.addEventListener('click', closeStory);
+      toggleBtn.addEventListener('click', function () { setPaused(!paused); });
+
+      if (hasVideo) {
+        bindVideo();
+      } else {
+        prevBtn.addEventListener('click', function () { go(index - 1); });
+        nextBtn.addEventListener('click', function () { go(index + 1); });
+      }
+
+      overlay.querySelector('.js-story-replay').addEventListener('click', function () {
+        setPaused(false);
+        if (hasVideo) { video.currentTime = 0; video.play(); return; }
+        index = -1;
+        go(0);
+      });
+
+      /* The membership modal opens above the story — hold playback
+         while the visitor is filling it in. */
+      overlay.querySelectorAll('.js-member-open').forEach(function (btn) {
+        btn.addEventListener('click', function () { setPaused(true); });
+      });
+
+      /* Capture phase: the membership modal's own Escape handler runs on
+         bubble, so this has to see the key first to know whether that
+         modal is still open — otherwise one Escape closes both. */
+      document.addEventListener('keydown', function (e) {
+        if (!isOpen()) return;
+        var memberOpen = memberOverlay && memberOverlay.classList.contains('is-open');
+        if (memberOpen) return;
+        if (e.key === 'Escape') { closeStory(); return; }
+        if (e.key === 'ArrowRight') { e.preventDefault(); if (hasVideo) nextBtn.click(); else go(index + 1); }
+        if (e.key === 'ArrowLeft') { e.preventDefault(); if (hasVideo) prevBtn.click(); else go(index - 1); }
+        if (e.key === ' ' || e.key === 'Spacebar') { e.preventDefault(); setPaused(!paused); }
+      }, true);
+
+      /* Reduced motion: entrance animations are neutralised in CSS,
+         so give each chapter a shorter, calmer dwell. */
+      if (reduceMotion && !hasVideo) {
+        slides.forEach(function (slide) {
+          if (slide.dataset.dur !== '0') slide.dataset.dur = '4500';
+        });
+      }
+    })();
+
+    /* ==========================================================
+       THE MASTER PLAN — vertical reel player
+
+       Same engine as the story player, shaped for a portrait card:
+       chapter pips, transport controls, tap-left / tap-right, and
+       swipe on touch. Opened by any .js-plan-open link (which keeps
+       its master-plan.html href as the no-JS fallback) or by the
+       #master-plan hash.
+       ========================================================== */
+    (function () {
+      var overlay = document.getElementById('plan-modal');
+      if (!overlay) return;
+
+      var frame = overlay.querySelector('.plan-frame');
+      var stage = document.getElementById('plan-stage');
+      var bar = document.getElementById('plan-progress');
+      var chapterEl = document.getElementById('plan-chapter');
+      var closeBtn = overlay.querySelector('.plan-close');
+      var toggleBtn = overlay.querySelector('.js-plan-toggle');
+      var counter = overlay.querySelector('.plan-count b');
+      var counterTotal = overlay.querySelector('.plan-count i');
+      var memberOverlay = document.getElementById('member-modal');
+      var storyOverlay = document.getElementById('story-modal');
+
+      var slides = Array.prototype.slice.call(stage.querySelectorAll('.plan-slide'));
+      /* Real footage, if it has ever been dropped in. */
+      var video = frame.querySelector('.plan-video');
+      var hasVideo = !!(video && (video.currentSrc || video.querySelector('source')));
+
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var index = -1;
+      var duration = 0;      /* ms for the current chapter, 0 = hold */
+      var elapsed = 0;
+      var frameStart = 0;
+      var rafId = null;
+      var paused = false;
+      var lastFocus = null;
+      var swiped = false;    /* set by a touch swipe so the tap zone under it stays quiet */
+
+      var fills = slides.map(function (slide) {
+        var seg = document.createElement('span');
+        seg.className = 'plan-seg';
+        seg.innerHTML = '<i></i><em>' + (slide.dataset.label || '') + '</em>';
+        bar.appendChild(seg);
+        return seg.querySelector('i');
+      });
+
+      if (counterTotal) counterTotal.textContent = slides.length;
+
+      function setFills(upTo, ratio) {
+        fills.forEach(function (fill, n) {
+          fill.style.width = n < upTo ? '100%' : (n === upTo ? (ratio * 100) + '%' : '0%');
+        });
+      }
+
+      /* ---- Playback ---------------------------------------------- */
+      function stopTimer() {
+        if (rafId) cancelAnimationFrame(rafId);
+        rafId = null;
+        frameStart = 0;
+      }
+
+      function tick(now) {
+        if (!frameStart) frameStart = now - elapsed;
+        elapsed = now - frameStart;
+        var ratio = duration ? Math.min(elapsed / duration, 1) : 0;
+        setFills(index, ratio);
+        if (ratio >= 1) {
+          stopTimer();
+          go(index + 1);
+          return;
+        }
+        rafId = requestAnimationFrame(tick);
+      }
+
+      function startTimer() {
+        stopTimer();
+        if (!duration) return;          /* holding chapter */
+        rafId = requestAnimationFrame(tick);
+      }
+
+      function go(i) {
+        if (i < 0) i = 0;
+        if (i > slides.length - 1) i = slides.length - 1;
+
+        stopTimer();
+        if (index > -1) slides[index].classList.remove('is-active');
+        index = i;
+
+        var slide = slides[index];
+        /* Reflow so the chapter's entrance animations restart on replay */
+        void slide.offsetWidth;
+        slide.classList.add('is-active');
+
+        duration = parseInt(slide.dataset.dur, 10) || 0;
+        elapsed = 0;
+        /* A holding chapter (dur 0) reads as complete: fill its pip too */
+        setFills(duration ? index : index + 1, 0);
+        if (counter) counter.textContent = index + 1;
+        if (chapterEl) chapterEl.textContent = slide.dataset.label || '';
+
+        frame.classList.toggle('is-last', index === slides.length - 1);
+        if (!paused) startTimer();
+      }
+
+      function setPaused(state) {
+        paused = state;
+        frame.classList.toggle('is-paused', paused);
+        toggleBtn.setAttribute('aria-label', paused ? 'Play' : 'Pause');
+        if (hasVideo) {
+          if (paused) video.pause(); else video.play();
+          return;
+        }
+        if (paused) stopTimer(); else startTimer();
+      }
+
+      /* ---- Real-video path ---------------------------------------- */
+      function bindVideo() {
+        frame.classList.add('has-video');
+        stage.hidden = true;
+        video.addEventListener('timeupdate', function () {
+          if (!video.duration) return;
+          fills.forEach(function (fill, n) { fill.style.width = n ? '0%' : '100%'; });
+          fills[0].style.width = (video.currentTime / video.duration * 100) + '%';
+        });
+        video.addEventListener('ended', function () { setPaused(true); });
+      }
+
+      function step(delta) {
+        if (hasVideo) {
+          video.currentTime = Math.max(0, Math.min(video.duration || 0, video.currentTime + delta * 10));
+          return;
+        }
+        go(index + delta);
+      }
+
+      /* ---- Open / close -------------------------------------------- */
+      function openPlan() {
+        /* Reached from the story's closing chapter — let that player
+           put itself away first so only one reel is ever running. */
+        if (storyOverlay && storyOverlay.classList.contains('is-open')) {
+          storyOverlay.querySelector('.story-close').click();
+        }
+
+        lastFocus = document.activeElement;
+        overlay.classList.add('is-open');
+        document.body.classList.add('modal-open');
+        setPaused(false);
+        if (hasVideo) {
+          video.currentTime = 0;
+          var p = video.play();
+          if (p && p.catch) p.catch(function () { setPaused(true); });
+        } else {
+          index = -1;
+          go(0);
+        }
+        closeBtn.focus();
+      }
+
+      function closePlan() {
+        stopTimer();
+        overlay.classList.remove('is-open');
+        document.body.classList.remove('modal-open');
+        if (hasVideo) video.pause();
+        if (index > -1) {
+          slides[index].classList.remove('is-active');
+          index = -1;
+        }
+        setFills(-1, 0);
+        if (lastFocus && lastFocus.focus) lastFocus.focus();
+      }
+
+      function isOpen() { return overlay.classList.contains('is-open'); }
+
+      document.querySelectorAll('.js-plan-open').forEach(function (link) {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          openPlan();
+        });
+      });
+
+      closeBtn.addEventListener('click', closePlan);
+      toggleBtn.addEventListener('click', function () { setPaused(!paused); });
+      overlay.querySelector('.plan-backdrop').addEventListener('click', closePlan);
+
+      if (hasVideo) bindVideo();
+
+      /* Transport buttons and the reel tap zones share these classes. */
+      overlay.querySelectorAll('.js-plan-prev').forEach(function (btn) {
+        btn.addEventListener('click', function () { if (!swiped) step(-1); });
+      });
+      overlay.querySelectorAll('.js-plan-next').forEach(function (btn) {
+        btn.addEventListener('click', function () { if (!swiped) step(1); });
+      });
+
+      overlay.querySelector('.js-plan-replay').addEventListener('click', function () {
+        setPaused(false);
+        if (hasVideo) { video.currentTime = 0; video.play(); return; }
+        index = -1;
+        go(0);
+      });
+
+      /* The membership modal opens above the reel — hold playback
+         while the visitor is filling it in. */
+      overlay.querySelectorAll('.js-member-open').forEach(function (btn) {
+        btn.addEventListener('click', function () { setPaused(true); });
+      });
+
+      /* ---- Swipe, the way a reel expects ---------------------------- */
+      var touchX = 0;
+      var touchY = 0;
+
+      frame.addEventListener('touchstart', function (e) {
+        var t = e.changedTouches[0];
+        touchX = t.clientX;
+        touchY = t.clientY;
+        swiped = false;
+      }, { passive: true });
+
+      frame.addEventListener('touchend', function (e) {
+        var t = e.changedTouches[0];
+        var dx = t.clientX - touchX;
+        var dy = t.clientY - touchY;
+        if (Math.abs(dx) < 45 && Math.abs(dy) < 55) return;
+
+        /* A swipe must not also register as a tap on the zone underneath */
+        swiped = true;
+        setTimeout(function () { swiped = false; }, 350);
+
+        if (Math.abs(dx) > Math.abs(dy)) step(dx < 0 ? 1 : -1);
+        else step(dy < 0 ? 1 : -1);
+      }, { passive: true });
+
+      /* Capture phase, for the same reason as the story player: the
+         membership modal's Escape handler runs on bubble, so this has
+         to see the key first to avoid closing both at once. */
+      document.addEventListener('keydown', function (e) {
+        if (!isOpen()) return;
+        if (memberOverlay && memberOverlay.classList.contains('is-open')) return;
+        if (e.key === 'Escape') { closePlan(); return; }
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); step(1); }
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); step(-1); }
+        if (e.key === ' ' || e.key === 'Spacebar') { e.preventDefault(); setPaused(!paused); }
+      }, true);
+
+      /* Deep link: index.html#master-plan opens the reel, so other
+         pages can still point at the plan. */
+      function fromHash() {
+        if (window.location.hash.indexOf('#master-plan') !== 0) return;
+        openPlan();
+        /* Drop the hash so closing and re-opening still works — and so a
+           reload does not land straight back in the reel. Guarded:
+           replaceState throws on a file:// page. */
+        try {
+          history.replaceState(null, '', window.location.pathname + window.location.search);
+        } catch (err) { /* nothing to do — the reel is already open */ }
+      }
+      window.addEventListener('hashchange', fromHash);
+      fromHash();
+
+      /* Reduced motion: entrance animations are neutralised in CSS,
+         so give each chapter a shorter, calmer dwell. */
+      if (reduceMotion && !hasVideo) {
+        slides.forEach(function (slide) {
+          if (slide.dataset.dur !== '0') slide.dataset.dur = '4200';
+        });
+      }
     })();
   </script>
 
