@@ -1,0 +1,1340 @@
+/* ============================================================
+   Jerusalem Unity Center — THE MASTER PLAN (master-plan.html)
+
+   Loaded AFTER style.css. The brand system (colors, header,
+   footer, buttons, .heading-orn, .institute-card, .pathway)
+   comes from style.css untouched; everything here is either a
+   page-scoped override or layout unique to this document.
+
+   Order of the document:
+     header · hero · sticky nav · at a glance ·
+     01 Vision · 02 Campus · 03 Institutes ·
+     04 Pathways · 05 Realization · 06 Support · footer
+
+   The final block is @media print — this page doubles as the
+   downloadable PDF, so it re-inks itself for paper.
+   ============================================================ */
+
+:root {
+  --mp-cream: #EBDFD4;          /* matches --s3-cream */
+  --mp-ink: #262242;            /* cream-section headings */
+  --mp-ink-body: #4A4459;       /* cream-section body copy */
+  --mp-navy-deep: #080C1D;      /* navy sections, a touch under --navy */
+  --mp-navy-panel: #111730;     /* cards on navy */
+  --mp-light-body: #D7D4DF;     /* navy-section body copy */
+  --mp-hairline: rgba(196, 146, 63, 0.28);
+  --mp-nav-h: 52px;             /* sticky section-nav height */
+}
+
+/* Anchor targets must clear the sticky section nav */
+.mp-body {
+  background: var(--mp-navy-deep);
+  scroll-behavior: smooth;
+}
+
+.mp-body [id] {
+  scroll-margin-top: calc(var(--mp-nav-h) + 18px);
+}
+
+.mp-shell {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+/* Skip link — visible only when focused */
+.mp-skip {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 60;
+  padding: 10px 18px;
+  background: var(--gold);
+  color: #0A0F23;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.mp-skip:focus {
+  left: 12px;
+  top: 12px;
+}
+
+/* ============================================================
+   READING PROGRESS
+   ============================================================ */
+
+.mp-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.mp-progress-bar {
+  display: block;
+  height: 100%;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  background: linear-gradient(90deg, var(--gold-lo), #F3DF93);
+}
+
+/* ============================================================
+   HEADER — style.css positions .site-header absolutely over the
+   hero; here it sits in the flow as a solid navy bar.
+   ============================================================ */
+
+.mp-header {
+  position: relative;
+  background: var(--navy);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  padding-bottom: 14px;
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+
+.mp-hero {
+  position: relative;
+  background: #150C31 url("assets/section4-bg.png") 50% 42% / cover no-repeat;
+  overflow: hidden;
+}
+
+.mp-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(10, 8, 28, 0.92) 0%,
+    rgba(10, 8, 28, 0.78) 38%,
+    rgba(10, 8, 28, 0.30) 72%,
+    rgba(10, 8, 28, 0.16) 100%
+  );
+}
+
+/* Fade the render into the section below it */
+.mp-hero::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 120px;
+  background: linear-gradient(180deg, rgba(8, 12, 29, 0), var(--mp-navy-deep));
+}
+
+.mp-hero-inner {
+  position: relative;
+  z-index: 1;
+  padding-top: 92px;
+  padding-bottom: 104px;
+  max-width: 1180px;
+}
+
+.mp-eyebrow {
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.mp-title {
+  margin-top: 16px;
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: clamp(46px, 5.4vw, 78px);
+  line-height: 1.02;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.mp-title .gold-bright {
+  background: linear-gradient(180deg, #F3DF93, #DDB874);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.mp-tagline {
+  margin-top: 14px;
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: 23px;
+  line-height: 1.3;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #E4D6BC;
+}
+
+.mp-lead {
+  max-width: 540px;
+  margin-top: 20px;
+  font-size: 16.5px;
+  font-weight: 300;
+  line-height: 29px;
+  color: var(--text-body);
+}
+
+.mp-hero-quote {
+  max-width: 540px;
+  margin-top: 26px;
+  padding-left: 18px;
+  border-left: 1px solid var(--mp-hairline);
+}
+
+.mp-hero-quote-text {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 29px;
+  color: var(--gold);
+}
+
+.mp-hero-quote-text .qmark {
+  opacity: 0.55;
+}
+
+.mp-hero-quote-cite {
+  display: block;
+  margin-top: 6px;
+  font-family: var(--font-sans);
+  font-style: normal;
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(196, 146, 63, 0.8);
+}
+
+.mp-hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px;
+  margin-top: 30px;
+}
+
+/* Shared sizing for every CTA on the page */
+.mp-cta {
+  height: 47px;
+  padding: 0 24px;
+  border-radius: 4px;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.10em;
+}
+
+.mp-icon-print {
+  width: 17px;
+  height: 17px;
+  margin-right: 11px;
+}
+
+/* ============================================================
+   STICKY SECTION NAV
+   ============================================================ */
+
+.mp-nav {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  height: var(--mp-nav-h);
+  background: rgba(8, 12, 29, 0.94);
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
+  border-top: 1px solid var(--mp-hairline);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.mp-nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  height: 100%;
+}
+
+.mp-nav-list {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  list-style: none;
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.mp-nav-list::-webkit-scrollbar {
+  display: none;
+}
+
+.mp-nav-list a {
+  position: relative;
+  display: block;
+  padding: 4px 0;
+  white-space: nowrap;
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #B9B5C4;
+  transition: color 0.2s ease;
+}
+
+.mp-nav-list a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -3px;
+  height: 1px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  transition: transform 0.25s ease;
+}
+
+.mp-nav-list a:hover {
+  color: var(--gold-hi);
+}
+
+.mp-nav-list a.is-current {
+  color: var(--gold-hi);
+}
+
+.mp-nav-list a.is-current::after {
+  transform: scaleX(1);
+}
+
+.mp-nav-print {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  height: 31px;
+  padding: 0 14px;
+  border: 1px solid var(--ghost-border);
+  border-radius: 4px;
+  background: none;
+  color: #DCD8E2;
+  font-family: var(--font-sans);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.mp-nav-print svg {
+  width: 14px;
+  height: 14px;
+}
+
+.mp-nav-print:hover {
+  border-color: var(--gold-hi);
+  color: var(--gold-hi);
+}
+
+/* ============================================================
+   AT A GLANCE
+   ============================================================ */
+
+.mp-glance {
+  background: var(--mp-navy-deep);
+  padding: 46px 0 42px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.mp-glance-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 34px;
+}
+
+.mp-stat {
+  flex: 1 1 0;
+  min-width: 0;
+  text-align: center;
+}
+
+.mp-stat-num {
+  display: block;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 52px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  background: linear-gradient(180deg, #F3DF93, #C08D3F);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.mp-stat-label {
+  display: block;
+  margin-top: 12px;
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  line-height: 18px;
+  text-transform: uppercase;
+  color: #ADA9BA;
+}
+
+.mp-stat-div {
+  width: 1px;
+  height: 58px;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* ============================================================
+   SECTION SHELLS
+   ============================================================ */
+
+.mp-section {
+  padding: 74px 0 78px;
+}
+
+.mp-cream {
+  background: var(--mp-cream) url("assets/section3-bg.png") center / cover no-repeat;
+}
+
+/* section2-bg.png is a purple field built for a short strip; stretched
+   over a tall section it washes out, so it sits under a dark wash and
+   is sized 100% 100% exactly as .pillars does it. */
+.mp-navy {
+  background:
+    linear-gradient(rgba(8, 12, 29, 0.72), rgba(8, 12, 29, 0.72)),
+    var(--mp-navy-deep) url("assets/section2-bg.png") no-repeat;
+  background-size: auto, 100% 100%;
+}
+
+/* --- Numbered section heading -------------------------------- */
+
+.mp-sec-head {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.mp-sec-num {
+  display: block;
+  margin-bottom: 12px;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.30em;
+  text-indent: 0.30em;      /* offsets the trailing letter-space */
+  color: var(--gold);
+}
+
+.mp-sec-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: clamp(24px, 2.4vw, 31px);
+  line-height: 1.2;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--mp-ink);
+}
+
+.mp-sec-title-light {
+  color: #F0EEF4;
+}
+
+.mp-sec-intro {
+  max-width: 760px;
+  margin: 0 auto 40px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 29px;
+  color: var(--mp-light-body);
+}
+
+.mp-sec-intro-dark {
+  color: var(--mp-ink-body);
+}
+
+/* ============================================================
+   01 — THE VISION
+   ============================================================ */
+
+.mp-prose {
+  max-width: 760px;
+  margin: 0 auto;
+  color: var(--mp-ink-body);
+}
+
+.mp-prose p {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 30px;
+}
+
+.mp-prose p + p {
+  margin-top: 20px;
+}
+
+.mp-prose-lead {
+  font-family: var(--font-serif);
+  font-size: 25px !important;
+  font-weight: 500;
+  line-height: 38px !important;
+  letter-spacing: 0.01em;
+  color: var(--mp-ink);
+}
+
+.mp-pull {
+  max-width: 760px;
+  margin: 42px auto 0;
+  padding: 26px 0 4px;
+  border-top: 1px solid rgba(191, 160, 117, 0.5);
+  text-align: center;
+}
+
+.mp-pull p {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 38px;
+  color: #8A6A34;
+}
+
+.mp-pull p::before { content: "\201C"; opacity: 0.5; }
+.mp-pull p::after  { content: "\201D"; opacity: 0.5; }
+
+.mp-pull cite {
+  display: block;
+  margin-top: 12px;
+  font-family: var(--font-sans);
+  font-style: normal;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #8F8899;
+}
+
+/* ============================================================
+   02 — THE CAMPUS
+   ============================================================ */
+
+.mp-figure {
+  margin: 0 0 44px;
+}
+
+/* section4-bg.png carries a flat navy field across its left ~40% (the
+   banner on the home page prints text over it). The figure is wider in
+   aspect than the source, so object-position alone can't crop that
+   field away — the frame clips an oversized image shifted left instead. */
+.mp-figure-frame {
+  overflow: hidden;
+  border-radius: 14px;
+  border: 1px solid rgba(196, 146, 63, 0.22);
+}
+
+.mp-figure-frame img {
+  display: block;
+  width: 136%;
+  max-width: none;
+  margin-left: -36%;
+  height: clamp(260px, 34vw, 430px);
+  object-fit: cover;
+  object-position: 50% 38%;
+}
+
+.mp-figure figcaption {
+  margin-top: 14px;
+  text-align: center;
+  font-size: 12.5px;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  line-height: 20px;
+  color: #9C98A9;
+}
+
+/* --- Seven functions ----------------------------------------- */
+
+/* Flex rather than grid: 7 cards means an incomplete final row, and
+   flex-wrap + justify-content centres those trailing 3 for free. */
+.mp-func-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
+
+.mp-func {
+  flex: 0 1 calc(25% - 12px);   /* 4 per row: 3 gaps of 16px */
+  padding: 26px 22px 28px;
+  background: var(--mp-navy-panel);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+
+.mp-func:hover {
+  border-color: rgba(196, 146, 63, 0.45);
+  transform: translateY(-3px);
+}
+
+/* .pillar-icon supplies the 80x80 box and per-icon width normalization;
+   only the alignment changes — these cards are left-aligned. */
+.mp-func-icon {
+  justify-content: flex-start;
+}
+
+.mp-func-title {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-top: 16px;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.25;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #EFEDF3;
+}
+
+.mp-func-idx {
+  font-family: var(--font-sans);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--gold);
+}
+
+.mp-func-desc {
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 23px;
+  color: #B4B0C0;
+}
+
+/* ============================================================
+   03 — THE INSTITUTES (cards come from style.css)
+   ============================================================ */
+
+.mp-inst-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.mp-inst-grid .institute-card {
+  height: auto;
+  min-height: 442px;
+  padding-bottom: 26px;
+  transition: transform 0.25s ease;
+}
+
+.mp-inst-grid .institute-card:hover {
+  transform: translateY(-3px);
+}
+
+/* ============================================================
+   04 — THE PATHWAYS (columns come from style.css; re-tinted
+   here for the navy ground)
+   ============================================================ */
+
+.mp-path-row {
+  margin-top: 8px;
+}
+
+.mp-path-row .pathway-title {
+  color: #EFEDF3;
+}
+
+.mp-path-row .pathway-desc {
+  color: #B4B0C0;
+}
+
+.mp-path-row .pathway-divider {
+  background: rgba(196, 146, 63, 0.34);
+}
+
+/* ============================================================
+   05 — REALIZATION
+   ============================================================ */
+
+.mp-phases {
+  position: relative;
+  max-width: 820px;
+  margin: 0 auto;
+  padding-left: 40px;
+  list-style: none;
+}
+
+/* The spine */
+.mp-phases::before {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    rgba(191, 160, 117, 0.15),
+    rgba(191, 160, 117, 0.75) 12%,
+    rgba(191, 160, 117, 0.75) 88%,
+    rgba(191, 160, 117, 0.15)
+  );
+}
+
+.mp-phase {
+  position: relative;
+}
+
+.mp-phase + .mp-phase {
+  margin-top: 34px;
+}
+
+.mp-phase-marker {
+  position: absolute;
+  left: -40px;
+  top: 7px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--mp-cream);
+  border: 2px solid #B8925A;
+  box-shadow: 0 0 0 4px rgba(235, 223, 212, 0.9);
+}
+
+.mp-phase-label {
+  display: block;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: #A2793C;
+}
+
+.mp-phase-title {
+  margin-top: 8px;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.25;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--mp-ink);
+}
+
+.mp-phase-desc {
+  margin-top: 10px;
+  max-width: 640px;
+  font-size: 15.5px;
+  font-weight: 300;
+  line-height: 27px;
+  color: var(--mp-ink-body);
+}
+
+.mp-phase-note {
+  max-width: 820px;
+  margin: 34px auto 0;
+  padding-left: 40px;
+  font-size: 12.5px;
+  font-style: italic;
+  font-weight: 300;
+  line-height: 20px;
+  color: #7C7488;
+}
+
+/* ============================================================
+   06 — SUPPORT
+   ============================================================ */
+
+.mp-support {
+  background: #150E30 url("assets/section6-bg.png") center / cover no-repeat;
+  padding: 66px 0 62px;
+  text-align: center;
+}
+
+.mp-support-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mp-support-dove {
+  width: 74px;
+  height: auto;
+  object-fit: contain;
+}
+
+.mp-support-heading {
+  margin-top: 14px;
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: clamp(28px, 3vw, 38px);
+  line-height: 1.2;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.mp-support-desc {
+  max-width: 720px;
+  margin-top: 16px;
+  font-size: 15.5px;
+  font-weight: 300;
+  line-height: 28px;
+  color: #DFE1E3;
+}
+
+.mp-support-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 28px;
+}
+
+.mp-back {
+  margin-top: 30px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #A9A5B6;
+  transition: color 0.2s ease;
+}
+
+.mp-back:hover {
+  color: var(--gold-hi);
+}
+
+/* Cover furniture that exists only on paper */
+.mp-print-mark,
+.mp-print-cover {
+  display: none;
+}
+
+/* ============================================================
+   SCROLL REVEALS
+   Only armed when JavaScript is running (html.js), so the
+   document is fully readable without it.
+   ============================================================ */
+
+.js .reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.js .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mp-body { scroll-behavior: auto; }
+
+  .js .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .mp-func:hover,
+  .mp-inst-grid .institute-card:hover {
+    transform: none;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE — 1024 / 768 / 480
+   ============================================================ */
+
+@media (max-width: 1024px) {
+
+  .mp-func {
+    flex: 0 1 calc(33.333% - 11px);   /* 3 per row */
+  }
+
+  .mp-inst-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Five pathway columns get tight before the phone breakpoint */
+  .mp-path-row {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 26px 0;
+  }
+
+  .mp-path-row .pathway {
+    flex: 0 0 33.333%;
+  }
+
+  .mp-path-row .pathway-divider {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .mp-shell {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .mp-header {
+    padding-bottom: 10px;
+  }
+
+  .mp-hero-inner {
+    padding-top: 54px;
+    padding-bottom: 64px;
+  }
+
+  .mp-hero {
+    background-position: 68% 42%;
+  }
+
+  .mp-hero::before {
+    background: linear-gradient(
+      180deg,
+      rgba(10, 8, 28, 0.86) 0%,
+      rgba(10, 8, 28, 0.80) 55%,
+      rgba(10, 8, 28, 0.88) 100%
+    );
+  }
+
+  .mp-tagline {
+    font-size: 18px;
+  }
+
+  .mp-lead,
+  .mp-hero-quote {
+    max-width: none;
+  }
+
+  .mp-hero-ctas .mp-cta {
+    flex: 1 1 100%;
+  }
+
+  /* Section nav scrolls horizontally on phones; the right edge fades
+     out so it reads as scrollable rather than cut off. */
+  .mp-nav-list {
+    gap: 22px;
+    -webkit-mask-image: linear-gradient(90deg, #000 84%, transparent);
+    mask-image: linear-gradient(90deg, #000 84%, transparent);
+  }
+
+  .mp-nav-print {
+    display: none;
+  }
+
+  .mp-section {
+    padding: 52px 0 56px;
+  }
+
+  .mp-sec-title {
+    gap: 14px;
+  }
+
+  .heading-orn.orn-short {
+    width: 26px;
+  }
+
+  .mp-glance-row {
+    flex-wrap: wrap;
+    gap: 30px 0;
+  }
+
+  .mp-stat {
+    flex: 0 0 50%;
+  }
+
+  .mp-stat-num {
+    font-size: 42px;
+  }
+
+  .mp-stat-div {
+    display: none;
+  }
+
+  .mp-prose-lead {
+    font-size: 21px !important;
+    line-height: 33px !important;
+  }
+
+  .mp-pull p {
+    font-size: 21px;
+    line-height: 32px;
+  }
+
+  .mp-func {
+    flex: 1 1 100%;
+  }
+
+  .mp-inst-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .mp-inst-grid .institute-card {
+    min-height: 0;
+  }
+
+  .mp-path-row .pathway {
+    flex: 0 0 100%;
+  }
+
+  .mp-path-row .pathway-title,
+  .mp-path-row .pathway-desc {
+    max-width: 320px;
+  }
+
+  .mp-phases,
+  .mp-phase-note {
+    padding-left: 30px;
+  }
+
+  .mp-phase-marker {
+    left: -30px;
+  }
+
+  .mp-phase-title {
+    font-size: 20px;
+  }
+
+  .mp-support {
+    padding: 48px 0 46px;
+  }
+
+  .mp-support-ctas .mp-cta {
+    flex: 1 1 100%;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .mp-title {
+    font-size: 40px;
+  }
+
+  .mp-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+  }
+
+  .mp-figure img {
+    height: 220px;
+  }
+
+  .mp-stat-label {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+  }
+}
+
+/* ============================================================
+   PRINT — this page is also the downloadable PDF.
+   The screen design is dark; on paper it re-inks to a cream/
+   white document with navy text and gold rules.
+   ============================================================ */
+
+@media print {
+
+  @page {
+    size: A4;
+    margin: 16mm 14mm;
+  }
+
+  .mp-body {
+    background: #FFFFFF;
+    color: #1B1830;
+  }
+
+  /* Screen furniture that has no meaning on paper */
+  .mp-progress,
+  .mp-skip,
+  .mp-nav,
+  .site-header,
+  .mp-hero-ctas,
+  .mp-support-ctas,
+  .mp-back,
+  .footer-social,
+  .fcol-links,
+  .footer-vline,
+  .footer-legal {
+    display: none !important;
+  }
+
+  /* Reveal animations must never hide printed content */
+  .js .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .mp-shell {
+    max-width: none;
+    padding: 0;
+  }
+
+  /* --- Cover ------------------------------------------------- */
+
+  .mp-hero {
+    background: none;
+    break-after: page;
+    page-break-after: always;
+    padding-top: 30mm;
+  }
+
+  .mp-hero::before,
+  .mp-hero::after {
+    display: none;
+  }
+
+  .mp-hero-inner {
+    padding: 0;
+  }
+
+  .mp-print-mark {
+    display: block;
+    width: 74px;
+    height: auto;
+    margin-bottom: 12mm;
+  }
+
+  .mp-print-cover {
+    display: block;
+    margin-top: 14mm;
+  }
+
+  .mp-title,
+  .mp-support-heading {
+    color: #12102A;
+  }
+
+  .mp-title .gold-bright {
+    -webkit-text-fill-color: #A87836;
+    color: #A87836;
+    background: none;
+  }
+
+  .mp-eyebrow,
+  .mp-sec-num,
+  .mp-phase-label {
+    color: #A87836;
+  }
+
+  .mp-tagline {
+    color: #4A4459;
+  }
+
+  .mp-lead,
+  .mp-sec-intro,
+  .mp-prose p,
+  .mp-phase-desc,
+  .mp-func-desc,
+  .mp-support-desc,
+  .mp-path-row .pathway-desc,
+  .card-desc {
+    color: #33304A;
+  }
+
+  .mp-hero-quote {
+    border-left-color: #C4923F;
+  }
+
+  .mp-hero-quote-text {
+    color: #8A6A34;
+  }
+
+  /* --- Sections ---------------------------------------------- */
+
+  .mp-section,
+  .mp-glance,
+  .mp-support,
+  .site-footer,
+  .mp-cream,
+  .mp-navy {
+    background: none !important;
+    border: 0;
+    padding: 0;
+  }
+
+  .mp-section {
+    padding-top: 8mm;
+    break-inside: auto;
+  }
+
+  .mp-section + .mp-section {
+    break-before: page;
+    page-break-before: always;
+  }
+
+  .mp-sec-head,
+  .mp-figure,
+  .mp-func,
+  .mp-phase,
+  .mp-stat,
+  .institute-card,
+  .mp-path-row .pathway {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .mp-sec-title,
+  .mp-sec-title-light,
+  .mp-func-title,
+  .mp-phase-title,
+  .mp-prose-lead,
+  .card-title,
+  .mp-path-row .pathway-title,
+  .mp-stat-label {
+    color: #12102A !important;
+  }
+
+  .mp-stat-num {
+    -webkit-text-fill-color: #A87836;
+    color: #A87836;
+    background: none;
+  }
+
+  .mp-glance {
+    padding-bottom: 6mm;
+    border-bottom: 1px solid #D8CDBE;
+  }
+
+  .mp-stat-div {
+    background: #D8CDBE;
+  }
+
+  /* Cards become outlined blocks rather than filled ones. Paper is
+     ~690 CSS px wide, so the 768px phone rules apply here too — these
+     put the cards back into two columns instead of one per row. */
+  .mp-func,
+  .mp-inst-grid .institute-card {
+    background: none !important;
+    border: 1px solid #D8CDBE !important;
+    transform: none !important;
+  }
+
+  .mp-func {
+    flex: 0 1 calc(50% - 8px);
+    padding: 16px 18px 18px;
+  }
+
+  .mp-inst-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .mp-inst-grid .institute-card {
+    min-height: 0;
+    padding-bottom: 18px;
+    border-radius: 10px;
+  }
+
+  .card-media {
+    height: 96px;
+  }
+
+  .card-media::after,
+  .card-emblem {
+    display: none;
+  }
+
+  .card-title {
+    margin-top: 14px;
+  }
+
+  .mp-figure img {
+    height: 90mm;
+    border-color: #D8CDBE;
+  }
+
+  .mp-figure figcaption,
+  .mp-phase-note,
+  .mp-pull cite {
+    color: #6A6478;
+  }
+
+  .mp-pull p {
+    color: #8A6A34;
+  }
+
+  .mp-phase-marker {
+    background: #FFFFFF;
+    box-shadow: none;
+  }
+
+  /* Keep the closing appeal whole and off the end of the phases page */
+  .mp-support {
+    break-before: page;
+    page-break-before: always;
+    padding-top: 18mm;
+  }
+
+  .mp-support-inner {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .mp-support-dove {
+    width: 54px;
+  }
+
+  /* --- Footer becomes a colophon ------------------------------ */
+
+  .site-footer {
+    break-before: page;
+    page-break-before: always;
+    padding-top: 8mm;
+  }
+
+  .footer-top {
+    display: block;
+    height: auto;
+    padding: 0;
+  }
+
+  .fcol-brand {
+    width: auto;
+  }
+
+  .footer-brand {
+    padding-left: 0;
+  }
+
+  .footer-brand-name,
+  .footer-quote {
+    color: #12102A;
+  }
+
+  .footer-brand-sub,
+  .footer-brand-tagline,
+  .footer-quote-attr,
+  .footer-copy {
+    color: #6A6478;
+  }
+
+  .fcol-quote {
+    margin-top: 10mm;
+  }
+}

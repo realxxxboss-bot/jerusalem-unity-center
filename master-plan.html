@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Master Plan — Jerusalem Unity Center</title>
+  <meta name="description" content="The master plan for the Jerusalem Unity Center — a future gathering place for humanity in Jerusalem: the campus, the six institutes, the five pathways of exploration, and the phases of its realization.">
+
+  <!-- Favicons / app icons — same set as the main site. -->
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#0A0F23">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- style.css carries the shared brand system (header, footer, buttons,
+       ornaments); master-plan.css adds this document's own layout. -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="master-plan.css">
+
+  <script>
+    /* Set before paint so the reveal animations only hide content when
+       JavaScript is available (no-JS readers get the full document). */
+    document.documentElement.className += ' js';
+  </script>
+</head>
+<body class="mp-body">
+
+  <!-- Reading progress -->
+  <div class="mp-progress" aria-hidden="true"><span class="mp-progress-bar"></span></div>
+
+  <a class="mp-skip" href="#mp-main">Skip to the plan</a>
+
+  <!-- ==========================================================
+       HEADER — the site header, re-anchored to a solid navy bar
+       ========================================================== -->
+  <header class="site-header mp-header">
+    <div class="shell header-inner">
+
+      <a href="index.html#hero" class="brand">
+        <img class="logo" src="assets/the-jerusalme-unity-center.png" alt="Jerusalem Unity Center emblem">
+        <span class="brand-text">
+          <span class="brand-name">Jerusalem</span>
+          <span class="brand-sub">Unity Center</span>
+          <span class="brand-tagline">A Center of Consciousness<br>for Humanity</span>
+        </span>
+      </a>
+
+      <nav class="site-nav" id="primary-nav" aria-label="Primary">
+        <a href="index.html#vision">About Us</a>
+        <a href="index.html#vision">Our Vision</a>
+        <a href="index.html#institutes">Institutes</a>
+        <a href="index.html#explore">Learn</a>
+        <a href="index.html#join">Community</a>
+        <a href="index.html#explore">Events</a>
+        <a href="index.html#institutes">Research</a>
+        <a href="index.html#join">Global Chapters</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="https://thejerusalemunitycenter.org/donation/" class="btn btn-support" target="_blank" rel="noopener">Donate Now</a>
+        <button class="search-btn" type="button" aria-label="Search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+            <circle cx="10.5" cy="10.5" r="6.5"></circle>
+            <line x1="15.4" y1="15.4" x2="21" y2="21"></line>
+          </svg>
+        </button>
+      </div>
+
+      <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+
+    </div>
+  </header>
+
+  <!-- ==========================================================
+       HERO — the campus render at dusk
+       ========================================================== -->
+  <section class="mp-hero">
+    <div class="mp-shell mp-hero-inner">
+      <!-- Print-only: the emblem stands in for the header on the cover -->
+      <img class="mp-print-mark" src="assets/the-jerusalme-unity-center.png" alt="Jerusalem Unity Center emblem">
+      <p class="mp-eyebrow">The Jerusalem Unity Center</p>
+      <h1 class="mp-title">The Master <span class="gold-bright">Plan</span></h1>
+      <p class="mp-tagline">A Future Gathering Place for Humanity</p>
+      <p class="mp-lead">The Jerusalem Unity Center campus will be a living expression of learning, reflection, creativity, and service&mdash;designed to inspire generations to come together for a shared future.</p>
+
+      <blockquote class="mp-hero-quote">
+        <p class="mp-hero-quote-text"><span class="qmark">&ldquo;</span>In that Day, his name will be One and he will be One<span class="qmark">&rdquo;</span></p>
+        <cite class="mp-hero-quote-cite">Zechariah 14:9</cite>
+      </blockquote>
+
+      <div class="mp-hero-ctas">
+        <a href="#campus" class="btn btn-primary mp-cta">
+          Explore the Plan
+          <svg class="icon-arrow" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="1" y1="6" x2="24" y2="6"></line>
+            <polyline points="19 1 24 6 19 11"></polyline>
+          </svg>
+        </a>
+        <button class="btn btn-ghost mp-cta js-print" type="button">
+          <svg class="mp-icon-print" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6.5 9V3.8h11V9"></path>
+            <rect x="3.2" y="9" width="17.6" height="8" rx="2"></rect>
+            <path d="M6.5 14h11v6.2h-11z"></path>
+          </svg>
+          Download as PDF
+        </button>
+      </div>
+
+      <!-- Print-only: on screen the render is the section background,
+           on paper the cover needs it as an image. -->
+      <div class="mp-print-cover">
+        <div class="mp-figure-frame">
+          <img src="assets/section4-bg.png" alt="Aerial view of the planned campus at dusk">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================
+       STICKY SECTION NAV
+       ========================================================== -->
+  <nav class="mp-nav" id="mp-nav" aria-label="Sections of the master plan">
+    <div class="mp-shell mp-nav-inner">
+      <ul class="mp-nav-list">
+        <li><a href="#vision">The Vision</a></li>
+        <li><a href="#campus">The Campus</a></li>
+        <li><a href="#institutes">The Institutes</a></li>
+        <li><a href="#pathways">The Pathways</a></li>
+        <li><a href="#phases">Realization</a></li>
+        <li><a href="#support">Support</a></li>
+      </ul>
+      <button class="mp-nav-print js-print" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M6.5 9V3.8h11V9"></path>
+          <rect x="3.2" y="9" width="17.6" height="8" rx="2"></rect>
+          <path d="M6.5 14h11v6.2h-11z"></path>
+        </svg>
+        PDF
+      </button>
+    </div>
+  </nav>
+
+  <main id="mp-main">
+
+  <!-- ==========================================================
+       AT A GLANCE
+       ========================================================== -->
+  <section class="mp-glance">
+    <div class="mp-shell mp-glance-row">
+      <div class="mp-stat reveal">
+        <span class="mp-stat-num">7</span>
+        <span class="mp-stat-label">Functions of the Campus</span>
+      </div>
+      <span class="mp-stat-div" aria-hidden="true"></span>
+      <div class="mp-stat reveal">
+        <span class="mp-stat-num">6</span>
+        <span class="mp-stat-label">Institutes</span>
+      </div>
+      <span class="mp-stat-div" aria-hidden="true"></span>
+      <div class="mp-stat reveal">
+        <span class="mp-stat-num">5</span>
+        <span class="mp-stat-label">Pathways of Exploration</span>
+      </div>
+      <span class="mp-stat-div" aria-hidden="true"></span>
+      <div class="mp-stat reveal">
+        <span class="mp-stat-num">70</span>
+        <span class="mp-stat-label">Nations Welcomed</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================
+       01 — THE VISION
+       ========================================================== -->
+  <section class="mp-section mp-cream" id="vision">
+    <div class="mp-shell">
+
+      <header class="mp-sec-head reveal">
+        <span class="mp-sec-num">01</span>
+        <h2 class="mp-sec-title">
+          <span class="heading-orn orn-short orn-left" aria-hidden="true"></span>
+          The Vision
+          <span class="heading-orn orn-short orn-right" aria-hidden="true"></span>
+        </h2>
+      </header>
+
+      <div class="mp-prose reveal">
+        <p class="mp-prose-lead">A center for welcoming the nations in Jerusalem &mdash; a global gathering place for learning, dialogue, spiritual development, cultural exchange, and human flourishing.</p>
+        <p>The Jerusalem Unity Center exists to hold a question that belongs to all people: what allows a human being, and a whole society, to flourish? The answer is pursued here through study and research, through the meeting of traditions, and through the practice of ethical leadership &mdash; in a place built for people to arrive as strangers and leave as neighbours.</p>
+        <p>The campus is conceived as a single continuous landscape rather than a set of separate buildings. Terraced pavilions step down the hillside above the city, gathered around gardens, courtyards, and walking paths, so that movement between learning, reflection, and conversation is unbroken. Every part of the plan serves one intention: to bring people together around our shared humanity.</p>
+      </div>
+
+      <blockquote class="mp-pull reveal">
+        <p>The light within illuminates the path for all.</p>
+        <cite>Jerusalem Unity Center</cite>
+      </blockquote>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================
+       02 — THE CAMPUS
+       ========================================================== -->
+  <section class="mp-section mp-navy" id="campus">
+    <div class="mp-shell">
+
+      <header class="mp-sec-head reveal">
+        <span class="mp-sec-num">02</span>
+        <h2 class="mp-sec-title mp-sec-title-light">
+          <span class="heading-orn orn-short orn-left" aria-hidden="true"></span>
+          The Campus
+          <span class="heading-orn orn-short orn-right" aria-hidden="true"></span>
+        </h2>
+      </header>
+
+      <figure class="mp-figure reveal">
+        <div class="mp-figure-frame">
+          <img src="assets/section4-bg.png" alt="Aerial view of the planned campus at dusk: terraced circular pavilions with garden terraces and lit walkways on a hillside above Jerusalem">
+        </div>
+        <figcaption>The campus at dusk &mdash; terraced pavilions, garden courtyards, and walking paths set on the hillside above the city.</figcaption>
+      </figure>
+
+      <p class="mp-sec-intro reveal">The plan organises the campus around seven functions. Each is a place as well as a programme &mdash; a room, a garden, a hall, a chapter house &mdash; and together they form the daily life of the Center.</p>
+
+      <!-- Icons reuse .pillar-icon + the .icon-* width classes from
+           style.css, which normalize every baked-in gold ring to 80px. -->
+      <div class="mp-func-grid">
+
+        <article class="mp-func reveal">
+          <div class="pillar-icon mp-func-icon"><img class="icon-learn" src="assets/section2-learn-icon.png" alt=""></div>
+          <h3 class="mp-func-title"><span class="mp-func-idx">01</span>Learn</h3>
+          <p class="mp-func-desc">Courses and pathways for personal and professional growth.</p>
+        </article>
+
+        <article class="mp-func reveal">
+          <div class="pillar-icon mp-func-icon"><img class="icon-library" src="assets/section2-library-icon.png" alt=""></div>
+          <h3 class="mp-func-title"><span class="mp-func-idx">02</span>Library</h3>
+          <p class="mp-func-desc">Timeless wisdom, modern research, global perspectives.</p>
+        </article>
+
+        <article class="mp-func reveal">
+          <div class="pillar-icon mp-func-icon"><img class="icon-community" src="assets/section2-community-icon.png" alt=""></div>
+          <h3 class="mp-func-title"><span class="mp-func-idx">03</span>Community</h3>
+          <p class="mp-func-desc">Dialogue circles, study groups, lifelong connections.</p>
+        </article>
+
+        <article class="mp-func reveal">
+          <div class="pillar-icon mp-func-icon"><img class="icon-event" src="assets/section2-event-icon.png" alt=""></div>
+          <h3 class="mp-func-title"><span class="mp-func-idx">04</span>Events</h3>
+          <p class="mp-func-desc">Conferences, workshops, retreats, and global gatherings.</p>
+        </article>
+
+        <article class="mp-func reveal">
+          <div class="pillar-icon mp-func-icon"><img class="icon-institutes" src="assets/section2-insitutes-icon.png" alt=""></div>
+          <h3 class="mp-func-title"><span class="mp-func-idx">05</span>Institutes</h3>
+          <p class="mp-func-desc">Centers of excellence advancing knowledge and understanding.</p>
+        </article>
+
+        <article class="mp-func reveal">
+          <div class="pillar-icon mp-func-icon"><img class="icon-research" src="assets/section2-research-icon.png" alt=""></div>
+          <h3 class="mp-func-title"><span class="mp-func-idx">06</span>Research</h3>
+          <p class="mp-func-desc">Interdisciplinary research for the flourishing of humanity.</p>
+        </article>
+
+        <article class="mp-func reveal">
+          <div class="pillar-icon mp-func-icon"><img class="icon-global" src="assets/section2-global-chapters-icon.png" alt=""></div>
+          <h3 class="mp-func-title"><span class="mp-func-idx">07</span>Global Chapters</h3>
+          <p class="mp-func-desc">Local communities united in purpose across the world.</p>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================
+       03 — THE INSTITUTES
+       ========================================================== -->
+  <section class="mp-section mp-cream" id="institutes">
+    <div class="mp-shell">
+
+      <header class="mp-sec-head reveal">
+        <span class="mp-sec-num">03</span>
+        <h2 class="mp-sec-title">
+          <span class="heading-orn orn-short orn-left" aria-hidden="true"></span>
+          The Institutes
+          <span class="heading-orn orn-short orn-right" aria-hidden="true"></span>
+        </h2>
+      </header>
+
+      <p class="mp-sec-intro mp-sec-intro-dark reveal">Six centers of excellence give the Center its intellectual structure. Each holds its own faculty, research, and public programme, and each opens onto the others &mdash; the questions they carry are not separable.</p>
+
+      <!-- Cards reuse the main site's .institute-card system verbatim;
+           only the container changes from a flex row to a 3-up grid. -->
+      <div class="mp-inst-grid">
+
+        <article class="institute-card reveal">
+          <div class="card-media"><img src="assets/institute-consciousness.jpg" alt="Meditation at sunset"></div>
+          <div class="card-emblem"><img class="emblem-consciousness" src="assets/consciousnes-icon.png" alt=""></div>
+          <h3 class="card-title">Consciousness</h3>
+          <p class="card-desc">Explore the nature and development of awareness.</p>
+        </article>
+
+        <article class="institute-card reveal">
+          <div class="card-media"><img src="assets/institute-spiritual-intelligence.jpg" alt="Sunlit tree of life"></div>
+          <div class="card-emblem"><img class="emblem-spiritual" src="assets/sipritul-intelligence-icon.png" alt=""></div>
+          <h3 class="card-title">Spiritual Intelligence</h3>
+          <p class="card-desc">Cultivate wisdom, purpose, and inner transformation.</p>
+        </article>
+
+        <article class="institute-card reveal">
+          <div class="card-media"><img src="assets/institute-human-flourishing.jpg" alt="Figure with arms raised toward the sun"></div>
+          <div class="card-emblem"><img class="emblem-human" src="assets/human-flourishing-icon.png" alt=""></div>
+          <h3 class="card-title">Human Flourishing</h3>
+          <p class="card-desc">Discover what enables individuals and societies to thrive.</p>
+        </article>
+
+        <article class="institute-card reveal">
+          <div class="card-media"><img src="assets/institute-moral-leadership.jpg" alt="Classical stone columns"></div>
+          <div class="card-emblem"><img class="emblem-moral" src="assets/moral-leadership-icon.png" alt=""></div>
+          <h3 class="card-title">Moral Leadership</h3>
+          <p class="card-desc">Develop integrity, ethical leadership, and responsibility.</p>
+        </article>
+
+        <article class="institute-card reveal">
+          <div class="card-media"><img src="assets/institute-global-dialogue.jpg" alt="People in warm-lit conversation"></div>
+          <div class="card-emblem"><img class="emblem-global" src="assets/global-dialouge-icon.png" alt=""></div>
+          <h3 class="card-title">Global Dialogue</h3>
+          <p class="card-desc">Build bridges across cultures, faiths, and perspectives.</p>
+        </article>
+
+        <article class="institute-card reveal">
+          <div class="card-media"><img src="assets/institute-science-consciousness.jpg" alt="Cosmic nebula"></div>
+          <div class="card-emblem"><img class="emblem-science" src="assets/science-consciousness -icon.png" alt=""></div>
+          <h3 class="card-title">Science &amp; Consciousness</h3>
+          <p class="card-desc">Bridge scientific inquiry and human experience.</p>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================
+       04 — THE PATHWAYS
+       ========================================================== -->
+  <section class="mp-section mp-navy" id="pathways">
+    <div class="mp-shell">
+
+      <header class="mp-sec-head reveal">
+        <span class="mp-sec-num">04</span>
+        <h2 class="mp-sec-title mp-sec-title-light">
+          <span class="heading-orn orn-short orn-left" aria-hidden="true"></span>
+          Five Pathways of Exploration
+          <span class="heading-orn orn-short orn-right" aria-hidden="true"></span>
+        </h2>
+      </header>
+
+      <p class="mp-sec-intro reveal">Whatever brings a visitor to the Center &mdash; a course, a conference, a season of study, or a single afternoon in the gardens &mdash; the journey runs along five pathways.</p>
+
+      <!-- Reuses the main site's .pathway system; master-plan.css only
+           re-tints the titles and descriptions for the navy ground. -->
+      <div class="pathways-row mp-path-row">
+
+        <div class="pathway reveal">
+          <div class="pathway-icon"><img class="pw-consciousness" src="assets/consciousness-icon.png" alt=""></div>
+          <h3 class="pathway-title">Consciousness</h3>
+          <p class="pathway-desc">Exploring awareness, perception, meaning, and human potential.</p>
+        </div>
+
+        <span class="pathway-divider" aria-hidden="true"></span>
+
+        <div class="pathway reveal">
+          <div class="pathway-icon"><img class="pw-spiritual" src="assets/spiritual-development-icon.png" alt=""></div>
+          <h3 class="pathway-title">Spiritual Development</h3>
+          <p class="pathway-desc">Cultivating inner growth, wisdom, purpose, and connection.</p>
+        </div>
+
+        <span class="pathway-divider" aria-hidden="true"></span>
+
+        <div class="pathway reveal">
+          <div class="pathway-icon"><img class="pw-human" src="assets/human-flourishings-icon.png" alt=""></div>
+          <h3 class="pathway-title">Human Flourishing</h3>
+          <p class="pathway-desc">Supporting well-being, resilience, creativity, and fulfillment.</p>
+        </div>
+
+        <span class="pathway-divider" aria-hidden="true"></span>
+
+        <div class="pathway reveal">
+          <div class="pathway-icon"><img class="pw-dialogue" src="assets/dialogue-understanding-icon.png" alt=""></div>
+          <h3 class="pathway-title">Dialogue &amp; Understanding</h3>
+          <p class="pathway-desc">Building bridges across cultures, faiths, disciplines, and perspectives.</p>
+        </div>
+
+        <span class="pathway-divider" aria-hidden="true"></span>
+
+        <div class="pathway reveal">
+          <div class="pathway-icon"><img class="pw-culture" src="assets/culture-wisdom-icon.png" alt=""></div>
+          <h3 class="pathway-title">Culture &amp; Wisdom</h3>
+          <p class="pathway-desc">Celebrating knowledge, traditions, arts, and stories that enrich humanity.</p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================
+       05 — REALIZATION (phasing)
+       ========================================================== -->
+  <section class="mp-section mp-cream" id="phases">
+    <div class="mp-shell">
+
+      <header class="mp-sec-head reveal">
+        <span class="mp-sec-num">05</span>
+        <h2 class="mp-sec-title">
+          <span class="heading-orn orn-short orn-left" aria-hidden="true"></span>
+          Realization
+          <span class="heading-orn orn-short orn-right" aria-hidden="true"></span>
+        </h2>
+      </header>
+
+      <p class="mp-sec-intro mp-sec-intro-dark reveal">The Center is being built in the order in which it can serve: community first, then scholarship, then the campus that houses them, then the chapters that carry the work into the nations.</p>
+
+      <ol class="mp-phases">
+
+        <li class="mp-phase reveal">
+          <span class="mp-phase-marker" aria-hidden="true"></span>
+          <div class="mp-phase-body">
+            <span class="mp-phase-label">Phase One</span>
+            <h3 class="mp-phase-title">Foundation &amp; Community</h3>
+            <p class="mp-phase-desc">Establishing the founding community and its membership, the first dialogue circles and study groups, and a programme of learning delivered in Jerusalem and online.</p>
+          </div>
+        </li>
+
+        <li class="mp-phase reveal">
+          <span class="mp-phase-marker" aria-hidden="true"></span>
+          <div class="mp-phase-body">
+            <span class="mp-phase-label">Phase Two</span>
+            <h3 class="mp-phase-title">The Institutes</h3>
+            <p class="mp-phase-desc">Opening the six institutes as teaching and research bodies &mdash; faculty, fellowships, published research, and the first international conferences and leadership forums.</p>
+          </div>
+        </li>
+
+        <li class="mp-phase reveal">
+          <span class="mp-phase-marker" aria-hidden="true"></span>
+          <div class="mp-phase-body">
+            <span class="mp-phase-label">Phase Three</span>
+            <h3 class="mp-phase-title">The Campus</h3>
+            <p class="mp-phase-desc">Building the gathering place itself: the terraced pavilions, the library and archive, the assembly hall, the study rooms, and the gardens and courtyards that join them together.</p>
+          </div>
+        </li>
+
+        <li class="mp-phase reveal">
+          <span class="mp-phase-marker" aria-hidden="true"></span>
+          <div class="mp-phase-body">
+            <span class="mp-phase-label">Phase Four</span>
+            <h3 class="mp-phase-title">A Global Movement</h3>
+            <p class="mp-phase-desc">Extending the work outward through global chapters, exchange and ambassador programmes, and an annual gathering that welcomes the nations to Jerusalem.</p>
+          </div>
+        </li>
+
+      </ol>
+
+      <p class="mp-phase-note reveal">Indicative sequencing &mdash; phases overlap as resources and partnerships allow.</p>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================
+       06 — SUPPORT
+       ========================================================== -->
+  <section class="mp-support" id="support">
+    <div class="mp-shell mp-support-inner">
+      <img class="mp-support-dove" src="assets/bird-icon.png" alt="Gold dove carrying an olive branch">
+      <h2 class="mp-support-heading">Build It With Us</h2>
+      <p class="mp-support-desc">The Seventy Nations (R.A.) Jerusalem is a registered Israeli nonprofit association that partners with its sister organization, The Jerusalem Unity Center USA &mdash; a 501(c) nonprofit foundation that allows its donors to take tax deductions for contributions of cash, goods, and other assets. Your support turns this plan into a place.</p>
+      <div class="mp-support-ctas">
+        <a href="https://thejerusalemunitycenter.org/donation/" class="btn btn-primary mp-cta" target="_blank" rel="noopener">
+          Donate Now
+          <svg class="icon-arrow" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="1" y1="6" x2="24" y2="6"></line>
+            <polyline points="19 1 24 6 19 11"></polyline>
+          </svg>
+        </a>
+        <a href="index.html#join" class="btn btn-ghost mp-cta">Become a Member</a>
+      </div>
+      <a class="mp-back" href="index.html#hero">&larr; Back to the Jerusalem Unity Center</a>
+    </div>
+  </section>
+
+  </main>
+
+  <!-- ==========================================================
+       FOOTER — identical to the main site
+       ========================================================== -->
+  <footer class="site-footer" id="footer">
+
+    <div class="shell footer-top">
+
+      <div class="fcol fcol-brand">
+        <div class="footer-brand">
+          <img class="footer-logo" src="assets/the-jerusalme-unity-center.png" alt="Jerusalem Unity Center emblem">
+          <div class="footer-brand-text">
+            <span class="footer-brand-name">Jerusalem</span>
+            <span class="footer-brand-sub">Unity Center</span>
+            <span class="footer-brand-tagline">A Center of Consciousness<br>for Humanity</span>
+          </div>
+        </div>
+        <div class="footer-social">
+          <a class="social-link" href="https://www.facebook.com/profile.php?id=61590474344492" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M13.4 21v-8.2h2.75l.41-3.2H13.4V7.56c0-.92.26-1.55 1.58-1.55h1.69V3.14A22.6 22.6 0 0 0 14.2 3c-2.44 0-4.1 1.49-4.1 4.22v2.38H7.34v3.2h2.76V21z"/>
+            </svg>
+          </a>
+          <a class="social-link" href="https://www.linkedin.com/in/meirah-marianne-paradise-b34072191/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M6.5 8.7H3.6V21h2.9zM5.05 3.5a1.72 1.72 0 1 0 0 3.44 1.72 1.72 0 0 0 0-3.44zM14.4 8.5c-1.6 0-2.66.87-3.1 1.7h-.05V8.7H8.4V21h2.9v-6.1c0-1.6.3-3.16 2.28-3.16 1.95 0 1.98 1.83 1.98 3.26V21h2.9v-6.58c0-3.1-.67-5.92-4.06-5.92z"/>
+            </svg>
+          </a>
+          <a class="social-link" href="mailto:theseventynations@gmail.com" aria-label="Email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="5.4" width="18" height="13.2" rx="2.2"></rect>
+              <path d="M4 7l8 6 8-6"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <span class="footer-vline" aria-hidden="true"></span>
+
+      <nav class="fcol fcol-links fcol-center" aria-label="The Center">
+        <h3 class="fcol-heading">The Center</h3>
+        <ul class="fcol-list">
+          <li><a href="index.html#vision">About Us</a></li>
+          <li><a href="index.html#vision">Our Vision</a></li>
+          <li><a href="master-plan.html">The Campus</a></li>
+          <li><a href="index.html#pathways">Programs</a></li>
+          <li><a href="index.html#institutes">Faculty</a></li>
+        </ul>
+      </nav>
+
+      <span class="footer-vline" aria-hidden="true"></span>
+
+      <nav class="fcol fcol-links fcol-resources" aria-label="Resources">
+        <h3 class="fcol-heading">Resources</h3>
+        <ul class="fcol-list">
+          <li><a href="index.html#explore">Library</a></li>
+          <li><a href="index.html#explore">Events</a></li>
+          <li><a href="index.html#institutes">Research</a></li>
+          <li><a href="index.html#explore">News</a></li>
+          <li><a href="index.html#explore">Media</a></li>
+        </ul>
+      </nav>
+
+      <span class="footer-vline" aria-hidden="true"></span>
+
+      <nav class="fcol fcol-links fcol-involved" aria-label="Get Involved">
+        <h3 class="fcol-heading">Get Involved</h3>
+        <ul class="fcol-list">
+          <li><a href="https://thejerusalemunitycenter.org/donation/" class="fcol-donate" target="_blank" rel="noopener">Donate Now</a></li>
+          <li><a href="index.html#join">Join the Community</a></li>
+          <li><a href="index.html#join">Volunteer</a></li>
+          <li><a href="index.html#join">Ambassadors</a></li>
+          <li><a href="index.html#join">Start a Chapter</a></li>
+          <li><a href="index.html#support">Support the Vision</a></li>
+        </ul>
+      </nav>
+
+      <span class="footer-vline" aria-hidden="true"></span>
+
+      <div class="fcol fcol-quote">
+        <blockquote class="footer-quote">
+          <span class="qmark qmark-open" aria-hidden="true">&ldquo;</span>The light within illuminates the path for all.<span class="qmark qmark-close" aria-hidden="true">&rdquo;</span>
+        </blockquote>
+        <p class="footer-quote-attr">&mdash; Jerusalem Unity Center</p>
+      </div>
+
+    </div>
+
+    <div class="footer-divider" aria-hidden="true"></div>
+
+    <div class="shell footer-bottom">
+      <p class="footer-copy">&copy; 2025 Jerusalem Unity Center. All Rights Reserved.</p>
+      <div class="footer-legal">
+        <a href="index.html#footer">Privacy Policy</a>
+        <span class="legal-sep" aria-hidden="true"></span>
+        <a href="index.html#footer">Terms of Use</a>
+      </div>
+    </div>
+
+  </footer>
+
+  <script>
+    /* ==========================================================
+       MOBILE NAV — same behaviour as the main site
+       ========================================================== */
+    (function () {
+      var header = document.querySelector('.site-header');
+      var toggle = document.querySelector('.nav-toggle');
+      var nav = document.getElementById('primary-nav');
+      var support = document.querySelector('.header-actions .btn-support');
+
+      if (nav && support) {
+        var clone = support.cloneNode(true);
+        clone.classList.add('nav-support');
+        nav.appendChild(clone);
+      }
+
+      if (header && toggle) {
+        toggle.addEventListener('click', function () {
+          var open = header.classList.toggle('nav-open');
+          toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+          toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        });
+
+        nav.addEventListener('click', function (e) {
+          if (e.target.closest('a') && header.classList.contains('nav-open')) {
+            header.classList.remove('nav-open');
+            toggle.setAttribute('aria-expanded', 'false');
+            toggle.setAttribute('aria-label', 'Open menu');
+          }
+        });
+      }
+    })();
+
+    /* ==========================================================
+       PRINT / SAVE AS PDF
+       ========================================================== */
+    (function () {
+      document.querySelectorAll('.js-print').forEach(function (btn) {
+        btn.addEventListener('click', function () { window.print(); });
+      });
+    })();
+
+    /* ==========================================================
+       READING PROGRESS BAR
+       ========================================================== */
+    (function () {
+      var bar = document.querySelector('.mp-progress-bar');
+      if (!bar) return;
+      var ticking = false;
+
+      function update() {
+        var doc = document.documentElement;
+        var max = doc.scrollHeight - doc.clientHeight;
+        var pct = max > 0 ? (doc.scrollTop || document.body.scrollTop) / max : 0;
+        bar.style.transform = 'scaleX(' + Math.min(1, Math.max(0, pct)) + ')';
+        ticking = false;
+      }
+
+      window.addEventListener('scroll', function () {
+        if (!ticking) { ticking = true; requestAnimationFrame(update); }
+      }, { passive: true });
+      update();
+    })();
+
+    /* ==========================================================
+       SCROLL REVEALS + ACTIVE SECTION IN THE STICKY NAV
+       Both degrade gracefully: without IntersectionObserver every
+       .reveal is shown immediately.
+       ========================================================== */
+    (function () {
+      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var items = document.querySelectorAll('.reveal');
+
+      if (reduced || !('IntersectionObserver' in window)) {
+        items.forEach(function (el) { el.classList.add('is-visible'); });
+      } else {
+        var revealer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              revealer.unobserve(entry.target);
+            }
+          });
+        }, { rootMargin: '0px 0px -12% 0px', threshold: 0.08 });
+
+        items.forEach(function (el, i) {
+          /* Stagger siblings within a grid for a gentle cascade */
+          el.style.transitionDelay = (i % 4) * 70 + 'ms';
+          revealer.observe(el);
+        });
+      }
+
+      /* --- Sticky nav: highlight the section being read --------- */
+      var links = document.querySelectorAll('.mp-nav-list a');
+      if (!links.length || !('IntersectionObserver' in window)) return;
+
+      var byId = {};
+      var sections = [];
+      links.forEach(function (link) {
+        var sec = document.querySelector(link.getAttribute('href'));
+        if (sec) { byId[sec.id] = link; sections.push(sec); }
+      });
+
+      var spy = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          links.forEach(function (l) { l.classList.remove('is-current'); });
+          var link = byId[entry.target.id];
+          if (link) link.classList.add('is-current');
+        });
+      }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+
+      sections.forEach(function (sec) { spy.observe(sec); });
+    })();
+  </script>
+
+</body>
+</html>

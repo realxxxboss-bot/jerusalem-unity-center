@@ -11,6 +11,7 @@ A single-page, static marketing/landing site for the Jerusalem Unity Center — 
 - **Pure static site** — no frameworks, no build step, no dependencies.
 - `index.html` — all markup + inline vanilla JavaScript (mobile nav toggle, membership modal).
 - `style.css` — one stylesheet (~2,000 lines), desktop-first with mobile overrides at the bottom.
+- `master-plan.html` + `master-plan.css` — the Master Plan sub-page (see below). Loads `style.css` first for the shared brand system, then its own stylesheet.
 - `assets/` — background images, section photos, and icon PNGs.
 - **Fonts:** Google Fonts (loaded via `<link>` with preconnect):
   - **Cormorant Garamond** (500, 600) — serif, used for headings, brand name, and quotes.
@@ -87,7 +88,23 @@ All CTAs share the same system: 4px border radius, uppercase Poppins 600 with 0.
 8. **Footer** (`#footer`) — brand block + social links (Facebook, LinkedIn, email), three link columns (The Center / Resources / Get Involved) separated by faint vertical lines, a gold quote column (*"The light within illuminates the path for all."*), then a full-width bottom bar with copyright and Privacy/Terms links.
 9. **Membership modal** — "Join the Movement" dialog styled in the site's navy/gold language.
 
-All nav and footer links are **in-page anchors** to section IDs (smooth scroll via `scroll-behavior: smooth`); sub-pages don't exist yet, so placeholder targets are noted in HTML comments.
+Most nav and footer links are **in-page anchors** to section IDs (smooth scroll via `scroll-behavior: smooth`); remaining placeholder targets are noted in HTML comments. "View the Master Plan" (S4) and "The Campus" (footer) link to `master-plan.html`.
+
+---
+
+## The Master Plan page (`master-plan.html`)
+
+A standalone document page that doubles as the downloadable PDF — the client asked for "a nice designed presentation / PDF" behind the **View the Master Plan** button.
+
+**Structure:** site header (re-anchored to a solid navy bar instead of overlaying a hero) → hero on the campus render → sticky section nav → *At a Glance* stat strip (7 / 6 / 5 / 70) → **01 The Vision** → **02 The Campus** (render + the 7 pillars as campus functions) → **03 The Institutes** (the 6 cards) → **04 Five Pathways** → **05 Realization** (4-phase timeline) → **06 Support** → the site footer.
+
+**Copy** is drawn from the existing site (hero, S4 banner, pillar/institute/pathway descriptions, the Support Our Mission statement, both quotes). The *Vision* prose, the *Realization* phases, and the section intros are new writing that extends the site's own vocabulary — the phases carry an "indicative sequencing" note and are the part most likely to need the client's sign-off.
+
+**Reuse over duplication:** institute cards use `.institute-card`/`.card-media`/`.card-emblem`, pathway columns use `.pathway*`, campus icons use `.pillar-icon` + the `.icon-*` width classes, and headings use `.heading-orn` — all from `style.css`, unmodified. `master-plan.css` only adds page-specific layout and re-tints the pathway text for its navy ground.
+
+**Behaviour** (inline JS): same mobile nav as the home page; reading-progress bar; scroll reveals and sticky-nav active-section highlighting via `IntersectionObserver`; "Download as PDF" calls `window.print()`. Reveals are armed only when JS runs (`html.js`) and are disabled under `prefers-reduced-motion`, so the document is always readable.
+
+**Print:** the last block of `master-plan.css` is a full `@media print` re-ink — dark navy becomes a white A4 document with navy text and gold rules, screen furniture (nav, progress bar, buttons) is dropped, a print-only emblem and cover image appear, cards go 2-up, sections break onto their own pages, and the footer becomes a colophon. Currently renders as **9 A4 pages**. Note that at A4 width the `max-width: 768px` phone rules also apply, so print overrides come after them in the file.
 
 ---
 
@@ -117,6 +134,7 @@ Desktop rules are intentionally untouched by the mobile work (the desktop design
 - **Reference:** `full-mockup.png` — the source-of-truth design mockup all values were measured from.
 - **Logo:** `the-jerusalme-unity-center.png` (gold circular emblem; used in header and footer).
 - **Institute photos:** `institute-*.jpg` (6 card images).
+- **Favicons:** `favicon.ico` (repo root — client-supplied emblem, 16→256px layers; also the file browsers request implicitly). Derived from its 256px layer: `assets/favicon-16x16.png`, `assets/favicon-32x32.png` (transparent, trimmed), and `assets/apple-touch-icon.png` (180), `assets/android-chrome-192x192.png`, `assets/android-chrome-512x512.png`, `assets/maskable-icon-512x512.png` — the app icons sit on a solid navy `#0A0F23` plate because iOS renders alpha as black. `site.webmanifest` (root) declares the Android/PWA set; `<meta name="theme-color">` is navy.
 - **Icons:** gold PNG icons for the pillars strip (`section2-*-icon.png`), institute card emblems, pathway icons, and `bird-icon.png` (the join-banner dove).
 - Note: a few asset filenames contain typos (e.g. `sipritul-intelligence-icon.png`, `global-dialouge-icon.png`, `science-consciousness -icon.png` with a space) — the HTML references them as-is, so don't rename without updating `index.html`.
 
@@ -124,7 +142,7 @@ Desktop rules are intentionally untouched by the mobile work (the desktop design
 
 ## Deployment
 
-The site deploys as plain static files (built for **Hostinger**). Zips of the deployable snapshot are kept in the repo root — `jerusalem-unity-center.zip`, `-2.zip`, `-3.zip` (latest). To redeploy: zip `index.html`, `style.css`, and `assets/`, and upload.
+The site deploys as plain static files (built for **Hostinger**). Zips of the deployable snapshot are kept in the repo root — `jerusalem-unity-center.zip`, `-2.zip`, `-3.zip` (latest). To redeploy: zip `index.html`, `style.css`, `master-plan.html`, `master-plan.css`, `favicon.ico`, `site.webmanifest`, and `assets/`, and upload.
 
 ## Contact / Links
 
