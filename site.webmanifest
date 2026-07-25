@@ -1,0 +1,30 @@
+{
+  "name": "Jerusalem Unity Center",
+  "short_name": "Unity Center",
+  "description": "A Center of Consciousness for Humanity — a global gathering place for learning, dialogue, spiritual development, cultural exchange, and human flourishing.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "theme_color": "#0A0F23",
+  "background_color": "#0A0F23",
+  "icons": [
+    {
+      "src": "assets/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/maskable-icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
