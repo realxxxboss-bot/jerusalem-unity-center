@@ -4124,90 +4124,8 @@ body.modal-open {
     margin-top: 6px;
   }
 
-  /* Desktop pill button + search hidden; Support lives in the
-     dropdown (cloned .nav-support) */
-  .header-actions {
-    display: none;
-  }
-
-  .nav-toggle {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-    width: 44px;
-    height: 44px;
-    margin-left: auto;
-    padding: 0;
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
-
-  .nav-toggle-bar {
-    display: block;
-    width: 24px;
-    height: 2px;
-    border-radius: 1px;
-    background: var(--text-nav);
-    transition: transform 0.2s ease, opacity 0.2s ease;
-  }
-
-  .site-header.nav-open .nav-toggle-bar:nth-child(1) {
-    transform: translateY(7px) rotate(45deg);
-  }
-
-  .site-header.nav-open .nav-toggle-bar:nth-child(2) {
-    opacity: 0;
-  }
-
-  .site-header.nav-open .nav-toggle-bar:nth-child(3) {
-    transform: translateY(-7px) rotate(-45deg);
-  }
-
-  /* Nav becomes a full-width dropdown under the header bar */
-  .site-nav {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    z-index: 30;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0;
-    margin: 12px 0 0;
-    padding: 6px 0 18px;
-    white-space: normal;
-    background: rgba(9, 12, 30, 0.97);
-    border-top: 1px solid rgba(196, 146, 63, 0.4);
-    border-bottom: 1px solid rgba(196, 146, 63, 0.4);
-    max-height: calc(100vh - 96px);
-    overflow-y: auto;
-  }
-
-  .site-header.nav-open .site-nav {
-    display: flex;
-  }
-
-  .site-nav a {
-    padding: 0 24px;
-    font-size: 13px;
-    line-height: 48px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  }
-
-  .site-header .site-nav .nav-support {
-    display: inline-flex;
-    align-self: flex-start;
-    height: 44px;
-    margin: 16px 24px 0;
-    padding: 0 22px;
-    font-size: 11.5px;
-    line-height: 1;
-    border-bottom: 1px solid var(--btn-bevel);
-  }
+  /* The nav collapse itself now lives in its own (wider) block
+     below — see "HEADER NAV COLLAPSE (max-width: 1104px)". */
 
   /* ---- Hero --------------------------------------------------- */
 
@@ -4708,6 +4626,15 @@ body.modal-open {
     text-align: center;
   }
 
+  /* "Non-Discrimination Policy" is long enough to overflow a small
+     phone beside "Privacy Policy", so the pair wraps and the
+     divider between them drops out once they stack. */
+  .footer-legal {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 20px;
+  }
+
   /* ---- Membership enquiry modal -------------------------------- */
 
   .member-overlay {
@@ -4841,6 +4768,218 @@ body.modal-open {
     right: 16px;
     bottom: 34px;
     font-size: 9.5px;
+  }
+
+}
+
+/* ============================================================
+   HEADER NAV COLLAPSE (max-width: 1104px)
+
+   The desktop header — 88px emblem, eight nav items at a 29px
+   gap, Donate pill and search — needs about 1305px of room. It
+   used to stay on screen all the way down to 769px, which made
+   every page scroll sideways on tablets and small laptops.
+
+   These are the same rules that used to sit in the 768px block,
+   moved up to the width where the header actually stops fitting.
+   Phones are unaffected (768 is inside 1104); the 1105–1304px
+   band is handled by the compact tier below.
+   ============================================================ */
+
+@media (max-width: 1104px) {
+
+  /* Desktop pill button + search hidden; Support lives in the
+     dropdown (cloned .nav-support) */
+  .header-actions {
+    display: none;
+  }
+
+  .nav-toggle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    margin-left: auto;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .nav-toggle-bar {
+    display: block;
+    width: 24px;
+    height: 2px;
+    border-radius: 1px;
+    background: var(--text-nav);
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .site-header.nav-open .nav-toggle-bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .site-header.nav-open .nav-toggle-bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .site-header.nav-open .nav-toggle-bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* Nav becomes a full-width dropdown under the header bar */
+  .site-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 30;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    margin: 12px 0 0;
+    padding: 6px 0 18px;
+    white-space: normal;
+    background: rgba(9, 12, 30, 0.97);
+    border-top: 1px solid rgba(196, 146, 63, 0.4);
+    border-bottom: 1px solid rgba(196, 146, 63, 0.4);
+    max-height: calc(100vh - 96px);
+    overflow-y: auto;
+  }
+
+  .site-header.nav-open .site-nav {
+    display: flex;
+  }
+
+  .site-nav a {
+    padding: 0 24px;
+    font-size: 13px;
+    line-height: 48px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .site-header .site-nav .nav-support {
+    display: inline-flex;
+    align-self: flex-start;
+    height: 44px;
+    margin: 16px 24px 0;
+    padding: 0 22px;
+    font-size: 11.5px;
+    line-height: 1;
+    border-bottom: 1px solid var(--btn-bevel);
+  }
+
+}
+
+/* ============================================================
+   HEADER — COMPACT DESKTOP (1105px – 1304px)
+
+   Wide enough to keep the full horizontal nav, too narrow for it
+   at full size. Tightening the emblem, the tagline, the nav gap
+   and the shell padding buys back the ~200px needed. At 1305px
+   and up nothing here applies and the approved header is intact.
+   ============================================================ */
+
+@media (min-width: 1105px) and (max-width: 1304px) {
+
+  .header-inner {
+    padding-left: 28px;
+    padding-right: 28px;
+  }
+
+  .logo {
+    width: 68px;
+    height: 68px;
+  }
+
+  .brand-text {
+    margin-left: 14px;
+  }
+
+  /* The two-line tagline is the widest part of the brand block */
+  .brand-tagline {
+    display: none;
+  }
+
+  .site-nav {
+    gap: 15px;
+  }
+
+  .site-nav a {
+    font-size: 11.5px;
+    letter-spacing: 0;
+  }
+
+  .header-actions {
+    margin-left: 12px;
+  }
+
+}
+
+/* ============================================================
+   FOOTER — TABLET / SMALL LAPTOP (769px – 1248px)
+
+   The desktop footer is a five-column flex row of fixed widths
+   (404 + 180 + 156 + 244 + the quote) that bottoms out at about
+   1249px. Below that it used to push past the viewport and give
+   every page a horizontal scrollbar.
+
+   Here it becomes the same stacked arrangement the phone layout
+   uses — brand across the top, the three link lists in a row,
+   the quote centred underneath — without inheriting any of the
+   phone type sizes. At 1249px and up the original row returns.
+   ============================================================ */
+
+@media (min-width: 769px) and (max-width: 1248px) {
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 34px 24px;
+    height: auto;
+    padding-top: 32px;
+    padding-bottom: 26px;
+  }
+
+  .footer-vline {
+    display: none;
+  }
+
+  .fcol-brand {
+    grid-column: 1 / -1;
+    width: auto;
+  }
+
+  .fcol-center,
+  .fcol-resources,
+  .fcol-involved {
+    width: auto;
+    padding-left: 0;
+  }
+
+  .fcol-quote {
+    grid-column: 1 / -1;
+    width: auto;
+    padding-left: 0;
+    padding-top: 4px;
+    text-align: center;
+  }
+
+  /* The quote keeps its 300px measure but now centres in the row
+     instead of hanging off the left edge of a full-width column. */
+  .footer-quote {
+    margin: 0 auto;
+    padding-left: 0;
+  }
+
+  /* The bottom bar's asymmetric desktop inset is tuned for 1440 */
+  .footer-bottom {
+    padding-left: 48px;
+    padding-right: 48px;
   }
 
 }

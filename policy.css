@@ -1,0 +1,1161 @@
+/* ============================================================
+   Jerusalem Unity Center — POLICY PAGES
+   Shared by privacy-policy.html and non-discrimination-policy.html
+
+   Loaded AFTER style.css. The brand system (colors, header,
+   footer, buttons, .heading-orn) comes from style.css untouched;
+   everything here is either a page-scoped override or layout
+   unique to these two documents.
+
+   Order of this file:
+     tokens · page shell · header · hero · progress ·
+     document grid · table of contents · prose · lists ·
+     callouts · provider cards · commitment panel ·
+     "applies to" grid · contact card · related band ·
+     reveals · responsive · print
+   ============================================================ */
+
+:root {
+  --pol-cream: #EBDFD4;          /* document paper, matches --s3-cream */
+  --pol-ink: #262242;            /* headings on cream */
+  --pol-ink-body: #4A4459;       /* body copy on cream */
+  --pol-ink-mute: #7C7488;       /* captions, meta */
+  --pol-navy-deep: #080C1D;      /* page background behind everything */
+  --pol-panel: #FBF6EF;          /* raised cards on the cream paper */
+  --pol-hairline: rgba(196, 146, 63, 0.30);
+  --pol-rule: rgba(38, 34, 66, 0.12);
+}
+
+/* ============================================================
+   PAGE SHELL
+   ============================================================ */
+
+.pol-body {
+  background: var(--pol-navy-deep);
+  scroll-behavior: smooth;
+}
+
+/* Anchor targets clear the sticky header allowance */
+.pol-body [id] {
+  scroll-margin-top: 24px;
+}
+
+.pol-shell {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+/* Skip link — visible only when focused */
+.pol-skip {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 60;
+  padding: 10px 18px;
+  background: var(--gold);
+  color: #0A0F23;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.pol-skip:focus {
+  left: 12px;
+  top: 12px;
+}
+
+/* ============================================================
+   READING PROGRESS
+   ============================================================ */
+
+.pol-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.pol-progress-bar {
+  display: block;
+  height: 100%;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  background: linear-gradient(90deg, var(--gold-lo), #F3DF93);
+}
+
+/* ============================================================
+   HEADER — kept exactly as style.css has it on the main site:
+   transparent and absolutely positioned, so the banner image
+   runs unbroken from the top of the page down through the hero
+   with no bar seam across it. .pol-hero-inner carries the top
+   padding that clears the brand block.
+   ============================================================ */
+
+.pol-header {
+  background: none;
+  border-bottom: 0;
+}
+
+/* ============================================================
+   HERO — quiet by design. A legal page announces itself and
+   then gets out of the way of the reading.
+   ============================================================ */
+
+/* Each page carries its own banner image; .pol-hero holds everything
+   the two share. Both fields are 1672×941, so `cover` crops a wide
+   horizontal band out of the middle at every viewport width. */
+.pol-hero {
+  position: relative;
+  background-color: #150C31;
+  background-repeat: no-repeat;
+  background-position: 50% 42%;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.pol-hero-privacy {
+  background-image: url("assets/privacy-banner-pic.png");
+}
+
+.pol-hero-nd {
+  background-image: url("assets/discrimination-banner-pic.png");
+}
+
+/* A light scrim only — the field is already dark enough to carry
+   white type, and a heavy wash flattens it back to a plain bar. */
+.pol-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 8, 28, 0.52) 0%,
+    rgba(10, 8, 28, 0.30) 46%,
+    rgba(10, 8, 28, 0.58) 100%
+  );
+}
+
+/* Fade the field into the paper below it */
+.pol-hero::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 90px;
+  background: linear-gradient(180deg, rgba(8, 12, 29, 0), var(--pol-navy-deep));
+}
+
+/* padding-top clears the overlaid header (28px offset + the 88px
+   emblem + the brand tagline beneath it) before the eyebrow starts. */
+.pol-hero-inner {
+  position: relative;
+  z-index: 1;
+  padding-top: 158px;
+  padding-bottom: 96px;
+  max-width: 900px;
+  text-align: center;
+}
+
+.pol-eyebrow {
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0.30em;
+  text-indent: 0.30em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.pol-title {
+  margin-top: 16px;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: clamp(34px, 5vw, 58px);
+  line-height: 1.1;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.pol-title .gold-bright {
+  color: #E8C579;
+}
+
+/* Gold hairline with a diamond at its centre */
+.pol-hero-rule {
+  position: relative;
+  width: 190px;
+  height: 1px;
+  margin: 26px auto 0;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.pol-hero-rule::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 -3px;
+  background: var(--gold);
+  transform: rotate(45deg);
+}
+
+.pol-lead {
+  max-width: 720px;
+  margin: 24px auto 0;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 30px;
+  color: #D7D4DF;
+}
+
+/* Hero footer row: the "last updated" chip beside the print action */
+.pol-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 28px;
+}
+
+/* "Last updated" chip */
+.pol-stamp {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 8px 18px;
+  border: 1px solid var(--ghost-border);
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #DCD8E2;
+}
+
+.pol-stamp svg {
+  width: 14px;
+  height: 14px;
+  color: var(--gold-hi);
+}
+
+/* Save-as-PDF — these are documents people file and keep */
+.pol-print {
+  height: 37px;
+  padding: 0 18px;
+  border-radius: 999px;
+  border: 1px solid var(--ghost-border);
+  background: none;
+  color: #DCD8E2;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.pol-print svg {
+  width: 15px;
+  height: 15px;
+}
+
+.pol-print:hover {
+  border-color: var(--gold-hi);
+  color: var(--gold-hi);
+}
+
+/* ============================================================
+   DOCUMENT — cream paper, contents rail beside the prose
+   ============================================================ */
+
+.pol-doc {
+  background: var(--pol-cream) url("assets/section3-bg.png") center / cover no-repeat;
+  padding: 66px 0 84px;
+}
+
+.pol-doc-grid {
+  display: grid;
+  grid-template-columns: 232px minmax(0, 1fr);
+  gap: 58px;
+  align-items: start;
+}
+
+/* Single-column variant for the non-discrimination page — it has no
+   contents rail, so the article gets the whole track. */
+.pol-doc-single {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.pol-doc-single .pol-article {
+  max-width: 810px;
+  margin: 0 auto;
+}
+
+/* ============================================================
+   TABLE OF CONTENTS — sticky rail on desktop, plain list on
+   phones (the <details> wrapper collapses it there).
+   ============================================================ */
+
+.pol-toc {
+  position: sticky;
+  top: 26px;
+  padding-right: 6px;
+  border-right: 1px solid var(--pol-rule);
+}
+
+.pol-toc-heading {
+  margin-bottom: 16px;
+  font-family: var(--font-sans);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold-lo);
+}
+
+.pol-toc-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.pol-toc-list a {
+  position: relative;
+  display: flex;
+  gap: 10px;
+  padding: 7px 10px 7px 12px;
+  border-left: 2px solid transparent;
+  font-size: 12.5px;
+  font-weight: 400;
+  line-height: 19px;
+  color: #635C74;
+  transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.pol-toc-num {
+  flex-shrink: 0;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  line-height: 20px;
+  color: #A79C8A;
+  transition: color 0.2s ease;
+}
+
+.pol-toc-list a:hover {
+  color: var(--pol-ink);
+  background: rgba(255, 255, 255, 0.42);
+}
+
+.pol-toc-list a.is-current {
+  border-left-color: var(--gold);
+  background: rgba(255, 255, 255, 0.55);
+  color: var(--pol-ink);
+  font-weight: 500;
+}
+
+.pol-toc-list a.is-current .pol-toc-num {
+  color: var(--gold-lo);
+}
+
+/* On desktop the <details> is always open and has no marker */
+.pol-toc-wrap > summary {
+  display: none;
+}
+
+/* ============================================================
+   PROSE
+   ============================================================ */
+
+.pol-article {
+  color: var(--pol-ink-body);
+}
+
+/* Opening statement above the numbered sections */
+.pol-preamble {
+  padding-bottom: 34px;
+  margin-bottom: 6px;
+  border-bottom: 1px solid var(--pol-rule);
+}
+
+.pol-preamble p {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 30px;
+}
+
+.pol-preamble p + p {
+  margin-top: 18px;
+}
+
+.pol-preamble-lead {
+  font-family: var(--font-serif);
+  font-size: 22px !important;
+  font-weight: 500;
+  line-height: 35px !important;
+  color: var(--pol-ink);
+}
+
+.pol-sec {
+  padding-top: 42px;
+}
+
+/* The statement page opens with a section rather than a preamble, so
+   its first block sits flush with the top of the paper. */
+.pol-sec-open {
+  padding-top: 0;
+}
+
+/* A preamble that leads straight into a panel needs no closing rule */
+.pol-preamble-plain {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.pol-sec-head {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.pol-sec-num {
+  flex-shrink: 0;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.20em;
+  color: var(--gold);
+}
+
+.pol-sec-title {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: clamp(21px, 2.1vw, 26px);
+  line-height: 1.25;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--pol-ink);
+}
+
+/* Centred title with ornaments — used on the statement page */
+.pol-sec-title-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 26px;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: clamp(23px, 2.4vw, 30px);
+  line-height: 1.25;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--pol-ink);
+  text-align: center;
+}
+
+.pol-sec p {
+  font-size: 15.5px;
+  font-weight: 300;
+  line-height: 29px;
+}
+
+.pol-sec p + p,
+.pol-sec p + .pol-list,
+.pol-sec .pol-list + p,
+.pol-sec .pol-providers + p,
+.pol-sec .pol-applies + p {
+  margin-top: 16px;
+}
+
+.pol-sec a {
+  color: #8A6A34;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  text-decoration-color: rgba(138, 106, 52, 0.4);
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.pol-sec a:hover {
+  color: #6E5222;
+  text-decoration-color: currentColor;
+}
+
+/* Sub-heading inside a numbered section */
+.pol-subhead {
+  margin-top: 26px;
+  margin-bottom: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #7A6742;
+}
+
+.pol-subhead + .pol-list {
+  margin-top: 0;
+}
+
+/* --- Lists: gold diamond bullets ----------------------------- */
+
+.pol-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.pol-list li {
+  position: relative;
+  padding-left: 24px;
+  font-size: 15.5px;
+  font-weight: 300;
+  line-height: 27px;
+}
+
+.pol-list li::before {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 11px;
+  width: 6px;
+  height: 6px;
+  background: var(--gold);
+  opacity: 0.8;
+  transform: rotate(45deg);
+}
+
+/* ============================================================
+   CALLOUT — a single sentence the reader should not miss
+   ============================================================ */
+
+.pol-callout {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 24px;
+  padding: 20px 24px;
+  background: var(--pol-panel);
+  border: 1px solid var(--pol-hairline);
+  border-left: 3px solid var(--gold);
+  border-radius: 3px;
+}
+
+.pol-callout svg {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  color: var(--gold-lo);
+}
+
+.pol-callout p {
+  font-family: var(--font-serif);
+  font-size: 20px !important;
+  font-weight: 600;
+  line-height: 30px !important;
+  letter-spacing: 0.01em;
+  color: var(--pol-ink);
+}
+
+/* ============================================================
+   THIRD-PARTY PROVIDER CARDS
+   ============================================================ */
+
+.pol-providers {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 20px;
+  list-style: none;
+}
+
+.pol-provider {
+  padding: 20px 22px;
+  background: var(--pol-panel);
+  border: 1px solid var(--pol-hairline);
+  border-radius: 3px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.pol-provider:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(38, 34, 66, 0.10);
+}
+
+.pol-provider-role {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #A08246;
+}
+
+.pol-provider-name {
+  margin-top: 8px;
+  font-family: var(--font-serif);
+  font-size: 21px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--pol-ink);
+}
+
+.pol-provider-desc {
+  margin-top: 8px;
+  font-size: 14px !important;
+  font-weight: 300;
+  line-height: 24px !important;
+  color: var(--pol-ink-body);
+}
+
+/* ============================================================
+   COMMITMENT PANEL — the heart of the non-discrimination page
+   ============================================================ */
+
+.pol-commit {
+  position: relative;
+  margin-top: 36px;
+  padding: 44px 48px;
+  background: var(--pol-panel);
+  border: 1px solid var(--pol-hairline);
+  border-radius: 3px;
+  text-align: center;
+}
+
+/* Gold corner brackets */
+.pol-commit::before,
+.pol-commit::after {
+  content: "";
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--gold);
+  opacity: 0.85;
+}
+
+.pol-commit::before {
+  top: 9px;
+  left: 9px;
+  border-right: 0;
+  border-bottom: 0;
+}
+
+.pol-commit::after {
+  bottom: 9px;
+  right: 9px;
+  border-left: 0;
+  border-top: 0;
+}
+
+.pol-commit-mark {
+  width: 60px;
+  height: auto;
+  object-fit: contain;
+}
+
+.pol-commit p {
+  max-width: 700px;
+  margin: 16px auto 0;
+  font-family: var(--font-serif);
+  font-size: clamp(19px, 2vw, 24px) !important;
+  font-weight: 500;
+  line-height: 1.55 !important;
+  letter-spacing: 0.01em;
+  color: var(--pol-ink);
+}
+
+.pol-commit .pol-commit-em {
+  color: #8A6A34;
+  font-weight: 600;
+}
+
+/* ============================================================
+   "APPLIES TO" GRID — gold check for each program area
+   ============================================================ */
+
+.pol-applies {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2px 34px;
+  margin-top: 22px;
+  list-style: none;
+}
+
+.pol-applies li {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  padding: 13px 2px;
+  border-bottom: 1px solid var(--pol-rule);
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 25px;
+  color: var(--pol-ink-body);
+}
+
+/* The bottom row closes the list, so it drops its rule */
+.pol-applies li:nth-last-child(-n+2) {
+  border-bottom: 0;
+}
+
+.pol-applies svg {
+  flex-shrink: 0;
+  width: 19px;
+  height: 19px;
+  margin-top: 3px;
+  color: var(--gold);
+}
+
+/* ============================================================
+   CONTACT CARD
+   ============================================================ */
+
+.pol-contact {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin-top: 22px;
+  padding: 26px 28px;
+  background: var(--pol-panel);
+  border: 1px solid var(--pol-hairline);
+  border-radius: 3px;
+}
+
+.pol-contact-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  border: 1px solid var(--pol-hairline);
+  border-radius: 50%;
+  color: var(--gold-lo);
+}
+
+.pol-contact-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.pol-contact-name {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--pol-ink);
+}
+
+.pol-contact-mail {
+  display: inline-block;
+  margin-top: 5px;
+  font-size: 15.5px;
+  font-weight: 400;
+  color: #8A6A34 !important;
+}
+
+.pol-contact-note {
+  margin-top: 7px;
+  font-size: 13px !important;
+  font-weight: 300;
+  line-height: 22px !important;
+  color: var(--pol-ink-mute);
+}
+
+/* ============================================================
+   RELATED BAND — the two policies point at each other
+   ============================================================ */
+
+.pol-related {
+  background: #150E30 url("assets/section6-bg.png") center / cover no-repeat;
+  padding: 58px 0 54px;
+  text-align: center;
+}
+
+.pol-related-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pol-related-eyebrow {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.26em;
+  text-indent: 0.26em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.pol-related-heading {
+  margin-top: 12px;
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: clamp(25px, 3vw, 34px);
+  line-height: 1.2;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.pol-related-desc {
+  max-width: 660px;
+  margin-top: 14px;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 27px;
+  color: #DFE1E3;
+}
+
+.pol-related-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 26px;
+}
+
+/* .btn-primary / .btn-ghost carry only colour — the page using them
+   supplies the metrics, exactly as the main hero does. */
+.pol-related-ctas .btn {
+  height: 47px;
+  min-width: 220px;
+  padding: 0 24px;
+  border-radius: 4px;
+  justify-content: center;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.10em;
+}
+
+.pol-back {
+  margin-top: 28px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #A9A5B6;
+  transition: color 0.2s ease;
+}
+
+.pol-back:hover {
+  color: var(--gold-hi);
+}
+
+/* ============================================================
+   SCROLL REVEALS
+   Only armed when JavaScript is running (html.js), so the
+   document is fully readable without it.
+   ============================================================ */
+
+.js .reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.js .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pol-body { scroll-behavior: auto; }
+
+  .js .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .pol-provider:hover {
+    transform: none;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 1024px) {
+
+  .pol-doc-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  /* The rail becomes a collapsible card above the document */
+  .pol-toc-wrap {
+    margin-bottom: 34px;
+    background: var(--pol-panel);
+    border: 1px solid var(--pol-hairline);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .pol-toc-wrap > summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 15px 20px;
+    cursor: pointer;
+    list-style: none;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--pol-ink);
+  }
+
+  .pol-toc-wrap > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .pol-toc-wrap > summary::after {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-right: 1.5px solid var(--gold-lo);
+    border-bottom: 1.5px solid var(--gold-lo);
+    transform: rotate(45deg) translate(-2px, -2px);
+    transition: transform 0.2s ease;
+  }
+
+  .pol-toc-wrap[open] > summary::after {
+    transform: rotate(-135deg) translate(-3px, -3px);
+  }
+
+  .pol-toc {
+    position: static;
+    padding: 0 14px 16px;
+    border-right: 0;
+  }
+
+  .pol-toc-heading {
+    display: none;
+  }
+
+  .pol-sec:first-of-type,
+  .pol-preamble + .pol-sec {
+    padding-top: 34px;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .pol-shell {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  /* Smaller emblem and a tighter header offset on phones */
+  .pol-hero-inner {
+    padding-top: 112px;
+    padding-bottom: 64px;
+  }
+
+  .pol-doc {
+    padding: 44px 0 60px;
+  }
+
+  .pol-preamble-lead {
+    font-size: 19px !important;
+    line-height: 31px !important;
+  }
+
+  .pol-sec {
+    padding-top: 34px;
+  }
+
+  .pol-sec-head {
+    gap: 11px;
+  }
+
+  .pol-sec-title-center {
+    gap: 13px;
+  }
+
+  .heading-orn.orn-short {
+    width: 26px;
+  }
+
+  .pol-callout {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 20px;
+  }
+
+  .pol-callout p {
+    font-size: 18px !important;
+    line-height: 28px !important;
+  }
+
+  .pol-providers,
+  .pol-applies {
+    grid-template-columns: 1fr;
+  }
+
+  /* Stacked into one column, only the true last row closes the list */
+  .pol-applies {
+    gap: 0;
+  }
+
+  .pol-applies li:nth-last-child(-n+2) {
+    border-bottom: 1px solid var(--pol-rule);
+  }
+
+  .pol-applies li:last-child {
+    border-bottom: 0;
+  }
+
+  .pol-commit {
+    padding: 32px 22px;
+  }
+
+  .pol-contact {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 24px 22px;
+  }
+
+  .pol-related {
+    padding: 46px 0 44px;
+  }
+
+  .pol-related-ctas .btn {
+    flex: 1 1 100%;
+  }
+}
+
+@media (max-width: 480px) {
+
+  /* "NON-DISCRIMINATION" is the longest word either page has to
+     set; at the 34px floor it runs past a 320px screen even after
+     breaking at its hyphen, so the floor comes down here. */
+  .pol-title {
+    font-size: clamp(25px, 8vw, 34px);
+    letter-spacing: 0.02em;
+  }
+
+  .pol-stamp {
+    letter-spacing: 0.10em;
+  }
+}
+
+/* ============================================================
+   PRINT — both policies are documents people file and keep,
+   so they re-ink themselves for paper.
+   ============================================================ */
+
+@media print {
+
+  @page {
+    margin: 16mm 14mm;
+  }
+
+  .pol-body {
+    background: #FFF;
+  }
+
+  .site-header,
+  .pol-progress,
+  .pol-skip,
+  .pol-print,
+  .pol-related,
+  .site-footer,
+  .pol-toc-wrap {
+    display: none !important;
+  }
+
+  .pol-hero,
+  .pol-doc {
+    background: #FFF !important;
+    padding: 0 !important;
+  }
+
+  .pol-hero::before,
+  .pol-hero::after {
+    display: none;
+  }
+
+  .pol-hero-inner {
+    padding: 0 0 18pt !important;
+    border-bottom: 1pt solid #C4923F;
+  }
+
+  .pol-shell {
+    max-width: none;
+    padding: 0 !important;
+  }
+
+  .pol-doc-grid {
+    display: block;
+  }
+
+  .pol-eyebrow,
+  .pol-sec-num,
+  .pol-subhead {
+    color: #8A6A34 !important;
+  }
+
+  .pol-title,
+  .pol-sec-title,
+  .pol-sec-title-center,
+  .pol-commit p,
+  .pol-callout p,
+  .pol-provider-name,
+  .pol-contact-name {
+    color: #14122B !important;
+  }
+
+  .pol-lead,
+  .pol-stamp,
+  .pol-article,
+  .pol-sec p,
+  .pol-list li,
+  .pol-applies li {
+    color: #333044 !important;
+  }
+
+  .pol-stamp {
+    border-color: #C9C4D2 !important;
+  }
+
+  .pol-sec,
+  .pol-commit,
+  .pol-callout,
+  .pol-contact,
+  .pol-provider {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .pol-commit,
+  .pol-callout,
+  .pol-contact,
+  .pol-provider {
+    background: #FFF !important;
+    border-color: #D8CDBB !important;
+  }
+
+  .js .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
