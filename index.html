@@ -76,7 +76,10 @@
         <cite class="hero-quote-cite">Zechariah 14:9</cite>
       </blockquote>
       <div class="hero-ctas">
-        <a href="#explore" class="btn btn-primary">
+        <!-- Lands mid-Section 4, on "A Future Gathering Place for
+             Humanity" and its "View the Master Plan" button. The href
+             is the no-JS fallback: it still reaches that section. -->
+        <a href="#vision" class="btn btn-primary js-vision-scroll">
           Explore the Vision
           <svg class="icon-arrow" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
             <line x1="1" y1="6" x2="24" y2="6"></line>
@@ -397,7 +400,7 @@
               <path d="M6.5 8.7H3.6V21h2.9zM5.05 3.5a1.72 1.72 0 1 0 0 3.44 1.72 1.72 0 0 0 0-3.44zM14.4 8.5c-1.6 0-2.66.87-3.1 1.7h-.05V8.7H8.4V21h2.9v-6.1c0-1.6.3-3.16 2.28-3.16 1.95 0 1.98 1.83 1.98 3.26V21h2.9v-6.58c0-3.1-.67-5.92-4.06-5.92z"/>
             </svg>
           </a>
-          <a class="social-link" href="mailto:theseventynations@gmail.com" aria-label="Email">
+          <a class="social-link" href="mailto:info@jerusalemunity.org" aria-label="Email">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <rect x="3" y="5.4" width="18" height="13.2" rx="2.2"></rect>
               <path d="M4 7l8 6 8-6"></path>
@@ -508,9 +511,14 @@
        the closing slide of Watch Our Story) and by landing on
        index.html#join-modal from another page.
 
+       A trigger carrying data-event opens the same form in
+       reservation mode: the heading, the preselected interest and
+       the subject line all switch to that event. The "Reserve Your
+       Place" buttons in Section 7 are built that way.
+
        Submissions go out through submitMembership() in the script
        below, which posts to Web3Forms via forms.js and lands in
-       Info@marianneparadise.org.
+       info@jerusalemunity.org.
        ========================================================== -->
   <div class="member-overlay" id="member-modal" role="dialog" aria-modal="true" aria-labelledby="member-modal-title" aria-describedby="member-modal-sub">
     <div class="member-modal">
@@ -519,6 +527,8 @@
       <div class="member-head">
         <h3 class="member-title" id="member-modal-title">Join the Movement</h3>
         <p class="member-sub" id="member-modal-sub">Tell us a little about yourself and how you would like to take part. A member of our team will be in touch.</p>
+        <!-- Names the event in reservation mode; hidden otherwise. -->
+        <p class="mf-event-note" id="mf-event-note" hidden></p>
       </div>
 
       <form class="member-form" novalidate>
@@ -529,6 +539,11 @@
           <label for="mf-website">Website</label>
           <input id="mf-website" name="website" type="text" tabindex="-1" autocomplete="off">
         </div>
+
+        <!-- Set by the trigger in reservation mode, blank otherwise.
+             Carried through to the email so the reply knows which
+             evening is being asked about. -->
+        <input id="mf-event" name="event" type="hidden" value="">
 
         <div class="mf-grid">
 
@@ -569,6 +584,7 @@
                 <option value="volunteer">Volunteering</option>
                 <option value="ambassador">Becoming an Ambassador</option>
                 <option value="chapter">Starting a Chapter</option>
+                <option value="event">Reserving a place at an event</option>
                 <option value="general">General enquiry</option>
               </select>
             </div>
@@ -1083,15 +1099,15 @@
         },
         host: { label: 'Hosted by', name: 'The Institute for Global Dialogue' },
         blurb: 'An evening set aside for listening — a main teaching, open dialogue across traditions, and music from the city. Nothing to sign, only a seat at the table.',
-        cta: {
-          label: 'Reserve Your Place',
-          href: 'mailto:theseventynations@gmail.com?subject=Reservation%20%E2%80%94%20An%20Evening%20of%20Unity%2C%2012%20November%202026'
-        }
+        /* label only: the renderer turns this into a reservation
+           trigger for the Join the Movement form, naming the event
+           from the title and date above. */
+        cta: { label: 'Reserve Your Place' }
       },
 
       {
-        image: 'assets/institute-global-dialogue.jpg',
-        imageAlt: 'Participants in conversation around a table',
+        image: 'assets/religious-leaders.png',
+        imageAlt: 'Religious leaders from different traditions gathered around a table, hands joined over open books',
         title: 'Voices of the Seventy Nations',
         subtitle: 'Song, Poetry, and Story',
         date: {
@@ -1107,10 +1123,7 @@
         },
         host: { label: 'Hosted by', name: 'The Institute for Culture & Wisdom' },
         blurb: 'Song, poetry, and storytelling drawn from the many cultures that call this city home, performed by the musicians and writers of Jerusalem itself.',
-        cta: {
-          label: 'Reserve Your Place',
-          href: 'mailto:theseventynations@gmail.com?subject=Reservation%20%E2%80%94%20Voices%20of%20the%20Seventy%20Nations%2C%205%20December%202026'
-        }
+        cta: { label: 'Reserve Your Place' }
       },
 
       {
@@ -1131,10 +1144,7 @@
         },
         host: { label: 'Led by', name: 'The Institute for Moral Leadership' },
         blurb: 'A working session in the practice of listening well across difference: how to ask, how to disagree, how to stay in the room. Places are limited to twenty.',
-        cta: {
-          label: 'Reserve Your Place',
-          href: 'mailto:theseventynations@gmail.com?subject=Reservation%20%E2%80%94%20Foundations%20of%20Dialogue%2C%2021%20January%202027'
-        }
+        cta: { label: 'Reserve Your Place' }
       }
 
     ];
@@ -1201,6 +1211,17 @@
         return html + '</div>';
       }
 
+      /* "An Evening of Unity — Thursday, 12 November 2026": how a
+         reservation names its event, on screen and in the email. Built
+         from the card's own fields, so editing JUC_EVENTS above is
+         still the only place an event is described. */
+      function eventRef(ev) {
+        var date = ev.date || {};
+        var day = [date.day, date.month, date.year].filter(Boolean).join(' ');
+        var when = [date.weekday, day].filter(Boolean).join(', ');
+        return when ? ev.title + ' — ' + when : ev.title;
+      }
+
       function eventCard(ev) {
         var date = ev.date || {};
         var loc = ev.location || {};
@@ -1231,8 +1252,19 @@
         }
 
         if (ev.cta && ev.cta.label) {
+          /* An explicit cta.href makes the button a plain link — a
+             ticketing page, say. With no href it becomes a trigger for
+             the reservation form, which handles the rest. */
+          var cls = 'btn btn-primary ev-cta';
+          var attrs = 'href="' + esc(ev.cta.href || '#join-modal') + '"';
+
+          if (!ev.cta.href) {
+            cls += ' js-member-open';
+            attrs += ' data-interest="event" data-event="' + esc(eventRef(ev)) + '"';
+          }
+
           html += '<span class="ev-gap" aria-hidden="true"></span>' +
-                  '<a class="btn btn-primary ev-cta" href="' + esc(ev.cta.href || '#') + '">' + esc(ev.cta.label) + ARROW + '</a>';
+                  '<a class="' + cls + '" ' + attrs + '>' + esc(ev.cta.label) + ARROW + '</a>';
         }
 
         return html + '</div></article>';
@@ -1275,6 +1307,26 @@
     })();
 
     /* ==========================================================
+       HERO CTA — "Explore the Vision"
+
+       Parks Section 4 in the MIDDLE of the viewport rather than at
+       its top, so "A Future Gathering Place for Humanity" and the
+       "View the Master Plan" button both land in front of the
+       reader — the master plan is then the obvious next click.
+       Plain anchors top-align, hence the handler.
+       ========================================================== */
+    (function () {
+      var cta = document.querySelector('.js-vision-scroll');
+      var target = document.getElementById('vision');
+      if (!cta || !target || !target.scrollIntoView) return;
+
+      cta.addEventListener('click', function (e) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+    })();
+
+    /* ==========================================================
        BECOME A MEMBER — membership enquiry modal
 
        Validation, submitting / success / error states, honeypot,
@@ -1299,6 +1351,17 @@
       var messageEl = overlay.querySelector('#mf-message');
       var countEl = overlay.querySelector('.mf-count-n');
       var countryEl = overlay.querySelector('#mf-country');
+
+      /* Reservation mode: rewritten heading, and the event carried
+         in a hidden field so the email says which evening it is. */
+      var titleEl = overlay.querySelector('.member-title');
+      var subEl = overlay.querySelector('.member-sub');
+      var eventNote = overlay.querySelector('#mf-event-note');
+      var eventEl = overlay.querySelector('#mf-event');
+      var doneTitle = overlay.querySelector('.member-done-title');
+      var DEFAULT_TITLE = titleEl.textContent;
+      var DEFAULT_SUB = subEl.textContent;
+      var DEFAULT_DONE_TITLE = doneTitle.textContent;
 
       var lastFocus = null;
       var sending = false;
@@ -1439,6 +1502,15 @@
         FIELDS.forEach(function (field) { showFieldError(field, ''); });
         setSending(false);
         showPanel('form');
+
+        /* Back out of reservation mode — the next opener may be the
+           plain "Become a Member" button. */
+        eventEl.value = '';
+        eventNote.hidden = true;
+        eventNote.textContent = '';
+        titleEl.textContent = DEFAULT_TITLE;
+        subEl.textContent = DEFAULT_SUB;
+        doneTitle.textContent = DEFAULT_DONE_TITLE;
       }
 
       /* The dialog's accessible name has to follow whichever panel is
@@ -1453,11 +1525,24 @@
 
       var interestEl = overlay.querySelector('#mf-interest');
 
-      /* interest: optional value to preselect, so a trigger that already
-         says what it is ("Volunteer") does not ask again. */
-      function openModal(interest) {
+      /* interest:  optional value to preselect, so a trigger that already
+                    says what it is ("Volunteer") does not ask again.
+         eventName: set by a "Reserve Your Place" button. Switches the
+                    form into reservation mode for that event. */
+      function openModal(interest, eventName) {
         lastFocus = document.activeElement;
         resetForm();
+
+        if (eventName) {
+          interest = 'event';
+          eventEl.value = eventName;
+          eventNote.textContent = 'Reserving a place at: ' + eventName;
+          eventNote.hidden = false;
+          titleEl.textContent = 'Reserve Your Place';
+          subEl.textContent = 'Tell us who is coming and we will hold your place. A member of our team will confirm by email.';
+          doneTitle.textContent = 'Thank you — your place is held.';
+        }
+
         if (interest && interestEl.querySelector('option[value="' + interest + '"]')) {
           interestEl.value = interest;
         }
@@ -1480,7 +1565,7 @@
       document.querySelectorAll('.js-member-open').forEach(function (btn) {
         btn.addEventListener('click', function (e) {
           e.preventDefault();
-          openModal(btn.getAttribute('data-interest'));
+          openModal(btn.getAttribute('data-interest'), btn.getAttribute('data-event'));
         });
       });
 
@@ -1545,6 +1630,7 @@
         volunteer: 'volunteering',
         ambassador: 'the ambassador programme',
         chapter: 'starting a chapter',
+        event: 'your reservation',
         general: 'your enquiry'
       };
 
@@ -1570,6 +1656,7 @@
           country: countryEl.value,
           interest: overlay.querySelector('#mf-interest').value,
           message: messageEl.value.trim(),
+          event: eventEl.value,                    /* '' unless reserving */
           website: honeypot.value.trim(),          /* honeypot */
           submittedAt: new Date().toISOString()
         };
@@ -1578,7 +1665,7 @@
 
         submitMembership(payload).then(function () {
           var who = payload.name.split(' ')[0];
-          var what = INTEREST_LABEL[payload.interest] || 'your enquiry';
+          var what = payload.event || INTEREST_LABEL[payload.interest] || 'your enquiry';
           doneText.textContent = who
             + ', your details are with us. We will be in touch about '
             + what + ' at ' + payload.email + '.';
@@ -1596,7 +1683,7 @@
 
       /* ---- Submit --------------------------------------------------
          Goes out through JUC_FORMS.send() in forms.js, which posts to
-         Web3Forms and delivers to Info@marianneparadise.org. The access
+         Web3Forms and delivers to info@jerusalemunity.org. The access
          key lives in that file — this handler only shapes the email. */
       function submitMembership(payload) {
         /* Honeypot filled in => a bot. Look successful, send nothing. */
@@ -1608,16 +1695,23 @@
         var interestEl = overlay.querySelector('#mf-interest');
         var interest = interestEl.options[interestEl.selectedIndex].text;
 
+        /* A reservation deserves its own subject line, so the two kinds
+           of enquiry are told apart at a glance in the inbox. */
+        var subject = payload.event
+          ? 'Event reservation — ' + payload.event
+          : 'Membership enquiry (' + interest + ') — Jerusalem Unity Center';
+
         return window.JUC_FORMS.send({
-          subject: 'Membership enquiry (' + interest + ') — Jerusalem Unity Center',
+          subject: subject,
           from_name: 'Jerusalem Unity Center website',
-          form_name: 'Membership enquiry',
+          form_name: payload.event ? 'Event reservation' : 'Membership enquiry',
           name: payload.name,
           email: payload.email,
           replyto: payload.email,      /* replies go straight to the enquirer */
           phone: payload.phone,
           country: payload.country,
           interest: interest,
+          event: payload.event,        /* dropped when blank by send() */
           message: payload.message,
           submittedAt: payload.submittedAt
         });

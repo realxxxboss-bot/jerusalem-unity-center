@@ -3,13 +3,28 @@
 
    Every form on the site posts through here, so the access key
    lives in exactly one place. Web3Forms delivers to the address
-   the key was created with:
+   the key was created with, which for this site is:
 
-       Info@marianneparadise.org
+       info@jerusalemunity.org
 
-   To change the destination, create a new key at web3forms.com
-   with the new address and swap ACCESS_KEY below — nothing else
-   needs to change.
+   ── Setting the key (one-time) ──────────────────────────────
+   1. Go to https://web3forms.com
+   2. Enter info@jerusalemunity.org and press Create Access Key
+   3. Open the confirmation email in that mailbox and click the
+      verification link — until this is done nothing is delivered
+   4. Copy the access key (a UUID like
+      1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d) and paste it into
+      ACCESS_KEY below, replacing the placeholder
+
+   That is the whole setup. All four pages load this file, so the
+   key is set for every form at once. To change the destination
+   later, create a new key with the new address and swap it in
+   here — no other file needs touching.
+
+   Which forms use it:
+     • Footer newsletter          — all four pages
+     • Join the Movement modal    — index.html
+     • Event reservations         — index.html (same modal)
 
    Exposes:
      window.JUC_FORMS.send(fields)  -> Promise, rejects with a
@@ -24,10 +39,11 @@
   'use strict';
 
   /* --- The one setting ---------------------------------------- */
-  var ACCESS_KEY = 'PASTE-WEB3FORMS-ACCESS-KEY-HERE';
+  var ACCESS_KEY = '03cebf02-18fd-4ab5-bd98-1352fb42cc67';
 
   var ENDPOINT = 'https://api.web3forms.com/submit';
   var PLACEHOLDER = 'PASTE-WEB3FORMS-ACCESS-KEY-HERE';
+  var CONTACT = 'info@jerusalemunity.org';
 
   function hasKey() {
     return !!ACCESS_KEY && ACCESS_KEY !== PLACEHOLDER;
@@ -42,7 +58,7 @@
         console.warn('[forms] No Web3Forms access key set in forms.js — nothing was sent.', fields);
       }
       return Promise.reject(new Error(
-        'This form is not connected yet. Please email Info@marianneparadise.org.'
+        'This form is not connected yet. Please email ' + CONTACT + '.'
       ));
     }
 
@@ -70,7 +86,7 @@
       return res.json().catch(function () { return {}; }).then(function (data) {
         if (!res.ok || !data.success) {
           throw new Error(
-            'We could not send that just now. Please try again, or email Info@marianneparadise.org.'
+            'We could not send that just now. Please try again, or email ' + CONTACT + '.'
           );
         }
         return data;
