@@ -1482,6 +1482,69 @@ a {
   color: var(--mf-error);
 }
 
+/* --- Sponsor credit -------------------------------------------
+   One line on a slim band of its own between the newsletter and
+   the bottom bar. Centred and quiet: the mark is small and held
+   back to 85% so it acknowledges the sponsor without setting up a
+   second logo to compete with the Center's own, and the words take
+   the same muted grey as the copyright beneath them. Having its
+   own band means it never crowds the copyright or the legal links
+   at any width — it simply stacks above them.
+   -------------------------------------------------------------- */
+
+.footer-sponsor {
+  display: flex;
+  justify-content: center;
+  padding-top: 19px;
+  padding-bottom: 19px;
+}
+
+.fsponsor {
+  display: inline-flex;
+  align-items: center;
+  gap: 13px;
+  text-decoration: none;
+}
+
+/* assets/the-seventy-nations-mark.png is the sponsor's logo cropped
+   to its own edges and squared up — 102px so it stays sharp on a
+   retina screen, 20KB instead of the 660KB full-size file, and it
+   fills the 34px box rather than floating inside its own margin. */
+.fsponsor-logo {
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  opacity: 0.85;
+  transition: opacity 0.25s ease;
+}
+
+.fsponsor-text {
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  color: var(--footer-muted);
+  transition: color 0.2s ease;
+}
+
+.fsponsor-name {
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--footer-attr);
+  transition: color 0.2s ease;
+}
+
+.fsponsor:hover .fsponsor-logo {
+  opacity: 1;
+}
+
+.fsponsor:hover .fsponsor-text {
+  color: var(--footer-link);
+}
+
+.fsponsor:hover .fsponsor-name {
+  color: var(--gold-hi);
+}
+
 /* Copyright starts at x63; legal links end ~107px inside the
    right edge (measured at 1440) */
 .footer-bottom {
@@ -4700,6 +4763,28 @@ body.modal-open {
     margin: 0 auto;
   }
 
+  /* The credit keeps its one line as long as it fits and wraps
+     under the mark rather than off the edge when it does not. */
+  .footer-sponsor {
+    padding: 16px 20px;
+  }
+
+  .fsponsor {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .fsponsor-logo {
+    width: 30px;
+    height: 30px;
+  }
+
+  .fsponsor-text {
+    font-size: 12.5px;
+  }
+
   /* Bottom bar: copyright above, legal links below */
   .footer-bottom {
     flex-direction: column;
@@ -5233,6 +5318,24 @@ body.modal-open {
 
   .fnews-btn {
     width: 100%;
+  }
+
+  /* The credit cannot hold one line at this width, so rather than
+     let it break wherever it runs out of room — which stranded
+     "Jerusalem" on a line of its own — the mark is put deliberately
+     above the words and the words are given a measure to wrap
+     inside. balance evens the two lines where it is supported;
+     where it is not, the measure alone already keeps the break
+     somewhere sensible. */
+  .fsponsor {
+    flex-direction: column;
+    gap: 9px;
+  }
+
+  .fsponsor-text {
+    max-width: 26ch;
+    text-wrap: balance;
+    line-height: 20px;
   }
 
   .qmark {
