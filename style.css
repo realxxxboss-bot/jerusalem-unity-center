@@ -549,6 +549,19 @@ a {
   border-radius: 15px;
   overflow: hidden;
   text-align: center;
+  display: block;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Every card opens its institute pop-up, so it lifts like the
+   Section 2 category cards do. */
+.institute-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 34px rgba(10, 14, 37, 0.32);
+}
+
+.institute-card:hover .card-title {
+  color: var(--gold-hi);
 }
 
 /* Photo fades into the card navy over its lower third */
@@ -613,6 +626,7 @@ a {
   letter-spacing: 0.03em;
   text-transform: uppercase;
   color: var(--s3-title);
+  transition: color 0.2s ease;
 }
 
 .card-desc {
@@ -797,6 +811,20 @@ a {
   text-align: center;
 }
 
+/* Every pathway opens its own pop-up, so it lifts on hover like
+   the Section 2 categories. */
+.pathway-link {
+  transition: transform 0.2s ease;
+}
+
+.pathway-link:hover {
+  transform: translateY(-3px);
+}
+
+.pathway-link:hover .pathway-title {
+  color: var(--gold-hi);
+}
+
 .pathway-divider {
   flex-shrink: 0;
   width: 1px;
@@ -835,6 +863,7 @@ a {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--s5-title);
+  transition: color 0.2s ease;
 }
 
 .pathway-desc {
@@ -3811,10 +3840,13 @@ body.modal-open {
 }
 
 /* No-JS / no-events fallback */
+/* Shown in place of the card grid when JUC_EVENTS is empty: the
+   section offers to write when there is news rather than showing
+   an apology. */
 .ev-empty {
   max-width: 640px;
   margin: 0 auto;
-  padding: 30px 26px;
+  padding: 34px 30px 32px;
   border: 1px solid var(--s7-line);
   border-radius: 14px;
   background: var(--s7-panel);
@@ -3824,7 +3856,32 @@ body.modal-open {
   color: var(--s7-body);
 }
 
-.ev-empty a {
+.ev-empty-lead {
+  font-family: var(--font-serif);
+  font-size: 24px;
+  line-height: 1.3;
+  color: var(--s7-title);
+}
+
+.ev-empty-text {
+  max-width: 48ch;
+  margin: 12px auto 0;
+  font-size: 14.5px;
+  font-weight: 300;
+  line-height: 25px;
+}
+
+.ev-empty .btn-primary {
+  height: 47px;
+  margin-top: 22px;
+  border-radius: 4px;
+  gap: 10px;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.10em;
+}
+
+.ev-empty a:not(.btn) {
   color: var(--gold-hi);
   border-bottom: 1px solid var(--s7-line);
 }
@@ -5250,3 +5307,1610 @@ body.modal-open {
 
 }
 
+
+/* ============================================================
+   INFO POP-UPS
+
+   One modal serves every "tell me more" pop-up on the site — the
+   seven categories, the six institutes, the five pathways, the
+   footer items and the event families. Its shell is injected by
+   info.js; the copy lives in the JUC_INFO registry in that file.
+
+   Deliberately the same object as the membership modal: same
+   navy gradient, same gold hairline, same rise-in. The difference
+   is that this one is centered and leads with its artwork.
+   ============================================================ */
+
+.info-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 98;                 /* under .member-overlay (100), which it hands off to */
+  background: rgba(7, 9, 24, 0.78);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.info-overlay.is-open {
+  display: flex;
+  animation: mf-fade 0.22s ease both;
+}
+
+.info-modal {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 40px 44px 38px;
+  border: 1px solid var(--btn-bevel);
+  border-radius: 4px;
+  background: linear-gradient(180deg, #13162B, #0A0F23);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+  text-align: center;
+  animation: mf-rise 0.28s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold) transparent;
+}
+
+.info-modal::-webkit-scrollbar {
+  width: 8px;
+}
+
+.info-modal::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: rgba(196, 146, 63, 0.5);
+}
+
+.info-close {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  border: none;
+  background: none;
+  color: var(--gold);
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.info-close:hover {
+  color: var(--gold-hi);
+}
+
+/* ---- Artwork -------------------------------------------------
+   Three shapes. Icons keep the class they wear in their own
+   section (.icon-learn, .emblem-moral, .pw-culture …) so the
+   per-file ring normalization already in this stylesheet lines
+   them up here exactly as it does on the page. */
+
+.info-media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.info-media-icon {
+  height: 84px;
+}
+
+.info-media-icon img {
+  height: auto;
+}
+
+/* Two pieces of brand art that appear only in pop-ups, normalized
+   to the same 84px optical size as the section icons above. */
+.icon-brandmark { width: 84px; }
+.icon-dove      { width: 96px; }
+
+/* The Seventy Nations seal is drawn on a square canvas with a wide
+   transparent margin, so at 84px the emblem itself would read far
+   smaller than the icons around it. The wider box restores the
+   optical match and .info-media-seal grows to hold it. */
+.info-media-seal { height: 118px; }
+.icon-seventy    { width: 118px; }
+
+/* The pathway illustrations bleed past a baseline rather than
+   sitting in a ring. Reproducing Section 5's 66px box lets each
+   one keep the .pw-* height and overhang it is drawn for; the
+   generous bottom margin clears the deepest of them. */
+.info-media-pathway {
+  height: 66px;
+  align-items: flex-end;
+  overflow: visible;
+  margin-bottom: 42px;
+}
+
+.info-media-pathway img {
+  width: auto;
+  object-fit: contain;
+}
+
+.info-media-glyph {
+  height: 84px;
+}
+
+.info-glyph {
+  width: 58px;
+  height: 58px;
+  padding: 13px;
+  border: 1px solid var(--ghost-border);
+  border-radius: 50%;
+  background: rgba(196, 146, 63, 0.10);
+  color: var(--gold);
+}
+
+/* A photo runs edge to edge across the top of the panel, with the
+   institute's emblem sitting over its foot — the same composition
+   as the Section 3 cards, opened out. */
+.info-media-photo {
+  display: block;
+  margin: -40px -44px 20px;
+  height: 210px;
+  position: relative;
+  overflow: visible;
+  border-radius: 3px 3px 0 0;
+}
+
+/* Direct child only, so the emblem's own image below keeps the
+   per-file width normalization its .emblem-* class gives it. */
+.info-media-photo > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* The institute photographs are portrait-weighted; biasing the
+     crop upward keeps faces and horizons in the band. */
+  object-position: 50% 30%;
+  border-radius: 3px 3px 0 0;
+}
+
+/* Fades the photo into the panel so the emblem and eyebrow sit
+   on navy rather than on the image. */
+.info-media-photo::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 210px;
+  border-radius: 3px 3px 0 0;
+  background: linear-gradient(180deg, rgba(10, 15, 35, 0.10) 38%, #0B1027 100%);
+}
+
+.info-emblem {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  bottom: -40px;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: rgba(10, 14, 37, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.info-emblem img {
+  height: auto;
+}
+
+/* Clears the emblem, which hangs below the photo band. The class is
+   set by info.js rather than using :has(), which is still uneven
+   across the browsers this site has to serve. */
+.info-media-emblem {
+  margin-bottom: 66px;
+}
+
+/* ---- Copy ---------------------------------------------------- */
+
+.info-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold-hi);
+}
+
+.info-title {
+  margin-top: 10px;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 31px;
+  line-height: 1.18;
+  color: var(--white);
+}
+
+.info-body {
+  margin-top: 16px;
+}
+
+.info-body p {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 24px;
+  color: var(--text-body);
+}
+
+.info-body p + p {
+  margin-top: 14px;
+}
+
+/* ---- Optional player (entry.embed) ---------------------------
+   Spotify's frame is dark, so on the panel's own navy it reads as
+   part of the pop-up rather than as an outside widget. The gold
+   hairline and radius are the panel's, not the player's — the
+   frame is inset by 1px so nothing of its own corner shows.
+   `hidden` has to be spelled out: display:block below would
+   otherwise outrank it. */
+
+.info-embed {
+  margin-top: 20px;
+  padding: 5px;
+  border: 1px solid rgba(196, 146, 63, 0.28);
+  border-radius: 6px;
+  background: rgba(196, 146, 63, 0.06);
+}
+
+.info-embed[hidden] {
+  display: none;
+}
+
+.info-frame {
+  display: block;
+  width: 100%;
+  height: 152px;
+  border: 0;
+  border-radius: 4px;
+}
+
+.info-frame-note {
+  margin-top: 9px;
+  padding: 0 6px 3px;
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 19px;
+  color: rgba(233, 233, 238, 0.72);   /* --text-body, quieted */
+}
+
+/* ---- Optional "Examples" block ------------------------------- */
+
+.info-examples {
+  margin-top: 22px;
+  padding: 18px 20px 16px;
+  border: 1px solid rgba(196, 146, 63, 0.28);
+  border-radius: 4px;
+  background: rgba(196, 146, 63, 0.06);
+  text-align: left;
+}
+
+.info-examples-title {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-hi);
+}
+
+.info-list {
+  margin-top: 10px;
+  columns: 2;
+  column-gap: 26px;
+  list-style: none;
+}
+
+.info-list li {
+  position: relative;
+  padding-left: 16px;
+  font-size: 13.5px;
+  font-weight: 300;
+  line-height: 22px;
+  color: var(--text-body);
+  break-inside: avoid;
+}
+
+/* Gold diamond marker, the same mark used beside the section
+   headings' ornaments. */
+.info-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 5px;
+  height: 5px;
+  transform: rotate(45deg);
+  background: var(--gold);
+}
+
+/* ---- Action button ------------------------------------------- */
+
+.info-cta {
+  height: 47px;
+  margin-top: 26px;
+  border-radius: 4px;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.10em;
+  gap: 10px;
+}
+
+.info-cta[hidden] {
+  display: none;
+}
+
+/* ---- Narrow screens ------------------------------------------ */
+
+@media (max-width: 600px) {
+
+  .info-overlay {
+    padding: 14px;
+  }
+
+  .info-modal {
+    padding: 32px 24px 30px;
+    max-height: calc(100vh - 28px);
+  }
+
+  .info-media-photo {
+    margin: -32px -24px 18px;
+    height: 172px;
+  }
+
+  .info-media-photo::after {
+    height: 172px;
+  }
+
+  .info-media-emblem {
+    margin-bottom: 58px;
+  }
+
+  .info-emblem {
+    width: 88px;
+    height: 88px;
+    bottom: -36px;
+  }
+
+  .info-title {
+    font-size: 25px;
+  }
+
+  .info-body p {
+    font-size: 13.5px;
+    line-height: 23px;
+  }
+
+  /* One column of bullets reads better than two hyphenated ones. */
+  .info-list {
+    columns: 1;
+  }
+
+  .info-cta {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .info-overlay.is-open,
+  .info-modal {
+    animation: none !important;
+  }
+}
+
+/* ============================================================
+   SEARCH
+
+   The header magnifier opens this. There is no server to query,
+   so it searches the pop-up registry in info.js — every category,
+   institute, pathway, footer subject and event family — plus the
+   page's own sections and the standalone pages.
+
+   It drops from the top rather than sitting centred, so the field
+   lands close to the magnifier that opened it.
+   ============================================================ */
+
+.search-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 102;              /* above every other lightbox */
+  background: rgba(7, 9, 24, 0.82);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  justify-content: center;
+  align-items: flex-start;
+  padding: 92px 24px 24px;
+}
+
+.search-overlay.is-open {
+  display: flex;
+  animation: mf-fade 0.18s ease both;
+}
+
+.search-panel {
+  width: 100%;
+  max-width: 620px;
+  border: 1px solid var(--btn-bevel);
+  border-radius: 4px;
+  background: linear-gradient(180deg, #13162B, #0A0F23);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+  overflow: hidden;
+  animation: search-drop 0.24s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+@keyframes search-drop {
+  from { opacity: 0; transform: translateY(-14px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.search-field {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 16px;
+  border-bottom: 1px solid rgba(196, 146, 63, 0.28);
+}
+
+.search-field-icon {
+  flex-shrink: 0;
+  width: 19px;
+  height: 19px;
+  color: var(--gold);
+}
+
+.search-input {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 58px;
+  border: none;
+  background: none;
+  outline: none;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--white);
+}
+
+.search-input::placeholder {
+  color: rgba(233, 233, 238, 0.45);
+}
+
+/* Chrome draws its own clear button over ours in a colour that
+   does not belong here. */
+.search-input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.search-cancel {
+  flex-shrink: 0;
+  padding: 5px 9px;
+  border: 1px solid var(--ghost-border);
+  border-radius: 3px;
+  background: none;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--gold-hi);
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.search-cancel:hover {
+  background: rgba(196, 146, 63, 0.14);
+}
+
+.search-results {
+  max-height: min(52vh, 420px);
+  overflow-y: auto;
+  list-style: none;
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold) transparent;
+}
+
+.search-results::-webkit-scrollbar {
+  width: 8px;
+}
+
+.search-results::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: rgba(196, 146, 63, 0.5);
+}
+
+.search-hit {
+  display: block;
+  padding: 13px 18px;
+  border-left: 2px solid transparent;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.search-hit:hover,
+.search-hit:focus {
+  outline: none;
+  background: rgba(196, 146, 63, 0.10);
+  border-left-color: var(--gold);
+}
+
+.search-hit-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-hi);
+}
+
+.search-hit-hint {
+  display: block;
+  margin-top: 4px;
+  font-family: var(--font-serif);
+  font-size: 18px;
+  line-height: 1.3;
+  color: var(--white);
+}
+
+.search-empty {
+  padding: 22px 18px 24px;
+  font-size: 13.5px;
+  font-weight: 300;
+  line-height: 22px;
+  text-align: center;
+  color: var(--text-body);
+}
+
+@media (max-width: 600px) {
+
+  .search-overlay {
+    padding: 68px 14px 14px;
+  }
+
+  .search-field {
+    padding: 0 12px;
+    gap: 9px;
+  }
+
+  .search-input {
+    height: 52px;
+    font-size: 14px;
+  }
+
+  .search-hit-hint {
+    font-size: 16.5px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .search-overlay.is-open,
+  .search-panel {
+    animation: none !important;
+  }
+}
+
+/* ------------------------------------------------------------
+   Search in the mobile dropdown
+
+   Below 1105px the whole .header-actions block is hidden, which
+   took the header magnifier with it. info.js inserts a matching
+   row into the dropdown; this styles it as one more nav line,
+   sitting just above the cloned Support button.
+   ------------------------------------------------------------ */
+
+.site-nav .nav-search {
+  display: none;
+}
+
+@media (max-width: 1104px) {
+
+  .site-header .site-nav .nav-search {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    width: 100%;
+    height: 48px;
+    margin: 0;
+    padding: 0 24px;
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--text-nav);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .site-header .site-nav .nav-search:hover {
+    color: var(--gold-hi);
+  }
+
+  .site-header .site-nav .nav-search svg {
+    width: 17px;
+    height: 17px;
+    flex-shrink: 0;
+  }
+}
+
+/* ============================================================
+   SECTION 7 — THE THREE FAMILIES OF GATHERING
+
+   Sits under the upcoming-events grid and stays put whether or
+   not there are dates on the calendar. Each card opens its
+   pop-up (JUC_INFO.ev-arts / ev-voices / ev-journey).
+   ============================================================ */
+
+.ev-families {
+  margin-top: 56px;
+  padding-top: 46px;
+  border-top: 1px solid var(--s7-line);
+}
+
+.ev-families-heading {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 27px;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  text-align: center;
+  color: var(--s7-title);
+}
+
+.ev-families-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.ev-family {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 26px 28px;
+  border: 1px solid var(--s7-line);
+  border-radius: 14px;
+  background: var(--s7-panel);
+  text-align: center;
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.ev-family:hover {
+  transform: translateY(-4px);
+  border-color: var(--ghost-border);
+  background: rgba(196, 146, 63, 0.07);
+}
+
+.ev-family-glyph {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border: 1px solid var(--s7-line);
+  border-radius: 50%;
+  background: var(--s7-panel-soft);
+  color: var(--gold);
+}
+
+.ev-family-glyph svg {
+  width: 27px;
+  height: 27px;
+}
+
+.ev-family-title {
+  margin-top: 18px;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 21px;
+  line-height: 1.25;
+  color: var(--s7-title);
+  transition: color 0.2s ease;
+}
+
+.ev-family:hover .ev-family-title {
+  color: var(--gold-hi);
+}
+
+.ev-family-kicker {
+  margin-top: 9px;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--s7-label);
+}
+
+.ev-family-desc {
+  margin-top: 13px;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 24px;
+  color: var(--s7-body);
+}
+
+/* Reads as the card's button without being one — the whole card
+   is the link. */
+.ev-family-more {
+  margin-top: auto;
+  padding-top: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold-hi);
+}
+
+.ev-family-more::after {
+  content: " →";
+  letter-spacing: 0;
+}
+
+.ev-families-note {
+  margin-top: 26px;
+  font-size: 14.5px;
+  font-weight: 300;
+  line-height: 25px;
+  text-align: center;
+  color: var(--s7-body);
+}
+
+.ev-families-note a {
+  color: var(--gold-hi);
+  border-bottom: 1px solid var(--s7-line);
+}
+
+.ev-families-note a:hover {
+  border-bottom-color: var(--gold);
+}
+
+@media (max-width: 1024px) {
+
+  .ev-families-row {
+    grid-template-columns: 1fr;
+    max-width: 520px;
+    margin-inline: auto;
+  }
+
+  .ev-family-more {
+    margin-top: 18px;
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 600px) {
+
+  .ev-families {
+    margin-top: 40px;
+    padding-top: 34px;
+  }
+
+  .ev-families-heading {
+    font-size: 23px;
+  }
+
+  .ev-family {
+    padding: 26px 20px 24px;
+  }
+
+  .ev-family-title {
+    font-size: 19px;
+  }
+
+  .ev-empty {
+    padding: 28px 20px 26px;
+  }
+
+  .ev-empty-lead {
+    font-size: 21px;
+  }
+
+  .ev-empty .btn-primary {
+    width: 100%;
+  }
+}
+
+/* ============================================================
+   EVENT NOTIFICATION FORM
+
+   Borrows the membership modal's shell and field styles; the
+   only new thing is the three-way checkbox group.
+   ============================================================ */
+
+.nf-fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+  min-width: 0;      /* fieldsets refuse to shrink in a grid otherwise */
+}
+
+.nf-fieldset .mf-label {
+  padding: 0;
+}
+
+.nf-choices {
+  display: grid;
+  gap: 9px;
+}
+
+.nf-choice {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid var(--ghost-border);
+  border-radius: 4px;
+  background: var(--mf-field-bg);
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.nf-choice:hover {
+  border-color: var(--gold);
+  background: rgba(196, 146, 63, 0.08);
+}
+
+/* The real control stays in the accessibility tree and keeps the
+   keyboard behaviour; the gold box below is what is drawn. */
+.nf-choice input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+}
+
+.nf-choice-box {
+  position: relative;
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  border: 1px solid var(--ghost-border);
+  border-radius: 3px;
+  background: rgba(10, 15, 35, 0.6);
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.nf-choice-box::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 1px;
+  width: 5px;
+  height: 10px;
+  border: solid var(--navy);
+  border-width: 0 2px 2px 0;
+  transform: rotate(42deg) scale(0.4);
+  opacity: 0;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.nf-choice input:checked ~ .nf-choice-box {
+  border-color: var(--gold);
+  background: var(--gold);
+}
+
+.nf-choice input:checked ~ .nf-choice-box::after {
+  opacity: 1;
+  transform: rotate(42deg) scale(1);
+}
+
+.nf-choice input:focus-visible ~ .nf-choice-box {
+  box-shadow: 0 0 0 3px rgba(196, 146, 63, 0.35);
+}
+
+.nf-choice-text {
+  font-size: 13.5px;
+  font-weight: 400;
+  line-height: 20px;
+  color: var(--text-body);
+}
+
+.nf-choice-text em {
+  display: block;
+  margin-top: 2px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 18px;
+  color: rgba(233, 233, 238, 0.6);
+}
+
+.nf-fieldset.is-invalid .nf-choice {
+  border-color: var(--mf-error);
+}
+
+@media (max-width: 600px) {
+
+  .nf-choice {
+    padding: 11px 12px;
+    gap: 10px;
+  }
+
+  .nf-choice-text {
+    font-size: 13px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .notify-overlay.is-open,
+  .notify-modal {
+    animation: none !important;
+  }
+}
+
+/* ============================================================
+   SECTION 6 — JOIN BANNER, TABLET / SMALL LAPTOP (769–1160px)
+
+   The desktop banner is a fixed-width row: a 248px dove, a
+   nowrap 35px heading, a 293px button and a 179px right margin.
+   That needs about 1143px, so between the 768px stacking rule
+   and roughly 1143px the button pushed past the viewport and
+   gave the whole page a horizontal scrollbar.
+
+   This tier keeps the row but lets it breathe — smaller dove,
+   wrapping heading, no fixed right margin — and allows the
+   button to drop onto its own line rather than overflow.
+   ============================================================ */
+
+@media (min-width: 769px) and (max-width: 1160px) {
+
+  .join-banner {
+    height: auto;
+  }
+
+  .join-inner {
+    flex-wrap: wrap;
+    height: auto;
+    padding-top: 24px;
+    padding-bottom: 28px;
+    column-gap: 8px;
+    row-gap: 18px;
+  }
+
+  .join-dove {
+    width: 172px;
+    height: 172px;
+    margin: 0;
+  }
+
+  .join-copy {
+    flex: 1 1 260px;
+    min-width: 0;
+    margin-left: 26px;
+  }
+
+  .join-heading {
+    white-space: normal;
+    font-size: 29px;
+    line-height: 1.15;
+  }
+
+  .join-desc {
+    max-width: none;
+    margin-top: 12px;
+    font-size: 15px;
+    line-height: 24px;
+  }
+
+  .btn-member {
+    width: 262px;
+    height: 56px;
+    margin: 0 0 0 auto;
+  }
+}
+
+/* ============================================================
+   SECTION 2 — CATEGORIES, TABLET / SMALL LAPTOP (769–1160px)
+
+   Below 769px the seven cards become a two-column grid; only
+   above about 1216px does the single flex row genuinely fit. In
+   between they stayed in one row with `white-space: nowrap`
+   titles, so "Global Chapters" ran past the viewport edge —
+   1–4px of it, enough for a horizontal scrollbar.
+
+   Wrapping the flex row centres each line on its own, so seven
+   cards fall into a 4 + 3 arrangement that stays centred.
+   ============================================================ */
+
+@media (min-width: 769px) and (max-width: 1215px) {
+
+  .pillars-row {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 34px 20px;
+  }
+
+  .pillar {
+    flex: 0 1 158px;
+  }
+
+  .pillar-title {
+    white-space: normal;
+    font-size: 18px;
+  }
+
+  .pillar-desc {
+    max-width: 158px;
+    font-size: 13px;
+    line-height: 20px;
+  }
+}
+
+/* ============================================================
+   SECTION 8 — THE JERUSALEM UNITY PODCAST
+
+   A cream band in the same family as the Institutes, Pathways
+   and Support sections (same paper texture, same ornamented
+   serif heading), sitting between the dark Events section and
+   the dark Visit banner.
+
+   One column: a single featured-episode card, centered, which
+   opens the podcast pop-up. The player itself lives inside that
+   pop-up, on the panel's own dark ground — no outside widget
+   with its own colours sits on the page.
+   ============================================================ */
+
+:root {
+  --s8-line: rgba(122, 92, 56, 0.3);   /* bronze hairline on cream,
+                                          shared with the giving cards */
+  --s8-card: #0C1029;                  /* card fill, matches the
+                                          Institutes card navy */
+}
+
+.podcast {
+  background: var(--s3-cream) url("assets/section3-bg.png") center / cover no-repeat;
+  padding: 46px 0 52px;
+}
+
+/* Same treatment as .pathways-heading / .support-heading */
+.podcast-heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 29px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--s3-heading);
+}
+
+.podcast-intro {
+  max-width: 780px;
+  margin: 22px auto 0;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 26px;
+  letter-spacing: 0.01em;
+  color: var(--s5-desc);
+}
+
+/* --- The featured episode card --------------------------------
+   One card, centered, in the site's own materials: the navy of
+   the Institutes cards, a gold hairline, the emblem ring the
+   pop-ups use. Three parts across — emblem, episode, action —
+   which stack into one column on a narrow screen. */
+
+.pod-card {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  max-width: 900px;
+  margin: 34px auto 0;
+  padding: 28px 34px;
+  border: 1px solid rgba(196, 146, 63, 0.34);
+  border-radius: 14px;
+  background: linear-gradient(180deg, #121737 0%, var(--s8-card) 100%);
+  box-shadow: 0 14px 34px rgba(20, 12, 4, 0.16);
+  text-align: left;
+  text-decoration: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.pod-card:hover,
+.pod-card:focus-visible {
+  transform: translateY(-3px);
+  border-color: var(--gold);
+  box-shadow: 0 20px 42px rgba(20, 12, 4, 0.26);
+}
+
+/* The same ring the pop-ups draw around a glyph (.info-glyph) */
+.pod-emblem {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 78px;
+  height: 78px;
+  border: 1px solid var(--ghost-border);
+  border-radius: 50%;
+  background: rgba(196, 146, 63, 0.10);
+  color: var(--gold);
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.pod-card:hover .pod-emblem {
+  border-color: var(--gold);
+  background: rgba(196, 146, 63, 0.18);
+}
+
+.pod-emblem-icon {
+  width: 38px;
+  height: 38px;
+}
+
+.pod-text {
+  display: block;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.pod-label {
+  display: block;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--s7-label);
+}
+
+.pod-title {
+  margin-top: 9px;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  color: var(--s7-title);
+}
+
+.pod-show {
+  display: block;
+  margin-top: 6px;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 15px;
+  line-height: 1.35;
+  color: var(--gold-hi);
+}
+
+.pod-desc {
+  display: block;
+  margin-top: 12px;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 24px;
+  letter-spacing: 0.01em;
+  color: var(--s7-body);
+}
+
+/* Runtime + date, on the hairline rule the event cards use */
+.pod-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 26px;
+  margin-top: 14px;
+  padding-top: 13px;
+  border-top: 1px solid rgba(196, 146, 63, 0.26);
+  list-style: none;
+}
+
+.pod-meta li {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 13.5px;
+  line-height: 20px;
+  color: var(--s7-body);
+}
+
+.pod-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: var(--gold);
+}
+
+/* --- The action ------------------------------------------------ */
+
+.pod-action {
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 140px;
+  text-align: center;
+}
+
+.pod-play {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, var(--gold-hi) 0%, var(--gold) 55%, var(--gold-lo) 100%);
+  color: #14172C;
+  box-shadow: 0 6px 18px rgba(20, 12, 4, 0.35);
+  transition: transform 0.25s ease;
+}
+
+.pod-play svg {
+  width: 26px;
+  height: 26px;
+  margin-left: 3px;             /* optical centering of the triangle */
+}
+
+.pod-card:hover .pod-play {
+  transform: scale(1.06);
+}
+
+.pod-more {
+  font-size: 11.5px;
+  font-weight: 600;
+  line-height: 17px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold-hi);
+  transition: color 0.25s ease;
+}
+
+.pod-card:hover .pod-more {
+  color: var(--btn-text-cream);
+}
+
+/* ============================================================
+   SECTION 9 — VISIT JERUSALEM
+
+   A dark banner on the campus artwork, between the cream
+   Podcast band and the cream giving section. Copy on the left,
+   three short points on the right.
+   ============================================================ */
+
+.visit {
+  position: relative;
+  isolation: isolate;
+  border-top: 1px solid rgba(196, 146, 63, 0.26);
+  border-bottom: 1px solid rgba(196, 146, 63, 0.26);
+  background:
+    linear-gradient(90deg,
+      rgba(7, 3, 26, 0.90) 0%,
+      rgba(7, 3, 26, 0.80) 46%,
+      rgba(7, 3, 26, 0.62) 100%),
+    var(--navy) url("assets/section4-bg.png") center 42% / cover no-repeat;
+  padding: 54px 0 58px;
+}
+
+.visit-inner {
+  display: flex;
+  align-items: center;
+  gap: 54px;
+}
+
+.visit-copy {
+  flex: 1 1 560px;
+  min-width: 0;
+}
+
+.visit-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold-hi);
+}
+
+.visit-heading {
+  margin-top: 14px;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 1.18;
+  letter-spacing: 0.01em;
+  color: var(--white);
+}
+
+.visit-text {
+  max-width: 560px;
+  margin-top: 16px;
+  font-size: 15.5px;
+  font-weight: 300;
+  line-height: 27px;
+  letter-spacing: 0.01em;
+  color: var(--text-body);
+}
+
+.visit-cta {
+  width: max-content;
+  height: 52px;
+  margin-top: 26px;
+  padding: 0 30px;
+  border-radius: 4px;
+  gap: 12px;
+  font-size: 12.5px;
+  letter-spacing: 0.10em;
+}
+
+/* --- The three points ----------------------------------------- */
+
+.visit-points {
+  flex: 0 1 380px;
+  min-width: 0;
+  padding: 26px 26px 24px;
+  border: 1px solid rgba(196, 146, 63, 0.3);
+  border-radius: 14px;
+  background: rgba(10, 14, 37, 0.58);
+  list-style: none;
+}
+
+.visit-point {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.visit-point + .visit-point {
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(196, 146, 63, 0.2);
+}
+
+.visit-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--gold);
+}
+
+.visit-point b {
+  display: block;
+  margin-bottom: 4px;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 1.25;
+  letter-spacing: 0.02em;
+  color: var(--s7-title);
+}
+
+.visit-point span {
+  font-size: 13.5px;
+  font-weight: 300;
+  line-height: 22px;
+  color: var(--s7-body);
+}
+
+/* ============================================================
+   SECTION 10 — GIVING (inside Support Our Mission)
+
+   Four statements of where a gift goes, the primary Donate
+   button and the tax-deductibility note. Cream ground, so the
+   type follows the Pathways palette rather than the dark one.
+   ============================================================ */
+
+.give-uses {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 18px;
+  max-width: 940px;
+  margin: 30px auto 0;
+  list-style: none;
+}
+
+.give-use {
+  flex: 1 1 200px;
+  max-width: 226px;
+  padding: 20px 18px 18px;
+  border: 1px solid var(--s8-line);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.34);
+  text-align: center;
+}
+
+.give-icon {
+  width: 28px;
+  height: 28px;
+  color: #8A6524;
+}
+
+.give-use b {
+  display: block;
+  margin-top: 10px;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.25;
+  letter-spacing: 0.02em;
+  color: var(--s5-title);
+}
+
+.give-use span {
+  display: block;
+  margin-top: 7px;
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 21px;
+  color: var(--s5-desc);
+}
+
+.give-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin-top: 30px;
+}
+
+/* The button already carries `margin: 28px auto 0` from .btn-donate;
+   inside the actions column that spacing is handled by the gap. */
+.give-actions .btn-donate {
+  margin: 0;
+}
+
+.give-secondary {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: #6B4E22;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.give-secondary:hover {
+  color: var(--gold-lo);
+}
+
+.give-note {
+  max-width: 720px;
+  margin: 22px auto 0;
+  text-align: center;
+  font-size: 12.5px;
+  font-weight: 300;
+  line-height: 21px;
+  color: var(--s5-desc);
+}
+
+/* ============================================================
+   SECTIONS 8–10 — TABLET AND PHONE
+   The visit banner is a two-column flex row and the podcast card
+   is a three-part one; below 980px they stack, and below 768px
+   they take the same reduced page padding as everything else.
+   ============================================================ */
+
+@media (max-width: 980px) {
+
+  .visit-inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 30px;
+  }
+
+  .visit-copy,
+  .visit-points {
+    flex: 1 1 auto;
+  }
+
+  .visit-heading {
+    font-size: 34px;
+  }
+
+  .visit-heading br {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .podcast {
+    padding: 36px 0 40px;
+  }
+
+  .podcast-heading {
+    gap: 12px;
+    font-size: 23px;
+    line-height: 1.25;
+  }
+
+  .podcast-intro {
+    margin-top: 16px;
+    font-size: 14px;
+    line-height: 24px;
+  }
+
+  /* One column, centered: emblem, then the episode, then the
+     play button as the thing to press. */
+  .pod-card {
+    flex-direction: column;
+    gap: 20px;
+    padding: 26px 20px 24px;
+    text-align: center;
+  }
+
+  .pod-emblem {
+    width: 68px;
+    height: 68px;
+  }
+
+  .pod-emblem-icon {
+    width: 33px;
+    height: 33px;
+  }
+
+  .pod-title {
+    font-size: 23px;
+  }
+
+  .pod-meta {
+    justify-content: center;
+    gap: 6px 22px;
+  }
+
+  .pod-action {
+    width: auto;
+  }
+
+  .visit {
+    padding: 40px 0 44px;
+  }
+
+  .visit-heading {
+    font-size: 28px;
+  }
+
+  .visit-text {
+    font-size: 15px;
+    line-height: 25px;
+  }
+
+  .visit-cta {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .visit-points {
+    padding: 20px 18px 18px;
+  }
+
+  .give-uses {
+    gap: 12px;
+  }
+
+  .give-use {
+    flex: 1 1 152px;
+    max-width: none;
+    padding: 16px 12px 14px;
+  }
+
+  .give-use b {
+    font-size: 16px;
+  }
+
+  .give-use span {
+    font-size: 12.5px;
+    line-height: 19px;
+  }
+
+  .give-actions .btn-donate {
+    width: 100%;
+    justify-content: center;
+  }
+}

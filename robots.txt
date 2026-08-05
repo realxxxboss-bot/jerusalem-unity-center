@@ -1,0 +1,14 @@
+# Jerusalem Unity Center — jerusalemunity.org
+#
+# Everything on this site is public and meant to be found. The one
+# exception is the post-donation thank-you page, which exists to be
+# arrived at rather than searched for.
+#
+# IF THE SITE IS PUBLISHED ON A DIFFERENT DOMAIN, change the Sitemap
+# line below to match — it must be an absolute URL on the live host.
+
+User-agent: *
+Allow: /
+Disallow: /donate-thank-you.html
+
+Sitemap: https://jerusalemunity.org/sitemap.xml

@@ -4,6 +4,69 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jerusalem Unity Center — A Center of Consciousness for Humanity</title>
+  <meta name="description" content="An international educational and cultural center in Jerusalem advancing consciousness, wisdom, ethical leadership, and human flourishing — open to people of every nation, culture, and tradition.">
+
+  <!-- Replace the domain here and in the tags below if the site is
+       published anywhere other than jerusalemunity.org. -->
+  <link rel="canonical" href="https://jerusalemunity.org/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Jerusalem Unity Center — A Center of Consciousness for Humanity">
+  <meta property="og:description" content="A global gathering place for learning, dialogue, spiritual development, cultural exchange, and human flourishing.">
+  <meta property="og:url" content="https://jerusalemunity.org/">
+  <meta property="og:image" content="https://jerusalemunity.org/assets/the-jerusalme-unity-center.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- ==========================================================
+       GOOGLE TAG — NOT YET INSTALLED
+
+       Paste the Google tag (gtag.js) for the GA4 property here,
+       exactly as Google gives it, replacing this comment block:
+
+       <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+       <script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag(){dataLayer.push(arguments);}
+         gtag('js', new Date());
+         gtag('config', 'G-XXXXXXX');
+       </script>
+
+       The same block goes in the <head> of donate.html,
+       donate-thank-you.html, master-plan.html and both policy
+       pages, so the whole site reports into one property. A
+       Google Ad Grants account is suspended without conversion
+       reporting, so this is not optional housekeeping.
+       ========================================================== -->
+
+  <!-- Structured data — tells Google this is a nonprofit, where it
+       accepts donations, and who sponsors it. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "NGO",
+    "name": "Jerusalem Unity Center",
+    "url": "https://jerusalemunity.org/",
+    "logo": "https://jerusalemunity.org/assets/the-jerusalme-unity-center.png",
+    "email": "info@jerusalemunity.org",
+    "slogan": "A Center of Consciousness for Humanity",
+    "description": "An international educational and cultural initiative in Jerusalem dedicated to advancing consciousness, wisdom, ethical leadership, and human flourishing, welcoming people of every nation, culture, and tradition.",
+    "nonprofitStatus": "Nonprofit501c3",
+    "parentOrganization": {
+      "@type": "NGO",
+      "name": "The Seventy Nations (R.A.) Jerusalem",
+      "url": "https://seventynationsjerusalem.org"
+    },
+    "sameAs": [
+      "https://www.facebook.com/profile.php?id=61590474344492",
+      "https://seventynationsjerusalem.org"
+    ],
+    "potentialAction": {
+      "@type": "DonateAction",
+      "name": "Donate to the Jerusalem Unity Center",
+      "target": "https://jerusalemunity.org/donate.html"
+    }
+  }
+  </script>
 
   <!-- Favicons / app icons. favicon.ico is the client-supplied emblem and
        carries the 16–256px tab sizes; the PNGs below are derived from it. -->
@@ -35,19 +98,22 @@
           </span>
         </a>
 
+        <!-- Each item goes to its own section where one exists, and
+             opens its pop-up where it does not. Nothing here is a
+             placeholder. -->
         <nav class="site-nav" id="primary-nav" aria-label="Primary">
-          <a href="#vision">About Us</a>
+          <a href="#info/about" class="js-info-open" data-info="about">About Us</a>
           <a href="#vision">Our Vision</a>
           <a href="#institutes">Institutes</a>
-          <a href="#explore">Learn</a>
-          <a href="#join">Community</a>
+          <a href="#info/learn" class="js-info-open" data-info="learn">Learn</a>
+          <a href="#info/community" class="js-info-open" data-info="community">Community</a>
           <a href="#events">Events</a>
-          <a href="#institutes">Research</a>
-          <a href="#join">Global Chapters</a>
+          <a href="#info/research" class="js-info-open" data-info="research">Research</a>
+          <a href="#info/chapters" class="js-info-open" data-info="chapters">Global Chapters</a>
         </nav>
 
         <div class="header-actions">
-          <a href="https://thejerusalemunitycenter.org/donation/" class="btn btn-support" target="_blank" rel="noopener">Donate Now</a>
+          <a href="donate.html" class="btn btn-support js-donate-cta" data-donate-source="header">Donate Now</a>
           <button class="search-btn" type="button" aria-label="Search">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
               <circle cx="10.5" cy="10.5" r="6.5"></circle>
@@ -100,53 +166,56 @@
 
   </div>
 
+  <!-- ==========================================================
+       SECTION 2 — THE SEVEN CATEGORIES
+       Every card opens its own pop-up. The copy lives in the
+       JUC_INFO registry in info.js; the href is the no-JS
+       fallback and makes each pop-up linkable from another page.
+       ========================================================== -->
   <section class="pillars" id="explore">
     <div class="pillars-row">
 
-      <div class="pillar">
+      <a class="pillar pillar-link js-info-open" href="#info/learn" data-info="learn">
         <div class="pillar-icon"><img class="icon-learn" src="assets/section2-learn-icon.png" alt=""></div>
         <h3 class="pillar-title">Learn</h3>
         <p class="pillar-desc">Courses and pathways for personal and professional growth.</p>
-      </div>
+      </a>
 
-      <div class="pillar">
+      <a class="pillar pillar-link js-info-open" href="#info/library" data-info="library">
         <div class="pillar-icon"><img class="icon-library" src="assets/section2-library-icon.png" alt=""></div>
         <h3 class="pillar-title">Library</h3>
         <p class="pillar-desc">Timeless wisdom, modern research, global perspectives.</p>
-      </div>
+      </a>
 
-      <div class="pillar">
+      <a class="pillar pillar-link js-info-open" href="#info/community" data-info="community">
         <div class="pillar-icon"><img class="icon-community" src="assets/section2-community-icon.png" alt=""></div>
         <h3 class="pillar-title">Community</h3>
         <p class="pillar-desc">Dialogue circles, study groups, lifelong connections.</p>
-      </div>
+      </a>
 
-      <!-- The only pillar with a destination of its own so far, so
-           it is the only one rendered as a link. -->
-      <a class="pillar pillar-link" href="#events">
+      <a class="pillar pillar-link js-info-open" href="#info/events" data-info="events">
         <div class="pillar-icon"><img class="icon-event" src="assets/section2-event-icon.png" alt=""></div>
         <h3 class="pillar-title">Events</h3>
         <p class="pillar-desc">Conferences, workshops, retreats, and global gatherings.</p>
       </a>
 
-      <div class="pillar">
+      <a class="pillar pillar-link js-info-open" href="#info/institutes" data-info="institutes">
         <div class="pillar-icon"><img class="icon-institutes" src="assets/section2-insitutes-icon.png" alt=""></div>
         <h3 class="pillar-title">Institutes</h3>
         <p class="pillar-desc">Centers of excellence advancing knowledge and understanding.</p>
-      </div>
+      </a>
 
-      <div class="pillar">
+      <a class="pillar pillar-link js-info-open" href="#info/research" data-info="research">
         <div class="pillar-icon"><img class="icon-research" src="assets/section2-research-icon.png" alt=""></div>
         <h3 class="pillar-title">Research</h3>
         <p class="pillar-desc">Interdisciplinary research for the flourishing of humanity.</p>
-      </div>
+      </a>
 
-      <div class="pillar">
+      <a class="pillar pillar-link js-info-open" href="#info/chapters" data-info="chapters">
         <div class="pillar-icon"><img class="icon-global" src="assets/section2-global-chapters-icon.png" alt=""></div>
         <h3 class="pillar-title">Global Chapters</h3>
         <p class="pillar-desc">Local communities united in purpose across the world.</p>
-      </div>
-
+      </a>
     </div>
   </section>
 
@@ -161,52 +230,52 @@
 
       <div class="institutes-row">
 
-        <article class="institute-card">
+        <a class="institute-card js-info-open" href="#info/inst-consciousness" data-info="inst-consciousness">
           <div class="card-media"><img src="assets/institute-consciousness.jpg" alt="Meditation at sunset"></div>
           <div class="card-emblem"><img class="emblem-consciousness" src="assets/consciousnes-icon.png" alt=""></div>
           <h3 class="card-title">Consciousness</h3>
           <p class="card-desc">Explore the nature and development of awareness.</p>
-        </article>
+        </a>
 
-        <article class="institute-card">
+        <a class="institute-card js-info-open" href="#info/inst-spiritual" data-info="inst-spiritual">
           <div class="card-media"><img src="assets/institute-spiritual-intelligence.jpg" alt="Sunlit tree of life"></div>
           <div class="card-emblem"><img class="emblem-spiritual" src="assets/sipritul-intelligence-icon.png" alt=""></div>
           <h3 class="card-title">Spiritual Intelligence</h3>
           <p class="card-desc">Cultivate wisdom, purpose, and inner transformation.</p>
-        </article>
+        </a>
 
-        <article class="institute-card">
+        <a class="institute-card js-info-open" href="#info/inst-flourishing" data-info="inst-flourishing">
           <div class="card-media"><img src="assets/institute-human-flourishing.jpg" alt="Figure with arms raised toward the sun"></div>
           <div class="card-emblem"><img class="emblem-human" src="assets/human-flourishing-icon.png" alt=""></div>
           <h3 class="card-title">Human Flourishing</h3>
           <p class="card-desc">Discover what enables individuals and societies to thrive.</p>
-        </article>
+        </a>
 
-        <article class="institute-card">
+        <a class="institute-card js-info-open" href="#info/inst-moral" data-info="inst-moral">
           <div class="card-media"><img src="assets/institute-moral-leadership.jpg" alt="Classical stone columns"></div>
           <div class="card-emblem"><img class="emblem-moral" src="assets/moral-leadership-icon.png" alt=""></div>
           <h3 class="card-title">Moral Leadership</h3>
           <p class="card-desc">Develop integrity, ethical leadership, and responsibility.</p>
-        </article>
+        </a>
 
-        <article class="institute-card">
+        <a class="institute-card js-info-open" href="#info/inst-dialogue" data-info="inst-dialogue">
           <div class="card-media"><img src="assets/institute-global-dialogue.jpg" alt="People in warm-lit conversation"></div>
           <div class="card-emblem"><img class="emblem-global" src="assets/global-dialouge-icon.png" alt=""></div>
           <h3 class="card-title">Global Dialogue</h3>
           <p class="card-desc">Build bridges across cultures, faiths, and perspectives.</p>
-        </article>
+        </a>
 
-        <article class="institute-card">
+        <a class="institute-card js-info-open" href="#info/inst-science" data-info="inst-science">
           <div class="card-media"><img src="assets/institute-science-consciousness.jpg" alt="Cosmic nebula"></div>
           <div class="card-emblem"><img class="emblem-science" src="assets/science-consciousness -icon.png" alt=""></div>
           <h3 class="card-title">Science &amp; Consciousness</h3>
           <p class="card-desc">Bridge scientific inquiry and human experience.</p>
-        </article>
+        </a>
 
       </div>
 
-      <!-- Placeholder target: institutes sub-page doesn't exist yet -->
-      <a href="#join" class="institutes-viewall">
+      <!-- Opens the Institutes overview pop-up (JUC_INFO.institutes) -->
+      <a href="#info/institutes" class="institutes-viewall js-info-open" data-info="institutes">
         View All Institutes
         <svg class="icon-arrow" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
           <line x1="1" y1="6" x2="24" y2="6"></line>
@@ -252,43 +321,43 @@
 
       <div class="pathways-row">
 
-        <div class="pathway">
+        <a class="pathway pathway-link js-info-open" href="#info/path-consciousness" data-info="path-consciousness">
           <div class="pathway-icon"><img class="pw-consciousness" src="assets/consciousness-icon.png" alt=""></div>
           <h3 class="pathway-title">Consciousness</h3>
           <p class="pathway-desc">Exploring awareness, perception, meaning, and human potential.</p>
-        </div>
+        </a>
 
         <span class="pathway-divider" aria-hidden="true"></span>
 
-        <div class="pathway">
+        <a class="pathway pathway-link js-info-open" href="#info/path-spiritual" data-info="path-spiritual">
           <div class="pathway-icon"><img class="pw-spiritual" src="assets/spiritual-development-icon.png" alt=""></div>
           <h3 class="pathway-title">Spiritual Development</h3>
           <p class="pathway-desc">Cultivating inner growth, wisdom, purpose, and connection.</p>
-        </div>
+        </a>
 
         <span class="pathway-divider" aria-hidden="true"></span>
 
-        <div class="pathway">
+        <a class="pathway pathway-link js-info-open" href="#info/path-flourishing" data-info="path-flourishing">
           <div class="pathway-icon"><img class="pw-human" src="assets/human-flourishings-icon.png" alt=""></div>
           <h3 class="pathway-title">Human Flourishing</h3>
           <p class="pathway-desc">Supporting well-being, resilience, creativity, and fulfillment.</p>
-        </div>
+        </a>
 
         <span class="pathway-divider" aria-hidden="true"></span>
 
-        <div class="pathway">
+        <a class="pathway pathway-link js-info-open" href="#info/path-dialogue" data-info="path-dialogue">
           <div class="pathway-icon"><img class="pw-dialogue" src="assets/dialogue-understanding-icon.png" alt=""></div>
           <h3 class="pathway-title">Dialogue &amp; Understanding</h3>
           <p class="pathway-desc">Building bridges across cultures, faiths, disciplines, and perspectives.</p>
-        </div>
+        </a>
 
         <span class="pathway-divider" aria-hidden="true"></span>
 
-        <div class="pathway">
+        <a class="pathway pathway-link js-info-open" href="#info/path-culture" data-info="path-culture">
           <div class="pathway-icon"><img class="pw-culture" src="assets/culture-wisdom-icon.png" alt=""></div>
           <h3 class="pathway-title">Culture &amp; Wisdom</h3>
           <p class="pathway-desc">Celebrating knowledge, traditions, arts, and stories that enrich humanity.</p>
-        </div>
+        </a>
 
       </div>
 
@@ -308,7 +377,7 @@
         <p class="join-desc">Be part of a worldwide community dedicated to learning, service, and the flourishing of humanity.</p>
       </div>
 
-      <a class="btn btn-member js-member-open" href="#" data-interest="member">Become a Member</a>
+      <a class="btn btn-member js-member-open" href="#join-modal/member" data-interest="member">Become a Member</a>
 
     </div>
   </section>
@@ -332,19 +401,207 @@
       <p class="events-intro">The Jerusalem Unity Center gathers people from every nation for evenings of learning, dialogue, music, and reflection. Our events are open to all &mdash; no affiliation, background, or prior study required. Each one is an invitation to sit together, to listen well, and to leave with something worth carrying home.</p>
       <p class="events-intro">Below you will find our next gathering: where it takes place, who is leading it, and what the evening will hold. Places are limited and offered on a first-come basis, so we encourage you to reserve early.</p>
 
-      <!-- Rendered by the events script. The message below is the
-           no-JS / no-events fallback and is replaced on render. -->
+      <!-- Rendered by the events script. With JUC_EVENTS empty it
+           renders the notification signup panel instead; the markup
+           below is the no-JS fallback and is replaced on render. -->
       <div class="events-body" id="events-body">
-        <p class="ev-empty">Our next gathering will be announced here shortly. To hear about it first, <a href="#" class="js-member-open" data-interest="member">join the movement</a>.</p>
+        <p class="ev-empty">Our next gathering will be announced here shortly. To hear about it first, <a href="#notify-modal" class="js-notify-open">ask us to let you know</a>.</p>
+      </div>
+
+      <!-- ------------------------------------------------------
+           The three families every gathering belongs to. Always
+           shown, whether or not a date is on the calendar. Each
+           opens its pop-up (JUC_INFO.ev-* in info.js).
+           ------------------------------------------------------ -->
+      <div class="ev-families">
+
+        <h3 class="ev-families-heading">Three Kinds of Gathering</h3>
+
+        <div class="ev-families-row">
+
+          <a class="ev-family js-info-open" href="#info/ev-arts" data-info="ev-arts">
+            <span class="ev-family-glyph" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9.4 17.2V5.6l9-1.8v11.6"></path><circle cx="7" cy="17.4" r="2.4"></circle><circle cx="16" cy="15.6" r="2.4"></circle>
+              </svg>
+            </span>
+            <h4 class="ev-family-title">The Arts of Humanity</h4>
+            <p class="ev-family-kicker">Music &bull; Arts &bull; Film &bull; Culture</p>
+            <p class="ev-family-desc">The creative spirit as a universal language &mdash; concerts, cinema, exhibitions, poetry, and storytelling from around the world.</p>
+            <span class="ev-family-more">Explore Cultural Events</span>
+          </a>
+
+          <a class="ev-family js-info-open" href="#info/ev-voices" data-info="ev-voices">
+            <span class="ev-family-glyph" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 5.6h11.6v8H8.4L4 17z"></path><path d="M8.6 16.4h6L20 19.6V10h-2.6"></path>
+              </svg>
+            </span>
+            <h4 class="ev-family-title">Voices of the Nations</h4>
+            <p class="ev-family-kicker">Dialogue &bull; Leadership &bull; Peacebuilding</p>
+            <p class="ev-family-desc">Conversations that bring leaders, scholars, faith communities, and citizens together to listen well and build understanding.</p>
+            <span class="ev-family-more">Join the Conversation</span>
+          </a>
+
+          <a class="ev-family js-info-open" href="#info/ev-journey" data-info="ev-journey">
+            <span class="ev-family-glyph" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="7.6" r="3"></circle><path d="M12 10.8v9.4"></path><path d="M12 20.2c-3.6 0-6.4-2.2-6.4-5 2.6 0 4.9 1.1 6.4 2.9 1.5-1.8 3.8-2.9 6.4-2.9 0 2.8-2.8 5-6.4 5z"></path>
+              </svg>
+            </span>
+            <h4 class="ev-family-title">The Journey of Self-Actualization</h4>
+            <p class="ev-family-kicker">Consciousness &bull; Wisdom &bull; Human Flourishing</p>
+            <p class="ev-family-desc">Workshops, retreats, lectures, and contemplative practice for the deepest journey there is &mdash; the one within.</p>
+            <span class="ev-family-more">Begin Your Journey</span>
+          </a>
+
+        </div>
+
+        <p class="ev-families-note">
+          Want to hear when the next one is announced?
+          <a href="#notify-modal" class="js-notify-open">Sign up for event notifications</a>.
+        </p>
+
       </div>
 
     </div>
   </section>
 
   <!-- ==========================================================
-       SECTION 8 — SUPPORT OUR MISSION
+       SECTION 8 — THE PODCAST
+       One column: the heading, a line of intro, and a single
+       featured-episode card drawn in the site's own materials.
+       The card opens the podcast pop-up (JUC_INFO.podcast in
+       info.js), and the player lives inside that pop-up — so no
+       outside widget with its own colours sits on the page.
+
+       TO FEATURE A DIFFERENT EPISODE: change the copy here, then
+       the matching copy, embed.src and cta.href in the `podcast`
+       entry of info.js.
+       ========================================================== -->
+  <section class="podcast" id="podcast">
+    <div class="shell podcast-inner">
+
+      <h2 class="podcast-heading">
+        <span class="heading-orn orn-short orn-left" aria-hidden="true"></span>
+        The Jerusalem Unity Podcast
+        <span class="heading-orn orn-short orn-right" aria-hidden="true"></span>
+      </h2>
+
+      <p class="podcast-intro">Conversations from Jerusalem on unity, consciousness, and the gathering of the nations &mdash; for everyone who cannot yet be here in person. Listen wherever you are, at whatever hour finds you free.</p>
+
+      <!-- Featured episode. The whole card opens the pop-up, where
+           the episode can be played; the href is the no-JS fallback
+           and still reaches it. -->
+      <a class="pod-card js-info-open" href="#info/podcast" data-info="podcast">
+
+        <span class="pod-emblem" aria-hidden="true">
+          <svg class="pod-emblem-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="3.2" width="6" height="10.6" rx="3"></rect>
+            <path d="M5.6 11.8a6.4 6.4 0 0 0 12.8 0"></path>
+            <path d="M12 18.2v2.6"></path>
+            <path d="M8.6 20.8h6.8"></path>
+          </svg>
+        </span>
+
+        <span class="pod-text">
+          <span class="pod-label">Featured Episode</span>
+
+          <h3 class="pod-title">For the Peace of Jerusalem</h3>
+          <span class="pod-show">Jerusalem Unity &mdash; the opening episode</span>
+
+          <span class="pod-desc">The first podcast of The Seventy Nations and the Jerusalem Unity Center: a welcome message, and an introduction to the work of gathering the seventy nations in Jerusalem.</span>
+
+          <ul class="pod-meta">
+            <li>
+              <svg class="pod-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="8.6"></circle><path d="M12 7.4V12l3.1 1.9"></path>
+              </svg>
+              12 minutes
+            </li>
+            <li>
+              <svg class="pod-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3.6" y="5" width="16.8" height="15.4" rx="2.2"></rect>
+                <path d="M3.6 9.6h16.8M8.4 3.4v3.2M15.6 3.4v3.2"></path>
+              </svg>
+              February 2022
+            </li>
+          </ul>
+        </span>
+
+        <span class="pod-action">
+          <span class="pod-play" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M9 6.6 18 12l-9 5.4z"></path>
+            </svg>
+          </span>
+          <span class="pod-more">Listen to the Episode</span>
+        </span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================
+       SECTION 9 — VISIT JERUSALEM
+       Dark banner between the cream Podcast band and the cream
+       giving section. "Plan Your Visit" opens the enquiry form in
+       visit mode (see the membership modal script below).
+       ========================================================== -->
+  <section class="visit" id="visit">
+    <div class="shell visit-inner">
+
+      <div class="visit-copy">
+        <p class="visit-eyebrow">Visit Jerusalem</p>
+        <h2 class="visit-heading">Experience the Center in the<br>City That <span class="gold-bright">Inspires the World</span></h2>
+        <p class="visit-text">Discover upcoming educational experiences, cultural events, and opportunities to visit Jerusalem and participate in the life of the Center.</p>
+
+        <!-- The href is the no-JS fallback: #join-modal/visit opens
+             the same form on arrival, in the same mode. -->
+        <a class="btn btn-primary visit-cta js-member-open" href="#join-modal/visit" data-interest="visit" data-visit>
+          Plan Your Visit
+          <svg class="icon-arrow" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="1" y1="6" x2="24" y2="6"></line>
+            <polyline points="19 1 24 6 19 11"></polyline>
+          </svg>
+        </a>
+      </div>
+
+      <ul class="visit-points">
+        <li class="visit-point">
+          <svg class="visit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 5.4h5.4A2.6 2.6 0 0 1 12 8v11a2.2 2.2 0 0 0-2.2-2.2H4z"></path>
+            <path d="M20 5.4h-5.4A2.6 2.6 0 0 0 12 8v11a2.2 2.2 0 0 1 2.2-2.2H20z"></path>
+          </svg>
+          <span><b>Educational Experiences</b>Courses, workshops and study days along the Center&rsquo;s five pathways.</span>
+        </li>
+        <li class="visit-point">
+          <svg class="visit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M9.4 17.2V5.6l9-1.8v11.6"></path><circle cx="7" cy="17.4" r="2.4"></circle><circle cx="16" cy="15.6" r="2.4"></circle>
+          </svg>
+          <span><b>Cultural Events</b>Evenings of music, film, dialogue and storytelling from every nation.</span>
+        </li>
+        <li class="visit-point">
+          <svg class="visit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="9" cy="8.4" r="3.1"></circle><path d="M3.6 19.4a5.4 5.4 0 0 1 10.8 0"></path>
+            <path d="M16 5.6a3.1 3.1 0 0 1 0 5.9"></path><path d="M17.2 14.6a5.4 5.4 0 0 1 3.2 4.8"></path>
+          </svg>
+          <span><b>A Part to Play</b>Community gatherings, volunteering, and a share in the life of the Center.</span>
+        </li>
+      </ul>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================
+       SECTION 10 — SUPPORT OUR MISSION
        Nonprofit / tax-deductibility statement. Same cream band
-       language as the Institutes and Pathways sections.
+       language as the Institutes and Pathways sections. The gift
+       levels and the button hand off to donate.html, which is the
+       Center's own donation page — deliberately on this domain
+       rather than an outside site, because Google Ad Grants
+       requires the ad's landing page to live on the charity's
+       verified domain and to be measurable there.
        ========================================================== -->
   <section class="support-mission" id="support">
     <div class="shell support-inner">
@@ -355,20 +612,61 @@
       </h2>
       <p class="support-text"><strong>The Seventy Nations (R.A.) Jerusalem</strong> is a registered Israeli nonprofit association that partners with its sister organization, <strong>The Jerusalem Unity Center USA</strong> &mdash; a 501(c) nonprofit foundation that allows its donors to take tax deductions for contributions of cash, goods, and other assets.</p>
       <p class="support-text support-text-appeal">Your support and contributions will enable us to meet our goals and improve conditions. Your generous donation will fund our mission.</p>
-      <a href="https://thejerusalemunitycenter.org/donation/" class="btn btn-donate" target="_blank" rel="noopener">
-        Donate Now
-        <svg class="icon-arrow" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="1" y1="6" x2="24" y2="6"></line>
-          <polyline points="19 1 24 6 19 11"></polyline>
-        </svg>
-      </a>
+
+      <!-- Where a gift goes. Four plain statements, no figures — the
+           Center does not yet publish per-programme costs, and Google
+           Ad Grants treats unsupported impact claims as a policy risk. -->
+      <ul class="give-uses">
+        <li class="give-use">
+          <svg class="give-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 5.4h5.4A2.6 2.6 0 0 1 12 8v11a2.2 2.2 0 0 0-2.2-2.2H4z"></path>
+            <path d="M20 5.4h-5.4A2.6 2.6 0 0 0 12 8v11a2.2 2.2 0 0 1 2.2-2.2H20z"></path>
+          </svg>
+          <b>Education</b>
+          <span>Courses, pathways and scholarships open to every nation.</span>
+        </li>
+        <li class="give-use">
+          <svg class="give-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="8.6"></circle><path d="m15.2 8.8-2 4.4-4.4 2 2-4.4z"></path>
+          </svg>
+          <b>The Institutes</b>
+          <span>Research and teaching in consciousness, ethics and dialogue.</span>
+        </li>
+        <li class="give-use">
+          <svg class="give-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 5.6h11.6v8H8.4L4 17z"></path><path d="M8.6 16.4h6L20 19.6V10h-2.6"></path>
+          </svg>
+          <b>Gatherings</b>
+          <span>Cultural evenings, dialogues and international convenings.</span>
+        </li>
+        <li class="give-use">
+          <svg class="give-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3.6 20.4h16.8"></path><path d="M5.4 20.4V9.6L12 4.6l6.6 5v10.8"></path><path d="M10 20.4v-5.2h4v5.2"></path>
+          </svg>
+          <b>The Campus</b>
+          <span>Building the Center&rsquo;s permanent home in Jerusalem.</span>
+        </li>
+      </ul>
+
+      <div class="give-actions">
+        <a href="donate.html" class="btn btn-donate js-donate-cta" data-donate-source="home-support">
+          Donate Now
+          <svg class="icon-arrow" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="1" y1="6" x2="24" y2="6"></line>
+            <polyline points="19 1 24 6 19 11"></polyline>
+          </svg>
+        </a>
+        <a href="donate.html#ways" class="give-secondary">See all the ways to give</a>
+      </div>
+
+      <p class="give-note">The Jerusalem Unity Center USA is a 501(c)(3) nonprofit foundation. Gifts from US taxpayers are tax-deductible to the fullest extent allowed by law, and every donor receives a receipt by email.</p>
     </div>
   </section>
 
   <!-- ==========================================================
-       SECTION 9 — MORE THAN A BUILDING (photo strip)
+       SECTION 11 — MORE THAN A BUILDING (photo strip)
        Intentionally skipped for now — insert the section HERE,
-       between Section 8 above and the footer below.
+       between Section 10 above and the footer below.
        ========================================================== -->
 
   <!-- ==========================================================
@@ -400,7 +698,9 @@
               <path d="M6.5 8.7H3.6V21h2.9zM5.05 3.5a1.72 1.72 0 1 0 0 3.44 1.72 1.72 0 0 0 0-3.44zM14.4 8.5c-1.6 0-2.66.87-3.1 1.7h-.05V8.7H8.4V21h2.9v-6.1c0-1.6.3-3.16 2.28-3.16 1.95 0 1.98 1.83 1.98 3.26V21h2.9v-6.58c0-3.1-.67-5.92-4.06-5.92z"/>
             </svg>
           </a>
-          <a class="social-link" href="mailto:info@jerusalemunity.org" aria-label="Email">
+          <!-- Opens the contact form; the mailto is the no-JS fallback
+               and still reaches the same inbox. -->
+          <a class="social-link js-member-open" href="mailto:info@jerusalemunity.org" data-contact aria-label="Contact us">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <rect x="3" y="5.4" width="18" height="13.2" rx="2.2"></rect>
               <path d="M4 7l8 6 8-6"></path>
@@ -414,11 +714,12 @@
       <nav class="fcol fcol-links fcol-center" aria-label="The Center">
         <h3 class="fcol-heading">The Center</h3>
         <ul class="fcol-list">
-          <li><a href="#vision">About Us</a></li>
-          <li><a href="#vision">Our Vision</a></li>
-          <li><a href="master-plan.html" class="js-plan-open">The Campus</a></li>
-          <li><a href="#pathways">Programs</a></li>
-          <li><a href="#institutes">Faculty</a></li>
+          <li><a href="#info/about" class="js-info-open" data-info="about">About Us</a></li>
+          <li><a href="#info/vision" class="js-info-open" data-info="vision">Our Vision</a></li>
+          <li><a href="#info/campus" class="js-info-open" data-info="campus">The Campus</a></li>
+          <li><a href="#info/visit" class="js-info-open" data-info="visit">Visit Jerusalem</a></li>
+          <li><a href="#info/programs" class="js-info-open" data-info="programs">Programs</a></li>
+          <li><a href="#info/faculty" class="js-info-open" data-info="faculty">Faculty</a></li>
         </ul>
       </nav>
 
@@ -427,11 +728,12 @@
       <nav class="fcol fcol-links fcol-resources" aria-label="Resources">
         <h3 class="fcol-heading">Resources</h3>
         <ul class="fcol-list">
-          <li><a href="#explore">Library</a></li>
-          <li><a href="#events">Events</a></li>
-          <li><a href="#institutes">Research</a></li>
-          <li><a href="#explore">News</a></li>
-          <li><a href="#explore">Media</a></li>
+          <li><a href="#info/f-library" class="js-info-open" data-info="f-library">Library</a></li>
+          <li><a href="#info/f-events" class="js-info-open" data-info="f-events">Events</a></li>
+          <li><a href="#info/f-research" class="js-info-open" data-info="f-research">Research</a></li>
+          <li><a href="#info/podcast" class="js-info-open" data-info="podcast">Podcast</a></li>
+          <li><a href="#info/news" class="js-info-open" data-info="news">News</a></li>
+          <li><a href="#info/media" class="js-info-open" data-info="media">Media</a></li>
         </ul>
       </nav>
 
@@ -440,12 +742,12 @@
       <nav class="fcol fcol-links fcol-involved" aria-label="Get Involved">
         <h3 class="fcol-heading">Get Involved</h3>
         <ul class="fcol-list">
-          <li><a href="https://thejerusalemunitycenter.org/donation/" class="fcol-donate" target="_blank" rel="noopener">Donate Now</a></li>
-          <li><a href="#" class="js-member-open">Join the Community</a></li>
-          <li><a href="#" class="js-member-open" data-interest="volunteer">Volunteer</a></li>
-          <li><a href="#" class="js-member-open" data-interest="ambassador">Ambassadors</a></li>
-          <li><a href="#" class="js-member-open" data-interest="chapter">Start a Chapter</a></li>
-          <li><a href="#support">Support the Vision</a></li>
+          <li><a href="donate.html" class="fcol-donate js-donate-cta" data-donate-source="footer">Donate Now</a></li>
+          <li><a href="#info/join" class="js-info-open" data-info="join">Join the Community</a></li>
+          <li><a href="#info/volunteer" class="js-info-open" data-info="volunteer">Volunteer</a></li>
+          <li><a href="#info/ambassadors" class="js-info-open" data-info="ambassadors">Ambassadors</a></li>
+          <li><a href="#info/chapter" class="js-info-open" data-info="chapter">Start a Chapter</a></li>
+          <li><a href="#info/support" class="js-info-open" data-info="support">Support the Vision</a></li>
         </ul>
       </nav>
 
@@ -496,6 +798,8 @@
     <div class="shell footer-bottom">
       <p class="footer-copy">&copy; 2025 Jerusalem Unity Center. All Rights Reserved.</p>
       <div class="footer-legal">
+        <a href="#contact-modal" class="js-member-open" data-contact>Contact Us</a>
+        <span class="legal-sep" aria-hidden="true"></span>
         <a href="privacy-policy.html">Privacy Policy</a>
         <span class="legal-sep" aria-hidden="true"></span>
         <a href="non-discrimination-policy.html">Non-Discrimination Policy</a>
@@ -545,6 +849,11 @@
              evening is being asked about. -->
         <input id="mf-event" name="event" type="hidden" value="">
 
+        <!-- Set when a pop-up hands off here for something that has
+             not opened to the public yet (the Library, an institute,
+             a pathway). Blank in every other mode. -->
+        <input id="mf-topic" name="topic" type="hidden" value="">
+
         <div class="mf-grid">
 
           <div class="mf-field">
@@ -585,6 +894,7 @@
                 <option value="ambassador">Becoming an Ambassador</option>
                 <option value="chapter">Starting a Chapter</option>
                 <option value="event">Reserving a place at an event</option>
+                <option value="visit">Visiting the Center in Jerusalem</option>
                 <option value="general">General enquiry</option>
               </select>
             </div>
@@ -592,7 +902,7 @@
           </div>
 
           <div class="mf-field mf-field-wide">
-            <label class="mf-label" for="mf-message">Message <span class="mf-opt">(optional)</span></label>
+            <label class="mf-label" id="mf-message-label" for="mf-message">Message <span class="mf-opt">(optional)</span></label>
             <textarea class="mf-input mf-textarea" id="mf-message" name="message" rows="4" maxlength="1000" placeholder="Anything you would like us to know?" aria-describedby="mf-message-err mf-count"></textarea>
             <div class="mf-under">
               <p class="mf-err" id="mf-message-err" hidden></p>
@@ -618,6 +928,108 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
         </div>
         <h4 class="member-done-title" id="member-done-title">Thank you &mdash; welcome.</h4>
+        <p class="member-done-text"></p>
+        <button class="btn btn-ghost member-done-close" type="button">Close</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==========================================================
+       EVENT NOTIFICATIONS — "tell me when something is on"
+
+       A deliberately short form: a name, an address, and which of
+       the three families of gathering you care about. It is what
+       Section 7 shows in place of the card grid when JUC_EVENTS is
+       empty, and where the three family pop-ups send their button.
+
+       Opened by any .js-notify-open trigger, by a pop-up whose CTA
+       carries `notify:`, and by landing on index.html#notify-modal
+       from another page.
+
+       Submissions go out through forms.js to info@jerusalemunity.org.
+       ========================================================== -->
+  <div class="member-overlay notify-overlay" id="notify-modal" role="dialog" aria-modal="true" aria-labelledby="notify-modal-title">
+    <div class="member-modal notify-modal">
+      <button class="member-close notify-close" type="button" aria-label="Close">&times;</button>
+
+      <div class="member-head">
+        <h3 class="member-title" id="notify-modal-title">Never Miss a Gathering</h3>
+        <p class="member-sub">Leave your details and we will write to you as each gathering is announced &mdash; what it is, when it is, and how to reserve a place.</p>
+      </div>
+
+      <form class="member-form notify-form" novalidate>
+
+        <!-- Honeypot: hidden from people, irresistible to bots. -->
+        <div class="mf-hp" aria-hidden="true">
+          <label for="nf-website">Website</label>
+          <input id="nf-website" name="website" type="text" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="mf-grid">
+
+          <div class="mf-field">
+            <label class="mf-label" for="nf-name">Full name <span class="mf-req" aria-hidden="true">*</span></label>
+            <input class="mf-input" id="nf-name" name="name" type="text" placeholder="Your full name" autocomplete="name" aria-describedby="nf-name-err">
+            <p class="mf-err" id="nf-name-err" hidden></p>
+          </div>
+
+          <div class="mf-field">
+            <label class="mf-label" for="nf-email">Email <span class="mf-req" aria-hidden="true">*</span></label>
+            <input class="mf-input" id="nf-email" name="email" type="email" placeholder="you@example.com" autocomplete="email" aria-describedby="nf-email-err">
+            <p class="mf-err" id="nf-email-err" hidden></p>
+          </div>
+
+          <!-- Preselected when a family pop-up sends someone here. -->
+          <fieldset class="mf-field mf-field-wide nf-fieldset">
+            <legend class="mf-label">Which gatherings interest you? <span class="mf-req" aria-hidden="true">*</span></legend>
+            <div class="nf-choices">
+              <label class="nf-choice">
+                <input type="checkbox" name="families" value="The Arts of Humanity">
+                <span class="nf-choice-box" aria-hidden="true"></span>
+                <span class="nf-choice-text">The Arts of Humanity <em>Music, arts, film, culture</em></span>
+              </label>
+              <label class="nf-choice">
+                <input type="checkbox" name="families" value="Voices of the Nations">
+                <span class="nf-choice-box" aria-hidden="true"></span>
+                <span class="nf-choice-text">Voices of the Nations <em>Dialogue, leadership, peacebuilding</em></span>
+              </label>
+              <label class="nf-choice">
+                <input type="checkbox" name="families" value="The Journey of Self-Actualization">
+                <span class="nf-choice-box" aria-hidden="true"></span>
+                <span class="nf-choice-text">The Journey of Self-Actualization <em>Consciousness, wisdom, flourishing</em></span>
+              </label>
+            </div>
+            <p class="mf-err" id="nf-families-err" hidden></p>
+          </fieldset>
+
+          <div class="mf-field mf-field-wide">
+            <label class="mf-label" for="nf-country">Country <span class="mf-opt">(optional)</span></label>
+            <div class="mf-select-wrap">
+              <select class="mf-input mf-select" id="nf-country" name="country" autocomplete="country-name">
+                <option value="">Select your country</option>
+              </select>
+            </div>
+          </div>
+
+        </div>
+
+        <p class="mf-formerr" id="nf-formerr" role="alert" hidden></p>
+
+        <button class="btn member-submit" type="submit">
+          <span class="mf-spinner" aria-hidden="true"></span>
+          <span class="mf-btn-label">Notify Me</span>
+        </button>
+
+        <p class="mf-note"><span aria-hidden="true">*</span> Required. Event news only &mdash; we will never share your details.</p>
+      </form>
+
+      <!-- Success panel — replaces the form once a submission lands -->
+      <div class="member-done" hidden>
+        <div class="member-done-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        </div>
+        <h4 class="member-done-title" id="notify-done-title">You are on the list.</h4>
         <p class="member-done-text"></p>
         <button class="btn btn-ghost member-done-close" type="button">Close</button>
       </div>
@@ -771,7 +1183,7 @@
             <h2 class="story-h s-rise" style="--d:.5s">Join a Global Movement</h2>
             <p class="story-p story-p-mid s-rise" style="--d:.8s">Be part of a worldwide community dedicated to learning, service, and the flourishing of humanity.</p>
             <div class="story-end-ctas s-rise" style="--d:1.05s">
-              <a class="btn btn-primary js-member-open" href="#" data-interest="member">Become a Member</a>
+              <a class="btn btn-primary js-member-open" href="#join-modal/member" data-interest="member">Become a Member</a>
               <a class="btn btn-ghost js-plan-open" href="master-plan.html">View the Master Plan</a>
               <button class="btn btn-ghost js-story-replay" type="button">
                 <svg class="story-replay-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -988,8 +1400,11 @@
             <h3 class="plan-h p-rise" style="--d:.45s">Build It With Us</h3>
             <p class="plan-p plan-p-mid p-rise" style="--d:.7s">Your support turns this plan into a place. The Seventy Nations (R.A.) Jerusalem partners with The Jerusalem Unity Center USA, a 501(c) nonprofit foundation.</p>
             <div class="plan-ctas p-rise" style="--d:.95s">
-              <a class="btn btn-primary" href="https://thejerusalemunitycenter.org/donation/" target="_blank" rel="noopener">Donate Now</a>
-              <a class="btn btn-ghost js-member-open" href="#" data-interest="member">Become a Member</a>
+              <a class="btn btn-primary js-donate-cta" href="donate.html" data-donate-source="master-plan-reel">Donate Now</a>
+              <a class="btn btn-ghost js-member-open" href="#join-modal/member" data-interest="member">Become a Member</a>
+              <!-- The reel is the short telling; master-plan.html is the
+                   full document, and the only place to save it as PDF. -->
+              <a class="btn btn-ghost" href="master-plan.html">Read the Full Plan</a>
               <button class="btn btn-ghost js-plan-replay" type="button">
                 <svg class="plan-replay-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <path d="M20 12a8 8 0 1 1-2.6-5.9"></path>
@@ -1042,6 +1457,11 @@
        the membership modal's submit handler. -->
   <script src="forms.js"></script>
 
+  <!-- Info pop-ups: the seven categories, the six institutes, the
+       five pathways, the footer items and the event families. Copy
+       and destinations all live in the JUC_INFO registry inside. -->
+  <script src="info.js"></script>
+
   <script>
     /* ==========================================================
        UPCOMING EVENTS (Section 7) — EDIT THIS ARRAY
@@ -1075,15 +1495,15 @@
        phone the clipping is lifted — one card per row has nothing
        to line up with.
 
-       NOTE: the photos below are placeholders taken from the
-       existing site art. Replace them with the real event photos
-       when they arrive.
+       The photo for each event lives in assets/ under the event's
+       own name (assets/an-evening-of-unity.png and so on). To swap
+       one, drop the new file in and change the image line below.
        ========================================================== */
     var JUC_EVENTS = [
 
       {
-        image: 'assets/section4-bg.png',
-        imageAlt: 'The Jerusalem Unity Center campus at dusk',
+        image: 'assets/an-evening-of-unity.png',
+        imageAlt: 'The Jerusalem Unity Center pavilion lit from within on a starlit evening, its garden path and reflecting pool leading to the door',
         title: 'An Evening of Unity',
         subtitle: 'Wisdom for a Shared Future',
         date: {
@@ -1106,8 +1526,8 @@
       },
 
       {
-        image: 'assets/religious-leaders.png',
-        imageAlt: 'Religious leaders from different traditions gathered around a table, hands joined over open books',
+        image: 'assets/voices-of-the-seventy-nations.png',
+        imageAlt: 'A musician playing an oud and a singer performing on a rooftop at sunset, the Old City of Jerusalem behind them',
         title: 'Voices of the Seventy Nations',
         subtitle: 'Song, Poetry, and Story',
         date: {
@@ -1127,8 +1547,8 @@
       },
 
       {
-        image: 'assets/institute-moral-leadership.jpg',
-        imageAlt: 'Classical stone columns against a bright sky',
+        image: 'assets/foundations-of-dialogue.png',
+        imageAlt: 'A small group seated in a circle around a lantern and candle, one person speaking with open hands',
         title: 'Foundations of Dialogue',
         subtitle: 'A Three-Part Workshop',
         date: {
@@ -1155,7 +1575,24 @@
        ========================================================== */
     (function () {
       var mount = document.getElementById('events-body');
-      if (!mount || typeof JUC_EVENTS === 'undefined' || !JUC_EVENTS.length) return;
+      if (!mount) return;
+
+      /* Nothing on the calendar: the section offers to write when
+         something is, rather than showing an apology. */
+      if (typeof JUC_EVENTS === 'undefined' || !JUC_EVENTS.length) {
+        mount.innerHTML =
+          '<div class="ev-empty">' +
+            '<p class="ev-empty-lead">No dates are on the calendar just now &mdash; the next season is being planned.</p>' +
+            '<p class="ev-empty-text">Leave us your details and we will write to you the moment the next gathering is announced, with everything you need to reserve a place.</p>' +
+            '<a class="btn btn-primary js-notify-open" href="#notify-modal">' +
+              'Notify Me About Events' +
+              '<svg class="icon-arrow" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">' +
+                '<line x1="1" y1="6" x2="24" y2="6"></line><polyline points="19 1 24 6 19 11"></polyline>' +
+              '</svg>' +
+            '</a>' +
+          '</div>';
+        return;
+      }
 
       /* Gold outline icons on the same 24px grid as the site's
          other inline SVG (the arrow and play glyphs). */
@@ -1358,6 +1795,11 @@
       var subEl = overlay.querySelector('.member-sub');
       var eventNote = overlay.querySelector('#mf-event-note');
       var eventEl = overlay.querySelector('#mf-event');
+      var topicEl = overlay.querySelector('#mf-topic');
+      var msgLabel = overlay.querySelector('#mf-message-label');
+      var MSG_OPTIONAL = msgLabel.innerHTML;
+      var MSG_REQUIRED = 'Message <span class="mf-req" aria-hidden="true">*</span>';
+      var MSG_PLACEHOLDER = overlay.querySelector('#mf-message').getAttribute('placeholder');
       var doneTitle = overlay.querySelector('.member-done-title');
       var DEFAULT_TITLE = titleEl.textContent;
       var DEFAULT_SUB = subEl.textContent;
@@ -1366,6 +1808,7 @@
       var lastFocus = null;
       var sending = false;
       var validateLive = false;   /* only nag inline after the first submit */
+      var mode = 'member';        /* member | event | topic | contact */
 
       /* ---- Country list -------------------------------------------
          Kept as data rather than 200 lines of <option> markup. */
@@ -1437,7 +1880,13 @@
         },
         {
           el: messageEl,
-          test: function (v) { return v.length > 1000 ? 'Please keep your message under 1000 characters.' : ''; }
+          test: function (v) {
+            /* The message is optional everywhere except the contact
+               form, where it is the whole point. */
+            if (mode === 'contact' && !v) return 'Please write your message.';
+            if (v.length > 1000) return 'Please keep your message under 1000 characters.';
+            return '';
+          }
         }
       ];
 
@@ -1503,9 +1952,13 @@
         setSending(false);
         showPanel('form');
 
-        /* Back out of reservation mode — the next opener may be the
-           plain "Become a Member" button. */
+        /* Back out of reservation / interest mode — the next opener
+           may be the plain "Become a Member" button. */
+        mode = 'member';
         eventEl.value = '';
+        topicEl.value = '';
+        msgLabel.innerHTML = MSG_OPTIONAL;
+        messageEl.placeholder = MSG_PLACEHOLDER;
         eventNote.hidden = true;
         eventNote.textContent = '';
         titleEl.textContent = DEFAULT_TITLE;
@@ -1525,11 +1978,28 @@
 
       var interestEl = overlay.querySelector('#mf-interest');
 
-      /* interest:  optional value to preselect, so a trigger that already
-                    says what it is ("Volunteer") does not ask again.
-         eventName: set by a "Reserve Your Place" button. Switches the
-                    form into reservation mode for that event. */
-      function openModal(interest, eventName) {
+      /* opts.interest  value to preselect, so a trigger that already
+                        says what it is ("Volunteer") does not ask again.
+         opts.event     set by a "Reserve Your Place" button. Switches
+                        the form into reservation mode for that evening.
+         opts.topic     set by an info pop-up whose destination has not
+                        opened yet ("The Library"). Switches the form
+                        into interest-registration mode for that subject.
+         opts.visit     set by "Plan Your Visit". Same fields, asked as
+                        a travel enquiry rather than a membership one.
+
+         A bare string is still accepted as the interest, so the older
+         openModal('volunteer') call sites keep working — and so the
+         #join-modal/visit deep link lands in visit mode. */
+      function openModal(opts) {
+        if (typeof opts === 'string' || !opts) opts = { interest: opts || '' };
+
+        var interest = opts.interest || '';
+        var eventName = opts.event || '';
+        var topic = opts.topic || '';
+        var contact = !!opts.contact;
+        var visit = !!opts.visit || interest === 'visit';
+
         lastFocus = document.activeElement;
         resetForm();
 
@@ -1541,11 +2011,44 @@
           titleEl.textContent = 'Reserve Your Place';
           subEl.textContent = 'Tell us who is coming and we will hold your place. A member of our team will confirm by email.';
           doneTitle.textContent = 'Thank you — your place is held.';
+        } else if (contact) {
+          /* The site's contact form. Same fields, but the message is
+             the point of it, so that one becomes required. */
+          if (!interest) interest = 'general';
+          msgLabel.innerHTML = MSG_REQUIRED;
+          messageEl.placeholder = 'How can we help?';
+          titleEl.textContent = 'Contact Us';
+          subEl.textContent = 'Send us a message and a member of our team will reply by email. We read everything that arrives.';
+          doneTitle.textContent = 'Thank you — your message is with us.';
+        } else if (visit) {
+          /* A visit is planned in conversation, so the message field
+             carries the weight here: when they hope to come, how many
+             are travelling, what they would like to take part in. */
+          interest = 'visit';
+          messageEl.placeholder = 'When do you hope to come, how many are travelling, and what would you like to take part in?';
+          titleEl.textContent = 'Plan Your Visit';
+          subEl.textContent = 'Tell us when you hope to be in Jerusalem and what you would like to see. A member of our team will write back with what is on, and help you plan the days around it.';
+          doneTitle.textContent = 'Thank you — we will help you plan.';
+        } else if (topic) {
+          /* Nothing to link to yet, so rather than a dead button the
+             visitor registers interest and hears when it opens. */
+          if (!interest) interest = 'general';
+          topicEl.value = topic;
+          eventNote.textContent = 'Your interest: ' + topic;
+          eventNote.hidden = false;
+          titleEl.textContent = 'Register Your Interest';
+          subEl.textContent = 'This part of the Center is still being built. Leave your details and we will write to you the moment it opens, and tell you how to take part.';
+          doneTitle.textContent = 'Thank you — we will be in touch.';
         }
 
         if (interest && interestEl.querySelector('option[value="' + interest + '"]')) {
           interestEl.value = interest;
         }
+        mode = contact ? 'contact'
+             : eventName ? 'event'
+             : visit ? 'visit'
+             : topic ? 'topic'
+             : 'member';
         overlay.classList.add('is-open');
         document.body.classList.add('modal-open');
         modal.scrollTop = 0;
@@ -1554,20 +2057,32 @@
 
       function closeModal() {
         overlay.classList.remove('is-open');
-        /* The story lightbox may still be open underneath — only give
+        /* Another lightbox may still be open underneath — only give
            the page its scrollbar back when nothing is left on top. */
-        if (!document.querySelector('.story-overlay.is-open')) {
+        if (!document.querySelector('.story-overlay.is-open, .plan-overlay.is-open, .info-overlay.is-open')) {
           document.body.classList.remove('modal-open');
         }
         if (lastFocus && lastFocus.focus) lastFocus.focus();
       }
 
-      document.querySelectorAll('.js-member-open').forEach(function (btn) {
-        btn.addEventListener('click', function (e) {
-          e.preventDefault();
-          openModal(btn.getAttribute('data-interest'), btn.getAttribute('data-event'));
+      /* Delegated, so triggers rendered later — the event cards, the
+         info pop-up's own button — are wired without a second pass. */
+      document.addEventListener('click', function (e) {
+        var btn = e.target.closest && e.target.closest('.js-member-open');
+        if (!btn) return;
+        e.preventDefault();
+        openModal({
+          interest: btn.getAttribute('data-interest') || '',
+          event: btn.getAttribute('data-event') || '',
+          topic: btn.getAttribute('data-topic') || '',
+          contact: btn.hasAttribute('data-contact'),
+          visit: btn.hasAttribute('data-visit')
         });
       });
+
+      /* Lets info.js (and anything added later) open this form
+         without reaching inside it. */
+      window.JUC_MEMBER = { open: openModal, close: closeModal };
 
       closeBtn.addEventListener('click', closeModal);
       doneClose.addEventListener('click', closeModal);
@@ -1608,6 +2123,12 @@
          place first, so closing the form leaves you somewhere sensible. */
       function openFromHash() {
         var hash = window.location.hash;
+
+        if (hash.indexOf('#contact-modal') === 0) {
+          openModal({ contact: true });
+          return;
+        }
+
         if (hash.indexOf('#join-modal') !== 0) return;
         var joinSection = document.getElementById('join');
         if (joinSection) joinSection.scrollIntoView();
@@ -1631,6 +2152,7 @@
         ambassador: 'the ambassador programme',
         chapter: 'starting a chapter',
         event: 'your reservation',
+        visit: 'your visit to Jerusalem',
         general: 'your enquiry'
       };
 
@@ -1657,6 +2179,8 @@
           interest: overlay.querySelector('#mf-interest').value,
           message: messageEl.value.trim(),
           event: eventEl.value,                    /* '' unless reserving */
+          topic: topicEl.value,                    /* '' unless registering interest */
+          mode: mode,
           website: honeypot.value.trim(),          /* honeypot */
           submittedAt: new Date().toISOString()
         };
@@ -1665,10 +2189,16 @@
 
         submitMembership(payload).then(function () {
           var who = payload.name.split(' ')[0];
-          var what = payload.event || INTEREST_LABEL[payload.interest] || 'your enquiry';
-          doneText.textContent = who
-            + ', your details are with us. We will be in touch about '
-            + what + ' at ' + payload.email + '.';
+          if (payload.mode === 'contact') {
+            doneText.textContent = who + ', your message is with us. We will read it and reply to '
+              + payload.email + '.';
+          } else {
+            var what = payload.event || payload.topic
+              || INTEREST_LABEL[payload.interest] || 'your enquiry';
+            doneText.textContent = who
+              + ', your details are with us. We will be in touch about '
+              + what + ' at ' + payload.email + '.';
+          }
           showPanel('done');
           modal.scrollTop = 0;
           doneClose.focus();
@@ -1695,16 +2225,32 @@
         var interestEl = overlay.querySelector('#mf-interest');
         var interest = interestEl.options[interestEl.selectedIndex].text;
 
-        /* A reservation deserves its own subject line, so the two kinds
-           of enquiry are told apart at a glance in the inbox. */
-        var subject = payload.event
-          ? 'Event reservation — ' + payload.event
-          : 'Membership enquiry (' + interest + ') — Jerusalem Unity Center';
+        /* Each mode gets its own subject line and form name, so the
+           three kinds of enquiry are told apart at a glance in the
+           inbox and can be filtered on. */
+        var subject, formName;
+
+        if (payload.event) {
+          subject = 'Event reservation — ' + payload.event;
+          formName = 'Event reservation';
+        } else if (payload.topic) {
+          subject = 'Interest registered — ' + payload.topic;
+          formName = 'Interest registration';
+        } else if (payload.mode === 'contact') {
+          subject = 'Contact form — Jerusalem Unity Center';
+          formName = 'Contact form';
+        } else if (payload.mode === 'visit') {
+          subject = 'Visit enquiry — Jerusalem Unity Center';
+          formName = 'Visit enquiry';
+        } else {
+          subject = 'Membership enquiry (' + interest + ') — Jerusalem Unity Center';
+          formName = 'Membership enquiry';
+        }
 
         return window.JUC_FORMS.send({
           subject: subject,
           from_name: 'Jerusalem Unity Center website',
-          form_name: payload.event ? 'Event reservation' : 'Membership enquiry',
+          form_name: formName,
           name: payload.name,
           email: payload.email,
           replyto: payload.email,      /* replies go straight to the enquirer */
@@ -1712,10 +2258,313 @@
           country: payload.country,
           interest: interest,
           event: payload.event,        /* dropped when blank by send() */
+          topic: payload.topic,        /* dropped when blank by send() */
           message: payload.message,
           submittedAt: payload.submittedAt
         });
       }
+    })();
+
+    /* ==========================================================
+       EVENT NOTIFICATIONS — the short "tell me when" form
+
+       Same shape as the membership modal above, cut down to what
+       this actually needs: a name, an address, and which of the
+       three families of gathering to write about.
+       ========================================================== */
+    (function () {
+      var overlay = document.getElementById('notify-modal');
+      if (!overlay) return;
+
+      var modal = overlay.querySelector('.notify-modal');
+      var form = overlay.querySelector('.notify-form');
+      var head = overlay.querySelector('.member-head');
+      var donePanel = overlay.querySelector('.member-done');
+      var doneText = overlay.querySelector('.member-done-text');
+      var doneClose = overlay.querySelector('.member-done-close');
+      var closeBtn = overlay.querySelector('.notify-close');
+      var submitBtn = overlay.querySelector('.member-submit');
+      var btnLabel = overlay.querySelector('.mf-btn-label');
+      var formErr = overlay.querySelector('#nf-formerr');
+      var honeypot = overlay.querySelector('#nf-website');
+      var nameEl = overlay.querySelector('#nf-name');
+      var emailEl = overlay.querySelector('#nf-email');
+      var countryEl = overlay.querySelector('#nf-country');
+      var familyEls = Array.prototype.slice.call(overlay.querySelectorAll('input[name="families"]'));
+      var familyErr = overlay.querySelector('#nf-families-err');
+      var familySet = overlay.querySelector('.nf-fieldset');
+
+      var lastFocus = null;
+      var sending = false;
+      var validateLive = false;
+
+      /* The membership form builds the same list; borrow it rather
+         than shipping 190 country names twice. */
+      var source = document.querySelector('#mf-country');
+      if (source) {
+        Array.prototype.forEach.call(source.querySelectorAll('option'), function (opt) {
+          if (opt.value) countryEl.appendChild(opt.cloneNode(true));
+        });
+      }
+
+      var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+      var FIELDS = [
+        {
+          el: nameEl,
+          test: function (v) {
+            if (!v) return 'Please tell us your name.';
+            if (v.length < 2) return 'That name looks a little short.';
+            return '';
+          }
+        },
+        {
+          el: emailEl,
+          test: function (v) {
+            if (!v) return 'Please enter your email address.';
+            if (!EMAIL_RE.test(v)) return 'Please enter a valid email address.';
+            return '';
+          }
+        }
+      ];
+
+      function showFieldError(field, msg) {
+        var node = overlay.querySelector('#' + field.el.id + '-err');
+        var wrap = field.el.closest('.mf-field');
+        if (msg) {
+          node.textContent = msg;
+          node.hidden = false;
+          wrap.classList.add('is-invalid');
+          field.el.setAttribute('aria-invalid', 'true');
+        } else {
+          node.textContent = '';
+          node.hidden = true;
+          wrap.classList.remove('is-invalid');
+          field.el.removeAttribute('aria-invalid');
+        }
+      }
+
+      function chosen() {
+        return familyEls.filter(function (el) { return el.checked; })
+                        .map(function (el) { return el.value; });
+      }
+
+      function showFamilyError(msg) {
+        familyErr.textContent = msg;
+        familyErr.hidden = !msg;
+        familySet.classList.toggle('is-invalid', !!msg);
+      }
+
+      /* Returns the first field still wrong, or null. */
+      function validateAll() {
+        var firstBad = null;
+        FIELDS.forEach(function (field) {
+          var msg = field.test(field.el.value.trim());
+          showFieldError(field, msg);
+          if (msg && !firstBad) firstBad = field.el;
+        });
+        if (!chosen().length) {
+          showFamilyError('Please choose at least one kind of gathering.');
+          if (!firstBad) firstBad = familyEls[0];
+        } else {
+          showFamilyError('');
+        }
+        return firstBad;
+      }
+
+      FIELDS.forEach(function (field) {
+        field.el.addEventListener('input', function () {
+          if (validateLive) showFieldError(field, field.test(field.el.value.trim()));
+        });
+        field.el.addEventListener('blur', function () {
+          if (field.el.value.trim()) showFieldError(field, field.test(field.el.value.trim()));
+        });
+      });
+
+      familyEls.forEach(function (el) {
+        el.addEventListener('change', function () {
+          if (validateLive && chosen().length) showFamilyError('');
+        });
+      });
+
+      function setSending(on) {
+        sending = on;
+        submitBtn.disabled = on;
+        submitBtn.classList.toggle('is-sending', on);
+        btnLabel.textContent = on ? 'Sending…' : 'Notify Me';
+      }
+
+      function showPanel(which) {
+        var done = which === 'done';
+        form.hidden = done;
+        head.hidden = done;
+        donePanel.hidden = !done;
+        overlay.setAttribute('aria-labelledby', done ? 'notify-done-title' : 'notify-modal-title');
+      }
+
+      function resetForm() {
+        form.reset();
+        validateLive = false;
+        formErr.hidden = true;
+        formErr.textContent = '';
+        FIELDS.forEach(function (field) { showFieldError(field, ''); });
+        showFamilyError('');
+        setSending(false);
+        showPanel('form');
+      }
+
+      /* family: optional value to tick on arrival, so a visitor sent
+         here from a family pop-up does not answer that twice. */
+      function openModal(family) {
+        lastFocus = document.activeElement;
+        resetForm();
+
+        if (family) {
+          familyEls.forEach(function (el) {
+            if (el.value === family) el.checked = true;
+          });
+        }
+
+        overlay.classList.add('is-open');
+        document.body.classList.add('modal-open');
+        modal.scrollTop = 0;
+        nameEl.focus();
+      }
+
+      function closeModal() {
+        overlay.classList.remove('is-open');
+        if (!document.querySelector('.info-overlay.is-open, .member-overlay.is-open:not(#notify-modal), .story-overlay.is-open, .plan-overlay.is-open')) {
+          document.body.classList.remove('modal-open');
+        }
+        if (window.location.hash.indexOf('#notify-modal') === 0 && window.history && window.history.replaceState) {
+          window.history.replaceState(null, '', window.location.pathname + window.location.search);
+        }
+        if (lastFocus && lastFocus.focus) lastFocus.focus();
+        lastFocus = null;
+      }
+
+      function isOpen() { return overlay.classList.contains('is-open'); }
+
+      /* Delegated, so the trigger inside the rendered empty state
+         is wired without a second pass. */
+      document.addEventListener('click', function (e) {
+        var btn = e.target.closest && e.target.closest('.js-notify-open');
+        if (!btn) return;
+        e.preventDefault();
+        openModal(btn.getAttribute('data-family') || '');
+      });
+
+      closeBtn.addEventListener('click', closeModal);
+      doneClose.addEventListener('click', closeModal);
+
+      overlay.addEventListener('mousedown', function (e) {
+        if (e.target === overlay) closeModal();
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (!isOpen()) return;
+
+        if (e.key === 'Escape') {
+          closeModal();
+          return;
+        }
+
+        if (e.key !== 'Tab') return;
+
+        var focusable = Array.prototype.filter.call(
+          modal.querySelectorAll('a[href], button:not([disabled]), input:not([tabindex="-1"]), select'),
+          function (el) { return el.offsetParent !== null; }
+        );
+        if (!focusable.length) return;
+
+        var first = focusable[0];
+        var last = focusable[focusable.length - 1];
+
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      });
+
+      /* index.html#notify-modal opens this from another page. */
+      function fromHash() {
+        if (window.location.hash.indexOf('#notify-modal') !== 0) return;
+        var section = document.getElementById('events');
+        if (section) section.scrollIntoView();
+        openModal(decodeURIComponent(window.location.hash.split('/')[1] || ''));
+      }
+
+      fromHash();
+      window.addEventListener('hashchange', fromHash);
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (sending) return;
+
+        validateLive = true;
+        formErr.hidden = true;
+
+        var firstBad = validateAll();
+        if (firstBad) {
+          formErr.textContent = 'Please correct the highlighted fields.';
+          formErr.hidden = false;
+          firstBad.focus();
+          return;
+        }
+
+        var families = chosen();
+        var payload = {
+          name: nameEl.value.trim(),
+          email: emailEl.value.trim(),
+          country: countryEl.value,
+          families: families.join(', '),
+          website: honeypot.value.trim()
+        };
+
+        setSending(true);
+
+        submit(payload).then(function () {
+          var who = payload.name.split(' ')[0];
+          doneText.textContent = who + ', we have your address. We will write to '
+            + payload.email + ' as soon as the next gathering'
+            + (families.length === familyEls.length ? '' : ' in ' + families.join(' or '))
+            + ' is announced.';
+          showPanel('done');
+          modal.scrollTop = 0;
+          doneClose.focus();
+        }).catch(function (err) {
+          setSending(false);
+          formErr.textContent = (err && err.message)
+            ? err.message
+            : 'Something went wrong sending your details. Please try again.';
+          formErr.hidden = false;
+        });
+      });
+
+      /* Goes out through JUC_FORMS.send() in forms.js, which posts
+         to Web3Forms and delivers to info@jerusalemunity.org. */
+      function submit(payload) {
+        /* Honeypot filled in => a bot. Look successful, send nothing. */
+        if (payload.website) return Promise.resolve({ skipped: true });
+
+        return window.JUC_FORMS.send({
+          subject: 'Event notifications — ' + payload.families,
+          from_name: 'Jerusalem Unity Center website',
+          form_name: 'Event notification signup',
+          name: payload.name,
+          email: payload.email,
+          replyto: payload.email,
+          country: payload.country,
+          families: payload.families,
+          page: window.location.pathname,
+          submittedAt: new Date().toISOString()
+        });
+      }
+
+      window.JUC_NOTIFY = { open: openModal, close: closeModal };
     })();
 
     /* ==========================================================

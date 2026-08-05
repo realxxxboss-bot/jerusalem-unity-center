@@ -1,0 +1,1104 @@
+/* ============================================================
+   Jerusalem Unity Center — DONATE PAGE
+
+   Loaded after style.css, which carries the brand system: the
+   header, the footer, the buttons, the gold ornaments and the
+   type scale. Everything here is this page's own layout.
+
+   The page alternates the site's two grounds — cream paper
+   (Institutes / Pathways / Support) and navy (Events / Join) —
+   so it reads as one more stretch of the same building rather
+   than a form bolted to the side of it.
+   ============================================================ */
+
+:root {
+  --dn-navy-deep: #080C1D;    /* hero + closing band */
+  --dn-navy: #0E1230;         /* the giving well */
+  --dn-cream: #EBDFD4;        /* paper bands */
+  --dn-ink: #262242;          /* headings on paper */
+  --dn-body: #5C5566;         /* paragraphs on paper */
+  --dn-title-dark: #F2ECE0;   /* headings on navy */
+  --dn-body-dark: #C7C4D2;    /* paragraphs on navy */
+  --dn-line: rgba(196, 146, 63, 0.28);
+  --dn-line-paper: rgba(122, 92, 56, 0.3);
+}
+
+.dn-body {
+  background: var(--dn-navy-deep);
+}
+
+/* Anchored sections must clear the header when jumped to. */
+.dn-body [id] {
+  scroll-margin-top: 96px;
+}
+
+.dn-shell {
+  width: min(1160px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+/* ============================================================
+   SKIP LINK
+   ============================================================ */
+
+.dn-skip {
+  position: absolute;
+  left: 50%;
+  top: -60px;
+  z-index: 200;
+  transform: translateX(-50%);
+  padding: 11px 22px;
+  border: 1px solid var(--gold);
+  border-radius: 0 0 6px 6px;
+  background: var(--navy);
+  color: var(--gold-hi);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  transition: top 0.2s ease;
+}
+
+.dn-skip:focus {
+  top: 0;
+}
+
+/* ============================================================
+   HEADER
+   The site header is transparent and absolutely positioned, so
+   the hero runs unbroken beneath it; .dn-hero-inner carries the
+   top padding that clears the brand block.
+   ============================================================ */
+
+.dn-header {
+  background: none;
+  border-bottom: 0;
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+
+.dn-hero {
+  position: relative;
+  overflow: hidden;
+  background:
+    var(--dn-navy-deep) url("assets/section4-bg.png") center 38% / cover no-repeat;
+}
+
+.dn-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(8, 10, 28, 0.72) 0%,
+    rgba(8, 10, 28, 0.55) 44%,
+    rgba(8, 10, 28, 0.82) 100%);
+}
+
+/* Fade the field into the paper band below it */
+.dn-hero::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 88px;
+  background: linear-gradient(180deg, rgba(8, 12, 29, 0), var(--dn-cream));
+  opacity: 0.9;
+}
+
+.dn-hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+  padding-top: 158px;
+  padding-bottom: 104px;
+  text-align: center;
+}
+
+.dn-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--gold-hi);
+}
+
+.dn-title {
+  margin-top: 16px;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 52px;
+  line-height: 1.12;
+  letter-spacing: 0.01em;
+  color: var(--white);
+}
+
+/* The short gold rule under the title, with a diamond at its
+   centre — the same ornament the policy pages use. */
+.dn-hero-rule {
+  position: relative;
+  width: 132px;
+  height: 1px;
+  margin: 26px auto 0;
+  background: linear-gradient(90deg, rgba(196, 146, 63, 0), var(--gold), rgba(196, 146, 63, 0));
+}
+
+.dn-hero-rule::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  transform: translate(-50%, -50%) rotate(45deg);
+  background: var(--gold);
+}
+
+.dn-lead {
+  max-width: 760px;
+  margin: 24px auto 0;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 29px;
+  letter-spacing: 0.01em;
+  color: var(--text-body);
+}
+
+.dn-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.dn-hero-cta {
+  height: 54px;
+  padding: 0 34px;
+  border-radius: 4px;
+  gap: 12px;
+  font-size: 13px;
+  letter-spacing: 0.10em;
+}
+
+.dn-hero-alt {
+  height: 54px;
+  padding: 0 30px;
+  border-radius: 4px;
+  font-size: 13px;
+  letter-spacing: 0.10em;
+}
+
+.dn-hero-note {
+  max-width: 640px;
+  margin: 26px auto 0;
+  font-size: 12.5px;
+  font-weight: 300;
+  line-height: 21px;
+  color: rgba(233, 233, 238, 0.72);
+}
+
+/* ============================================================
+   SECTION SHELLS
+   ============================================================ */
+
+.dn-sec {
+  padding: 62px 0 68px;
+}
+
+.dn-sec-cream {
+  background: var(--dn-cream) url("assets/section3-bg.png") center / cover no-repeat;
+}
+
+/* The artwork carries the band; the ramp over it keeps the form
+   and its labels legible without flattening it to a plain fill. */
+.dn-sec-dark {
+  border-top: 1px solid var(--dn-line);
+  border-bottom: 1px solid var(--dn-line);
+  background:
+    linear-gradient(180deg,
+      rgba(12, 15, 40, 0.56) 0%,
+      rgba(10, 12, 32, 0.80) 58%,
+      rgba(10, 12, 32, 0.93) 100%),
+    var(--dn-navy) url("assets/events-section-bg.png") center top / cover no-repeat;
+}
+
+.dn-sec-navy {
+  background: var(--dn-navy-deep);
+}
+
+/* Section headings — the site's ornamented serif, in ink on
+   paper and in cream on navy. */
+.dn-h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 29px;
+  line-height: 1.15;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--dn-ink);
+}
+
+.dn-h2-dark {
+  color: var(--dn-title-dark);
+}
+
+.dn-h3 {
+  margin-top: 48px;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.2;
+  letter-spacing: 0.03em;
+  text-align: center;
+  color: var(--dn-ink);
+}
+
+.dn-sub {
+  max-width: 780px;
+  margin: 20px auto 0;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 26px;
+  color: var(--dn-body);
+}
+
+/* ============================================================
+   WHY GIVE
+   ============================================================ */
+
+.dn-prose {
+  max-width: 780px;
+  margin: 26px auto 0;
+}
+
+.dn-prose p {
+  font-size: 15.5px;
+  font-weight: 300;
+  line-height: 28px;
+  letter-spacing: 0.01em;
+  color: var(--dn-body);
+}
+
+.dn-prose p + p {
+  margin-top: 15px;
+}
+
+.dn-prose strong {
+  font-weight: 600;
+  color: var(--s5-title);
+}
+
+.dn-uses {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 28px;
+  list-style: none;
+}
+
+.dn-use {
+  flex: 1 1 250px;
+  max-width: 272px;
+  padding: 24px 22px 22px;
+  border: 1px solid var(--dn-line-paper);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.34);
+}
+
+.dn-use-icon {
+  width: 30px;
+  height: 30px;
+  color: #8A6524;
+}
+
+.dn-use h4 {
+  margin-top: 12px;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 19px;
+  line-height: 1.25;
+  letter-spacing: 0.02em;
+  color: var(--s5-title);
+}
+
+.dn-use p {
+  margin-top: 8px;
+  font-size: 13.5px;
+  font-weight: 300;
+  line-height: 22px;
+  color: var(--dn-body);
+}
+
+.dn-use a {
+  color: #6B4E22;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.dn-use a:hover {
+  color: var(--gold-lo);
+}
+
+/* ============================================================
+   THE GIVING WELL
+   ============================================================ */
+
+.dn-give {
+  max-width: 760px;
+}
+
+.dn-give-intro {
+  max-width: 620px;
+  margin: 20px auto 0;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 26px;
+  color: var(--dn-body-dark);
+}
+
+/* --- One-time / monthly --------------------------------------- */
+
+.db-tabs {
+  display: flex;
+  width: max-content;
+  max-width: 100%;
+  margin: 30px auto 0;
+  padding: 5px;
+  border: 1px solid var(--dn-line);
+  border-radius: 999px;
+  background: rgba(10, 14, 37, 0.7);
+}
+
+.db-tab {
+  padding: 11px 28px;
+  border: 0;
+  border-radius: 999px;
+  background: none;
+  color: var(--dn-body-dark);
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.db-tab:hover {
+  color: var(--gold-hi);
+}
+
+.db-tab.is-on {
+  background: linear-gradient(180deg, var(--btn-gold-top), var(--btn-gold-bottom));
+  color: var(--btn-text-cream);
+}
+
+.db-note {
+  margin-top: 14px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 21px;
+  color: rgba(199, 196, 210, 0.8);
+}
+
+/* --- Suggested amounts ---------------------------------------- */
+
+.db-amounts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+/* `display` outranks the hidden attribute, so the row has to be
+   told to disappear explicitly while no processor is connected. */
+.db-amounts[hidden] {
+  display: none;
+}
+
+.db-amount {
+  min-width: 96px;
+  padding: 14px 20px;
+  border: 1px solid var(--dn-line);
+  border-radius: 8px;
+  background: rgba(10, 14, 37, 0.62);
+  color: var(--dn-title-dark);
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.db-amount:hover {
+  transform: translateY(-2px);
+  border-color: var(--gold);
+  color: var(--gold-hi);
+}
+
+.db-amount.is-on {
+  border-color: var(--gold);
+  background: rgba(196, 146, 63, 0.14);
+  color: var(--gold-hi);
+}
+
+/* The last button carries words rather than a figure. */
+.db-amount[data-amount=""] {
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+}
+
+/* --- The processor's form -------------------------------------
+   Donorbox draws its form at a fixed 423px and pins it to the left
+   of whatever space it is given. So the well is held to that width
+   and centred: on the dark ground it reads as one card the size of
+   the form, rather than a wide white panel with the form pushed
+   into a corner of it. The gold hairline and the deep shadow are
+   the same ones the rest of the page uses, so the card belongs to
+   the page even though its contents come from elsewhere. */
+
+.db-caption {
+  margin-top: 26px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold-hi);
+}
+
+.db-caption[hidden] {
+  display: none;
+}
+
+.db-mount {
+  width: 100%;
+  max-width: 436px;
+  margin: 16px auto 0;
+  padding: 6px;
+  border: 1px solid rgba(196, 146, 63, 0.42);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.97);
+  box-shadow: 0 18px 44px rgba(6, 8, 22, 0.42);
+  overflow: hidden;
+}
+
+/* Donorbox's widget.js reports the form's height at every step and
+   sets it on the frame, so the card grows with the donor's
+   progress. min-height is only the floor for the first step,
+   before that first report arrives. */
+.db-frame {
+  display: block;
+  width: 100%;
+  min-height: 540px;
+  max-width: 100%;
+  border: 0;
+  border-radius: 9px;
+}
+
+/* donate.js adds this once the form has reported its own height. */
+.db-mount.is-sized .db-frame {
+  min-height: 0;
+}
+
+/* --- Shown until a processor is connected --------------------- */
+
+.db-fallback {
+  margin-top: 26px;
+  padding: 38px 32px 34px;
+  border: 1px solid var(--dn-line);
+  border-radius: 14px;
+  background: rgba(10, 14, 37, 0.62);
+  text-align: center;
+}
+
+.db-fallback-icon {
+  width: 40px;
+  height: 40px;
+  color: var(--gold);
+}
+
+.db-fallback-title {
+  margin-top: 14px;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 25px;
+  line-height: 1.25;
+  letter-spacing: 0.02em;
+  color: var(--dn-title-dark);
+}
+
+.db-fallback-text {
+  max-width: 56ch;
+  margin: 12px auto 0;
+  font-size: 14.5px;
+  font-weight: 300;
+  line-height: 25px;
+  color: var(--dn-body-dark);
+}
+
+.db-fallback-cta {
+  height: 50px;
+  margin-top: 24px;
+  padding: 0 28px;
+  border-radius: 4px;
+  font-size: 12.5px;
+  letter-spacing: 0.06em;
+  text-transform: none;
+}
+
+/* --- Trust row ------------------------------------------------- */
+
+.db-trust {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px 30px;
+  margin-top: 26px;
+  list-style: none;
+}
+
+.db-trust li {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 12.5px;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  color: rgba(199, 196, 210, 0.86);
+}
+
+.db-trust svg {
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+  color: var(--gold);
+}
+
+/* ============================================================
+   OTHER WAYS TO GIVE
+   ============================================================ */
+
+.dn-ways {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 18px;
+  margin-top: 32px;
+}
+
+.dn-way {
+  display: block;
+  padding: 26px 24px 22px;
+  border: 1px solid var(--dn-line-paper);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.4);
+  text-decoration: none;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+
+.dn-way:hover,
+.dn-way:focus-visible {
+  transform: translateY(-3px);
+  border-color: var(--gold);
+  box-shadow: 0 16px 32px rgba(60, 40, 14, 0.14);
+}
+
+.dn-way h3 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 21px;
+  line-height: 1.25;
+  letter-spacing: 0.02em;
+  color: var(--s5-title);
+}
+
+.dn-way p {
+  margin-top: 10px;
+  font-size: 13.5px;
+  font-weight: 300;
+  line-height: 23px;
+  color: var(--dn-body);
+}
+
+.dn-way-more {
+  display: block;
+  margin-top: 16px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #8A6524;
+}
+
+.dn-way-more::after {
+  content: " \2192";
+}
+
+.dn-way:hover .dn-way-more {
+  color: var(--gold-lo);
+}
+
+/* ============================================================
+   TRANSPARENCY
+   ============================================================ */
+
+.dn-trust-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 22px;
+  margin-top: 34px;
+}
+
+.dn-trust-item {
+  padding: 24px 24px 22px;
+  border: 1px solid var(--dn-line);
+  border-radius: 12px;
+  background: rgba(16, 18, 46, 0.6);
+}
+
+.dn-trust-item h3 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.25;
+  letter-spacing: 0.02em;
+  color: var(--dn-title-dark);
+}
+
+.dn-trust-item p {
+  margin-top: 10px;
+  font-size: 13.5px;
+  font-weight: 300;
+  line-height: 23px;
+  color: var(--dn-body-dark);
+}
+
+.dn-trust-item a {
+  color: var(--gold-hi);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.dn-trust-item a:hover {
+  color: var(--btn-text-cream);
+}
+
+/* A value the Center still has to supply. Marked so it is
+   impossible to publish by accident. */
+.dn-todo {
+  padding: 1px 7px;
+  border: 1px dashed var(--gold);
+  border-radius: 4px;
+  color: var(--gold-hi);
+  font-size: 12.5px;
+  white-space: nowrap;
+}
+
+/* ============================================================
+   FAQ
+   ============================================================ */
+
+.dn-faq-wrap {
+  max-width: 860px;
+}
+
+.dn-faq {
+  margin-top: 30px;
+  border-top: 1px solid var(--dn-line-paper);
+}
+
+.dn-q {
+  border-bottom: 1px solid var(--dn-line-paper);
+}
+
+.dn-q summary {
+  position: relative;
+  padding: 20px 44px 20px 2px;
+  font-family: var(--font-serif);
+  font-size: 20px;
+  line-height: 1.35;
+  letter-spacing: 0.01em;
+  color: var(--dn-ink);
+  cursor: pointer;
+  list-style: none;
+}
+
+.dn-q summary::-webkit-details-marker {
+  display: none;
+}
+
+/* A gold + that becomes a − when the answer is open. */
+.dn-q summary::after,
+.dn-q summary::before {
+  content: "";
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  width: 15px;
+  height: 1.5px;
+  background: var(--gold-lo);
+  transition: transform 0.24s ease, opacity 0.24s ease;
+}
+
+.dn-q summary::before {
+  transform: translateY(-50%);
+}
+
+.dn-q summary::after {
+  transform: translateY(-50%) rotate(90deg);
+}
+
+.dn-q[open] summary::after {
+  transform: translateY(-50%) rotate(0deg);
+  opacity: 0;
+}
+
+.dn-q summary:hover {
+  color: #6B4E22;
+}
+
+.dn-q p {
+  padding: 0 44px 22px 2px;
+  font-size: 14.5px;
+  font-weight: 300;
+  line-height: 26px;
+  color: var(--dn-body);
+}
+
+.dn-q a {
+  color: #6B4E22;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.dn-faq-foot {
+  margin-top: 26px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--dn-body);
+}
+
+.dn-faq-foot a {
+  color: #6B4E22;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ============================================================
+   CLOSING CALL
+   ============================================================ */
+
+.dn-close {
+  background:
+    linear-gradient(180deg, rgba(7, 3, 26, 0.86), rgba(7, 3, 26, 0.92)),
+    var(--dn-navy-deep) url("assets/section6-bg.png") center / cover no-repeat;
+  padding: 60px 0 66px;
+}
+
+.dn-close-inner {
+  max-width: 720px;
+  text-align: center;
+}
+
+.dn-close-quote {
+  font-family: var(--font-serif);
+  font-size: 30px;
+  line-height: 1.35;
+  letter-spacing: 0.01em;
+  color: var(--white);
+}
+
+.dn-close-quote .qmark {
+  color: var(--gold);
+}
+
+.dn-close-quote cite {
+  display: block;
+  margin-top: 12px;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-hi);
+}
+
+.dn-close-text {
+  margin-top: 20px;
+  font-size: 15.5px;
+  font-weight: 300;
+  line-height: 27px;
+  color: var(--text-body);
+}
+
+.dn-close .btn-primary {
+  height: 52px;
+  margin-top: 26px;
+  padding: 0 32px;
+  border-radius: 4px;
+  gap: 12px;
+  font-size: 12.5px;
+  letter-spacing: 0.10em;
+}
+
+/* ============================================================
+   THANK-YOU PAGE
+   Its own small band; everything else it borrows from above.
+   ============================================================ */
+
+.dn-thanks {
+  min-height: 78vh;
+  display: flex;
+  align-items: center;
+  background:
+    linear-gradient(180deg, rgba(8, 10, 28, 0.78), rgba(8, 10, 28, 0.9)),
+    var(--dn-navy-deep) url("assets/section4-bg.png") center 40% / cover no-repeat;
+  padding: 170px 0 96px;
+}
+
+.dn-thanks-inner {
+  max-width: 720px;
+  text-align: center;
+}
+
+.dn-thanks-mark {
+  width: 76px;
+  height: 76px;
+  margin: 0 auto;
+  color: var(--gold);
+}
+
+.dn-thanks-title {
+  margin-top: 22px;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 46px;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+  color: var(--white);
+}
+
+.dn-thanks-text {
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 29px;
+  color: var(--text-body);
+}
+
+.dn-thanks-next {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 32px;
+}
+
+.dn-thanks-next .btn {
+  height: 50px;
+  padding: 0 26px;
+  border-radius: 4px;
+  gap: 10px;
+  font-size: 12.5px;
+  letter-spacing: 0.08em;
+}
+
+.dn-thanks-note {
+  margin-top: 28px;
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 22px;
+  color: rgba(233, 233, 238, 0.7);
+}
+
+.dn-thanks-note a {
+  color: var(--gold-hi);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ============================================================
+   TABLET AND PHONE
+   ============================================================ */
+
+@media (max-width: 1024px) {
+
+  .dn-hero-inner {
+    padding-top: 140px;
+    padding-bottom: 84px;
+  }
+
+  .dn-title {
+    font-size: 42px;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .dn-shell {
+    width: calc(100% - 32px);
+  }
+
+  .dn-body [id] {
+    scroll-margin-top: 78px;
+  }
+
+  .dn-hero-inner {
+    padding-top: 126px;
+    padding-bottom: 66px;
+  }
+
+  .dn-title {
+    font-size: 31px;
+  }
+
+  .dn-lead {
+    font-size: 15px;
+    line-height: 26px;
+  }
+
+  .dn-hero-actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .dn-hero-cta,
+  .dn-hero-alt {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .dn-sec {
+    padding: 44px 0 48px;
+  }
+
+  .dn-h2 {
+    gap: 12px;
+    font-size: 22px;
+  }
+
+  .dn-h3 {
+    margin-top: 34px;
+    font-size: 21px;
+  }
+
+  .dn-prose p {
+    font-size: 15px;
+    line-height: 26px;
+  }
+
+  .dn-use,
+  .dn-way,
+  .dn-trust-item {
+    max-width: none;
+    padding: 20px 18px 18px;
+  }
+
+  .db-tabs {
+    width: 100%;
+  }
+
+  .db-tab {
+    flex: 1;
+    padding: 11px 8px;
+    font-size: 11.5px;
+    letter-spacing: 0.05em;
+  }
+
+  .db-amount {
+    min-width: 0;
+    flex: 1 1 90px;
+    padding: 12px 10px;
+    font-size: 18px;
+  }
+
+  .db-frame {
+    min-height: 580px;
+  }
+
+  .db-fallback {
+    padding: 28px 20px 26px;
+  }
+
+  .db-fallback-title {
+    font-size: 21px;
+  }
+
+  .db-fallback-cta {
+    width: 100%;
+    justify-content: center;
+    font-size: 11.5px;
+  }
+
+  .db-trust {
+    gap: 12px 20px;
+  }
+
+  .dn-q summary {
+    padding: 17px 38px 17px 2px;
+    font-size: 17.5px;
+  }
+
+  .dn-q p {
+    padding: 0 38px 18px 2px;
+    font-size: 14px;
+    line-height: 25px;
+  }
+
+  .dn-close {
+    padding: 44px 0 48px;
+  }
+
+  .dn-close-quote {
+    font-size: 24px;
+  }
+
+  .dn-close .btn-primary,
+  .dn-thanks-next .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .dn-thanks {
+    padding: 130px 0 70px;
+  }
+
+  .dn-thanks-title {
+    font-size: 32px;
+  }
+
+  .dn-thanks-text {
+    font-size: 15px;
+    line-height: 26px;
+  }
+
+  .dn-thanks-next {
+    flex-direction: column;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .dn-way,
+  .db-amount,
+  .pod-card {
+    transition: none !important;
+  }
+}

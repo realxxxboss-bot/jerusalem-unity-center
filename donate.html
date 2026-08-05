@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Donate — Support the Jerusalem Unity Center</title>
+  <meta name="description" content="Give to the Jerusalem Unity Center: an international educational and cultural nonprofit in Jerusalem advancing consciousness, wisdom, ethical leadership, and human flourishing. US gifts are tax-deductible.">
+
+  <!-- CANONICAL — replace the domain if the site is published
+       somewhere other than jerusalemunity.org. Google Ad Grants
+       requires the ad's landing page to sit on the same verified
+       domain as the rest of the site, so this page must never be
+       a redirect to another host. -->
+  <link rel="canonical" href="https://jerusalemunity.org/donate.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Donate — Support the Jerusalem Unity Center">
+  <meta property="og:description" content="Your gift supports education, research, gatherings, and the building of a center in Jerusalem dedicated to wisdom, dialogue, and human flourishing.">
+  <meta property="og:url" content="https://jerusalemunity.org/donate.html">
+  <meta property="og:image" content="https://jerusalemunity.org/assets/the-jerusalme-unity-center.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Favicons / app icons — same set as the rest of the site. -->
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#0A0F23">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- style.css carries the shared brand system (header, footer,
+       buttons, pop-ups); donate.css adds this page's layout. -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="donate.css">
+
+  <!-- ==========================================================
+       GOOGLE TAG — NOT YET INSTALLED
+
+       Paste the Google tag (gtag.js) for the GA4 property here,
+       exactly as Google gives it, replacing this comment block.
+       Ad Grants accounts must report at least one meaningful
+       conversion per month, and Google reads it from this tag.
+
+       <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+       <script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag(){dataLayer.push(arguments);}
+         gtag('js', new Date());
+         gtag('config', 'G-XXXXXXX');
+       </script>
+
+       The same block goes in the <head> of index.html,
+       donate-thank-you.html, master-plan.html and both policy
+       pages, so the whole site reports into one property.
+       ========================================================== -->
+
+  <!-- Structured data. Tells Google this is a nonprofit and that
+       this page is where it accepts donations. Replace the two
+       PLACEHOLDER values (EIN, telephone) once confirmed. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "NGO",
+    "name": "Jerusalem Unity Center",
+    "alternateName": "The Jerusalem Unity Center USA",
+    "url": "https://jerusalemunity.org/",
+    "logo": "https://jerusalemunity.org/assets/the-jerusalme-unity-center.png",
+    "email": "info@jerusalemunity.org",
+    "description": "An international educational and cultural initiative in Jerusalem dedicated to advancing consciousness, wisdom, ethical leadership, and human flourishing, welcoming people of every nation, culture, and tradition.",
+    "nonprofitStatus": "Nonprofit501c3",
+    "parentOrganization": {
+      "@type": "NGO",
+      "name": "The Seventy Nations (R.A.) Jerusalem",
+      "url": "https://seventynationsjerusalem.org"
+    },
+    "sameAs": [
+      "https://www.facebook.com/profile.php?id=61590474344492",
+      "https://seventynationsjerusalem.org"
+    ],
+    "potentialAction": {
+      "@type": "DonateAction",
+      "name": "Donate to the Jerusalem Unity Center",
+      "target": "https://jerusalemunity.org/donate.html"
+    }
+  }
+  </script>
+</head>
+<body class="dn-body">
+
+  <a class="dn-skip" href="#dn-main">Skip to the donation form</a>
+
+  <!-- ==========================================================
+       HEADER — the site header on a solid navy bar
+       ========================================================== -->
+  <header class="site-header dn-header">
+    <div class="shell header-inner">
+
+      <a href="index.html#hero" class="brand">
+        <img class="logo" src="assets/the-jerusalme-unity-center.png" alt="Jerusalem Unity Center emblem">
+        <span class="brand-text">
+          <span class="brand-name">Jerusalem</span>
+          <span class="brand-sub">Unity Center</span>
+          <span class="brand-tagline">A Center of Consciousness<br>for Humanity</span>
+        </span>
+      </a>
+
+      <nav class="site-nav" id="primary-nav" aria-label="Primary">
+        <a href="index.html#info/about">About Us</a>
+        <a href="index.html#vision">Our Vision</a>
+        <a href="index.html#institutes">Institutes</a>
+        <a href="index.html#info/learn">Learn</a>
+        <a href="index.html#info/community">Community</a>
+        <a href="index.html#events">Events</a>
+        <a href="index.html#info/research">Research</a>
+        <a href="index.html#info/chapters">Global Chapters</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="#give" class="btn btn-support js-donate-cta" data-donate-source="donate-header" aria-current="page">Donate Now</a>
+        <button class="search-btn" type="button" aria-label="Search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+            <circle cx="10.5" cy="10.5" r="6.5"></circle>
+            <line x1="15.4" y1="15.4" x2="21" y2="21"></line>
+          </svg>
+        </button>
+      </div>
+
+      <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+
+    </div>
+  </header>
+
+  <!-- ==========================================================
+       HERO
+       ========================================================== -->
+  <section class="dn-hero">
+    <div class="dn-shell dn-hero-inner">
+      <p class="dn-eyebrow">Support the Center</p>
+      <h1 class="dn-title">Help Build a Home for <span class="gold-bright">Humanity</span> in Jerusalem</h1>
+      <div class="dn-hero-rule" aria-hidden="true"></div>
+      <p class="dn-lead">The Jerusalem Unity Center is an international educational and cultural initiative dedicated to consciousness, wisdom, ethical leadership, and human flourishing. It is built entirely by people who believe the nations should have a place to meet. Your gift is what makes that place real.</p>
+
+      <div class="dn-hero-actions">
+        <a class="btn btn-primary dn-hero-cta js-donate-cta" href="#give" data-donate-source="donate-hero">
+          Give Now
+          <svg class="icon-arrow" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="1" y1="6" x2="24" y2="6"></line>
+            <polyline points="19 1 24 6 19 11"></polyline>
+          </svg>
+        </a>
+        <a class="btn btn-ghost dn-hero-alt" href="#ways">Other Ways to Give</a>
+      </div>
+
+      <p class="dn-hero-note">The Jerusalem Unity Center USA is a 501(c)(3) nonprofit foundation. Gifts from US taxpayers are tax-deductible to the fullest extent allowed by law.</p>
+    </div>
+  </section>
+
+  <main id="dn-main">
+
+    <!-- ==========================================================
+         WHY GIVE
+         ========================================================== -->
+    <section class="dn-sec dn-sec-cream" id="why">
+      <div class="dn-shell">
+
+        <h2 class="dn-h2">
+          <span class="heading-orn orn-short orn-left" aria-hidden="true"></span>
+          Why Your Gift Matters
+          <span class="heading-orn orn-short orn-right" aria-hidden="true"></span>
+        </h2>
+
+        <div class="dn-prose">
+          <p>For as long as there have been nations, Jerusalem has been the city they look toward. The Jerusalem Unity Center exists so that they can also come here &mdash; to study together, to listen to one another, and to find what they hold in common.</p>
+          <p>Everything the Center does is free of any requirement to belong. Our courses, our gatherings, our library, and our institutes are open to people of every nation, culture, and tradition, with no affiliation or prior study required. That openness is only possible because the work is carried by donors rather than by fees.</p>
+          <p>The Center is sponsored by <strong>The Seventy Nations (R.A.) Jerusalem</strong>, a registered Israeli nonprofit association, and works in partnership with its sister organization <strong>The Jerusalem Unity Center USA</strong>, a 501(c)(3) nonprofit foundation through which US donors give.</p>
+        </div>
+
+        <!-- Where a gift goes. Four plain statements and no
+             figures: the Center does not yet publish per-programme
+             costs, and an unsupported impact claim is exactly what
+             an Ad Grants review flags. -->
+        <h3 class="dn-h3">Where Your Gift Goes</h3>
+
+        <ul class="dn-uses">
+          <li class="dn-use">
+            <svg class="dn-use-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 5.4h5.4A2.6 2.6 0 0 1 12 8v11a2.2 2.2 0 0 0-2.2-2.2H4z"></path>
+              <path d="M20 5.4h-5.4A2.6 2.6 0 0 0 12 8v11a2.2 2.2 0 0 1 2.2-2.2H20z"></path>
+            </svg>
+            <h4>Education &amp; Scholarships</h4>
+            <p>Courses and pathways in consciousness, spiritual development, human flourishing, dialogue, and culture &mdash; and scholarships so that cost is never the reason someone cannot study.</p>
+          </li>
+          <li class="dn-use">
+            <svg class="dn-use-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="8.6"></circle><path d="m15.2 8.8-2 4.4-4.4 2 2-4.4z"></path>
+            </svg>
+            <h4>The Six Institutes</h4>
+            <p>Research and teaching in consciousness, spiritual intelligence, human flourishing, moral leadership, global dialogue, and science &mdash; and the faculty who carry it out.</p>
+          </li>
+          <li class="dn-use">
+            <svg class="dn-use-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 5.6h11.6v8H8.4L4 17z"></path><path d="M8.6 16.4h6L20 19.6V10h-2.6"></path>
+            </svg>
+            <h4>Gatherings &amp; Culture</h4>
+            <p>Evenings of music, film, poetry and storytelling; interfaith conversations, leadership forums, and international roundtables &mdash; all of them open to the public.</p>
+          </li>
+          <li class="dn-use">
+            <svg class="dn-use-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3.6 20.4h16.8"></path><path d="M5.4 20.4V9.6L12 4.6l6.6 5v10.8"></path><path d="M10 20.4v-5.2h4v5.2"></path>
+            </svg>
+            <h4>The Campus</h4>
+            <p>The Center&rsquo;s permanent home in Jerusalem: halls of learning, a library, gardens, and a place for the nations to gather. <a href="master-plan.html">See the master plan</a>.</p>
+          </li>
+        </ul>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         THE GIVING FORM
+         Live. The tabs and the amount row are the Center's own
+         controls; they set the secure Donorbox form below, which
+         opens on the chosen interval with the chosen amount
+         already filled in.
+
+         The campaign it points at is DONORBOX_URL at the top of
+         donate.js — change that one line to move the page to a
+         different campaign. Empty it and the fallback below takes
+         over, so the section is never a dead end.
+         ========================================================== -->
+    <section class="dn-sec dn-sec-dark" id="give">
+      <div class="dn-shell dn-give">
+
+        <h2 class="dn-h2 dn-h2-dark">
+          <span class="heading-orn orn-short orn-left" aria-hidden="true"></span>
+          Make Your Gift
+          <span class="heading-orn orn-short orn-right" aria-hidden="true"></span>
+        </h2>
+
+        <p class="dn-give-intro">Give once, or give monthly and carry the work through the year. Donations are processed securely by our payment partner; the Center never sees or stores your card details.</p>
+
+        <!-- One-time / monthly -->
+        <div class="db-tabs js-intervals" role="tablist" aria-label="How often to give">
+          <button class="db-tab is-on" type="button" role="tab" aria-selected="true" data-interval="one_time">Give Once</button>
+          <button class="db-tab" type="button" role="tab" aria-selected="false" data-interval="monthly">Give Monthly</button>
+        </div>
+
+        <p class="db-note js-interval-note">A single gift, given once. You can always give again later.</p>
+
+        <!-- Suggested amounts. They only preselect the amount in
+             the form below — nothing is charged from this row. -->
+        <div class="db-amounts js-amounts" hidden>
+          <button class="db-amount" type="button" aria-pressed="false" data-amount="36"   data-interval="one_time">$36</button>
+          <button class="db-amount" type="button" aria-pressed="false" data-amount="100"  data-interval="one_time">$100</button>
+          <button class="db-amount" type="button" aria-pressed="false" data-amount="360"  data-interval="one_time">$360</button>
+          <button class="db-amount" type="button" aria-pressed="false" data-amount="1000" data-interval="one_time">$1,000</button>
+          <button class="db-amount" type="button" aria-pressed="false" data-amount=""     data-interval="one_time">Another amount</button>
+        </div>
+
+        <!-- The processor's form is built into this well by
+             donate.js. The caption says out loud what the amount
+             row above has just done, so the form's own amount
+             fields read as a confirmation rather than as a second
+             set of controls competing with ours. -->
+        <p class="db-caption js-give-caption" hidden>Complete your gift securely below</p>
+        <div class="db-mount" id="donorbox-mount" hidden></div>
+
+        <!-- Shown while no processor is connected. Not a dead end:
+             it reaches a person who can take the gift by hand. -->
+        <div class="db-fallback" id="give-fallback">
+          <svg class="db-fallback-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 20s-7.4-4.6-7.4-9.4A4.1 4.1 0 0 1 12 8a4.1 4.1 0 0 1 7.4 2.6C19.4 15.4 12 20 12 20z"></path>
+          </svg>
+          <h3 class="db-fallback-title">Our online giving form is being connected</h3>
+          <p class="db-fallback-text">We are completing the setup of our secure donation platform. Until it is live, write to us and a member of our team will take your gift personally &mdash; by bank transfer, by check, or by card &mdash; and send your receipt the same way.</p>
+          <a class="btn btn-primary db-fallback-cta js-donate-cta" href="mailto:info@jerusalemunity.org?subject=I%20would%20like%20to%20make%20a%20donation" data-donate-source="donate-fallback">
+            Write to info@jerusalemunity.org
+          </a>
+        </div>
+
+        <ul class="db-trust">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="4.6" y="10.4" width="14.8" height="9.4" rx="2"></rect><path d="M8.2 10.4V7.6a3.8 3.8 0 0 1 7.6 0v2.8"></path>
+            </svg>
+            Secure, encrypted payment
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4.6 6.4h14.8v11.2H4.6z"></path><path d="m5.4 7.2 6.6 5 6.6-5"></path>
+            </svg>
+            Receipt by email
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 3.6 4.8 6.4v5.2c0 4.3 3 7.6 7.2 8.8 4.2-1.2 7.2-4.5 7.2-8.8V6.4z"></path><path d="m9.2 12 2 2 3.6-4"></path>
+            </svg>
+            Card details never stored by us
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 19.4h16"></path><path d="m5 15.6 5-5 3.4 3.4L20 7.4"></path><polyline points="15.6 7.4 20 7.4 20 11.8"></polyline>
+            </svg>
+            Cancel a monthly gift any time
+          </li>
+        </ul>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         OTHER WAYS TO GIVE
+         ========================================================== -->
+    <section class="dn-sec dn-sec-cream" id="ways">
+      <div class="dn-shell">
+
+        <h2 class="dn-h2">
+          <span class="heading-orn orn-short orn-left" aria-hidden="true"></span>
+          Other Ways to Give
+          <span class="heading-orn orn-short orn-right" aria-hidden="true"></span>
+        </h2>
+
+        <p class="dn-sub">Not every gift is made by card, and not every gift is money. Each of these reaches the same team &mdash; write to us and we will take it from there.</p>
+
+        <div class="dn-ways">
+
+          <a class="dn-way" href="mailto:info@jerusalemunity.org?subject=Bank%20transfer%20or%20check%20donation">
+            <h3>Bank Transfer or Check</h3>
+            <p>For larger gifts, or where a transfer is simply easier. Write to us and we will send the account details and the mailing address.</p>
+            <span class="dn-way-more">Request the details</span>
+          </a>
+
+          <a class="dn-way" href="mailto:info@jerusalemunity.org?subject=A%20gift%20in%20honour%20or%20in%20memory">
+            <h3>In Honor or In Memory</h3>
+            <p>Give in someone&rsquo;s name and we will record the dedication with your gift, and write to whomever you would like us to tell.</p>
+            <span class="dn-way-more">Dedicate a gift</span>
+          </a>
+
+          <a class="dn-way" href="mailto:info@jerusalemunity.org?subject=Major%20gift%20or%20sponsorship">
+            <h3>Major Gifts &amp; Sponsorship</h3>
+            <p>Sponsor an institute, a lecture series, a scholarship fund, or a part of the campus itself. These conversations are had person to person.</p>
+            <span class="dn-way-more">Start the conversation</span>
+          </a>
+
+          <a class="dn-way" href="mailto:info@jerusalemunity.org?subject=A%20legacy%20gift">
+            <h3>Legacy Giving</h3>
+            <p>Remember the Center in your will, or through a trust or estate plan, and help carry this work into the generations after us.</p>
+            <span class="dn-way-more">Ask about legacies</span>
+          </a>
+
+          <a class="dn-way" href="index.html#info/volunteer">
+            <h3>Give Your Time</h3>
+            <p>Volunteers welcome visitors, support programs, and organize gatherings &mdash; in Jerusalem and in communities around the world.</p>
+            <span class="dn-way-more">Volunteer with us</span>
+          </a>
+
+          <a class="dn-way" href="index.html#info/chapter">
+            <h3>Start a Chapter</h3>
+            <p>Bring the Center&rsquo;s work to your own city: a local chapter for study, dialogue, and service, connected to the international network.</p>
+            <span class="dn-way-more">Start a chapter</span>
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         TAX, TRANSPARENCY AND ACCOUNTABILITY
+         Google's nonprofit programmes and most donors look for
+         exactly these four statements, so they are given their
+         own block rather than buried in small print.
+         ========================================================== -->
+    <section class="dn-sec dn-sec-navy" id="transparency">
+      <div class="dn-shell">
+
+        <h2 class="dn-h2 dn-h2-dark">
+          <span class="heading-orn orn-short orn-left" aria-hidden="true"></span>
+          Transparency &amp; Your Rights as a Donor
+          <span class="heading-orn orn-short orn-right" aria-hidden="true"></span>
+        </h2>
+
+        <div class="dn-trust-grid">
+
+          <div class="dn-trust-item">
+            <h3>Tax-deductibility</h3>
+            <p>Gifts from US taxpayers are received by The Jerusalem Unity Center USA, a 501(c)(3) nonprofit foundation, and are tax-deductible to the fullest extent allowed by law. Our EIN is <span class="dn-todo">[EIN to be confirmed]</span>. Donors outside the United States should check their own local rules; we are glad to provide whatever documentation your authority requires.</p>
+          </div>
+
+          <div class="dn-trust-item">
+            <h3>Receipts</h3>
+            <p>Every donation receives an emailed receipt at the address given on the form, usually within a few minutes. If one does not arrive, write to <a href="mailto:info@jerusalemunity.org">info@jerusalemunity.org</a> and we will reissue it.</p>
+          </div>
+
+          <div class="dn-trust-item">
+            <h3>How gifts are used</h3>
+            <p>Unrestricted gifts are applied to the Center&rsquo;s educational programs, institutes, public gatherings, and the building of its campus in Jerusalem, together with the administration those require. If you would like your gift directed to one of them in particular, say so on the form or write to us and we will honour it.</p>
+          </div>
+
+          <div class="dn-trust-item">
+            <h3>Refunds and monthly gifts</h3>
+            <p>A gift made in error will be refunded in full &mdash; write to us within 30 days. A monthly gift can be changed or stopped at any time, either from the link in your receipt or by writing to us; we will confirm by email.</p>
+          </div>
+
+          <div class="dn-trust-item">
+            <h3>Your information</h3>
+            <p>We never sell, rent, or trade donor information. What we collect and how we handle it is set out in our <a href="privacy-policy.html">Privacy Policy</a>. Payment details are handled entirely by our payment partner and are never stored on our own systems.</p>
+          </div>
+
+          <div class="dn-trust-item">
+            <h3>Who we serve</h3>
+            <p>The Center is open to people of every nation, culture, faith, and background, and gives no preference among them. Our commitment is set out in full in our <a href="non-discrimination-policy.html">Non-Discrimination Policy</a>.</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         FAQ — native <details>, so it is readable by search
+         engines and works with scripting switched off.
+         ========================================================== -->
+    <section class="dn-sec dn-sec-cream" id="faq">
+      <div class="dn-shell dn-faq-wrap">
+
+        <h2 class="dn-h2">
+          <span class="heading-orn orn-short orn-left" aria-hidden="true"></span>
+          Questions About Giving
+          <span class="heading-orn orn-short orn-right" aria-hidden="true"></span>
+        </h2>
+
+        <div class="dn-faq js-faq">
+
+          <details class="dn-q">
+            <summary>Is my donation tax-deductible?</summary>
+            <p>For US taxpayers, yes. Gifts are received by The Jerusalem Unity Center USA, a 501(c)(3) nonprofit foundation, and are deductible to the fullest extent allowed by law. Donors elsewhere should check their own local rules &mdash; write to us and we will send whatever documentation your tax authority asks for.</p>
+          </details>
+
+          <details class="dn-q">
+            <summary>Can I give monthly instead of all at once?</summary>
+            <p>Yes, and it helps more than a single gift of the same size, because it lets us plan a year of teaching rather than a month of it. Choose &ldquo;Give Monthly&rdquo; above. You can change or stop it at any time.</p>
+          </details>
+
+          <details class="dn-q">
+            <summary>Can I choose what my gift supports?</summary>
+            <p>Yes. Say which part of the Center&rsquo;s work you would like it applied to &mdash; education, one of the institutes, gatherings, or the campus &mdash; either in the form&rsquo;s message field or by writing to us afterwards, and we will honour it.</p>
+          </details>
+
+          <details class="dn-q">
+            <summary>Can I give in a currency other than US dollars?</summary>
+            <p>Yes. Our payment partner accepts cards issued in most countries and converts at the rate applying on the day. For a gift in another currency by bank transfer, write to us and we will send the right account details.</p>
+          </details>
+
+          <details class="dn-q">
+            <summary>How do I get a receipt?</summary>
+            <p>It is emailed automatically to the address on the form, usually within a few minutes. Check the spam folder first, and if it still has not arrived, write to <a href="mailto:info@jerusalemunity.org">info@jerusalemunity.org</a> and we will reissue it.</p>
+          </details>
+
+          <details class="dn-q">
+            <summary>Is my payment secure?</summary>
+            <p>Yes. The form is served over an encrypted connection by our payment partner, which is PCI-compliant. Card numbers are never transmitted to, or stored on, the Center&rsquo;s own systems.</p>
+          </details>
+
+          <details class="dn-q">
+            <summary>Can I give something other than money?</summary>
+            <p>Yes. Gifts of goods, expertise, professional services, and time are all genuinely useful, and our US foundation can receipt in-kind gifts as well as cash. Write to us describing what you have in mind.</p>
+          </details>
+
+          <details class="dn-q">
+            <summary>Who do I speak to about a large or complex gift?</summary>
+            <p>Write to <a href="mailto:info@jerusalemunity.org">info@jerusalemunity.org</a> with a line about what you are considering, and someone from the Center will reply personally. Major gifts, sponsorships, and legacies are always arranged in conversation.</p>
+          </details>
+
+        </div>
+
+        <p class="dn-faq-foot">Still have a question? <a href="index.html#contact-modal">Write to us</a> &mdash; we read everything that arrives.</p>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         CLOSING CALL
+         ========================================================== -->
+    <section class="dn-close">
+      <div class="dn-shell dn-close-inner">
+        <blockquote class="dn-close-quote">
+          <span class="qmark" aria-hidden="true">&ldquo;</span>In that Day, his name will be One and he will be One<span class="qmark" aria-hidden="true">&rdquo;</span>
+          <cite>Zechariah 14:9</cite>
+        </blockquote>
+        <p class="dn-close-text">Every gift, of any size, brings that day nearer.</p>
+        <a class="btn btn-primary js-donate-cta" href="#give" data-donate-source="donate-closing">
+          Give to the Center
+          <svg class="icon-arrow" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="1" y1="6" x2="24" y2="6"></line>
+            <polyline points="19 1 24 6 19 11"></polyline>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================
+       FOOTER — identical to the rest of the site
+       ========================================================== -->
+  <footer class="site-footer" id="footer">
+
+    <div class="shell footer-top">
+
+      <div class="fcol fcol-brand">
+        <div class="footer-brand">
+          <img class="footer-logo" src="assets/the-jerusalme-unity-center.png" alt="Jerusalem Unity Center emblem">
+          <div class="footer-brand-text">
+            <span class="footer-brand-name">Jerusalem</span>
+            <span class="footer-brand-sub">Unity Center</span>
+            <span class="footer-brand-tagline">A Center of Consciousness<br>for Humanity</span>
+          </div>
+        </div>
+        <div class="footer-social">
+          <a class="social-link" href="https://www.facebook.com/profile.php?id=61590474344492" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M13.4 21v-8.2h2.75l.41-3.2H13.4V7.56c0-.92.26-1.55 1.58-1.55h1.69V3.14A22.6 22.6 0 0 0 14.2 3c-2.44 0-4.1 1.49-4.1 4.22v2.38H7.34v3.2h2.76V21z"/>
+            </svg>
+          </a>
+          <a class="social-link" href="https://www.linkedin.com/in/meirah-marianne-paradise-b34072191/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M6.5 8.7H3.6V21h2.9zM5.05 3.5a1.72 1.72 0 1 0 0 3.44 1.72 1.72 0 0 0 0-3.44zM14.4 8.5c-1.6 0-2.66.87-3.1 1.7h-.05V8.7H8.4V21h2.9v-6.1c0-1.6.3-3.16 2.28-3.16 1.95 0 1.98 1.83 1.98 3.26V21h2.9v-6.58c0-3.1-.67-5.92-4.06-5.92z"/>
+            </svg>
+          </a>
+          <a class="social-link" href="mailto:info@jerusalemunity.org" aria-label="Contact us">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="5.4" width="18" height="13.2" rx="2.2"></rect>
+              <path d="M4 7l8 6 8-6"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <span class="footer-vline" aria-hidden="true"></span>
+
+      <nav class="fcol fcol-links fcol-center" aria-label="The Center">
+        <h3 class="fcol-heading">The Center</h3>
+        <ul class="fcol-list">
+          <li><a href="index.html#info/about">About Us</a></li>
+          <li><a href="index.html#info/vision">Our Vision</a></li>
+          <li><a href="index.html#info/campus">The Campus</a></li>
+          <li><a href="index.html#info/visit">Visit Jerusalem</a></li>
+          <li><a href="index.html#info/programs">Programs</a></li>
+          <li><a href="index.html#info/faculty">Faculty</a></li>
+        </ul>
+      </nav>
+
+      <span class="footer-vline" aria-hidden="true"></span>
+
+      <nav class="fcol fcol-links fcol-resources" aria-label="Resources">
+        <h3 class="fcol-heading">Resources</h3>
+        <ul class="fcol-list">
+          <li><a href="index.html#info/f-library">Library</a></li>
+          <li><a href="index.html#info/f-events">Events</a></li>
+          <li><a href="index.html#info/f-research">Research</a></li>
+          <li><a href="index.html#info/podcast">Podcast</a></li>
+          <li><a href="index.html#info/news">News</a></li>
+          <li><a href="index.html#info/media">Media</a></li>
+        </ul>
+      </nav>
+
+      <span class="footer-vline" aria-hidden="true"></span>
+
+      <nav class="fcol fcol-links fcol-involved" aria-label="Get Involved">
+        <h3 class="fcol-heading">Get Involved</h3>
+        <ul class="fcol-list">
+          <li><a href="donate.html" class="fcol-donate" aria-current="page">Donate Now</a></li>
+          <li><a href="index.html#info/join">Join the Community</a></li>
+          <li><a href="index.html#info/volunteer">Volunteer</a></li>
+          <li><a href="index.html#info/ambassadors">Ambassadors</a></li>
+          <li><a href="index.html#info/chapter">Start a Chapter</a></li>
+          <li><a href="index.html#info/support">Support the Vision</a></li>
+        </ul>
+      </nav>
+
+      <span class="footer-vline" aria-hidden="true"></span>
+
+      <div class="fcol fcol-quote">
+        <blockquote class="footer-quote">
+          <span class="qmark qmark-open" aria-hidden="true">&ldquo;</span>The light within illuminates the path for all.<span class="qmark qmark-close" aria-hidden="true">&rdquo;</span>
+        </blockquote>
+        <p class="footer-quote-attr">&mdash; Jerusalem Unity Center</p>
+      </div>
+
+    </div>
+
+    <div class="footer-divider" aria-hidden="true"></div>
+
+    <!-- Newsletter — posts to Web3Forms through forms.js, which
+         wires every .js-news-form on the page. -->
+    <div class="shell footer-news">
+      <div class="fnews-copy">
+        <h3 class="fnews-heading">Stay Connected</h3>
+        <p class="fnews-text">Occasional letters on the Center&rsquo;s progress, its teachings and its gatherings.</p>
+      </div>
+
+      <form class="fnews-form js-news-form" novalidate>
+
+        <!-- Honeypot: hidden from people, irresistible to bots. -->
+        <div class="fnews-hp" aria-hidden="true">
+          <label for="fnews-website">Website</label>
+          <input id="fnews-website" name="website" type="text" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="fnews-row">
+          <label class="fnews-label" for="fnews-email">Email address</label>
+          <input class="fnews-input" id="fnews-email" name="email" type="email" placeholder="you@example.com" autocomplete="email" aria-describedby="fnews-msg">
+          <button class="fnews-btn" type="submit">
+            <span class="fnews-spinner" aria-hidden="true"></span>
+            <span class="fnews-btn-label">Subscribe</span>
+          </button>
+        </div>
+
+        <p class="fnews-msg" id="fnews-msg" role="status" hidden></p>
+      </form>
+    </div>
+
+    <div class="footer-divider" aria-hidden="true"></div>
+
+    <div class="shell footer-bottom">
+      <p class="footer-copy">&copy; 2025 Jerusalem Unity Center. All Rights Reserved.</p>
+      <div class="footer-legal">
+        <a href="index.html#contact-modal">Contact Us</a>
+        <span class="legal-sep" aria-hidden="true"></span>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <span class="legal-sep" aria-hidden="true"></span>
+        <a href="non-discrimination-policy.html">Non-Discrimination Policy</a>
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- Web3Forms transport (holds the access key) + footer newsletter. -->
+  <script src="forms.js"></script>
+
+  <!-- Pop-up registry + header search, shared with the rest of the site. -->
+  <script src="info.js"></script>
+
+  <script src="donate.js"></script>
+
+</body>
+</html>
