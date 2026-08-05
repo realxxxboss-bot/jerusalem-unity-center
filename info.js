@@ -288,7 +288,7 @@
       icon: 'assets/the-seventy-nations-transparent-logo.png',
       iconClass: 'icon-seventy', mediaClass: 'info-media-seal',
       body: [
-        'The Jerusalem Unity Center is an international educational and cultural initiative dedicated to advancing consciousness, wisdom, ethical leadership, and human flourishing. Rooted in Jerusalem’s unique place in human history, the Center welcomes people of every nation, culture, and tradition to explore what unites us.',
+        'The Jerusalem Unity Center is a 501(c)(3) nonprofit and an international educational and cultural initiative dedicated to advancing consciousness, wisdom, ethical leadership, and human flourishing. Rooted in Jerusalem’s unique place in human history, the Center welcomes people of every nation, culture, and tradition to explore what unites us.',
         'The Center is sponsored by The Seventy Nations (R.A.) Jerusalem, a registered Israeli nonprofit association whose work gathers the peoples of the world around the values they hold in common. Its sponsorship makes the Center’s programs, institutes, and gatherings possible.',
         'Visit Seventy Nations Jerusalem to learn about the organization behind the Center and the wider work it carries out.'
       ],

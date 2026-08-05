@@ -1495,33 +1495,33 @@ a {
 .footer-sponsor {
   display: flex;
   justify-content: center;
-  padding-top: 24px;
-  padding-bottom: 24px;
+  padding-top: 28px;
+  padding-bottom: 28px;
 }
 
 .fsponsor {
   display: inline-flex;
   align-items: center;
-  gap: 17px;
+  gap: 20px;
   text-decoration: none;
 }
 
 /* assets/the-seventy-nations-mark.png is the sponsor's logo cropped
-   to its own edges and squared up — 156px so it stays sharp at 3x on
-   a retina screen, 40KB instead of the 660KB full-size file, and it
-   fills the 52px box rather than floating inside its own margin. */
+   to its own edges and squared up — 192px so it stays sharp at 3x on
+   a retina screen, 56KB instead of the 660KB full-size file, and it
+   fills the 64px box rather than floating inside its own margin. */
 .fsponsor-logo {
   flex-shrink: 0;
-  width: 52px;
-  height: 52px;
-  opacity: 0.92;
+  width: 64px;
+  height: 64px;
+  opacity: 0.95;
   transition: opacity 0.25s ease;
 }
 
 .fsponsor-text {
-  font-size: 15px;
+  font-size: 16.5px;
   font-weight: 300;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.045em;
   color: var(--footer-link);
   transition: color 0.2s ease;
 }
@@ -4766,23 +4766,23 @@ body.modal-open {
   /* The credit keeps its one line as long as it fits and wraps
      under the mark rather than off the edge when it does not. */
   .footer-sponsor {
-    padding: 20px;
+    padding: 24px 20px;
   }
 
   .fsponsor {
     flex-wrap: wrap;
     justify-content: center;
-    gap: 14px;
+    gap: 16px;
     text-align: center;
   }
 
   .fsponsor-logo {
-    width: 46px;
-    height: 46px;
+    width: 56px;
+    height: 56px;
   }
 
   .fsponsor-text {
-    font-size: 14px;
+    font-size: 15px;
   }
 
   /* Bottom bar: copyright above, legal links below */
@@ -5329,13 +5329,13 @@ body.modal-open {
      somewhere sensible. */
   .fsponsor {
     flex-direction: column;
-    gap: 12px;
+    gap: 13px;
   }
 
   .fsponsor-text {
-    max-width: 24ch;
+    max-width: 23ch;
     text-wrap: balance;
-    line-height: 22px;
+    line-height: 24px;
   }
 
   .qmark {
