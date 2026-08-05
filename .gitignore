@@ -1,0 +1,4 @@
+# Per-machine Claude Code permission cache — records which commands were
+# approved on one particular machine, so it is never the same twice and
+# has no business travelling with the site.
+.claude/settings.local.json
