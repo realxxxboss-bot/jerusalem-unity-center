@@ -4,8 +4,8 @@ The donation page is **built, styled, tested, and live**, and as of this
 update **giving works end to end**: the Donorbox campaign is connected and
 the form is taking gifts on the page itself.
 
-Three things are still open. Two are one-line values from you; one is a set
-of switches inside your own Donorbox dashboard.
+One thing is still open: the Google Analytics and Google Ads IDs, deferred by
+agreement. Everything else on the page is finished.
 
 ---
 
@@ -34,37 +34,40 @@ empty it and the page falls back to a contact route rather than a dead end.
 - The card is held to the form's own width and centred, with the site's gold
   hairline and shadow — so a third-party form still reads as part of the page.
 
-### ⚠️ Still to do in your Donorbox dashboard
+### Optional Donorbox dashboard settings
 
-These are settings only the account owner can change. The page is finished
-either way, but the first one matters for Google.
+Only the account owner can change these, and the page works as it stands
+without any of them. Worth a look when convenient:
 
 | Setting | Value | Why |
 |---|---|---|
-| Campaign → Settings → **Redirect URL after donation** | `https://jerusalemunity.org/donate-thank-you.html` | This is what makes the thank-you page — and therefore Google conversion tracking — work at all. **Please do not skip this one.** |
+| **Suggested amounts** | 36 / 100 / 360 | The form currently offers its own $10 / $50 / $100 underneath the page's amounts. Matching them removes the only remaining mismatch between the two |
 | **Recurring donations** | Enabled | The "Give Monthly" tab depends on it |
-| **Suggested amounts** | 36 / 100 / 360 | The form currently offers its own $10 / $50 / $100. Matching them to the page's amounts removes the only remaining mismatch between the two |
 | **Currency** | Whatever you actually charge in | Tell me if it is not USD and I will change the amount buttons to match |
 | **Receipt email** | On, from an address you monitor | Donors expect it; the page promises it |
 
+The post-donation redirect to `donate-thank-you.html` was considered and
+**closed as not needed**. Donorbox shows its own confirmation after a gift, so
+nothing is broken by leaving it. The one consequence: the thank-you page is
+reached only by direct link, so when Google Ads is set up later the conversion
+will need to be counted some other way. The page itself stays in place.
+
 ---
 
-## ⏳ 2. Your EIN (US tax number) — STILL NEEDED
+## ✅ 2. Your EIN (US tax number) — ADDED
 
-The page still shows the marked placeholder **`[EIN to be confirmed]`**,
-deliberately impossible to miss.
+```
+88-3073485
+```
 
-I was not able to read the legal document image that was sent — it did not
-open on my side. Please **type the EIN as text** (just the number, e.g.
-`88-1234567`) and I will drop it in immediately.
+It now appears in two places:
 
-While you are at it, confirm:
+- **On the page**, in the tax-deductibility paragraph of the transparency
+  section: *"Our EIN is 88-3073485."*
+- **In the structured data**, as `taxID`, so Google can match the site against
+  the IRS register during nonprofit review.
 
-- the exact registered legal name of the US entity, if it is not
-  "The Jerusalem Unity Center USA"
-- a telephone number, if you want one published in the structured data
-
-Donors look for the EIN, and Google's nonprofit review looks for it.
+The placeholder is gone from the page and from the stylesheet.
 
 ---
 
@@ -81,8 +84,12 @@ conversion per month**, so this is not optional housekeeping.
 | Google Ads Conversion ID + Label | `AW-123456789/AbC-D_efGh` | Google Ads → Goals → Conversions → your donation conversion → *Tag setup* → *Install manually* |
 
 The exact spot for both is already marked in the `<head>` of every page. I
-paste them in and the whole site reports into one property, with the
-completed donation counted on the thank-you page.
+paste them in and the whole site reports into one property.
+
+Because the Donorbox redirect is not being used, the completed gift cannot be
+counted on the thank-you page. When we do this, the conversion will be counted
+from the `donate_intent` signal already firing on every Donate button, or from
+Donorbox's own reporting — I will set it up whichever way suits the account.
 
 If the GA4 property does not exist yet, create that first — the Ads
 conversion is built on top of it.
@@ -126,7 +133,7 @@ single most common cause of Ad Grants rejection.
   giving form, six other ways to give, six transparency statements, eight
   FAQs, and a closing call — all on-brand, all responsive, all tested at
   desktop, tablet, and phone widths.
-- The thank-you page, ready for the conversion tag.
+- The thank-you page, in place and ready if the redirect is ever turned on.
 - The giving section on the home page, linking to your own page rather than
   to the old site.
 - Every "Donate Now" on every page — header, footer, master plan, pop-ups —

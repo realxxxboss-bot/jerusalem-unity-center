@@ -698,14 +698,13 @@
   color: var(--btn-text-cream);
 }
 
-/* A value the Center still has to supply. Marked so it is
-   impossible to publish by accident. */
-.dn-todo {
-  padding: 1px 7px;
-  border: 1px dashed var(--gold);
-  border-radius: 4px;
+/* The EIN. Donors copy this number onto a tax return, so it is
+   held on one line and given a little weight to find it in the
+   paragraph — without turning it into a callout. */
+.dn-ein {
+  font-weight: 500;
+  letter-spacing: 0.02em;
   color: var(--gold-hi);
-  font-size: 12.5px;
   white-space: nowrap;
 }
 
