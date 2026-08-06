@@ -4763,26 +4763,41 @@ body.modal-open {
     margin: 0 auto;
   }
 
-  /* The credit keeps its one line as long as it fits and wraps
-     under the mark rather than off the edge when it does not. */
+  /* The credit stays a single row on every phone: mark on the left,
+     one unbroken line of words on the right. It cannot do that at a
+     fixed size — the words alone need ~440px at the desktop size and
+     a phone has 300 — so mark, gap and type are all sized in vw and
+     shrink together. The clamp ceilings are the tablet sizes this
+     block used to set outright, so a wide tablet still looks exactly
+     as it did; the floors only ever engage below about 320px.
+
+     nowrap is the whole point of the rule. Without it the line broke
+     into three — mark, then two ragged rows of words — which is what
+     this replaced. */
   .footer-sponsor {
-    padding: 24px 20px;
+    padding: 22px 16px;
   }
 
   .fsponsor {
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content: center;
-    gap: 16px;
-    text-align: center;
+    gap: clamp(8px, 2.6vw, 16px);
+    text-align: left;
   }
 
   .fsponsor-logo {
-    width: 56px;
-    height: 56px;
+    width: clamp(32px, 10.4vw, 56px);
+    height: clamp(32px, 10.4vw, 56px);
   }
 
   .fsponsor-text {
-    font-size: 15px;
+    font-size: clamp(8.8px, 2.78vw, 15px);
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+  }
+
+  .fsponsor-name {
+    letter-spacing: 0.015em;
   }
 
   /* Bottom bar: copyright above, legal links below */
@@ -5320,22 +5335,13 @@ body.modal-open {
     width: 100%;
   }
 
-  /* The credit cannot hold one line at this width, so rather than
-     let it break wherever it runs out of room — which stranded
-     "Jerusalem" on a line of its own — the mark is put deliberately
-     above the words and the words are given a measure to wrap
-     inside. balance evens the two lines where it is supported;
-     where it is not, the measure alone already keeps the break
-     somewhere sensible. */
-  .fsponsor {
-    flex-direction: column;
-    gap: 13px;
-  }
-
-  .fsponsor-text {
-    max-width: 23ch;
-    text-wrap: balance;
-    line-height: 24px;
+  /* Narrow phones. The row still holds, but the side padding is
+     pared back to hand those pixels to the words, which are the part
+     running out of room — the band keeps a clear margin from the
+     edge of the screen either way. */
+  .footer-sponsor {
+    padding-left: 12px;
+    padding-right: 12px;
   }
 
   .qmark {
