@@ -1175,6 +1175,18 @@ a {
   padding-left: 30px;
 }
 
+/* The thank-you page carries the slim footer bar rather than the full
+   five-column footer, so its social row has no brand column to sit
+   beside. Centred on its own line, with the padding the column layout
+   would otherwise have supplied, and allowed to wrap so five circles
+   never press against the edge of a narrow phone. */
+.footer-social--center {
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 22px 16px 0;
+  margin-top: 0;
+}
+
 .social-link {
   display: flex;
   align-items: center;
