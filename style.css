@@ -877,6 +877,110 @@ a {
 }
 
 /* ============================================================
+   "OPENS SOMETHING" ARROW
+   Shared by every full-card link above that has no wording of
+   its own to say it opens a pop-up (the category cards, the
+   institute cards, the pathway columns). .ev-family and .pod-card
+   are deliberately left out below: they already carry their own
+   "Explore…" / "Listen to the Episode" label, and a second
+   affordance on top of that would read as a mistake.
+
+   Bottom-center is the only anchor that survives every layout
+   these grids collapse to (7-up row, 2-up grid, single column)
+   without per-breakpoint repositioning: left:0/right:0 + a
+   centered mask always lands on the middle of the card box,
+   whatever width that box currently is.
+
+   Drawn as a background-color + SVG mask instead of the U+2192
+   character so it stays one solid gold shape on every platform,
+   rather than falling back to whatever glyph the visitor's
+   system font subset happens to contain.
+   ============================================================ */
+
+:root {
+  --arrow-cue: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 8'%3E%3Cpath d='M0.5 4h17M13.6 0.9L17.5 4l-3.9 3.1' fill='none' stroke='%23000' stroke-width='1' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+.pillar-link,
+.institute-card,
+.pathway-link {
+  position: relative;
+  padding-bottom: 28px;
+}
+
+.institute-card {
+  padding-bottom: 26px;
+}
+
+.pillar-link::after,
+.institute-card::after,
+.pathway-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 10px;
+  width: 20px;
+  height: 8px;
+  margin: 0 auto;
+  background-color: var(--gold);
+  opacity: 0.6;
+  -webkit-mask-image: var(--arrow-cue);
+  mask-image: var(--arrow-cue);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  transition: transform 0.2s ease, background-color 0.2s ease, opacity 0.2s ease;
+}
+
+/* Hover/focus resolves to the same gold the card's own heading
+   turns to (.pillar-title / .card-title / .pathway-title above),
+   so the whole card reads as one color under the cursor instead
+   of the arrow staying a separate object. */
+.pillar-link:hover::after,
+.pillar-link:focus-within::after,
+.institute-card:hover::after,
+.institute-card:focus-within::after,
+.pathway-link:hover::after,
+.pathway-link:focus-within::after {
+  transform: translateX(4px);
+  background-color: var(--gold-hi);
+  opacity: 1;
+}
+
+/* Touch has no hover, so the resting state has to carry the
+   whole hint on its own — smaller glyph, higher rest opacity. */
+@media (hover: none) {
+  .pillar-link::after,
+  .institute-card::after,
+  .pathway-link::after {
+    width: 18px;
+    height: 7px;
+    opacity: 0.85;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pillar-link::after,
+  .institute-card::after,
+  .pathway-link::after {
+    transition: background-color 0.01ms, opacity 0.01ms;
+  }
+
+  .pillar-link:hover::after,
+  .pillar-link:focus-within::after,
+  .institute-card:hover::after,
+  .institute-card:focus-within::after,
+  .pathway-link:hover::after,
+  .pathway-link:focus-within::after {
+    transform: none;
+  }
+}
+
+/* ============================================================
    SECTION 6 — JOIN A GLOBAL MOVEMENT
    Measured on assets/full-mockup.png (band y1290–1418 in the
    864px render, ×5/3 to the 1440px reference → 213px tall).
